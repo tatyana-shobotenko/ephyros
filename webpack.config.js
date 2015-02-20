@@ -6,16 +6,29 @@ function isDirectory(dir) {
   return fs.lstatSync(dir).isDirectory();
 }
 
+var plugins = [
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+  })
+];
+
+if (process.env.COMPRESS) {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  );
+}
+
 module.exports = {
-
-  devtool: 'inline-source-map',
-
   entry: {
     app: './src/app.js'
   },
 
   output: {
-    path: '__build__',
+    path: 'public/__build__',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     publicPath: '/__build__/'
@@ -26,12 +39,9 @@ module.exports = {
       {test: /\.jsx?$/, loader: 'jsx-loader?harmony'}
     ]
   },
-
-  plugins: [
-    //new webpack.optimize.CommonsChunkPlugin('shared.js'),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    })
-  ]
-
+  plugins: plugins
 };
+
+if (process.env.NODE_ENV != 'production') {
+  module.exports['devtool'] = 'inline-source-map';
+}
