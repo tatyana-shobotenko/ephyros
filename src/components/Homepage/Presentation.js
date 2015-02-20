@@ -11,7 +11,7 @@ module.exports = React.createClass({
               <h1 className="screen-title screen-title_dark">
                 Need a team of experienced developers?
               </h1>
-              <a href className="button button_rainbow">Watch presentation</a>
+              <a className="button button_rainbow">Watch presentation</a>
             </div>
             <div className="screen-presentation__pic-wrap">
               <a href>
@@ -20,7 +20,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
-        <a className="scroll-btn scroll-btn_before-team">
+        <a className="scroll-btn scroll-btn_before-team" href="#team">
           <i className="icon-down" />
         </a>
       </div>

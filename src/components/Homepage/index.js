@@ -30,7 +30,7 @@ module.exports = React.createClass({
                 </div>
               </div>
             </div>
-            <a className="scroll-btn scroll-btn_before-cases">
+            <a className="scroll-btn scroll-btn_before-cases" href="#cases">
               <i className="icon-down" />
             </a>
           </div>

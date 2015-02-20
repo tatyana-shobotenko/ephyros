@@ -28,7 +28,7 @@ var membersData = [
 module.exports = React.createClass({
   render: function () {
     var members = membersData.map((member, index) => (
-      <a href className="hteam-member" key={index}>
+      <a className="hteam-member" key={index}>
         <div className="hteam-member__photo">
           <img src={member.photo} alt={member.name} />
         </div>
@@ -43,7 +43,7 @@ module.exports = React.createClass({
           <h1 className="screen-title screen-title_margin-big">Team of Professionals</h1>
           <div className="hteam-list">
             {members}
-            <a href className="hteam-member ">
+            <a className="hteam-member ">
               <div className="hteam-member__photo hteam-member__photo_empty">
                 <span className="icon-plus" />
               </div>
@@ -51,9 +51,9 @@ module.exports = React.createClass({
               <div className="hteam-member__speciality hteam-member__speciality_future">Awesome developer...</div>
             </a>
           </div>
-          <a href className="button">All team</a>
+          <a className="button">All team</a>
         </div>
-        <a className="scroll-btn scroll-btn_before-epilogue">
+        <a className="scroll-btn scroll-btn_before-epilogue" href="#contact">
           <i className="icon-down" />
         </a>
       </div>
