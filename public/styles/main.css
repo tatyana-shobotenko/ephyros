@@ -607,6 +607,8 @@ input.button, button.button {
   background-size: cover; }
 
 .screen-intro {
+  height: 98vh;
+  box-sizing: border-box;
   padding-top: 96px;
   margin-top: -96px;
   position: relative;
@@ -667,11 +669,28 @@ input.button, button.button {
   bottom: 0;
   text-decoration: none;
   transition: padding-bottom linear 400ms;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-animation: pulsate 1s linear infinite;
+          animation: pulsate 1s linear infinite; }
   .scroll-btn:hover {
     text-decoration: none;
     padding-bottom: 10px; }
 
+@-webkit-keyframes pulsate {
+  0% {
+    padding-bottom: 0; }
+  50% {
+    padding-bottom: 12px; }
+  100% {
+    padding-bottom: 0; } }
+
+@keyframes pulsate {
+  0% {
+    padding-bottom: 0; }
+  50% {
+    padding-bottom: 12px; }
+  100% {
+    padding-bottom: 0; } }
 .scroll-btn_before-cases {
   background: #4fa862;
   color: #ffffff; }
@@ -697,6 +716,8 @@ input.button, button.button {
     color: #e9bb40; }
 
 .screen-cases {
+  height: 98vh;
+  box-sizing: border-box;
   position: relative;
   background-color: #4fa862;
   min-height: 600px;
@@ -816,6 +837,8 @@ input.button, button.button {
   color: #ffffff; }
 
 .screen-presentation {
+  height: 98vh;
+  box-sizing: border-box;
   position: relative;
   background-color: #ffffff;
   min-height: 500px;
@@ -873,6 +896,8 @@ input.button, button.button {
       display: inline-block; } }
 
 .screen-team {
+  height: 98vh;
+  box-sizing: border-box;
   position: relative;
   background-color: #e9bb40;
   min-height: 600px;
@@ -960,6 +985,8 @@ input.button, button.button {
   color: #ffda78; }
 
 .screen-epilogue {
+  height: 98vh;
+  box-sizing: border-box;
   position: relative;
   background-color: #ffffff;
   min-height: 200px;

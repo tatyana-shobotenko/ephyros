@@ -14,9 +14,18 @@
   text-decoration: none
   +transition(padding-bottom linear 400ms)
   cursor: pointer
+  animation: pulsate 1s linear infinite
   &:hover
     text-decoration: none
     padding-bottom: 10px
+
+@keyframes pulsate
+  0%
+    padding-bottom: 0
+  50%
+    padding-bottom: 12px
+  100%
+    padding-bottom: 0
 
 .scroll-btn_before-cases
   background: #4fa862
