@@ -1,0 +1,25 @@
+.lang-select
+  float: right
+  padding-right: 15px
+  position: relative
+  margin: 5px 0 0 25px
+  cursor: pointer
+  z-index: 5
+  &:after
+    content: ''
+    position: absolute
+    right: 3px
+    top: 10px
+    +triangle(3px, #ffffff, bottom)
+  +resp(sdevice)
+//display: none
+
+.lang-select__current
+  width: 24px
+  height: 24px
+  border-radius: 12px
+  overflow: hidden
+
+.lang-select_eng
+  background: url("/images/eng.png") no-repeat left top
+

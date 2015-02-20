@@ -1,0 +1,54 @@
+.footer__contacts
+  @extend .cell7
+  background: lighten($headerBack, 6%)
+  height: $footerHeight
+  font-size: 18px
+  line-height: 1.8
+  z-index: 5
+  position: relative
+  +resp(sdevice)
+    margin-left: -10px
+    margin-right: -10px
+    height: auto
+    width: auto
+    background: none
+    font-size: 13px
+    padding-bottom: 10px
+    text-align: center
+    display: block
+  +resp(stab)
+    margin-left: 0
+    margin-right: 0
+
+.footer__contacts-col
+  +inline-block()
+  +inlineBlockModelChild(18px, 1.8)
+  width: 50%
+  padding-top: 15px
+  +resp(sdevice)
+    width: 100%
+    font-size: 14px
+    border-top: 1px solid lighten($headerBack, 30%)
+    padding-bottom: 15px
+
+.footer__contacts__title
+  color: #9ddff1
+  font-size: 11px
+  margin-bottom: 10px
+  text-transform: uppercase
+
+.footer__contacts-inner
+  padding: 30px 0px 30px 110px
+  +resp(ltab)
+    padding-left: 60px
+  +resp(tab)
+    padding-left: 40px
+  +resp(sdevice)
+    padding: 0 0 0 10px
+
+.footer__contacts-row
+  display: block
+
+.tel-span
+  +resp(tab)
+    display: block

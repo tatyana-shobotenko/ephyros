@@ -1,0 +1,58 @@
+.screen-presentation
+  position: relative
+  background-color: #ffffff
+  min-height: 500px
+  z-index: 2
+  +clear
+  padding-bottom: 70px
+  padding-top: 70px
+  +resp(tab)
+    min-height: 300px
+
+.screen-presentation__label
+  text-transform: uppercase
+  font-size: 11px
+  color: #7a8f99
+
+.screen-presentation__info
+  @extend .cell4
+  @extend .offset1
+  @extend %ltab-cell5
+  @extend %tab-cell7
+  @extend %stab-cell6
+  @extend %pho-cell12
+  +resp(device)
+    margin-left: 0
+  +resp(pho)
+    text-align: center
+
+.screen-presentation__pic-wrap
+  @extend .cell7
+  @extend %ltab-cell7
+  @extend %tab-cell5
+  @extend %stab-cell6
+  @extend %pho-cell12
+  +resp(stab)
+    overflow: hidden
+  +resp(pho)
+    margin-top: 30px
+    text-align: center
+
+.screen-presentation__pic
+  width: 558px
+  height: 420px
+  background: url("/images/presentation.png") no-repeat left top
+  +resp(tab)
+    width: 279px
+    height: 210px
+    background-size: 100%
+  +resp(stab)
+    width: 279px
+    height: 210px
+    background-size: 100%
+    display: inline-block
+  +resp(pho)
+    width: 279px
+    height: 210px
+    background-size: 100%
+    display: inline-block

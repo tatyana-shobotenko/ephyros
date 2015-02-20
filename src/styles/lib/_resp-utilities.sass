@@ -1,0 +1,30 @@
+@mixin desktop-hidden($display: block)
+  display: none
+  +resp(device)
+    display: $display
+
+@mixin device-hidden($display: block)
+  display: $display
+  +resp(device)
+    display: none
+
+@mixin tab-visible($d: block)
+  display: none
+  +resp(tab)
+    display: $d
+
+@mixin phone-visible($d: block)
+  +resp(pho)
+    display: $d
+
+@mixin ptab-hidden($d: block)
+  display: $d
+  +resp(ptab)
+    display: none
+  +resp(pho)
+    display: none
+
+@mixin phone-hidden($d: block)
+  display: $d
+  +resp(pho)
+    display: none

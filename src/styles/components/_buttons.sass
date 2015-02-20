@@ -1,0 +1,71 @@
+$btnH: 48px
+$btnPad: round(($btnH - 2 - 14*$defaultLineHeight)/2)
+
+.button
+  +inline-block()
+  text-align: center
+  font-size: 14px
+  color: #ffffff
+  padding: $btnPad 20px
+  text-transform: uppercase
+  border: 2px solid #ffffff
+  cursor: pointer
+  height: 14px*$defaultLineHeight
+  text-decoration: none
+  +transition(all linear .3s)
+  &:hover, &:active, &.active
+    background: #ffffff
+    color: $grayDark
+  &[disabled], &.disabled
+    opacity: .5
+    cursor: default
+    background: none
+
+input, button
+  &.button
+    background: none
+    font-family: $fontFamily
+    height: $btnH
+
+.button_rainbow
+  color: $grayDarker
+  border-left: 2px solid #3fa24b
+  border-right: 2px solid #1aacd3
+  border-top: 0
+  border-bottom: 0
+  padding: ($btnPad+2) 20px
+  position: relative
+  background: transparent
+  &:before, &:after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+    height: 2px
+    +hgradient(#3fa24b, #1aacd3)
+  &:before
+    top: 0
+  &:after
+    bottom: 0
+  &:hover
+    background: #f2f7fb
+    border-right-color: #3fa24b
+    border-left-color: #1aacd3
+    +transition(all linear 1000ms)
+    &:before, &:after
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      height: 2px
+      +hgradient(#1aacd3, #3fa24b)
+      +transition(all linear 1000ms)
+
+.button-group
+  +inlineBlockModelParent
+
+.button-group__item
+  +inlineBlockModelChild(14px)
+  margin-left: -2px
+  &:first-child
+    margin-left: 0

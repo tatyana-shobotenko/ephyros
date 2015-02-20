@@ -1,0 +1,28 @@
+.footer
+  position: relative
+  height: $footerHeight
+  background: $headerBack
+  color: #ffffff
+  z-index: 11
+  +resp(sdevice)
+    height: auto
+
+.footer-inner
+  padding: 30px
+  +clear
+  +resp(tab)
+    padding: 20px
+  +resp(sdevice)
+    padding: 20px 10px
+
+.footer_right
+  position: absolute
+  right: 0
+  width: 50%
+  background: lighten($headerBack, 6%)
+  height: $footerHeight
+  z-index: 2
+  +resp(sdevice)
+    display: none
+@import "footer/footer-copyright"
+@import "footer/footer__contacts"

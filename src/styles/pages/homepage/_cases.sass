@@ -1,0 +1,100 @@
+.screen-cases
+  position: relative
+  background-color: #4fa862
+  min-height: 600px
+  z-index: 2
+  +clear
+  text-align: center
+  padding-bottom: 70px
+$caseH: 177px
+$caseH--mob: 200px
+.hcases-list
+  +inlineBlockModelParent
+  margin: 40px 0
+  +resp(pho)
+    margin-left: -10px
+    margin-right: -10px
+  +resp(mtab)
+    margin-left: 30px
+    margin-right: 30px
+    text-align: center
+
+.hcase
+  +inlineBlockModelChild()
+  +inline-block()
+  width: 25%
+  height: $caseH
+  overflow: hidden
+  position: relative
+  &:hover
+    .hcase__info
+      max-height: $caseH
+  +resp(stab)
+    width: 50%
+  +resp(mtab)
+    max-width: 285px
+  +resp(pho)
+    width: 100%
+    height: $caseH--mob
+
+.hcase_big
+  width: 50%
+  height: $caseH*2
+  float: left
+  &:hover
+    .hcase__info
+      max-height: $caseH*2
+  +resp(sdevice)
+    width: 100%
+  +resp(mtab)
+    max-width: 570px
+    float: none
+  +resp(pho)
+    height: $caseH--mob
+
+.hcase__img
+  position: absolute
+  height: 100%
+  width: 200%
+  text-align: center
+  left: -50%
+  img
+    height: 100%
+
+.hcase__info
+  position: absolute
+  width: 100%
+  height: 100%
+  background: #0eb2de
+  max-height: 0
+  overflow: hidden
+  +transition(max-height ease-in 300ms)
+
+.hcase__info_touch
+  max-height: none
+  height: auto
+  background: none
+  +vgradient((rgba(14, 178, 222, 1) 30%), (rgba(14, 178, 222, 0) 100%), 0)
+  padding-bottom: 20px
+
+.hcase__info-inner
+  padding: 10px 20px
+  text-align: left
+
+.hcase__section
+  text-transform: uppercase
+  color: $grayDarker
+  font-size: 11px
+
+.hcase__title
+  color: #ffffff
+  font-size: 24px
+  font-weight: 100
+
+.hcase__go-icon
+  position: absolute
+  bottom: 20px
+  right: 20px
+  font-size: 30px
+  line-height: 30px
+  color: #ffffff

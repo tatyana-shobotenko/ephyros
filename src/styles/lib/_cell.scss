@@ -1,0 +1,69 @@
+%cellInit {
+  @include inline-block;
+  @include inlineBlockModelChild;
+  padding-left: $gutterWidth/2;
+  padding-right: $gutterWidth/2;
+  min-height: 1px;
+  box-sizing: border-box;
+}
+
+@mixin cellDefine($cellWidth) {
+  width: $cellWidth;
+}
+
+@mixin cellCreateOffset($colNum, $offsetNum) {
+  margin-left: ($offsetNum*100%)/$colNum;
+}
+
+@mixin cellCreate($colIndex, $colNum) {
+  @include cellDefine($cellWidth: (100%*$colIndex)/$colNum);
+}
+
+@for $i from 1 through $colNum {
+  .cell#{$i} {
+    @extend %cellInit;
+    @include cellCreate($i, $colNum);
+  }
+}
+
+@for $i from 1 through $colNum {
+  %tab-cell#{$i} {
+    @include resp(tab) {
+      @include cellCreate($i, $colNum);
+      //      margin-left: $gutterWidth;
+    }
+  }
+}
+
+@for $i from 1 through $colNum {
+  %ltab-cell#{$i} {
+    @include resp(ltab) {
+      @include cellCreate($i, $colNum);
+      //      margin-left: $gutterWidth;
+    }
+  }
+}
+
+@for $i from 1 through $colNum {
+  %stab-cell#{$i} {
+    @include resp(stab) {
+      @include cellCreate($i, $colNum);
+      //      margin-left: $gutterWidth;
+    }
+  }
+}
+
+@for $i from 1 through $colNum {
+  %pho-cell#{$i} {
+    @include resp(pho) {
+      @include cellCreate($i, $colNum);
+      //      margin-left: $gutterWidth;
+    }
+  }
+}
+
+@for $i from 1 through $colNum {
+  .offset#{$i} {
+    @include cellCreateOffset($colNum, $i);
+  }
+}

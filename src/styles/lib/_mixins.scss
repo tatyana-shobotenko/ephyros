@@ -1,0 +1,326 @@
+// responsive example, edit or remove
+$break-small: 480px;
+$break-sm: 560px;
+$break-md: 750px;
+$break-large: 1024px;
+$break-large2: 1280px;
+@mixin resp($media) {
+  @if $media == pho {
+    //phone
+    @media only screen and (max-width: $break-small - 1) {
+      @content;
+    }
+  } @else if $media == stab {
+    //small tablet
+    @media only screen and (min-width: $break-small) and (max-width: $break-md - 1) {
+      @content;
+    }
+  } @else if $media == mtab {
+    //middle tablet
+    @media only screen and (min-width: $break-sm) and (max-width: $break-md - 1) {
+      @content;
+    }
+  } @else if $media == tab {
+    //big tablet portrait
+    @media only screen and (min-width: $break-md) and (max-width: $break-large - 1) {
+      @content;
+    }
+  } @else if $media == ltab {
+    //landscape tablet
+    @media only screen and (min-width: $break-large) and (max-width: $break-large2 - 1) {
+      @content;
+    }
+  }
+    //@else if $media == pho { // landscape + portrait phone
+    //  @media only screen and (max-width: $break-md - 1){ @content; }
+    //}
+    //@else if $media == tab { // landscape + portrait tablet
+    //  @media only screen and (min-width: $break-md)  and (max-width: $break-large - 1){ @content; }
+    //}
+  @else if $media == sdevice {
+    @media only screen and (max-width: $break-md - 1) {
+      @content;
+    }
+  } @else if $media == mdevice {
+    @media only screen and (min-width: $break-small) and (max-width: $break-large - 1) {
+      @content;
+    }
+  } @else if $media == device {
+    // gadgets
+    @media only screen and (max-width: $break-large2 - 1) {
+      @content;
+    }
+  } @else if $media == desktop {
+    // desktops
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
+  } @else if $media == hudge {
+    // desktops
+    @media only screen and (min-width: $break-large2 + 1) {
+      @content;
+    }
+  } @else if $media == delta {
+    @media only screen and (min-width: $break-large + 25px) and (max-width: $break-large + 100px),
+    only screen and (min-width: $break-md + 25px) and (max-width: $break-md + 100px) {
+      @content;
+    }
+  } @else if $media == fringe {
+    @media only screen and (min-width: $break-large) and (max-width: $break-large + 24px),
+    only screen and (min-width: $break-md) and (max-width: $break-md + 24px),
+    only screen and (max-width: $break-small + 100px) {
+      @content;
+    }
+  }
+}
+
+// retina bg
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+//asdfast font-family
+@mixin font($alias, $name) {
+  @font-face {
+    font-family: $alias;
+    src: url('fonts/' +$name+ '.eot');
+    src: url("fonts/" +$name+ ".eot?#iefix") format("embedded-opentype"), url("fonts/"+$name+".woff") format("woff"), url("fonts/"+$name+".ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+//+font(black, cytiapro-black-webfont)
+
+// ROTATE
+@mixin rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0) {
+  -moz-transform: rotate($deg + deg);
+  -o-transform: rotate($deg + deg);
+  -webkit-transform: rotate($deg + deg);
+  -ms-transform: rotate($deg + deg);
+  transform: rotate($deg + deg);
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=$m11, M12=$m12, M21=$m21, M22=$m22, sizingMethod='auto expand');
+  zoom: 1;
+}
+
+// TRANSITION
+@mixin transition($what) {
+  -moz-transition: $what;
+  -o-transition: $what;
+  -webkit-transition: $what;
+  -ms-transition: $what;
+  transition: $what;
+}
+
+%hide-text {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+%clr {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  *zoom: 1;
+}
+
+@mixin placeholder-color($color) {
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+%gray {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayScale=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayScale=1)";
+}
+
+%gray-half {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'saturate\' values=\'0.5\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+  filter: gray alpha(opacity=50); /* IE6-9 */
+  -webkit-filter: grayscale(50%); /* Chrome 19+ & Safari 6+ */
+}
+
+%gray-zero {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%);
+}
+
+@mixin unselectable() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin prevent-text() {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin font-smoothing($val: antialiased) {
+   -webkit-font-smoothing: $val;
+   -moz-font-smoothing: $val;
+   -ms-font-smoothing: $val;
+   -o-font-smoothing: $val;
+}
+
+@mixin selection {
+  & ::selection {
+    @content;
+  }
+  & ::-moz-selection {
+    @content;
+  }
+}
+
+@mixin inline-block($valign: top) {
+  display: inline-block;
+  float: none;
+  vertical-align: $valign;
+}
+
+@mixin cellInit {
+  display: inline;
+  float: left;
+}
+
+@mixin inlineBlockModelParent {
+  font-size: 0px;
+  letter-spacing: 0px;
+  line-height: 0;
+}
+
+@mixin inlineBlockModelChild($fs: $defaultFontSize, $lh: $defaultLineHeight) {
+  font-size: $fs;
+  line-height: $lh;
+  letter-spacing: normal;
+}
+
+@mixin cell_containerInit {
+  @include inlineBlockModelParent;
+}
+
+@mixin cell_container {
+  @include cell_containerInit;
+  width: $fullWidth;
+  //  @include resp(tab){
+  //    width: $tabContentWidth+$gutterWidth;
+  //  }
+  //  @include resp(stab){
+  //    width: $stabContentWidth+$gutterWidth;
+  //  }
+  //  @include resp(pho){
+  //    width: auto;
+  //    margin-left: 0;
+  //    display: block;
+  //    //padding: 0 10px;
+  //  }
+}
+
+@mixin cellCreateOffset($fullWidth, $gutterWidth, $colNum, $offsetNum) {
+  margin-left: ($fullWidth / $colNum) * $offsetNum + $gutterWidth * $offsetNum;
+}
+
+@mixin vgradient($top, $bottom, $ie: 1) {
+  @if $ie==1 {
+    @include filter-gradient($top, $bottom, vertical);
+  }
+  @include background-image(linear-gradient($top, $bottom));
+  background: -ms-linear-gradient(top, $top, $bottom); /* IE10+ */
+}
+
+@mixin hgradient($top, $bottom, $ie: 1) {
+  @if $ie==1 {
+    @include filter-gradient($top, $bottom, horizontal);
+  }
+  @include background-image(linear-gradient(left, $top, $bottom));
+  background: -ms-linear-gradient(left, $top, $bottom); /* IE10+ */
+}
+
+// Gradient Bar Colors for buttons and alerts
+@mixin gradientBar($primaryColor, $secondaryColor, $textColor: #fff, $textShadow: 0 -1px 0 rgba(0, 0, 0, .25)) {
+  color: $textColor;
+  text-shadow: $textShadow;
+  background-color: mix($primaryColor, $secondaryColor, 60%);
+  @include vgradient($primaryColor, $secondaryColor);
+  background-repeat: repeat-x;
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
+  //border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+@mixin buttonBackground($startColor, $endColor, $textColor: #fff, $textShadow: 0 -1px 0 rgba(0, 0, 0, .25)) {
+  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
+  @include gradientBar($startColor, $endColor, $textColor, $textShadow);
+  *background-color: $endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    color: $textColor;
+    filter: none;
+    background-color: $endColor;
+    *background-color: darken($endColor, 5%);
+  }
+}
+
+@mixin triangle($size, $color, $direction) {
+  border-width: $size;
+  border-style: solid;
+  @if ($direction == 'top') {
+    border-color: transparent transparent $color transparent;
+  }
+  @if ($direction == 'bottom') {
+    border-color: $color transparent transparent transparent;
+  }
+  @if ($direction == 'left') {
+    border-color: transparent $color transparent transparent;
+  }
+  @if ($direction == 'right') {
+    border-color: transparent transparent transparent $color;
+  }
+}
+
+@mixin stripe($size-h, $size-w, $color, $direction) {
+  border-width: $size-h $size-w $size-h $size-w;
+  border-style: solid;
+  @if ($direction == 'top') {
+    border-color: transparent $color $color $color;
+  }
+  @if ($direction == 'bottom') {
+    border-color: $color $color transparent $color;
+  }
+  @if ($direction == 'left') {
+    border-color: $color $color $color transparent;
+  }
+  @if ($direction == 'right') {
+    border-color: $color transparent $color $color;
+  }
+}
+
+@mixin clear {
+  &:before, &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}

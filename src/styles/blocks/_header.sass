@@ -1,0 +1,17 @@
+.header
+  padding: 30px 0
+  background: $headerBack
+  color: #ffffff
+  +clear
+  +resp(sdevice)
+    padding: 15px 0
+
+.header_home
+  background: transparent
+  z-index: 3
+  position: relative
+
+@import "header/header__logo"
+@import "header/header__nav"
+@import "header/lang"
+@import "header/header__menu-btn"

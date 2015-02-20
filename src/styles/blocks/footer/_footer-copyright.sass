@@ -1,0 +1,28 @@
+.footer__copyrights
+  @extend .cell5
+  @extend %stab-cell12
+  @extend %pho-cell12
+  margin-top: 50px
+  font-size: 18px
+  line-height: 1.8
+  +resp(sdevice)
+    margin-top: 0
+    font-size: 13px
+
+.footer__logo
+  width: 73px
+  height: 60px
+  float: left
+  margin-right: 20px
+  background: url("/images/logo-icon.png") no-repeat left top
+  +retina
+    background-image: url("/images/logo-icon@2x.png")
+    background-size: 100%
+  +resp(sdevice)
+    width: 36px
+    height: 30px
+    background-image: url("/images/logo-icon@2x.png")
+    background-size: 100%
+
+.footer__copyrights-text
+  overflow: hidden

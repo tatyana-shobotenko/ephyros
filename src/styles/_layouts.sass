@@ -1,0 +1,73 @@
+body
+  background: $bodyBG
+  font-family: $fontFamily
+  color: $defaultTextColor
+  font-size: $defaultFontSize
+  line-height: 1.3
+  padding: 0
+  margin: 0
+
+body, html
+  height: 100%
+
+ul, ol
+  margin: 0
+  padding: 0
+
+p, input, button
+  margin: 0
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+  font-weight: normal
+  font-family: $fontFamily
+
+a img
+  border: none
+
+a
+  color: $linkColor
+  &:hover
+    color: darken($linkColor, 10%)
+//wrapper for full page
+.global-wrapper
+  width: 100%
+  position: relative
+  z-index: 10
+  height: auto !important
+  min-height: 100%
+  margin-bottom: -$footerHeight
+  +clear
+  +resp(pho)
+    margin-bottom: 0
+//wrapper for centering page content
+.center-wrapper
+  width: $contentWidth
+  margin: 0 auto
+  &.relative
+    position: relative
+  +resp(ltab)
+    width: $ltabContentWidth
+  +resp(tab)
+    width: $tabContentWidth
+  +resp(stab)
+    width: auto
+    margin: 0px 20px
+  +resp(pho)
+    width: auto
+    margin: 0px 10px
+
+.with-scrollable-header
+  margin-top: $headerHeight
+  +resp(device)
+    margin-top: 0
+
+.gcontainer
+  +cell_container
+  width: auto
+  clear: both
+
+.push
+  height: $footerHeight
+  +resp(pho)
+    height: 0
