@@ -15,13 +15,13 @@ module.exports = React.createClass({
             </div>
             <div className="screen-presentation__pic-wrap">
               <a href>
-                <div className="screen-presentation__pic" />
+                <div className="screen-presentation__pic"/>
               </a>
             </div>
           </div>
         </div>
         <a className="scroll-btn scroll-btn_before-team" href="#team">
-          <i className="icon-down" />
+          <i className="icon-down"/>
         </a>
       </div>
     );

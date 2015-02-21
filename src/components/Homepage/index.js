@@ -13,17 +13,20 @@ module.exports = React.createClass({
       <div>
         <div className="global-wrapper">
           <Header/>
-          <div className="screen-intro-back" />
+
+          <div className="screen-intro-back"/>
           <div className="screen-intro">
             <div className="center-wrapper">
               <div className="screen-intro__content">
                 <h1 className="screen-intro__title">We create rocking
                   web applications
                   for startups</h1>
+
                 <p className="screen-intro__subtitle">
                   At Ephyros we help ambitious clients
                   to bring powerful ideas to life
                 </p>
+
                 <div className="button-group">
                   <a href="#cases" className="button button-group__item">Services</a>
                   <a href="#presentation" className="button button-group__item">Presentation</a>
@@ -31,7 +34,7 @@ module.exports = React.createClass({
               </div>
             </div>
             <a className="scroll-btn scroll-btn_before-cases" href="#cases">
-              <i className="icon-down" />
+              <i className="icon-down"/>
             </a>
           </div>
           <a name="cases"></a>
@@ -42,7 +45,8 @@ module.exports = React.createClass({
           <Team/>
           <a name="contact"></a>
           <Contact/>
-          <div className="push" />
+
+          <div className="push"/>
         </div>
         <Footer/>
       </div>
