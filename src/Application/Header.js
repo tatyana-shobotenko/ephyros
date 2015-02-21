@@ -1,6 +1,7 @@
 var React = require('react');
+var Link = require('react-router').Link;
 
-module.exports = React.createClass({
+var Header = React.createClass({
   render: function () {
     return (
       <div className="header header_home">
@@ -17,13 +18,14 @@ module.exports = React.createClass({
            </div>
            */}
           <ul className="header__nav">
-            <li><a href="#cases">Work</a></li>
-            <li><a href="#presentation">Services</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/#cases">Work</Link></li>
+            <li><Link to="/#presentation">Services</Link></li>
+            <li><Link to="/#team">Team</Link></li>
+            <li><Link to="contact">Contact</Link></li>
           </ul>
         </div>
       </div>
     );
   }
 });
+module.exports = Header;

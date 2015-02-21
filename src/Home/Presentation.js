@@ -3,7 +3,7 @@ var React = require('react');
 module.exports = React.createClass({
   render: function () {
     return (
-      <div className="screen-presentation">
+      <div id="presentation" className="screen-presentation">
         <div className="center-wrapper">
           <div className="gcontainer">
             <div className="screen-presentation__info">

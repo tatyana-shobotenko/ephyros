@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+var Footer = React.createClass({
   render: function () {
     return (
       <div className="footer">
@@ -46,3 +46,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = Footer;

@@ -5,20 +5,22 @@ var path = require("path");
 var app = express();
 
 var React = require('react');
-var App = require('./components/Homepage');
+var Router = require('react-router');
+var routes = require('./routes');
 
 
 app.use("/", express.static(path.join(__dirname, "..", "public"), {}));
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'ejs');
 
-app.get("/", function (req, res, next) {
-  var html = React.renderToString(React.createFactory(App)({}));
-
-  res.render('html', {
-    appHtml: html,
-    title: 'Ephyros new website',
-    description: ''
+app.get("/*", function (req, res, next) {
+  Router.run(routes, req.path, function (Handler) {
+    var html = React.renderToString(React.createFactory(Handler)({}));
+    res.render('html', {
+      appHtml: html,
+      title: 'Ephyros new website',
+      description: ''
+    });
   });
 });
 
