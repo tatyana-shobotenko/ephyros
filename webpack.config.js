@@ -24,7 +24,7 @@ if (process.env.COMPRESS) {
 
 module.exports = {
   entry: {
-    app: './src/app.js',
+    client: './src/client.js',
     ie: './src/ie.js'
   },
 

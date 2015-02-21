@@ -9,7 +9,7 @@ var Intro = require('./Intro');
 
 
 module.exports = React.createClass({
-  render: function () {
+  render() {
     return (
       <div>
         <div className="global-wrapper">
@@ -23,6 +23,7 @@ module.exports = React.createClass({
           <Team/>
           <a name="contact"></a>
           <Contact/>
+
           <div className="push"/>
         </div>
         <Footer/>

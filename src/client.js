@@ -1,11 +1,9 @@
 var React = require('react');
-window.React = React;
 var App = require('./components/Homepage');
-var $ = require('jquery');
-
 React.render(<App/>, document.getElementById('app'));
 
 //////////// Performs a smooth page scroll to an anchor on the same page. ////////////
+var $ = require('jquery');
 
 $(function () {
   $('a[href*=#]:not([href=#])').click(function () {

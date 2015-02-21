@@ -7,10 +7,12 @@ module.exports = React.createClass({
   },
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
   },
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
   },
+
   onScroll() {
     var domNode = this.getDOMNode();
     var elementHeight = domNode.offsetHeight;
@@ -19,6 +21,7 @@ module.exports = React.createClass({
       visibility: 1 - hiddenHeight / elementHeight
     })
   },
+
   render() {
     return (
       <div>
