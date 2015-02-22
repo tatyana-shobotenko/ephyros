@@ -12,6 +12,11 @@ var Header = React.createClass({
       isMenuOpen: !this.state.isMenuOpen
     })
   },
+  hideMenu() {
+    this.setState({
+      isMenuOpen: false
+    })
+  },
   render() {
     return (
       <div className="header header_home">
@@ -28,10 +33,10 @@ var Header = React.createClass({
            </div>
            */}
           <ul className={'header__nav'+ (this.state.isMenuOpen?' header__nav_opened':'')}>
-            <li><Link to="cases">Work</Link></li>
-            <li><Link to="/#presentation">Services</Link></li>
-            <li><Link to="/#team">Team</Link></li>
-            <li><Link to="contact">Contact</Link></li>
+            <li><Link onClick={this.hideMenu} to="cases">Work</Link></li>
+            <li><Link onClick={this.hideMenu} to="/#presentation">Services</Link></li>
+            <li><Link onClick={this.hideMenu} to="/#team">Team</Link></li>
+            <li><Link onClick={this.hideMenu} to="contact">Contact</Link></li>
           </ul>
         </div>
       </div>
