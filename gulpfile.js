@@ -6,6 +6,7 @@ var rubySass = require('gulp-ruby-sass');
 var postcss = require('gulp-postcss');
 var sourcemaps = require('gulp-sourcemaps');
 var gexpress = require('gulp-express');
+var opn = require('opn');
 
 var gutil = require("gulp-util");
 var webpack = require("webpack");
@@ -42,7 +43,7 @@ gulp.task('serve', ['styles', 'webpack:build-dev'], function () {
 
   gulp.watch(srcPath + '/styles/**/*', ['styles']);
   gulp.watch(srcPath + '/**/*.js', ['webpack:build-dev', startServer]);
-  //gulp.watch([srcPath + '/**/*.ejs', srcPath + '/**/*.js'] [startServer]);
+  opn('http://localhost:3000');
 });
 
 // The development server (the recommended option for development)

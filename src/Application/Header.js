@@ -2,7 +2,7 @@ var React = require('react');
 var Link = require('react-router').Link;
 
 var Header = React.createClass({
-  render: function () {
+  render() {
     return (
       <div className="header header_home">
         <div className="center-wrapper">

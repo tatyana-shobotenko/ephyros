@@ -5,7 +5,7 @@ var teamData = require('../data/teamData');
 
 
 module.exports = React.createClass({
-  render: function () {
+  render() {
     var members = teamData.map((member, index) => (
       <a className="hteam-member" key={index}>
         <div className="hteam-member__photo">

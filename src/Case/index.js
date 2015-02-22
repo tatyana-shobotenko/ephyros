@@ -9,7 +9,7 @@ var Case = React.createClass({
   render() {
     var slug = this.getParams().slug;
     var selectedCase = false;
-    casesData.forEach(function (i) {
+    casesData.forEach((i) => {
       if (i.slug === slug) {
         selectedCase = i;
       }

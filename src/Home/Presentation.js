@@ -1,7 +1,7 @@
 var React = require('react');
 
 module.exports = React.createClass({
-  render: function () {
+  render() {
     return (
       <div id="presentation" className="screen-presentation">
         <div className="center-wrapper">

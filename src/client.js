@@ -4,8 +4,8 @@ var Router = require('react-router');
 var routes = require('./routes');
 var $ = require('jquery');
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.getElementById('app'), function () {
+Router.run(routes, Router.HistoryLocation, (Handler) => {
+  React.render(<Handler/>, document.getElementById('app'), ()=> {
     var hash = window.location.hash;
     if (hash) {
       var target = $(hash);

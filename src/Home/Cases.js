@@ -4,7 +4,7 @@ var Link = require('react-router').Link;
 var casesData = require('../data/casesData');
 
 module.exports = React.createClass({
-  render: function () {
+  render() {
     var cases = casesData.map((data, index)=> {
       tags = data.tags.join(' / ');
       return (
