@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var rubySass = require('gulp-ruby-sass');
 var postcss = require('gulp-postcss');
 var sourcemaps = require('gulp-sourcemaps');
+var gexpress = require('gulp-express');
 
 var gutil = require("gulp-util");
 var webpack = require("webpack");
@@ -41,7 +42,15 @@ gulp.task("webpack", function (callback) {
     });
 });
 
-gulp.task('watch', ['styles', 'webpack'], function () {
+gulp.task('serve', ['styles', 'webpack'], function () {
+  function startServer() {
+    gexpress.run(['src/server.js']);
+    gutil.log("[express]", "run");
+  }
+
+  startServer();
+
   gulp.watch(srcPath + '/styles/**/*', ['styles']);
-  gulp.watch(srcPath + '/**/*.js', ['webpack']);
+  gulp.watch(srcPath + '/**/*.js', ['webpack',startServer]);
+  //gulp.watch([srcPath + '/**/*.ejs', srcPath + '/**/*.js'] [startServer]);
 });

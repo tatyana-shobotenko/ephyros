@@ -11,6 +11,7 @@
   "devDependencies": {
     "autoprefixer-core": "^5.1.0",
     "gulp": "^3.6.0",
+    "gulp-express": "^0.1.13",
     "gulp-load-plugins": "^0.8.0",
     "gulp-postcss": "^4.0.3",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
