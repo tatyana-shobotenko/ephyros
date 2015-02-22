@@ -8,7 +8,7 @@ module.exports = React.createClass({
     var cases = casesData.map((data, index)=> {
       tags = data.tags.join(' / ');
       return (
-        <Link to="case" params={{index:index}} className={'hcase'+ (data.big?' hcase_big':'')}>
+        <Link to="case" params={{index:index}} className={'hcase'+ (data.big?' hcase_big':'')} key={index}>
           <div className="hcase__img">
             <img src={data.image} alt={data.name}/>
           </div>
