@@ -30,9 +30,8 @@ app.get("/*", function (req, res, next) {
   });
 
   router.run(function (Handler, state) {
-    console.log(state);
     var html = React.renderToString(React.createFactory(Handler)({}));
-    var notFound = state.routes[1].name == 'not-found';
+    var notFound = state.routes[1].name == 'not-found' || /\bdata-not-found\b/.test(html);
     res.status(notFound ? 404 : 200);
     res.render('html', {
       appHtml: html,
