@@ -30,7 +30,16 @@ app.get("/*", function (req, res, next) {
   });
 
   router.run(function (Handler, state) {
-    var html = React.renderToString(React.createFactory(Handler)({}));
+    var virtualDom = React.createFactory(Handler)({});
+    var html = React.renderToString(virtualDom);
+
+    etag = app.get('etag fn');
+    if (etag) {
+      //etag = etag(React.renderComponentToStaticMarkup(virtualDom), 'utf8');
+      etag = etag(html.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), 'utf8');
+      etag && res.set('ETag', etag);
+    }
+
     var notFound = state.routes[1].name == 'not-found' || /\bdata-not-found\b/.test(html);
     res.status(notFound ? 404 : 200);
     res.render('html', {
