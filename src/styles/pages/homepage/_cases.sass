@@ -8,6 +8,8 @@
   +clear
   text-align: center
   padding-bottom: 70px
+  +resp(sdevice)
+    height: auto
 $caseH: 177px
 $caseH--mob: 200px
 .hcases-list
@@ -71,6 +73,12 @@ $caseH--mob: 200px
   max-height: 0
   overflow: hidden
   +transition(max-height ease-in 300ms)
+  +touch
+    max-height: none
+    height: auto
+    background: none
+    +vgradient((rgba(14, 178, 222, 1) 30%), (rgba(14, 178, 222, 0) 100%), 0)
+    padding-bottom: 20px
 
 .hcase__info_touch
   max-height: none

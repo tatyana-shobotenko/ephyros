@@ -1,0 +1,36 @@
+=input-text
+  border: none
+  background: #ffffff
+  border-bottom: 2px solid #c2c2c2
+  color: $grayDark
+  font-size: 24px
+  +placeholder-color(#a3a3a3)
+  padding: 5px 0
+  box-sizing: border-box
+  height: 40px
+  outline: none
+  font-family: $fontFamily
+  font-weight: 100
+.input-text
+  +input-text
+.textarea
+  +input-text
+  height: 100px
+
+.input-text_full
+  width: 100%
+
+.custom-select
+  select
+    width: 100%
+    opacity: 0
+    z-index: 3
+    position: absolute
+    left: 0
+    top: 0
+.custom-select__value
+  +input-text
+
+
+.form-row
+  margin-bottom: 10px

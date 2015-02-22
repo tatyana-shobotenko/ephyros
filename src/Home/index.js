@@ -19,8 +19,6 @@ module.exports = React.createClass({
         <Team/>
         <a name="contact"></a>
         <Contact/>
-
-        <div className="push"/>
       </div>
     );
   }

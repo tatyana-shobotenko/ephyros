@@ -25,13 +25,14 @@ module.exports = React.createClass({
   render() {
     return (
       <div>
+        <div className="screen-intro-back2"/>
         <div className="screen-intro-back" style={{opacity:this.state.visibility}}/>
         <div className="screen-intro">
           <div className="center-wrapper">
             <div className="screen-intro__content">
               <h1 className="screen-intro__title">We create rocking
-                web applications
-                for startups</h1>
+                web applications for startups & enterprises
+                </h1>
 
               <p className="screen-intro__subtitle">
                 At Ephyros we help ambitious clients

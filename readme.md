@@ -13,5 +13,5 @@ development workflow setup:
 
 notes:
 
-1. there are no livereload, nor hot module replacement yet (coming soon), so - after compilation, refresh page manually 
+1. there is neither livereload, nor hot module replacement yet (coming soon), so - after compilation, refresh page manually
 2. for better jsx support use WebStorm 10 (EAP version: https://confluence.jetbrains.com/display/WI/WebStorm+EAP)
