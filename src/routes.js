@@ -8,7 +8,7 @@ var Redirect = Router.Redirect;
 module.exports = (
   <Route name="app" path="/" handler={require("./Application")}>
     <Route name="contact" path="/contact" handler={require("./Contact")}/>
-    <Route name="case" path="/case/:index" handler={require("./Case")}/>
+    <Route name="case" path="/case/:slug" handler={require("./Case")}/>
     <Redirect from="/case/" to="/case"/>
     <Route name="cases" path="/case" handler={require("./Cases")}/>
     <DefaultRoute name="home" handler={require("./Home")}/>

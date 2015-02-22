@@ -7,13 +7,18 @@ var casesData = require('../data/casesData');
 var Case = React.createClass({
   mixins: [State],
   render() {
-    var index = this.getParams().index;
-    var selectedCase = casesData[index];
+    var slug = this.getParams().slug;
+    var selectedCase = false;
+    casesData.forEach(function (i) {
+      if (i.slug === slug) {
+        selectedCase = i;
+      }
+    });
+
     var caseContent;
     if (selectedCase) {
       caseContent = (
         <div style={{padding:30, backgroundColor:'white', fontSize:'24px'}}>
-          Case #{ index}
           <h1>{selectedCase.name}</h1>
           <img src={selectedCase.image} alt={selectedCase.name}/>
         </div>
