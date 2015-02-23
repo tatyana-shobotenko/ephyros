@@ -22,9 +22,9 @@ var Header = React.createClass({
       <div className="header header_home">
         <div className="center-wrapper">
           <div className="header__logo">
-            <a href="/">
+            <Link to="/">
               <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros"/>
-            </a>
+            </Link>
           </div>
           <a className="header__menu-btn" onClick={this.toggleMenu}><i className="icon-down"/></a>
           {/*

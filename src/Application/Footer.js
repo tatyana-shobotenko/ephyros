@@ -11,7 +11,7 @@ var Footer = React.createClass({
               <div className="footer-inner">
                 <div className="footer__logo"/>
                 <div className="footer__copyrights-text">
-                  <div>Copyright © 2013-2014 Ephyros.</div>
+                  <div>Copyright © 2013-2015 Ephyros.</div>
                   <div>All Rights Reserved.</div>
                 </div>
               </div>
