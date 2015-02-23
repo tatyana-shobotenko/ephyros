@@ -9,7 +9,7 @@ module.exports = React.createClass({
                width="166px" height="36px"/>
 
           <h2 className="screen-title screen-title_dark screen-epilogue__title">HELLO@EPHYROS.COM</h2>
-            <a href="mailto:pm@ephyros.com" className="button button_rainbow">Request a free quote</a>
+          <a href="mailto:pm@ephyros.com" className="button button_rainbow">Request a free quote</a>
         </div>
       </div>
     );

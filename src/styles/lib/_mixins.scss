@@ -30,8 +30,7 @@ $break-large2: 1280px;
     @media only screen and (min-width: $break-large) and (max-width: $break-large2 - 1) {
       @content;
     }
-  }
-  @else if $media == sdevice {
+  } @else if $media == sdevice {
     @media only screen and (max-width: $break-md - 1) {
       @content;
     }
@@ -75,20 +74,20 @@ $break-large2: 1280px;
   }
 }
 
-@mixin touch{
-  @media screen and (-moz-touch-enabled){
+@mixin touch {
+  @media screen and (-moz-touch-enabled) {
     @content;
   }
-  @media screen and (-webkit-touch-enabled){
+  @media screen and (-webkit-touch-enabled) {
     @content;
   }
-  @media screen and (-ms-touch-enabled){
+  @media screen and (-ms-touch-enabled) {
     @content;
   }
-  @media screen and (-o-touch-enabled){
+  @media screen and (-o-touch-enabled) {
     @content;
   }
-  @media screen and (touch-enabled){
+  @media screen and (touch-enabled) {
     @content;
   }
 }

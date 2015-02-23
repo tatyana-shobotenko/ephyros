@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/icons.css">
-
+    <% if(stylesUrl){ %>
+    <link rel="stylesheet" href="<%- stylesUrl %>">
+    <% } %>
     <link
             href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic,500italic,700&subset=latin,cyrillic'
             rel='stylesheet' type='text/css'>
@@ -27,10 +27,10 @@
 <div id="app"><%- appHtml %></div>
 
 <!--[if lt IE 9]>
-<script src="/__build__/ie.js"></script>
+<script src="<%- ieScriptsUrl %>"></script>
 <![endif]-->
 
-<script defer src="/__build__/client.js"></script>
+<script defer src="<%- scriptsUrl %>"></script>
 
 </body>
 </html>

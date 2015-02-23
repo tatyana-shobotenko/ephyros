@@ -1,4 +1,4 @@
 /.sass-cache
 /.idea
 /node_modules
-public/__build__
+/build

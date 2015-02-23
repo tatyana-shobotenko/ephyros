@@ -4,6 +4,10 @@ var Router = require('react-router');
 var routes = require('./routes');
 var $ = require('jquery');
 
+require('./styles/main.css');
+require('./styles/icons.css');
+
+
 Router.run(routes, Router.HistoryLocation, (Handler) => {
   React.render(<Handler/>, document.getElementById('app'), ()=> {
     var hash = window.location.hash;

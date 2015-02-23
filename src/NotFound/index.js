@@ -3,7 +3,8 @@ var React = require('react');
 var NotFound = React.createClass({
   render() {
     return (
-      <div style={{marginTop:-96, paddingTop:96, minHeight:100, backgroundColor:'#2d5572'}}>
+      <div data-not-found
+           style={{marginTop:-96, paddingTop:96, minHeight:100, backgroundColor:'#2d5572'}}>
         <div style={{padding:30, backgroundColor:'white'}}>
           <h1>Not found <span>:(</span></h1>
 

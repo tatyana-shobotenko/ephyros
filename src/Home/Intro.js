@@ -31,8 +31,8 @@ module.exports = React.createClass({
           <div className="center-wrapper">
             <div className="screen-intro__content">
               <h1 className="screen-intro__title">We create rocking
-                web applications for startups & enterprises
-                </h1>
+                web applications for startups &amp; enterprises
+              </h1>
 
               <p className="screen-intro__subtitle">
                 At Ephyros we help ambitious clients
