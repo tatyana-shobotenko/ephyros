@@ -4,9 +4,16 @@ var Link = require('react-router').Link;
 var casesData = require('../data/casesData');
 
 module.exports = React.createClass({
-  getInitialState(){
+  getInitialState() {
     return {
-      isTouch:'ontouchstart' in document.documentElement
+      isTouch: false
+    }
+  },
+  componentDidMount() {
+    if ("ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch) {
+      var state = this.state;
+      state.isTouch = true;
+      this.setState(state)
     }
   },
   render() {
@@ -30,8 +37,8 @@ module.exports = React.createClass({
 
     return (
       <div className={"screen-cases"+(this.state.isTouch?' is-touch':'')}>
-          <div className="center-wrapper screen-table">
-            <div className="screen-table__cell">
+        <div className="center-wrapper screen-table">
+          <div className="screen-table__cell">
             <h1 className="screen-title">Selected cases</h1>
 
             <div className="hcases-list">
