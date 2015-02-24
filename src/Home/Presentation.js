@@ -27,9 +27,6 @@ var ReadyMag = React.createClass({
       console.error("Error loading Readymag embed script: \n" + (e.stackTrace || e.stack))
     }
   },
-  shouldComponentUpdate(prev, next) {
-    return prev.id !== next.id;
-  },
 
   render() {
     return (
