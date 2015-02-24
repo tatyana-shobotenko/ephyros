@@ -24,12 +24,11 @@
   height: 100%
 
 .screen-intro
-  height: 98vh
+  min-height: 98vh
   box-sizing: border-box
   padding-top: $headerHeight
   margin-top: -$headerHeight
   position: relative
-  min-height: 600px
   z-index: 2
   +clear
   +resp(sdevice)
@@ -40,6 +39,7 @@
 
 .screen-intro__content
   text-align: center
+  padding-bottom: 80px
 
 .screen-intro__title
   @extend .screen-title
@@ -51,7 +51,7 @@
     margin: 50px 0
   +resp(pho)
     margin: 20px 0
-    font-size: 40px
+    font-size: 30px
 
 @media all and (-webkit-min-device-pixel-ratio: 0)
   .screen-intro__title

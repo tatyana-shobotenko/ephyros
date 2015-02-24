@@ -10,7 +10,7 @@ var srcPath = 'src';
 
 gulp.task('styles', function () {
   return rubySass(srcPath + '/styles', {
-    sourcemap: true,
+   // sourcemap: true,
     compass: true
   })
     .on('error', function (err) {
@@ -25,7 +25,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('watch', ['styles'], function () {
-  gulp.watch(srcPath + '/styles/**/*', ['styles']);
+  gulp.watch(srcPath + '/styles/**/*.{sass,scss}', ['styles']);
 });
 
 // The development server (the recommended option for development)

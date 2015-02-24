@@ -4,6 +4,11 @@ var Link = require('react-router').Link;
 var casesData = require('../data/casesData');
 
 module.exports = React.createClass({
+  getInitialState(){
+    return {
+      isTouch:'ontouchstart' in document.documentElement
+    }
+  },
   render() {
     var cases = casesData.map((data, index)=> {
       tags = data.tags.join(' / ');
@@ -24,14 +29,16 @@ module.exports = React.createClass({
     });
 
     return (
-      <div className="screen-cases">
-        <div className="center-wrapper">
-          <h1 className="screen-title">Selected cases</h1>
+      <div className={"screen-cases"+(this.state.isTouch?' is-touch':'')}>
+          <div className="center-wrapper screen-table">
+            <div className="screen-table__cell">
+            <h1 className="screen-title">Selected cases</h1>
 
-          <div className="hcases-list">
-            {cases}
+            <div className="hcases-list">
+              {cases}
+            </div>
+            <Link to="cases" className="button">All works</Link>
           </div>
-          <Link to="cases" className="button">All works</Link>
         </div>
         <a className="scroll-btn scroll-btn_before-presentation" href="#presentation">
           <i className="icon-down"/>

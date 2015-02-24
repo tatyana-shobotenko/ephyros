@@ -40,14 +40,13 @@ module.exports = React.createClass({
   render() {
     return (
       <div id="presentation" className="screen-presentation">
-        <div className="center-wrapper">
-          <div className="gcontainer">
+        <div className="center-wrapper screen-table">
+          <div className="gcontainer screen-table__cell">
             <div className="screen-presentation__info">
               <div className="screen-presentation__label">presentation</div>
               <h1 className="screen-title screen-title_dark">
                 Need a team of experienced developers?
               </h1>
-              <a className="button button_rainbow">Watch presentation</a>
             </div>
             <div className="screen-presentation__pic-wrap">
               {/*<a href>

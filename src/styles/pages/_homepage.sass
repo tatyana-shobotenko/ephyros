@@ -2,18 +2,29 @@
   font-size: 48px
   color: #ffffff
   font-weight: 100
-  margin: 40px 0
+  margin: 0 0 40px 0
   +resp(pho)
     font-size: 38px
-    margin: 30px 0
+    margin: 0 0 30px 0
 
 .screen-title_dark
   color: $grayDarker
 
 .screen-title_margin-big
-  margin: 70px 0
+  margin: 0 0 70px 0
   +resp(pho)
     margin: 35px 0
+
+.screen-table
+  padding: 0
+  min-height: 98vh
+  display: table
+.screen-table__cell
+  display: table-cell
+  vertical-align: middle
+  padding: 50px 0
+  +resp(pho)
+    padding: 25px 0
 
 @import "homepage/screen-intro"
 @import "homepage/scroll-btn"
