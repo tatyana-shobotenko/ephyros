@@ -36,7 +36,7 @@ module.exports = React.createClass({
     });
 
     return (
-      <div className={"screen-cases"+(this.state.isTouch?' is-touch':'')}>
+      <div className="screen-cases">
         <div className="center-wrapper screen-table">
           <div className="screen-table__cell">
             <h1 className="screen-title">Selected cases</h1>

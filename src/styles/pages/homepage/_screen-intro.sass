@@ -15,7 +15,7 @@
   background-size: cover
 
 .screen-intro-back2
-  background: #1b688c
+  background: lighten($headerBack, 6%)
   position: fixed
   left: 0
   top: 0
@@ -34,8 +34,6 @@
   +resp(sdevice)
     margin-top: -($headerHeight - 30px)
     padding-top: ($headerHeight - 30px)
-  +resp(pho)
-    min-height: 500px
 
 .screen-intro__content
   text-align: center
@@ -46,8 +44,10 @@
   font-size: 70px
   margin: 100px 0
   +resp(tab)
+    font-size: 40px
     margin: 80px 0
   +resp(stab)
+    font-size: 36px
     margin: 50px 0
   +resp(pho)
     margin: 20px 0

@@ -3,8 +3,10 @@
   color: #ffffff
   font-weight: 100
   margin: 0 0 40px 0
+  +resp(sdevice)
+    font-size: 40px
   +resp(pho)
-    font-size: 38px
+    font-size: 24px
     margin: 0 0 30px 0
 
 .screen-title_dark
@@ -19,12 +21,17 @@
   padding: 0
   min-height: 98vh
   display: table
+  +resp(sdevice)
+    padding: 0 20px
+    box-sizing: border-box
+    width: 100%
+    margin: 0
 .screen-table__cell
   display: table-cell
   vertical-align: middle
   padding: 50px 0
   +resp(pho)
-    padding: 25px 0
+    padding: 25px 0 50px
 
 @import "homepage/screen-intro"
 @import "homepage/scroll-btn"
