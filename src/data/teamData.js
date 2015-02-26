@@ -7,7 +7,7 @@ var casesData = [
   {
     photo: "https://rm-content.s3.amazonaws.com/5448fb8a33271d6476cca27f/43355/upload-39800d00-6c0f-11e4-a9e9-21b68b4ae9dc.png",
     name: "Bogdan Savluk",
-    position: "Team Lead"
+    position: "Technical Lead"
   },
   {
     photo: "https://pp.vk.me/c403822/v403822911/bc9c/cRWDciE413w.jpg",
@@ -43,7 +43,7 @@ var casesData = [
     photo: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p160x160/1239488_528687010544885_28541602_n.jpg?oh=2db660c116d13fee223c12e8245fda45&oe=5582EC67&__gda__=1434896311_9a69e3305f99f42f27744b2f8301501e",
     name: "Ivan Protsyk",
     position: "QA Engineer"
-  },
+  }
 ];
 
 module.exports = casesData;

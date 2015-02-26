@@ -753,33 +753,42 @@ input.button, button.button {
   z-index: 5;
   bottom: 0;
   text-decoration: none;
-  transition: padding-bottom linear 400ms;
+  transition: -webkit-transform linear 400ms;
+  transition: transform linear 400ms;
   cursor: pointer;
   -webkit-animation: pulsate 1s linear infinite;
-          animation: pulsate 1s linear infinite; }
+          animation: pulsate 1s linear infinite;
+  padding-bottom: 10px; }
   .scroll-btn:hover {
     text-decoration: none;
-    padding-bottom: 10px; }
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px); }
 
 @-webkit-keyframes pulsate {
   0% {
-    padding-bottom: 0; }
+    -webkit-transform: translate(0);
+            transform: translate(0); }
 
   50% {
-    padding-bottom: 12px; }
+    -webkit-transform: translate(0, 12px);
+            transform: translate(0, 12px); }
 
   100% {
-    padding-bottom: 0; } }
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
 
 @keyframes pulsate {
   0% {
-    padding-bottom: 0; }
+    -webkit-transform: translate(0);
+            transform: translate(0); }
 
   50% {
-    padding-bottom: 12px; }
+    -webkit-transform: translate(0, 12px);
+            transform: translate(0, 12px); }
 
   100% {
-    padding-bottom: 0; } }
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
 
 .scroll-btn_before-cases {
   background: #4fa862;
