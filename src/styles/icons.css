@@ -1,9 +1,10 @@
 @font-face {
   font-family: 'ephyros';
-  src: url("../fonts/ephyros.eot?3iy2lb");
-  src: url("../fonts/ephyros.eot?#iefix3iy2lb") format("embedded-opentype"), url("../fonts/ephyros.woff?3iy2lb") format("woff"), url("../fonts/ephyros.ttf?3iy2lb") format("truetype"), url("../fonts/ephyros.svg?3iy2lb#ephyros") format("svg");
+  src: url('../fonts/ephyros.eot?3iy2lb');
+  src: url('../fonts/ephyros.eot?#iefix3iy2lb') format('embedded-opentype'), url('../fonts/ephyros.woff?3iy2lb') format('woff'), url('../fonts/ephyros.ttf?3iy2lb') format('truetype'), url('../fonts/ephyros.svg?3iy2lb#ephyros') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 [class^="icon-"], [class*=" icon-"] {
   font-family: 'ephyros';
   speak: none;
@@ -36,3 +37,6 @@
 
 .icon-up:before {
   content: "\e605"; }
+
+
+/*# sourceMappingURL=icons.css.map */

@@ -112,7 +112,7 @@
 
 body {
   background: #ffffff;
-  font-family: "Roboto", Tahoma, Arial, sans-serif;
+  font-family: 'Roboto', Tahoma, Arial, sans-serif;
   color: #222;
   font-size: 13px;
   line-height: 1.3;
@@ -132,7 +132,7 @@ p, input, button {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: normal;
-  font-family: "Roboto", Tahoma, Arial, sans-serif; }
+  font-family: 'Roboto', Tahoma, Arial, sans-serif; }
 
 a img {
   border: none; }
@@ -262,18 +262,18 @@ a {
   cursor: pointer;
   height: 19.6px;
   text-decoration: none;
-  transition: all linear 0.3s; }
+  transition: all linear .3s; }
   .button:hover, .button:active, .button.active {
     background: #ffffff;
     color: #333; }
   .button[disabled], .button.disabled {
-    opacity: 0.5;
+    opacity: .5;
     cursor: default;
     background: none; }
 
 input.button, button.button {
   background: none;
-  font-family: "Roboto", Tahoma, Arial, sans-serif;
+  font-family: 'Roboto', Tahoma, Arial, sans-serif;
   height: 48px; }
 
 .button_rainbow {
@@ -286,7 +286,7 @@ input.button, button.button {
   position: relative;
   background: transparent; }
   .button_rainbow:before, .button_rainbow:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -305,7 +305,7 @@ input.button, button.button {
     border-left-color: #1aacd3;
     transition: all linear 1000ms; }
     .button_rainbow:hover:before, .button_rainbow:hover:after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       right: 0;
@@ -339,7 +339,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: "Roboto", Tahoma, Arial, sans-serif;
+  font-family: 'Roboto', Tahoma, Arial, sans-serif;
   font-weight: 100; }
   .input-text:-moz-placeholder {
     color: #a3a3a3; }
@@ -356,7 +356,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: "Roboto", Tahoma, Arial, sans-serif;
+  font-family: 'Roboto', Tahoma, Arial, sans-serif;
   font-weight: 100;
   height: 100px; }
   .textarea:-moz-placeholder {
@@ -385,7 +385,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: "Roboto", Tahoma, Arial, sans-serif;
+  font-family: 'Roboto', Tahoma, Arial, sans-serif;
   font-weight: 100; }
   .custom-select__value:-moz-placeholder {
     color: #a3a3a3; }
@@ -474,7 +474,7 @@ input.button, button.button {
   cursor: pointer;
   z-index: 5; }
   .lang-select:after {
-    content: "";
+    content: '';
     position: absolute;
     right: 3px;
     top: 10px;
@@ -732,6 +732,7 @@ input.button, button.button {
     background: linear-gradient(to right, #35a84f, #0eb2de);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; } }
+
 .screen-intro__subtitle {
   font-size: 22px;
   color: #ffffff;
@@ -763,18 +764,23 @@ input.button, button.button {
 @-webkit-keyframes pulsate {
   0% {
     padding-bottom: 0; }
+
   50% {
     padding-bottom: 12px; }
+
   100% {
     padding-bottom: 0; } }
 
 @keyframes pulsate {
   0% {
     padding-bottom: 0; }
+
   50% {
     padding-bottom: 12px; }
+
   100% {
     padding-bottom: 0; } }
+
 .scroll-btn_before-cases {
   background: #4fa862;
   color: #ffffff; }
@@ -1144,3 +1150,6 @@ input.button, button.button {
       width: 100%;
       padding: 0 20px;
       box-sizing: border-box; } }
+
+
+/*# sourceMappingURL=main.css.map */
