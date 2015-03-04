@@ -1,0 +1,23 @@
+.bottom-nav__item
+  border-left: 1px solid #e8f3f6
+  padding: 45px 0
+  text-align: center
+  font-size: 32px
+  color: $headerBack
+  font-weight: 100
+  text-decoration: none
+  @extend .cell3
+  &:first-child
+    border: 0
+  &.active
+    color: #e5e5e5
+  +resp(pho)
+    width: auto
+    display: block
+    border-left: none
+    border-top: 1px solid #e8f3f6
+  +resp(stab)
+    width: auto
+    display: block
+    border-left: none
+    border-top: 1px solid #e8f3f6

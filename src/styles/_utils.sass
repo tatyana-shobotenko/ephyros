@@ -47,3 +47,14 @@
 
 .clear
   +clear
+
+@media all and (-webkit-min-device-pixel-ratio: 0)
+  .text-fill
+    background: linear-gradient(to right, #35a84f, #0eb2de)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    display: inline-block
+    &.fail
+      background: linear-gradient(to right, #801b14, #f14147)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent

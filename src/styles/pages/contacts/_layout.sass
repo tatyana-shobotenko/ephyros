@@ -1,0 +1,25 @@
+.contacts-wrap
+  background: #f5f8fa
+  position: relative
+  min-height: $contactsH
+.contacts-wrap__right-back
+  position: absolute
+  right: 0
+  width: 50%
+  background: #ffffff
+  height: 100%
+  z-index: 2
+  +resp(device)
+    display: none
+.contacts-wrap__left
+  @extend .cell5
+  +resp(device)
+    width: auto
+.contacts-wrap__right
+  @extend .cell7
+  background: #ffffff
+  z-index: 3
+  position: relative
+  min-height: $contactsH
+  +resp(device)
+    width: 100%

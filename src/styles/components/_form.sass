@@ -3,7 +3,7 @@
   background: #ffffff
   border-bottom: 2px solid #c2c2c2
   color: $grayDark
-  font-size: 24px
+  font-size: 16px
   +placeholder-color(#a3a3a3)
   padding: 5px 0
   box-sizing: border-box
@@ -11,6 +11,9 @@
   outline: none
   font-family: $fontFamily
   font-weight: 100
+  &.error
+    border-bottom-color: #b81820
+    +placeholder-color(#b81820)
 
 .input-text
   +input-text
