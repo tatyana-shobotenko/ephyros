@@ -4,15 +4,21 @@
   position: relative
   padding-top: $headerHeight
   margin-top: -$headerHeight
+  +media(pho-phab)
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 0
 
 .page-header__title
   text-align: center
   font-size: 64px
   color: #fff
   font-weight: 100
-  +resp(tab)
+  +media(tab)
     font-size: 50px
-  +resp(stab)
+  +media(phab)
     font-size: 45px
-  +resp(pho)
+    padding: 10px 0
+  +media(pho)
     font-size: 32px
+    padding: 25px 0

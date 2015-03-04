@@ -2,6 +2,8 @@
   background: #f5f8fa
   position: relative
   min-height: $contactsH
+  +media(pho-ptab)
+    background: #ffffff
 .contacts-wrap__right-back
   position: absolute
   right: 0
@@ -9,11 +11,11 @@
   background: #ffffff
   height: 100%
   z-index: 2
-  +resp(device)
+  +media(pho-ptab)
     display: none
 .contacts-wrap__left
   @extend .cell5
-  +resp(device)
+  +media(pho-ptab)
     width: auto
 .contacts-wrap__right
   @extend .cell7
@@ -21,5 +23,5 @@
   z-index: 3
   position: relative
   min-height: $contactsH
-  +resp(device)
+  +media(pho-ptab)
     width: 100%

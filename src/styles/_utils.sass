@@ -38,11 +38,11 @@
   text-decoration: underline
 
 .tab-hidden
-  +resp(tab)
+  +media(tab)
     display: none
 
 .sdevice-hidden
-  +resp(sdevice)
+  +media(pho-phab)
     display: none
 
 .clear
@@ -50,6 +50,7 @@
 
 @media all and (-webkit-min-device-pixel-ratio: 0)
   .text-fill
+    color: #35a84f
     background: linear-gradient(to right, #35a84f, #0eb2de)
     -webkit-background-clip: text
     -webkit-text-fill-color: transparent

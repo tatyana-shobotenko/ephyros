@@ -5,7 +5,9 @@
   margin-top: 50px
   font-size: 18px
   line-height: 1.8
-  +resp(sdevice)
+  +media(tab)
+    margin-top: 25px
+  +media(pho-phab)
     margin-top: 0
     font-size: 13px
 
@@ -18,7 +20,7 @@
   +retina
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
-  +resp(sdevice)
+  +media(pho-phab)
     width: 36px
     height: 30px
     background-image: url("/images/logo-icon@2x.png")
