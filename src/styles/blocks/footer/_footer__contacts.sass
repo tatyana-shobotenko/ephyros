@@ -1,12 +1,14 @@
 .footer__contacts
   @extend .cell7
+  @extend %stab-cell12
+  @extend %pho-cell12
   background: lighten($headerBack, 6%)
   height: $footerHeight
   font-size: 18px
   line-height: 1.8
   z-index: 5
   position: relative
-  +resp(sdevice)
+  +media(pho-phab)
     margin-left: -10px
     margin-right: -10px
     height: auto
@@ -16,7 +18,7 @@
     padding-bottom: 10px
     text-align: center
     display: block
-  +resp(stab)
+  +media(phab)
     margin-left: 0
     margin-right: 0
 

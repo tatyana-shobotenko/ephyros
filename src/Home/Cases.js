@@ -17,23 +17,25 @@ module.exports = React.createClass({
     }
   },
   render() {
-    var cases = casesData.map((data, index)=> {
-      tags = data.tags.join(' / ');
-      return (
-        <Link to="case" params={{slug:data.slug}} className={'hcase'+ (data.big?' hcase_big':'')} key={index}>
-          <div className="hcase__img">
-            <img src={data.image} alt={data.name}/>
-          </div>
-          <div className="hcase__info">
-            <div className="hcase__info-inner">
-              <div className="hcase__section">{tags}</div>
-              <div className="hcase__title">{data.name}</div>
+    var cases = casesData
+      .filter(data => data.showOnMain)
+      .map((data, index)=> {
+        tags = data.tags.join(' / ');
+        return (
+          <Link to="case" params={{slug:data.slug}} className={'hcase'+ (data.big?' hcase_big':'')} key={index}>
+            <div className="hcase__img">
+              <img src={data.image} alt={data.name}/>
             </div>
-            <div className="hcase__go-icon icon-right-arrow"/>
-          </div>
-        </Link>
-      );
-    });
+            <div className="hcase__info">
+              <div className="hcase__info-inner">
+                <div className="hcase__section">{tags}</div>
+                <div className="hcase__title">{data.name}</div>
+              </div>
+              <div className="hcase__go-icon icon-right-arrow"/>
+            </div>
+          </Link>
+        );
+      });
 
     return (
       <div className="screen-cases">

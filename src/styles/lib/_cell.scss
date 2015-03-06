@@ -28,7 +28,7 @@
 
 @for $i from 1 through $colNum {
   %tab-cell#{$i} {
-    @include resp(tab) {
+    @include media(tab) {
       @include cellCreate($i, $colNum);
       //      margin-left: $gutterWidth;
     }
@@ -37,7 +37,7 @@
 
 @for $i from 1 through $colNum {
   %ltab-cell#{$i} {
-    @include resp(ltab) {
+    @include media(ltab) {
       @include cellCreate($i, $colNum);
       //      margin-left: $gutterWidth;
     }
@@ -54,8 +54,17 @@
 }
 
 @for $i from 1 through $colNum {
+  %pho-phab-cell#{$i} {
+    @include media(pho-phab) {
+      @include cellCreate($i, $colNum);
+      //      margin-left: $gutterWidth;
+    }
+  }
+}
+
+@for $i from 1 through $colNum {
   %pho-cell#{$i} {
-    @include resp(pho) {
+    @include media(pho) {
       @include cellCreate($i, $colNum);
       //      margin-left: $gutterWidth;
     }
