@@ -1,0 +1,69 @@
+.photo-screen
+  box-sizing: border-box
+  min-height: 100vh
+  position: relative
+
+.photo-screen__shadow
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 30%
+  background: linear-gradient(to top, rgba(14,178,222, 1), rgba(14,178,222, 0))
+  z-index: 5
+  width: 100%
+
+.photo-screen__label
+  color: #ffffff
+  text-transform: uppercase
+  position: relative
+  text-align: center
+  padding: 50px 0
+  z-index: 7
+
+.photo-screen__photo
+  position: absolute
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  background-position: center center
+  background-size: cover
+  background-repeat: no-repeat
+
+.photo-screen__title
+  @extend .screen-title
+  position: absolute
+  bottom: 0
+  left: 0
+  z-index: 6
+  text-align: center
+  width: 100%
+  box-sizing: border-box
+  padding: 0 60px
+
+.photo-screen__nav
+  position: absolute
+  top: 0
+  font-size: 26px
+  color: #ffffff
+  text-decoration: none
+  height: 100%
+  padding: 10px
+  width: 100px
+  text-align: center
+  z-index: 6
+  cursor: pointer
+  box-sizing: border-box
+  &:before
+    position: absolute
+    bottom: 60px
+
+.photo-screen__nav_prev
+  left: 0
+  &:before
+    left: 30px
+
+.photo-screen__nav_next
+  right: 0
+  &:before
+    right: 30px

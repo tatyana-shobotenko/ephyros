@@ -12,8 +12,15 @@ var Services = React.createClass({
           return (
             <div className="service-item service-item_gray">
               <div className="center-wrapper">
-                <div className="service-item__pic">
-                  <img src={data.icon} alt={data.title}/>
+                <div className="gcontainer">
+                  <div className="service-item__pic">
+                    <img src={data.icon} alt={data.title}/>
+                  </div>
+                  <div className="service-item__desc">
+                    <h2 className="service-item__title">{data.title}</h2>
+                    <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
+                    <a className="button button_blue" href={data.url}>See An Example</a>
+                  </div>
                 </div>
                 <div className="service-item__desc">
                   <h2 className="service-item__title">{data.title}</h2>
@@ -29,14 +36,16 @@ var Services = React.createClass({
           return (
             <div className="service-item">
               <div className="center-wrapper">
-                <div className="service-item__desc">
-                  <h2 className="service-item__title">{data.title}</h2>
+                <div className="gcontainer">
+                  <div className="service-item__desc">
+                    <h2 className="service-item__title">{data.title}</h2>
 
-                  <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
-                  <a className="button button_blue" href={data.url}>See An Example</a>
-                </div>
-                <div className="service-item__pic">
-                  <img src={data.icon} alt={data.title}/>
+                    <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
+                    <a className="button button_blue" href={data.url}>See An Example</a>
+                  </div>
+                  <div className="service-item__pic">
+                    <img src={data.icon} alt={data.title}/>
+                  </div>
                 </div>
               </div>
             </div>

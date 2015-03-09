@@ -21,23 +21,25 @@ var CasesPage = React.createClass({
 
             <div className="work-item work-item_blue">
               <div className="center-wrapper">
-                <div className="work-item__desc work-item__desc_in-blue">
-                  <div className="work-item__tags">{tags}</div>
-                  <h2 className="work-item__title mv-20">{data.name}</h2>
+                <div className="gcontainer">
+                  <div className="work-item__desc work-item__desc_in-blue">
+                    <div className="work-item__tags">{tags}</div>
+                    <h2 className="work-item__title mv-20">{data.name}</h2>
 
-                  <p>{data.text}</p>
+                    <p>{data.text}</p>
 
-                  <h3 className="mv-20">Key Objectives</h3>
+                    <h3 className="mv-20">Key Objectives</h3>
 
-                  {keyObj}
+                    {keyObj}
 
-                  <a className="work-item__link work-item__link_in-blue" href={data.url}>
-                    {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
-                  </a>
+                    <a className="work-item__link work-item__link_in-blue" href={data.url}>
+                      {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
+                    </a>
 
-                </div>
-                <div className="work-item__pic work-item__pic_in-blue">
-                  <img src={data.imageBig} alt={data.name}/>
+                  </div>
+                  <div className="work-item__pic work-item__pic_in-blue">
+                    <img src={data.imageBig} alt={data.name}/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -47,22 +49,24 @@ var CasesPage = React.createClass({
           return (
             <div className="work-item">
               <div className="center-wrapper">
-                <div className="work-item__pic">
-                  <img src={data.imageBig} alt={data.name}/>
-                </div>
-                <div className="work-item__desc">
-                  <div className="work-item__tags">{tags}</div>
-                  <h2 className="work-item__title mv-20">{data.name}</h2>
+                <div className="gcontainer">
+                  <div className="work-item__pic">
+                    <img src={data.imageBig} alt={data.name}/>
+                  </div>
+                  <div className="work-item__desc">
+                    <div className="work-item__tags">{tags}</div>
+                    <h2 className="work-item__title mv-20">{data.name}</h2>
 
-                  <p>{data.text}</p>
+                    <p>{data.text}</p>
 
-                  <h3 className="mv-20">Key Objectives</h3>
+                    <h3 className="mv-20">Key Objectives</h3>
 
-                  {keyObj}
+                    {keyObj}
 
-                  <a className="work-item__link" href={data.url}>
-                    {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
-                  </a>
+                    <a className="work-item__link" href={data.url}>
+                      {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

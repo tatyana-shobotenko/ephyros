@@ -1,4 +1,4 @@
-.cell1, .cell2, .cell3, .bottom-nav__item, .cell4, .screen-presentation__info, .cell5, .footer__copyrights, .contacts-wrap__left, .work-item__desc, .service-item__pic, .cell6, .cell7, .footer__contacts, .screen-presentation__pic-wrap, .contacts-wrap__right, .work-item__pic, .service-item__desc, .cell8, .cell9, .cell10, .cell11, .cell12 {
+.cell1, .cell2, .cell3, .bottom-nav__item, .cell4, .screen-presentation__info, .cell5, .footer__copyrights, .contacts-wrap__left, .work-item__desc, .service-item__pic, .cell6, .about-us-text, .about-us-slider, .cell7, .footer__contacts, .screen-presentation__pic-wrap, .contacts-wrap__right, .work-item__pic, .service-item__desc, .cell8, .cell9, .cell10, .cell11, .cell12 {
   display: inline-block;
   float: none;
   vertical-align: top;
@@ -25,7 +25,7 @@
 .cell5, .footer__copyrights, .contacts-wrap__left, .work-item__desc, .service-item__pic {
   width: 41.66667%; }
 
-.cell6 {
+.cell6, .about-us-text, .about-us-slider {
   width: 50%; }
 
 .cell7, .footer__contacts, .screen-presentation__pic-wrap, .contacts-wrap__right, .work-item__pic, .service-item__desc {
@@ -266,6 +266,19 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
   list-style: inside; }
+
+.simple-title {
+  font-size: 32px;
+  color: #333;
+  font-weight: normal;
+  margin: 30px 0;
+  text-transform: uppercase; }
+  @media only screen and (max-width: 1023px) {
+    .simple-title {
+      margin: 10px 0; } }
+
+.simple-title_white {
+  color: #ffffff; }
 
 .button {
   display: inline-block;
@@ -758,16 +771,16 @@ input.button, button.button {
     .bottom-nav {
       padding: 10px 0; } }
 
-.screen-title, .screen-intro__title {
+.screen-title, .screen-intro__title, .photo-screen__title {
   font-size: 48px;
   color: #ffffff;
   font-weight: 100;
   margin: 0 0 40px 0; }
   @media only screen and (max-width: 749px) {
-    .screen-title, .screen-intro__title {
+    .screen-title, .screen-intro__title, .photo-screen__title {
       font-size: 40px; } }
   @media only screen and (max-width: 479px) {
-    .screen-title, .screen-intro__title {
+    .screen-title, .screen-intro__title, .photo-screen__title {
       font-size: 24px;
       margin: 0 0 30px 0; } }
 
@@ -1181,13 +1194,13 @@ input.button, button.button {
   font-size: 0px;
   letter-spacing: 0px;
   line-height: 0;
-  margin: 70px 0; }
+  margin: 30px 0; }
   @media only screen and (min-width: 480px) and (max-width: 749px) {
     .hteam-list {
       margin-top: 0; } }
   @media only screen and (max-width: 479px) {
     .hteam-list {
-      margin: 35px 0; } }
+      margin: 10px 0; } }
 
 .hteam-member {
   font-size: 13px;
@@ -1200,20 +1213,19 @@ input.button, button.button {
   overflow: hidden;
   position: relative;
   text-align: center;
-  text-decoration: none; }
+  text-decoration: none;
+  margin-bottom: 30px; }
   @media only screen and (min-width: 480px) and (max-width: 749px) {
     .hteam-member {
-      width: 50%;
-      margin-top: 30px; } }
+      width: 50%; } }
   @media only screen and (min-width: 560px) and (max-width: 749px) {
     .hteam-member {
       width: 33%; } }
   @media only screen and (max-width: 479px) {
     .hteam-member {
-      width: 100%;
-      margin-top: 30px; }
-      .hteam-member:first-child {
-        margin-top: 0; } }
+      width: 100%; }
+      .hteam-member:last-child {
+        margin-bottom: 0; } }
 
 .hteam-member__photo {
   width: 140px;
@@ -1221,6 +1233,7 @@ input.button, button.button {
   border-radius: 70px;
   overflow: hidden;
   margin-bottom: 20px;
+  position: relative;
   display: inline-block;
   float: none;
   vertical-align: top; }
@@ -1532,6 +1545,141 @@ input.button, button.button {
 
 .screen-epilogue_in-services {
   background: linear-gradient(to bottom, #a8e3ff, #effaff); }
+
+.about-us-text {
+  font-size: 24px;
+  color: #333;
+  line-height: 1.5;
+  font-weight: 100;
+  margin: 30px 0; }
+  @media only screen and (max-width: 619px) {
+    .about-us-text {
+      width: auto;
+      display: block; } }
+
+.about-us-slider {
+  margin: 30px 0;
+  text-align: center; }
+  .about-us-slider img {
+    max-width: 100%; }
+  @media only screen and (max-width: 619px) {
+    .about-us-slider {
+      width: auto;
+      display: block; } }
+
+.about-us-slider__page {
+  background: #ffffff;
+  border: 1px solid #becad6;
+  border-radius: 1px;
+  width: 6px;
+  height: 6px;
+  margin: 10px 5px;
+  display: inline-block; }
+  .about-us-slider__page.active {
+    background: #e1f2fa; }
+
+.photo-overlay {
+  background: #2d5572;
+  opacity: .4;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  transition: opacity linear 300ms;
+  border-radius: 50%; }
+
+.team-member {
+  overflow: visible; }
+  .team-member:hover .photo-overlay {
+    opacity: 0; }
+  .team-member:hover .team-member__photo {
+    border-color: #ffffff; }
+
+.team-member__photo {
+  border: 3px solid transparent;
+  box-sizing: border-box; }
+
+.team-member__info {
+  position: absolute;
+  padding: 20px;
+  border-radius: 4px;
+  background: #ffffff;
+  width: 500%;
+  left: 0;
+  top: 100%;
+  margin-top: -30px;
+  box-sizing: border-box; }
+
+.photo-screen {
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative; }
+
+.photo-screen__shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30%;
+  background: linear-gradient(to top, #0eb2de, rgba(14, 178, 222, 0));
+  z-index: 5;
+  width: 100%; }
+
+.photo-screen__label {
+  color: #ffffff;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  padding: 50px 0;
+  z-index: 7; }
+
+.photo-screen__photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.photo-screen__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 60px; }
+
+.photo-screen__nav {
+  position: absolute;
+  top: 0;
+  font-size: 26px;
+  color: #ffffff;
+  text-decoration: none;
+  height: 100%;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  z-index: 6;
+  cursor: pointer;
+  box-sizing: border-box; }
+  .photo-screen__nav:before {
+    position: absolute;
+    bottom: 60px; }
+
+.photo-screen__nav_prev {
+  left: 0; }
+  .photo-screen__nav_prev:before {
+    left: 30px; }
+
+.photo-screen__nav_next {
+  right: 0; }
+  .photo-screen__nav_next:before {
+    right: 30px; }
 
 .mv-20 {
   margin: 20px 0; }

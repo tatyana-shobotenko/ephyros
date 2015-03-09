@@ -1,0 +1,34 @@
+.photo-overlay
+  background: $headerBack
+  opacity: .4
+  position: absolute
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  z-index: 4
+  transition: opacity linear 300ms
+  border-radius: 50%
+
+.team-member
+  overflow: visible
+  &:hover
+    .photo-overlay
+      opacity: 0
+    .team-member__photo
+      border-color: #ffffff
+
+.team-member__photo
+  border: 3px solid transparent
+  box-sizing: border-box
+
+.team-member__info
+  position: absolute
+  padding: 20px
+  border-radius: 4px
+  background: #ffffff
+  width: 500%
+  left: 0
+  top: 100%
+  margin-top: -30px
+  box-sizing: border-box

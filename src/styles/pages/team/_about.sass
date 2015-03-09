@@ -1,0 +1,30 @@
+.about-us-text
+  @extend .cell6
+  font-size: 24px
+  color: $grayDark
+  line-height: 1.5
+  font-weight: 100
+  margin: 30px 0
+  +media(pho)
+    width: auto
+    display: block
+.about-us-slider
+  @extend .cell6
+  margin: 30px 0
+  text-align: center
+  img
+    max-width: 100%
+  +media(pho)
+    width: auto
+    display: block
+
+.about-us-slider__page
+  background: #ffffff
+  border: 1px solid #becad6
+  border-radius: 1px
+  width: 6px
+  height: 6px
+  margin: 10px 5px
+  display: inline-block
+  &.active
+    background: #e1f2fa

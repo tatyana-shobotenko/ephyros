@@ -11,11 +11,11 @@
 
 .hteam-list
   +inlineBlockModelParent
-  margin: 70px 0
+  margin: 30px 0
   +resp(stab)
     margin-top: 0
   +resp(pho)
-    margin: 35px 0
+    margin: 10px 0
 
 .hteam-member
   +inlineBlockModelChild()
@@ -25,16 +25,15 @@
   position: relative
   text-align: center
   text-decoration: none
+  margin-bottom: 30px
   +resp(stab)
     width: 50%
-    margin-top: 30px
   +resp(mtab)
     width: 33%
   +resp(pho)
     width: 100%
-    margin-top: 30px
-    &:first-child
-      margin-top: 0
+    &:last-child
+      margin-bottom: 0
 
 .hteam-member__photo
   width: 140px
@@ -42,6 +41,7 @@
   border-radius: 70px
   overflow: hidden
   margin-bottom: 20px
+  position: relative
   +inline-block(top)
   img
     width: 100%
