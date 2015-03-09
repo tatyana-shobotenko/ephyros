@@ -5,7 +5,7 @@ var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var Redirect = Router.Redirect;
 
-module.exports = (
+module.exports = [
   <Route name="app" path="/" handler={require("./Application")}>
     <Route name="contact" path="/contact" handler={require("./Contact")}/>
     <Route name="services" path="/services" handler={require("./Services")}/>
@@ -14,6 +14,6 @@ module.exports = (
     <Redirect from="/case/" to="/case"/>
     <Route name="cases" path="/case" handler={require("./Cases")}/>
     <DefaultRoute handler={require("./Home")}/>
-    <NotFoundRoute handler={require("./NotFound")}/>
-  </Route>
-);
+  </Route>,
+  <NotFoundRoute handler={require("./NotFound")}/>
+];
