@@ -1,4 +1,6 @@
 var React = require('react');
+var Link  = require('react-router').Link;
+var BottomMenu  = require('../components/BottomMenu');
 
 var servicesData = require('../data/servicesData');
 
@@ -6,7 +8,7 @@ var Services = React.createClass({
   render() {
     var services = servicesData
       .map((data, index)=> {
-        if (index%2){
+        if (index % 2) {
           return (
             <div className="service-item service-item_gray">
               <div className="center-wrapper">
@@ -15,6 +17,7 @@ var Services = React.createClass({
                 </div>
                 <div className="service-item__desc">
                   <h2 className="service-item__title">{data.title}</h2>
+
                   <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
                   <a className="button button_blue" href={data.url}>See An Example</a>
                 </div>
@@ -22,12 +25,13 @@ var Services = React.createClass({
             </div>
           );
         }
-        else{
+        else {
           return (
             <div className="service-item">
               <div className="center-wrapper">
                 <div className="service-item__desc">
                   <h2 className="service-item__title">{data.title}</h2>
+
                   <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
                   <a className="button button_blue" href={data.url}>See An Example</a>
                 </div>
@@ -38,7 +42,7 @@ var Services = React.createClass({
             </div>
           );
         }
-    });
+      });
     var servicesBrief = servicesData
       .map((data, index)=> {
         return (
@@ -66,6 +70,7 @@ var Services = React.createClass({
         <div className="services-all">
           <div className="center-wrapper">
             <h2 className="screen-title text-center mb-70">All Our Services</h2>
+
             <div className="service-brief-wrap">
               {servicesBrief}
             </div>
@@ -80,14 +85,7 @@ var Services = React.createClass({
             <a href="mailto:pm@ephyros.com" className="button button_rainbow">Request a free quote</a>
           </div>
         </div>
-        <div className="center-wrapper">
-          <div className="bottom-nav gcontainer">
-            <a href="/cases" className="bottom-nav__item">Work</a>
-            <a href="/services" className="bottom-nav__item active">Services</a>
-            <a href="/team" className="bottom-nav__item">Team</a>
-            <a href="/contact" className="bottom-nav__item">Contact</a>
-          </div>
-        </div>
+        <BottomMenu/>
       </div>
     );
   }

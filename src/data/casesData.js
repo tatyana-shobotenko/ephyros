@@ -1,6 +1,6 @@
 var casesData = [
   {
-    showOnMain:true,
+    showOnMain: true,
     big: true,
     image: require('./cases/mario.png'),
     imageBig: require('./cases/mario.png'),
@@ -11,18 +11,18 @@ var casesData = [
     url: 'http://mario.kz'
   },
   {
-    showOnMain:true,
+    showOnMain: true,
     image: require('./cases/photomatic.png'),
     imageBig: require('./cases/photomaticBig.png'),
     name: 'Probniki',
     slug: 'probniki',
     tags: ['SaaS', 'MVP', 'Startup', 'Photo'],
     text: 'SaaS for photographers and their clients.',
-    keyObj: ['Creating photo-stories','Printing photos in photolabs', 'Sharing to friends and relatives', 'Single-page application', 'Advanced photo processing'],
+    keyObj: ['Creating photo-stories', 'Printing photos in photolabs', 'Sharing to friends and relatives', 'Single-page application', 'Advanced photo processing'],
     url: 'http://pm.dev.ephyros.com'
   },
   {
-    showOnMain:false,
+    showOnMain: false,
     image: require('./cases/dbeats-1.png'),
     imageBig: require('./cases/dbeats-1.png'),
     name: 'Diamond Style',
@@ -33,7 +33,7 @@ var casesData = [
     url: 'http://diamondstylepro.com'
   },
   {
-    showOnMain:false,
+    showOnMain: false,
     image: require('./cases/hpbig.png'),
     imageBig: require('./cases/hpbig.png'),
     name: 'Hello Planet',
@@ -44,18 +44,18 @@ var casesData = [
     url: 'http://www.helloplanet.com'
   },
   {
-    showOnMain:false,
+    showOnMain: false,
     image: require('./cases/cpbig.png'),
     imageBig: require('./cases/cpbig.png'),
     name: 'Cultprostir',
     slug: 'cultprostir',
     tags: ['Online community', 'Culture'],
     text: 'Culprostir is a large online Ukrainian community created by public personalities, musicians, artists, film directors, producers, art-managers and journalists. The main goal  is to cultivate educational projects, art communities and book publishing.',
-    keyObj: ['Unique content and author\'s reviews', 'Personal blogs for opinion leaders', 'All cultural events in one place','Single-page application', 'Responsive design'],
+    keyObj: ['Unique content and author\'s reviews', 'Personal blogs for opinion leaders', 'All cultural events in one place', 'Single-page application', 'Responsive design'],
     url: 'http://cultprostir.ua'
   },
   {
-    showOnMain:true,
+    showOnMain: true,
     image: require('./cases/budemstroit.png'),
     imageBig: require('./cases/budemstroit.png'),
     name: 'Будем строить',
@@ -65,7 +65,7 @@ var casesData = [
     url: 'http://budemstroit.ru'
   },
   {
-    showOnMain:true,
+    showOnMain: true,
     image: require('./cases/uguide.png'),
     imageBig: require('./cases/uguide.png'),
     name: 'Ukrainian Guide',
@@ -75,7 +75,7 @@ var casesData = [
     url: 'http://pm.dev.ephyros.com'
   },
   {
-    showOnMain:true,
+    showOnMain: true,
     image: require('./cases/jetame.png'),
     imageBig: require('./cases/jetame.png'),
     name: 'Jetame',

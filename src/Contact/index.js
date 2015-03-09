@@ -1,44 +1,93 @@
 var React = require('react');
+var Link = require('react-router').Link;
+var BottomMenu  = require('../components/BottomMenu');
 
 var Contact = React.createClass({
   getInitialState() {
-    return {sent: false};
+    return {
+      sent: false,
+      name: '',
+      phone: '',
+      email: '',
+      message: ''
+    };
   },
-  click() {
+  onSubmit(e) {
+    e.preventDefault();
     this.setState({sent: true});
+  },
+  handleChange(field, e) {
+    var partialState = {};
+    partialState[field] = e.target.value;
+    this.setState(partialState);
   },
   render() {
     var formContent;
     if (this.state.sent) {
-      formContent = (<div className="contacts-wrap__right">
+      formContent = (
         <div className="c-form">
           <h3 className="colorful-header text-fill fail">Your message is sent</h3>
 
           <p>We will contact you soon!</p>
         </div>
-      </div>);
+      );
     } else {
-      formContent = (<div className="contacts-wrap__right">
-        <div className="c-form">
+      formContent = (
+        <form
+          className="c-form"
+          method="post"
+          onSubmit={this.onSubmit}
+          >
           <h3 className="colorful-header text-fill">Hello! Let`s talk!</h3>
 
           <div className="form-row">
-            <input type="text" className="input-text input-text_full" placeholder="Name"/>
+            <input
+              type="text"
+              className="input-text input-text_full"
+              placeholder="Name"
+              name="contact[name]"
+              value={this.state.name}
+              onChange={this.handleChange.bind(this, 'name')}
+              />
           </div>
           <div className="form-row">
-            <input type="tel" className="input-text input-text_full" placeholder="Phone Number"/>
+            <input
+              type="tel"
+              className="input-text input-text_full"
+              placeholder="Phone Number"
+              name="contact[phone]"
+              value={this.state.phone}
+              onChange={this.handleChange.bind(this, 'phone')}
+              />
           </div>
           <div className="form-row">
-            <input type="email" className="input-text input-text_full" placeholder="E-mail"/>
+            <input
+              type="email"
+              className="input-text input-text_full"
+              placeholder="E-mail"
+              name="contact[email]"
+              value={this.state.email}
+              onChange={this.handleChange.bind(this, 'email')}
+              />
           </div>
           <div className="form-row">
-            <textarea className="textarea input-text_full" placeholder="Message"/>
+            <textarea
+              className="textarea input-text_full"
+              placeholder="Message"
+              name="contact[message]"
+              value={this.state.message}
+              onChange={this.handleChange.bind(this, 'message')}
+              />
           </div>
           <div className="form-row">
-            <button type="submit" className="button button_rainbow" onClick={this.click}>Get a quote</button>
+            <button
+              type="submit"
+              className="button button_rainbow">
+              Get a quote
+            </button>
           </div>
-        </div>
-      </div>);
+        </form>
+      );
     }
 
     return (
@@ -71,23 +120,18 @@ var Contact = React.createClass({
                   </div>
                 </div>
               </div>
-              {formContent}
+              <div className="contacts-wrap__right">
+                {formContent}
+              </div>
             </div>
           </div>
         </div>
         <div className="c-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2544.0779678685026!2d30.463097678573615!3d50.38374508793719!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1403101591541"
-            width="100%" height="100%" frameborder="0" style={{border:0, pointerEvents: 'none'}}></iframe>
+            width="100%" height="100%" frameBorder="0" style={{border:0, pointerEvents: 'none'}}></iframe>
         </div>
-        <div className="center-wrapper">
-          <div className="bottom-nav gcontainer">
-            <a href="/cases" className="bottom-nav__item">Work</a>
-            <a href="/services" className="bottom-nav__item">Services</a>
-            <a href="/team" className="bottom-nav__item">Team</a>
-            <a href="/contact" className="bottom-nav__item active">Contact</a>
-          </div>
-        </div>
+        <BottomMenu/>
       </div>
     );
   }

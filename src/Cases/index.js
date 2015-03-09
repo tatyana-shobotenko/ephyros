@@ -2,7 +2,8 @@
 
 var React = require('react');
 var casesData = require('../data/casesData');
-
+var Link  = require('react-router').Link;
+var BottomMenu  = require('../components/BottomMenu');
 
 var CasesPage = React.createClass({
   render() {
@@ -15,7 +16,7 @@ var CasesPage = React.createClass({
             {data.keyObj.map(text=>(<li>{text}</li>))}
           </ul>;
         }
-        if (index%2) {
+        if (index % 2) {
           return (
 
             <div className="work-item work-item_blue">
@@ -72,23 +73,15 @@ var CasesPage = React.createClass({
       <div>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <a href="/" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <a href="/" className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
-
+            <Link to="/" className="page-header__nav page-header__nav_prev icon-left-arrow"  disabled/>
+            <Link to="/services" className="page-header__nav page-header__nav_next icon-right-arrow"/>
             <div className="page-header__title">Work</div>
           </div>
         </div>
         <div className="work-wrap">
-            {cases}
+          {cases}
         </div>
-        <div className="center-wrapper">
-          <div className="bottom-nav gcontainer">
-            <a href="/cases" className="bottom-nav__item active">Work</a>
-            <a href="/services" className="bottom-nav__item">Services</a>
-            <a href="/team" className="bottom-nav__item">Team</a>
-            <a href="/contact" className="bottom-nav__item">Contact</a>
-          </div>
-        </div>
+        <BottomMenu/>
       </div>
     );
   }

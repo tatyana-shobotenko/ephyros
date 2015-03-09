@@ -6,7 +6,7 @@ var casesData = require('../data/casesData');
 
 var Case = React.createClass({
   mixins: [State],
-  render() {
+  getSelectedCase: function () {
     var slug = this.getParams().slug;
     var selectedCase = false;
     casesData.forEach((i) => {
@@ -14,7 +14,10 @@ var Case = React.createClass({
         selectedCase = i;
       }
     });
-
+    return selectedCase;
+  },
+  render() {
+    var selectedCase = this.getSelectedCase();
     var caseContent;
     if (selectedCase) {
       caseContent = (

@@ -67,7 +67,6 @@ $break-large2: 1280px;
   }
 }
 
-
 ////////==============================================///////
 $min-ppho: 320px;
 $min-lpho: 480px;
@@ -81,46 +80,75 @@ $max-phab: $min-ptab - 1;
 $max-ptab: $min-ltab - 1;
 $max-ltab: $min-desktop - 1;
 @mixin media($media) {
-  @if $media == spho { //small phone
-    @media only screen and (max-width: $min-ppho) { @content; }
+  @if $media == spho {
+    //small phone
+    @media only screen and (max-width: $min-ppho) {
+      @content;
+    }
   }
-  @if $media == ppho { //portrait phone
-    @media only screen and (max-width: $max-ppho) { @content; }
-  }
-  @else if $media == lpho { //landscape phone
-    @media only screen and (min-width: $min-lpho)  and (max-width: $max-lpho){ @content; }
-  }
-  @else if $media == pho { // landscape + portrait phone
-    @media only screen and (max-width: $max-lpho){ @content; }
-  }
-  @else if $media == phab { //phablet
-    @media only screen and (min-width: $min-phab)  and (max-width: $max-phab){ @content; }
-  }
-  @else if $media == lpho-phab { //landscape phone + phablet
-    @media only screen and (min-width: $min-lpho) and (max-width: $max-phab){ @content; }
-  }
-  @else if $media == pho-phab { //phone + phablet
-    @media only screen and (max-width: $max-phab){ @content; }
-  }
-  @else if $media == ptab { //portrait tablet
-    @media only screen and (min-width: $min-ptab)  and (max-width: $max-ptab){ @content; }
-  }
-  @else if $media == pho-ptab { // phone + portrait tab
-    @media only screen and (max-width: $max-ptab){ @content; }
-  }
-  @else if $media == ltab { //landscape tablet
-    @media only screen and (min-width: $min-ltab)  and (max-width: $max-ltab){ @content; }
-  }
-  @else if $media == tab { // landscape + portrait tablet
-    @media only screen and (min-width: $min-ptab)  and (max-width: $max-ltab){ @content; }
-  }
-  @else if $media == device { // phone + phab + tab
-    @media only screen and (max-width: $max-ltab){ @content; }
-  }
-  @else if $media == desktop { // desktops
-    @media only screen and (min-width: $min-desktop){ @content; }
+  @if $media == ppho {
+    //portrait phone
+    @media only screen and (max-width: $max-ppho) {
+      @content;
+    }
+  } @else if $media == lpho {
+    //landscape phone
+    @media only screen and (min-width: $min-lpho) and (max-width: $max-lpho) {
+      @content;
+    }
+  } @else if $media == pho {
+    // landscape + portrait phone
+    @media only screen and (max-width: $max-lpho) {
+      @content;
+    }
+  } @else if $media == phab {
+    //phablet
+    @media only screen and (min-width: $min-phab) and (max-width: $max-phab) {
+      @content;
+    }
+  } @else if $media == lpho-phab {
+    //landscape phone + phablet
+    @media only screen and (min-width: $min-lpho) and (max-width: $max-phab) {
+      @content;
+    }
+  } @else if $media == pho-phab {
+    //phone + phablet
+    @media only screen and (max-width: $max-phab) {
+      @content;
+    }
+  } @else if $media == ptab {
+    //portrait tablet
+    @media only screen and (min-width: $min-ptab) and (max-width: $max-ptab) {
+      @content;
+    }
+  } @else if $media == pho-ptab {
+    // phone + portrait tab
+    @media only screen and (max-width: $max-ptab) {
+      @content;
+    }
+  } @else if $media == ltab {
+    //landscape tablet
+    @media only screen and (min-width: $min-ltab) and (max-width: $max-ltab) {
+      @content;
+    }
+  } @else if $media == tab {
+    // landscape + portrait tablet
+    @media only screen and (min-width: $min-ptab) and (max-width: $max-ltab) {
+      @content;
+    }
+  } @else if $media == device {
+    // phone + phab + tab
+    @media only screen and (max-width: $max-ltab) {
+      @content;
+    }
+  } @else if $media == desktop {
+    // desktops
+    @media only screen and (min-width: $min-desktop) {
+      @content;
+    }
   }
 }
+
 // retina bg
 @mixin retina {
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
@@ -296,8 +324,8 @@ $max-ltab: $min-desktop - 1;
 }
 
 @mixin filter-gradient($start-color, $end-color, $orientation: vertical) {
-    $gradient-type: if($orientation == vertical, 0, 1);
-    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=#{$gradient-type}, startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}');
+  $gradient-type: if($orientation == vertical, 0, 1);
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=#{$gradient-type}, startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}');
 }
 
 @mixin vgradient($top, $bottom, $ie: 1) {
@@ -312,7 +340,7 @@ $max-ltab: $min-desktop - 1;
   @if $ie==1 {
     @include filter-gradient($top, $bottom, horizontal);
   }
-  background: linear-gradient(to right,$top, $bottom);
+  background: linear-gradient(to right, $top, $bottom);
   background: -ms-linear-gradient(left, $top, $bottom); /* IE10+ */
 }
 
