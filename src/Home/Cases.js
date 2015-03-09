@@ -1,7 +1,7 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
-var casesData = require('../data/casesData');
+var casesData = require('../data/homeCasesData');
 
 module.exports = React.createClass({
   getInitialState() {
@@ -18,7 +18,6 @@ module.exports = React.createClass({
   },
   render() {
     var cases = casesData
-      .filter(data => data.showOnMain)
       .map((data, index)=> {
         tags = data.tags.join(' / ');
         return (
