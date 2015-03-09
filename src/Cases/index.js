@@ -77,7 +77,7 @@ var CasesPage = React.createClass({
       <div>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/" className="page-header__nav page-header__nav_prev icon-left-arrow"  disabled/>
+            <span className="page-header__nav page-header__nav_prev icon-left-arrow disabled"/>
             <Link to="/services" className="page-header__nav page-header__nav_next icon-right-arrow"/>
             <div className="page-header__title">Work</div>
           </div>

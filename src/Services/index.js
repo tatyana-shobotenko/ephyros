@@ -22,12 +22,6 @@ var Services = React.createClass({
                     <a className="button button_blue" href={data.url}>See An Example</a>
                   </div>
                 </div>
-                <div className="service-item__desc">
-                  <h2 className="service-item__title">{data.title}</h2>
-
-                  <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
-                  <a className="button button_blue" href={data.url}>See An Example</a>
-                </div>
               </div>
             </div>
           );
@@ -67,8 +61,8 @@ var Services = React.createClass({
       <div>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <a href="/" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <a href="/" className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
+            <Link to="/case" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
+            <Link to="/team" className="page-header__nav page-header__nav_next icon-right-arrow"/>
 
             <div className="page-header__title">Services</div>
           </div>

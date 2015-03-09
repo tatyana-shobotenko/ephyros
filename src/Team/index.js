@@ -1,5 +1,7 @@
 var React = require('react');
 
+var Link  = require('react-router').Link;
+
 var BottomMenu  = require('../components/BottomMenu');
 
 var teamData = require('../data/teamData');
@@ -21,8 +23,8 @@ var Team = React.createClass({
       <div>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <a href="/" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <a href="/" className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
+            <Link to="/services" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
+            <Link to="/contact" className="page-header__nav page-header__nav_next icon-right-arrow"/>
 
             <div className="page-header__title">Team</div>
           </div>
