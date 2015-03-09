@@ -34,7 +34,7 @@ var Header = React.createClass({
            */}
           <ul className={'header__nav'+ (this.state.isMenuOpen?' header__nav_opened':'')}>
             <li><Link onClick={this.hideMenu} to="cases">Work</Link></li>
-            <li><Link onClick={this.hideMenu} to="/#presentation">Services</Link></li>
+            <li><Link onClick={this.hideMenu} to="/services">Services</Link></li>
             <li><Link onClick={this.hideMenu} to="/#team">Team</Link></li>
             <li><Link onClick={this.hideMenu} to="contact">Contact</Link></li>
           </ul>

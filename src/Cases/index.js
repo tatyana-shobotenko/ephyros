@@ -83,10 +83,10 @@ var CasesPage = React.createClass({
         </div>
         <div className="center-wrapper">
           <div className="bottom-nav gcontainer">
-            <a href="/" className="bottom-nav__item active">Work</a>
-            <a href="/" className="bottom-nav__item">Services</a>
-            <a href="/" className="bottom-nav__item">Team</a>
-            <a href="/" className="bottom-nav__item">Contact</a>
+            <a href="/cases" className="bottom-nav__item active">Work</a>
+            <a href="/services" className="bottom-nav__item">Services</a>
+            <a href="/team" className="bottom-nav__item">Team</a>
+            <a href="/contact" className="bottom-nav__item">Contact</a>
           </div>
         </div>
       </div>

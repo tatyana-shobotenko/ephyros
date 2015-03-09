@@ -1,0 +1,45 @@
+.service-item
+  +inlineBlockModelParent
+  padding: 50px 0
+
+.service-item_gray
+  background: #e4ebed
+
+.service-item_blue
+  background: #1d87a3
+.service-item__pic
+  @extend .cell5
+  text-align: center
+  img
+    max-width: 100%
+  +media(ppho)
+    display: block
+    width: auto
+    max-width: 159px
+    margin: 0 auto
+.service-item__desc
+  @extend .cell7
+  color: #7a8f99
+  font-size: 16px
+  padding-top: 20px
+  +media(ppho)
+    display: block
+    width: auto
+    text-align: center
+    margin-bottom: 20px
+.service-item__title
+  font-size: 32px
+  color: $grayDark
+  font-weight: normal
+  margin: 30px 0
+  text-transform: uppercase
+  +media(pho-ptab)
+    margin: 10px 0
+.service-item__text
+  p
+    margin: 30px 0
+    +media(pho-ptab)
+      margin: 10px 0
+
+
+

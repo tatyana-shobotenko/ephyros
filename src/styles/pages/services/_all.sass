@@ -1,0 +1,40 @@
+.services-all
+  background: #1d87a3
+  padding: 70px 0 100px
+
+
+.service-brief-wrap
+  +inlineBlockModelParent
+  text-align: center
+.service-brief
+  +inlineBlockModelChild()
+  +inline-block
+  width: 20%
+  padding: 0 $gutterWidth/2
+  box-sizing: border-box
+  text-align: center
+  +media(tab)
+    margin: 20px 0
+    width: 33%
+  +media(phab)
+    margin: 20px 0
+    width: 33%
+  +media(lpho)
+    margin: 20px 0
+    width: 50%
+  +media(ppho)
+    width: 100%
+    margin: 20px 0
+.service-brief__icon
+  margin-bottom: 20px
+  font-size: 0
+  img
+    width: 100%
+  +media(ppho)
+    max-width: 159px
+    margin: 0 auto 20px
+.service-brief__title
+  font-size: 18px
+  font-weight: 100
+  color: #f0f3f4
+
