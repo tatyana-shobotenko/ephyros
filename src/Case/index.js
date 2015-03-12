@@ -21,9 +21,9 @@ var Case = React.createClass({
     var caseContent;
     if (selectedCase) {
       caseContent = (
-        <div style={{padding:30, backgroundColor:'white', fontSize:'24px'}}>
-          <h1>{selectedCase.name}</h1>
-          <img src={selectedCase.image} alt={selectedCase.name}/>
+        <div className="screen-case__content">
+          <h1 className="screen-title">{selectedCase.name}</h1>
+          <img src={selectedCase.imageBig} alt={selectedCase.name}/>
         </div>
       );
     } else {
@@ -32,8 +32,12 @@ var Case = React.createClass({
       );
     }
     return (
-      <div style={{marginTop:-96, paddingTop:96, minHeight:100, backgroundColor:'#2d5572'}}>
-        {caseContent}
+      <div>
+        <div className="screen-case-back"></div>
+        <div className="screen-case-back2"></div>
+        <div className="screen-case">
+          {caseContent}
+        </div>
       </div>
     );
   }

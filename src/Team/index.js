@@ -1,10 +1,14 @@
 var React = require('react');
 
-var Link  = require('react-router').Link;
+var Link = require('react-router').Link;
 
-var BottomMenu  = require('../components/BottomMenu');
+var BottomMenu = require('../components/BottomMenu');
 
 var teamData = require('../data/teamData');
+
+var photoSlides = require('../data/team/photoSlides');
+
+var Slides =require('./Slides');
 
 var Team = React.createClass({
   render() {
@@ -12,12 +16,14 @@ var Team = React.createClass({
       <div className="hteam-member team-member" key={index}>
         <div className="hteam-member__photo team-member__photo">
           <img src={member.photo} alt={member.name}/>
+
           <div className="photo-overlay"/>
         </div>
         <div className="hteam-member__name">{member.name}</div>
         <div className="hteam-member__speciality">{member.position}</div>
       </div>
     ));
+
 
     return (
       <div>
@@ -33,14 +39,18 @@ var Team = React.createClass({
           <div className="gcontainer">
             <div className="about-us-text">
               <h2 className="simple-title">Who we are?</h2>
-              <p>A young team of web developers. Making the Internet faster and more beautiful! Create a unique web services and web applications for the benefit of mankind. Love exciting and challenging projects.</p>
+
+              <p>A young team of web developers. Making the Internet faster and more beautiful! Create a unique web
+                services and web applications for the benefit of mankind. Love exciting and challenging projects.</p>
             </div>
             <div className="about-us-slider">
               <img src={require('../data/team/slides/teamNY.jpg')}/>
-              <div className="about-us-slider__page active"/>
-              <div className="about-us-slider__page"/>
-              <div className="about-us-slider__page"/>
-              <div className="about-us-slider__page"/>
+              {
+                //<div className="about-us-slider__page active"/>
+                //<div className="about-us-slider__page"/>
+                //<div className="about-us-slider__page"/>
+                //<div className="about-us-slider__page"/>
+              }
             </div>
           </div>
         </div>
@@ -62,14 +72,8 @@ var Team = React.createClass({
             </div>
           </div>
         </div>
-        <div className="photo-screen">
-          <div className="photo-screen__label">our workdays and holydays</div>
-          <div className="photo-screen__photo" style={{'background-image': "url("+ require('../data/team/slides/bigPhoto1.jpg')+")"}}/>
-          <div className="photo-screen__title">Lead helps developer to fix a bug</div>
-          <span className="photo-screen__nav photo-screen__nav_prev icon-left-arrow"/>
-          <span className="photo-screen__nav photo-screen__nav_next icon-right-arrow"/>
-          <div className="photo-screen__shadow" />
-        </div>
+        <Slides slides={photoSlides}/>
+
         <div className="screen-epilogue screen-epilogue_in-services">
           <div className="center-wrapper text-center">
             <img src="images/logo_blue@2x.png" title="Ephyros" alt="Ephyros" className="screen-epilogue__logo"
