@@ -1,6 +1,8 @@
 var express = require("express");
 var path = require("path");
 var app = express();
+var bodyParser = require('body-parser');
+
 
 module.exports = function (options) {
 
@@ -24,6 +26,9 @@ module.exports = function (options) {
   //var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
 
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: true}));
+
   // serve the static assets
   app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public"), {
     maxAge: "200d" // We can cache them as they include hashes
@@ -43,7 +48,7 @@ module.exports = function (options) {
   //));
 
 
-  app.get("/*", function (req, res, next) {
+  app.get("/*", function (req, res) {
     function sendHtml(error, html) {
       if (error) {
         if (error.redirect) {
@@ -81,6 +86,52 @@ module.exports = function (options) {
     prerender(req.path, sendHtml, metaData);
 
   });
+
+  function mail(form) {
+    return false;
+
+    var nodemailer = require('nodemailer');
+    var smtpTransport = require('nodemailer-smtp-transport');
+    var transport = nodemailer.createTransport(smtpTransport({
+      host: 'localhost',
+      port: 25
+      //auth: {
+      //  user: 'username',
+      //  pass: 'password'
+      //}
+    }));
+
+    var message = {
+      from: 'robot@ephyros.com',
+      to: 'pm@ephyros.com',
+      subject: 'Email from Ephyros.com',
+      text: ''
+      + 'Name: ' + form.name + '\n'
+      + 'Phone: ' + form.phone + '\n'
+      + 'Email: ' + form.email + '\n'
+      + 'Message:' + form.message + '\n'
+    };
+    transport.sendMail(message);
+  }
+
+  app.post('/-/contact', function (req, res, next) {
+
+    var form = req.body;
+    mail(form);
+
+    res.send('OK');
+    res.end();
+  });
+
+  app.post('/contact', function (req, res, next) {
+
+    var form = req.body;
+    mail(form);
+
+    res.writeHead(302, {'Location': req.path + '?sent'});
+    res.end();
+  });
+
 
   var port = +(process.env.PORT || options.defaultPort || 8080);
   app.listen(port, function () {

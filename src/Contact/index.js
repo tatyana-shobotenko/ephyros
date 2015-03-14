@@ -1,8 +1,12 @@
+"use strict";
 var React = require('react');
 var Link = require('react-router').Link;
 var BottomMenu = require('../components/BottomMenu');
+var {State} = require('react-router');
+var request = require('superagent');
 
 var Contact = React.createClass({
+  mixins: [State],
   contextTypes: {
     metaData: React.PropTypes.object.isRequired
   },
@@ -12,7 +16,8 @@ var Contact = React.createClass({
   },
   getInitialState() {
     return {
-      sent: false,
+      sent: 'sent' in this.getQuery(),
+      inProgress: false,
       name: '',
       phone: '',
       email: '',
@@ -21,7 +26,18 @@ var Contact = React.createClass({
   },
   onSubmit(e) {
     e.preventDefault();
-    this.setState({sent: true});
+    if (!this.state.inProgress) {
+      request.post('/-/contact', {
+        name: this.state.name,
+        phone: this.state.phone,
+        email: this.state.email,
+        message: this.state.message
+      }).end((err, res)=> {
+
+        this.setState({sent: !err, inProgress: false});
+      });
+    }
+    this.setState({inProgress: true});
   },
   handleChange(field, e) {
     var partialState = {};
@@ -90,7 +106,7 @@ var Contact = React.createClass({
             <button
               type="submit"
               className="button button_rainbow">
-              Get a quote
+              {this.state.inProgress ? 'Processing…' : 'Get a quote'}
             </button>
           </div>
         </form>
