@@ -58,7 +58,6 @@ module.exports = function (options) {
 
   var loaders = {
     "coffee": "coffee-redux-loader",
-    "js": options.hotComponents ? ["react-hot-loader", "jsx-loader?harmony"] : "jsx-loader?harmony",
     "json": "json-loader",
     // "js": {
     // loader: "6to5-loader",
@@ -163,7 +162,17 @@ module.exports = function (options) {
     output: output,
     target: options.prerender ? "node" : "web",
     module: {
-      loaders: loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders))
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: options.hotComponents ? ['react-hot', 'jsx?harmony'] : ['jsx?harmony'],
+          exclude: /node_modules/
+        },
+        {
+          test: /\.jsx?$/,
+          loaders: ['jsx?harmony']
+        }
+      ].concat(loadersByExtension(loaders)).concat(loadersByExtension(stylesheetLoaders))
     },
     devtool: options.devtool,
     debug: options.debug,
