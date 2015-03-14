@@ -18,7 +18,7 @@ var Slides = React.createClass({
   },
   render() {
     var slides = this.props.slides.map((slide, index) => (
-      <div className={'photo-screen__slide'+(index==this.state.activeSlide?' active':'')}>
+      <div className={'photo-screen__slide'+(index==this.state.activeSlide?' active':'')} key={index}>
         <div className="photo-screen__photo" style={{'backgroundImage': "url("+ slide.image +")"}}/>
         <div className={'photo-screen__shadow ' + slide.shadowModifier }>
           <div className="photo-screen__title">{slide.title}</div>

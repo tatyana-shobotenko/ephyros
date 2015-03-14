@@ -58,8 +58,8 @@ module.exports = function (options) {
         res.status(notFound ? 404 : 200);
         res.render('html', {
           appHtml: html,
-          title: 'Ephyros new website',
-          description: '',
+          title: metaData.title,
+          description: metaData.description,
           scriptsUrl: SCRIPT_URL,
           ieScriptsUrl: IE_SCRIPT_URL,
           stylesUrl: STYLE_URL
@@ -67,7 +67,18 @@ module.exports = function (options) {
       }
     }
 
-    prerender(req.path, sendHtml);
+    var metaData = {
+      title: 'Ephyros',
+      description: '',
+      setTitle: function (title) {
+        this.title = title;
+      },
+      setDescription: function (description) {
+        this.description = description;
+      }
+    };
+
+    prerender(req.path, sendHtml, metaData);
 
   });
 

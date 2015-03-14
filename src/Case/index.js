@@ -5,6 +5,14 @@ var State = Router.State;
 var casesData = require('../data/casesData');
 
 var Case = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    var selectedCase = this.getSelectedCase();
+    this.context.metaData.setTitle(selectedCase.name);
+    this.context.metaData.setDescription('');
+  },
   mixins: [State],
   getSelectedCase: function () {
     var slug = this.getParams().slug;

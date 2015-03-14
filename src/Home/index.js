@@ -7,6 +7,14 @@ var Intro = require('./Intro');
 
 
 module.exports = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Ephyros');
+    this.context.metaData.setDescription(
+      'At Ephyros we help ambitious clients to bring powerful ideas to life');
+  },
   render() {
     return (
       <div>

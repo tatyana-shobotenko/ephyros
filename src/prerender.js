@@ -3,7 +3,7 @@ var Router = require('react-router');
 var routes = require('./routes');
 
 
-function prerender(requestPath, cb) {
+function prerender(requestPath, cb, metaData) {
 
   var router = Router.create({
     routes: routes,
@@ -17,9 +17,16 @@ function prerender(requestPath, cb) {
   });
 
   router.run(function (Handler, state) {
-    var virtualDom = React.createFactory(Handler)({});
-    var html = React.renderToString(virtualDom);
-    cb(null, html);
+
+
+    React.withContext({
+      metaData: metaData
+    }, ()=> {
+      var virtualDom = React.createFactory(Handler)({});
+      var html = React.renderToString(virtualDom);
+      cb(null, html);
+    });
+
   });
 }
 

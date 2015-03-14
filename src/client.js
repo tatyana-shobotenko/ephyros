@@ -8,18 +8,32 @@ require('./styles/main.css');
 require('./styles/icons.css');
 
 
+
 Router.run(routes, Router.HistoryLocation, (Handler) => {
-  React.render(<Handler/>, document.getElementById('app'), ()=> {
-    var hash = window.location.hash;
-    if (hash) {
-      var target = $(hash);
-      target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 0);
+  React.withContext({
+    metaData: {
+      setTitle(title) {
+        "use strict";
+        document.title = title;
+      },
+      setDescription(description) {
+        "use strict";
+        $('meta[name=description]').text(description);
       }
     }
+  }, ()=> {
+    React.render(<Handler/>, document.getElementById('app'), ()=> {
+      var hash = window.location.hash;
+      if (hash) {
+        var target = $(hash);
+        target = target.length ? target : $('[name=' + hash.slice(1) + ']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 0);
+        }
+      }
+    });
   });
 });
 

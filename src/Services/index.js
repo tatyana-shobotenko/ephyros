@@ -5,6 +5,14 @@ var BottomMenu  = require('../components/BottomMenu');
 var servicesData = require('../data/servicesData');
 
 var Services = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Services');
+    this.context.metaData.setDescription(
+      'Create a unique web services and web applications for the benefit of mankind.');
+  },
   render() {
     var services = servicesData
       .map((data, index)=> {

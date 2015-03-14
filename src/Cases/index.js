@@ -2,19 +2,28 @@
 
 var React = require('react');
 var casesData = require('../data/casesData');
-var Link  = require('react-router').Link;
-var BottomMenu  = require('../components/BottomMenu');
+var Link = require('react-router').Link;
+var BottomMenu = require('../components/BottomMenu');
 
 var CasesPage = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Projects we have done');
+    this.context.metaData.setDescription('');
+  },
   render() {
     var cases = casesData
       .map((data, index)=> {
         var tags = data.tags.join(' / ');
-        let keyObj;
+        var keyObj;
         if (data.keyObj) {
-          keyObj = <ul>
-            {data.keyObj.map(text=>(<li>{text}</li>))}
-          </ul>;
+          keyObj = (
+            <ul>
+              {data.keyObj.map(text=>(<li>{text}</li>))}
+            </ul>
+          );
         }
         if (index % 2) {
           return (
@@ -79,6 +88,7 @@ var CasesPage = React.createClass({
           <div className="center-wrapper relative">
             <span className="page-header__nav page-header__nav_prev icon-left-arrow disabled"/>
             <Link to="/services" className="page-header__nav page-header__nav_next icon-right-arrow"/>
+
             <div className="page-header__title">Work</div>
           </div>
         </div>

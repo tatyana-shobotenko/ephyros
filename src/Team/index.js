@@ -1,3 +1,4 @@
+"use strict";
 var React = require('react');
 
 var Link = require('react-router').Link;
@@ -8,9 +9,19 @@ var teamData = require('../data/teamData');
 
 var photoSlides = require('../data/team/photoSlides');
 
-var Slides =require('./Slides');
+var Slides = require('./Slides');
 
 var Team = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Team');
+    this.context.metaData.setDescription(
+      'A young team of web developers. Making the Internet faster and more beautiful! '+
+      'Create a unique web services and web applications for the benefit of mankind. '+
+      'Love exciting and challenging projects.');
+  },
   render() {
     var members = teamData.map((member, index) => (
       <div className="hteam-member team-member" key={index}>

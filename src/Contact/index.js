@@ -3,6 +3,13 @@ var Link = require('react-router').Link;
 var BottomMenu  = require('../components/BottomMenu');
 
 var Contact = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Hello! Let`s talk!');
+    this.context.metaData.setDescription('');
+  },
   getInitialState() {
     return {
       sent: false,

@@ -1,6 +1,14 @@
 var React = require('react');
 var Link  = require('react-router').Link;
 var NotFound = React.createClass({
+  contextTypes: {
+    metaData: React.PropTypes.object.isRequired
+  },
+  componentWillMount() {
+    this.context.metaData.setTitle('Whoops! Page not found');
+    this.context.metaData.setDescription(
+      'Sorry, but the page you were trying to view does not exist.');
+  },
   render() {
     return (
       <div data-not-found className="error-screen">
