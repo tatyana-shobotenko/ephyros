@@ -165,12 +165,12 @@ module.exports = function (options) {
       loaders: [
         {
           test: /\.jsx?$/,
-          loaders: options.hotComponents ? ['react-hot', 'jsx?harmony'] : ['jsx?harmony'],
+          loaders: options.hotComponents ? ['react-hot', 'babel'] : ['babel'],
           exclude: /node_modules/
         },
         {
-          test: /\.jsx?$/,
-          loaders: ['jsx?harmony']
+          test: /\.jsx$/,
+          loaders: ['babel']
         }
       ].concat(loadersByExtension(loaders)).concat(loadersByExtension(stylesheetLoaders))
     },
