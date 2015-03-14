@@ -1,6 +1,6 @@
 var React = require('react');
-var Link  = require('react-router').Link;
-var BottomMenu  = require('../components/BottomMenu');
+var Link = require('react-router').Link;
+var BottomMenu = require('../components/BottomMenu');
 
 var servicesData = require('../data/servicesData');
 
@@ -26,6 +26,7 @@ var Services = React.createClass({
                   </div>
                   <div className="service-item__desc">
                     <h2 className="service-item__title">{data.title}</h2>
+
                     <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
                     <a className="button button_blue" href={data.url}>See An Example</a>
                   </div>

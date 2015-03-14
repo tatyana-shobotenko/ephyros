@@ -1,5 +1,5 @@
 var React = require('react');
-var Link  = require('react-router').Link;
+var Link = require('react-router').Link;
 var NotFound = React.createClass({
   contextTypes: {
     metaData: React.PropTypes.object.isRequired

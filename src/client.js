@@ -8,7 +8,6 @@ require('./styles/main.css');
 require('./styles/icons.css');
 
 
-
 Router.run(routes, Router.HistoryLocation, (Handler) => {
   React.withContext({
     metaData: {

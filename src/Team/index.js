@@ -18,8 +18,8 @@ var Team = React.createClass({
   componentWillMount() {
     this.context.metaData.setTitle('Team');
     this.context.metaData.setDescription(
-      'A young team of web developers. Making the Internet faster and more beautiful! '+
-      'Create a unique web services and web applications for the benefit of mankind. '+
+      'A young team of web developers. Making the Internet faster and more beautiful! ' +
+      'Create a unique web services and web applications for the benefit of mankind. ' +
       'Love exciting and challenging projects.');
   },
   render() {

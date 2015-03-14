@@ -1,6 +1,6 @@
 var React = require('react');
 var Link = require('react-router').Link;
-var BottomMenu  = require('../components/BottomMenu');
+var BottomMenu = require('../components/BottomMenu');
 
 var Contact = React.createClass({
   contextTypes: {
@@ -101,7 +101,7 @@ var Contact = React.createClass({
       <div>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/team" className="page-header__nav page-header__nav_prev icon-left-arrow" />
+            <Link to="/team" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
             <span className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
 
             <div className="page-header__title">Contact</div>
