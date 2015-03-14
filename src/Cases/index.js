@@ -21,14 +21,14 @@ var CasesPage = React.createClass({
         if (data.keyObj) {
           keyObj = (
             <ul>
-              {data.keyObj.map(text=>(<li>{text}</li>))}
+              {data.keyObj.map((text, index)=>(<li key={index}>{text}</li>))}
             </ul>
           );
         }
         if (index % 2) {
           return (
 
-            <div className="work-item work-item_blue">
+            <div className="work-item work-item_blue" key={index}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="work-item__desc work-item__desc_in-blue">
@@ -41,7 +41,12 @@ var CasesPage = React.createClass({
 
                     {keyObj}
 
-                    <a className="work-item__link work-item__link_in-blue" href={data.url}>
+                    <a
+                      className="work-item__link work-item__link_in-blue"
+                      href={data.url}
+                      target="_blank"
+                      rel="nofollow"
+                      >
                       {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
                     </a>
 
@@ -56,7 +61,7 @@ var CasesPage = React.createClass({
         }
         else {
           return (
-            <div className="work-item">
+            <div className="work-item" key={index}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="work-item__pic">
@@ -72,7 +77,11 @@ var CasesPage = React.createClass({
 
                     {keyObj}
 
-                    <a className="work-item__link" href={data.url}>
+                    <a
+                      className="work-item__link" href={data.url}
+                      target="_blank"
+                      rel="nofollow"
+                      >
                       {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
                     </a>
                   </div>

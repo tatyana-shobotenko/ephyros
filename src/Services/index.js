@@ -18,7 +18,7 @@ var Services = React.createClass({
       .map((data, index)=> {
         if (index % 2) {
           return (
-            <div className="service-item service-item_gray">
+            <div className="service-item service-item_gray" key={index}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="service-item__pic">
@@ -37,7 +37,7 @@ var Services = React.createClass({
         }
         else {
           return (
-            <div className="service-item">
+            <div className="service-item"  key={index}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="service-item__desc">
@@ -58,7 +58,7 @@ var Services = React.createClass({
     var servicesBrief = servicesData
       .map((data, index)=> {
         return (
-          <div className="service-brief">
+          <div className="service-brief" key={index}>
             <div className="service-brief__icon">
               <img src={data.icon} alt={data.title}/>
             </div>
