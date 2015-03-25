@@ -33,8 +33,8 @@ var Footer = React.createClass({
                   <div className="footer__contacts-inner">
                     <div className="footer__contacts__title">address</div>
                     <div>
-                      08097, ul. Lomonosova 54,<br />
-                      office 149, Kyiv
+                      54, Lomonosova str., <br />
+                      Kyiv ,  Ukraine,  03189
                     </div>
                   </div>
                 </div>

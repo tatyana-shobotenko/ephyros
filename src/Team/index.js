@@ -18,9 +18,9 @@ var Team = React.createClass({
   componentWillMount() {
     this.context.metaData.setTitle('Team');
     this.context.metaData.setDescription(
-      'A young team of web developers. Making the Internet faster and more beautiful! ' +
-      'Create a unique web services and web applications for the benefit of mankind. ' +
-      'Love exciting and challenging projects.');
+      'Ephyros is a team of developers who invent, think over, build, and impove. ' +
+      'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
+      'Love to create awesome web-services and applications.');
   },
   render() {
     var members = teamData.map((member, index) => (
@@ -51,8 +51,7 @@ var Team = React.createClass({
             <div className="about-us-text">
               <h2 className="simple-title">Who we are?</h2>
 
-              <p>A young team of web developers. Making the Internet faster and more beautiful! Create a unique web
-                services and web applications for the benefit of mankind. Love exciting and challenging projects.</p>
+              <p>Ephyros is a team of developers who invent, think over, build, and impove. We collaborate with ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and applications.</p>
             </div>
             <div className="about-us-slider">
               <img src={require('../data/team/slides/teamNY.jpg')}/>
@@ -68,11 +67,11 @@ var Team = React.createClass({
         <div className="screen-team">
           <div className="center-wrapper screen-table">
             <div className="screen-table__cell">
-              <h1 className="screen-title screen-title_margin-big">Our professional team</h1>
+              <h1 className="screen-title screen-title_margin-big">Our band</h1>
 
               <div className="hteam-list">
                 {members}
-                <a className="hteam-member ">
+                <a className="hteam-member" href="mailto:job@ephyros.com" target="_blank">
                   <div className="hteam-member__photo hteam-member__photo_empty">
                     <span className="icon-plus"/>
                   </div>

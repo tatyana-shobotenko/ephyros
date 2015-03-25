@@ -28,7 +28,8 @@ var Services = React.createClass({
                     <h2 className="service-item__title">{data.title}</h2>
 
                     <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
-                    <a className="button button_blue" href={data.url}>See An Example</a>
+
+                    {data.link?(<a className="button button_blue" href={data.link}>See An Example</a>):null}
                   </div>
                 </div>
               </div>
@@ -44,7 +45,7 @@ var Services = React.createClass({
                     <h2 className="service-item__title">{data.title}</h2>
 
                     <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
-                    <a className="button button_blue" href={data.url}>See An Example</a>
+                    {data.link?(<a className="button button_blue" href={data.link}>See An Example</a>):null}
                   </div>
                   <div className="service-item__pic">
                     <img src={data.icon} alt={data.title}/>

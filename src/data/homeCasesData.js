@@ -1,41 +1,39 @@
 var homeCasesData = [
   {
     big: true,
-    image: require('./cases/mario.png'),
-    name: 'Mario',
-    slug: 'mario',
-    tags: ['logo', 'web', 'mobile web'],
-    text: 'Mario Site',
-    url: 'http://mario.kz'
-  },
-  {
-    image: require('./cases/photomatic.png'),
+    image: require('./cases/pm_home.jpg'),
     name: 'Probniki',
     slug: 'probniki',
     tags: ['SaaS', 'MVP', 'Startup', 'Photo'],
-    url: 'http://pm.dev.ephyros.com'
+    url: '/case#Probniki'
   },
   {
-    image: require('./cases/budemstroit.png'),
-    name: 'Будем строить',
-    slug: 'budemstroit',
-    tags: ['logo', 'web', 'mobile web'],
-    text: 'Budemstroit Site',
-    url: 'http://budemstroit.ru'
+    image: require('./cases/mario.png'),
+    name: 'Mario',
+    slug: 'mario',
+    tags: ['Startup', 'Marketplace', 'MVP'],
+    url: 'http://mario.kz'
   },
   {
-    image: require('./cases/uguide.png'),
-    name: 'Ukrainian Guide',
-    slug: 'ukrainian-guide',
-    tags: ['logo', 'web', 'mobile web'],
-    url: 'http://pm.dev.ephyros.com'
+    image: require('./cases/db_home.jpg'),
+    name: 'Diamond Style',
+    slug: 'diamond-style',
+    tags: ['E-commerce', 'Music'],
+    url: 'http://diamondstylepro.com'
   },
   {
-    image: require('./cases/jetame.png'),
-    name: 'Jetame',
-    slug: 'jetame',
-    tags: ['logo', 'web', 'mobile web'],
-    url: 'http://jeta.me'
+    image: require('./cases/hp_home.jpg'),
+    name: 'Hello Planet',
+    slug: 'hello-planet',
+    tags: ['Travel', 'Startup', 'MVP'],
+    url: 'http://www.helloplanet.com'
+  },
+  {
+    image: require('./cases/cp_home.jpg'),
+    name: 'Cultprostir',
+    slug: 'cultprostir',
+    tags: ['Online community', 'Culture'],
+    url: 'http://cultprostir.ua'
   }
 ];
 

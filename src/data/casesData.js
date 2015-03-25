@@ -9,6 +9,15 @@ var casesData = [
     url: 'http://pm.dev.ephyros.com'
   },
   {
+    imageBig: require('./cases/marioBig.png'),
+    name: 'Mario',
+    slug: 'mario',
+    tags: ['Startup', 'Marketplace', 'MVP'],
+    text: 'Mario is a two-sided network that helps homeowners choose right builders and  gives  an opportunity for great builders to  find customers.',
+    keyObj: ['All builders have proven expertise', 'Online portfolio for builders', 'Verification system for client\'s reviews', 'Smart SMS-notifications for tradesmen'],
+    url: 'http://mario.kz'
+  },
+  {
     imageBig: require('./cases/dbeats-1.png'),
     name: 'Diamond Style',
     slug: 'diamond-style',

@@ -45,7 +45,7 @@ module.exports = React.createClass({
             <div className="screen-presentation__info">
               <div className="screen-presentation__label">presentation</div>
               <h1 className="screen-title screen-title_dark">
-                Need a team of experienced developers?
+                Please take a look at our short presentaion
               </h1>
             </div>
             <div className="screen-presentation__pic-wrap">

@@ -20,11 +20,11 @@ module.exports = React.createClass({
       <div className="screen-team">
         <div className="center-wrapper screen-table">
           <div className="screen-table__cell">
-            <h1 className="screen-title screen-title_margin-big">Team of Professionals</h1>
+            <h1 className="screen-title screen-title_margin-big">Our Band</h1>
 
             <div className="hteam-list">
               {members}
-              <a className="hteam-member ">
+              <a className="hteam-member " href="mailto:job@ephyros.com" target="_blank">
                 <div className="hteam-member__photo hteam-member__photo_empty">
                   <span className="icon-plus"/>
                 </div>

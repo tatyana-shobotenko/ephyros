@@ -28,7 +28,7 @@ var CasesPage = React.createClass({
         if (index % 2) {
           return (
 
-            <div className="work-item work-item_blue" key={index}>
+            <div className="work-item work-item_blue" key={index} id={data.slug}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="work-item__desc work-item__desc_in-blue">
@@ -61,7 +61,7 @@ var CasesPage = React.createClass({
         }
         else {
           return (
-            <div className="work-item" key={index}>
+            <div className="work-item" key={index} id={data.slug}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="work-item__pic">
