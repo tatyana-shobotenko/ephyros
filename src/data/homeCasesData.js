@@ -8,18 +8,18 @@ var homeCasesData = [
     url: '/case#Probniki'
   },
   {
-    image: require('./cases/mario.png'),
-    name: 'Mario',
-    slug: 'mario',
-    tags: ['Startup', 'Marketplace', 'MVP'],
-    url: 'http://mario.kz'
-  },
-  {
     image: require('./cases/db_home.jpg'),
     name: 'Diamond Style',
     slug: 'diamond-style',
     tags: ['E-commerce', 'Music'],
     url: 'http://diamondstylepro.com'
+  },
+  {
+    image: require('./cases/cp_home.jpg'),
+    name: 'Cultprostir',
+    slug: 'cultprostir',
+    tags: ['Online community', 'Culture'],
+    url: 'http://cultprostir.ua'
   },
   {
     image: require('./cases/hp_home.jpg'),
@@ -29,12 +29,12 @@ var homeCasesData = [
     url: 'http://www.helloplanet.com'
   },
   {
-    image: require('./cases/cp_home.jpg'),
-    name: 'Cultprostir',
-    slug: 'cultprostir',
-    tags: ['Online community', 'Culture'],
-    url: 'http://cultprostir.ua'
-  }
+    image: require('./cases/mario.png'),
+    name: 'Mario',
+    slug: 'mario',
+    tags: ['Startup', 'Marketplace', 'MVP'],
+    url: 'http://mario.kz'
+  },
 ];
 
 module.exports = homeCasesData;

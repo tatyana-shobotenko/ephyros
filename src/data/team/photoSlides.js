@@ -1,17 +1,12 @@
 var slides = [
   {
-    image: require('./slides/bigPhoto1.jpg'),
-    title: 'Lead helps developer to fix a bug',
+    image: require('./slides/board.jpg'),
+    title: 'Ephyros inspiration board',
     shadowModifier: ''
   },
   {
     image: require('./slides/bigPhoto2.jpg'),
     title: 'Team is working',
-    shadowModifier: ''
-  },
-  {
-    image: require('./slides/girls.jpg'),
-    title: 'Girls, uh girls',
     shadowModifier: ''
   },
   {
@@ -30,19 +25,14 @@ var slides = [
     shadowModifier: ''
   },
   {
-    image: require('./slides/pedobear.jpg'),
-    title: 'Team\'s amulet =)',
+    image: require('./slides/girls.jpg'),
+    title: 'Girls, uh girls...',
     shadowModifier: ''
   },
   {
-    image: require('./slides/brain.jpg'),
-    title: 'Don\'t forget to ...',
+    image: require('./slides/bigPhoto1.jpg'),
+    title: 'Tech lead helps developer to fix a bug',
     shadowModifier: ''
   },
-  {
-    image: require('./slides/board.jpg'),
-    title: 'Place of inspiration',
-    shadowModifier: ''
-  }
 ];
 module.exports = slides;

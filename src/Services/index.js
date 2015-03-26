@@ -94,8 +94,8 @@ var Services = React.createClass({
             <img src="images/logo_blue@2x.png" title="Ephyros" alt="Ephyros" className="screen-epilogue__logo"
                  width="166px" height="36px"/>
 
-            <h2 className="screen-title screen-title_dark screen-epilogue__title">Any questions?</h2>
-            <a href="mailto:pm@ephyros.com" className="button button_rainbow">Request a free quote</a>
+            <h2 className="screen-title screen-title_dark screen-epilogue__title">Do you have any questions?</h2>
+            <a href="mailto:hello@ephyros.com" className="button button_rainbow">Request a free quote</a>
           </div>
         </div>
         <BottomMenu/>

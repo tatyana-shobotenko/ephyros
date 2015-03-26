@@ -43,16 +43,6 @@ var casesData = [
     photo: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p160x160/1239488_528687010544885_28541602_n.jpg?oh=2db660c116d13fee223c12e8245fda45&oe=5582EC67&__gda__=1434896311_9a69e3305f99f42f27744b2f8301501e",
     name: "Ivan",
     position: "QA Engineer"
-  },
-  {
-    photo: require('./team/ava/Sasha_P_portrait.jpg'),
-    name: "Oleksandr",
-    position: "Backend developer"
-  },
-  {
-    photo: require('./team/ava/Sasha_M_portrait.jpg'),
-    name: "Oleksandr",
-    position: "Backend developer"
   }
 ];
 

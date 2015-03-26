@@ -131,15 +131,15 @@ var Contact = React.createClass({
                 <div className="contacts-box">
                   <div className="contacts-box__title">contact</div>
                   <div>
-                    <div>pm@ephyros.com</div>
+                    <div>hello@ephyros.com</div>
                     <div>Phone: <span className="tel-span">+380 93 58-66-136</span>
                     </div>
-                    <div>Skype: darkfn</div>
+                    <div>Skype: ephyros</div>
                   </div>
                   <div className="contacts-box__title">address</div>
                   <div>
-                    54, Lomonosova str.,<br />
-                    Kyiv ,  Ukraine,  03189
+                    54, Lomonosova str. ,<br />
+                    Kyiv, Ukraine, 03189
                   </div>
                 </div>
               </div>
@@ -151,8 +151,8 @@ var Contact = React.createClass({
         </div>
         <div className="c-map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2544.0779678685026!2d30.463097678573615!3d50.38374508793719!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1403101591541"
-            width="100%" height="100%" frameBorder="0" style={{border:0, pointerEvents: 'none'}}></iframe>
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2544.026958261552!2d30.462808!3d50.384696000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c8e23b7e70c7%3A0xd32a1f3107ace198!2sMykhaila+Lomonosova+St%2C+54%2C+Kyiv!5e0!3m2!1sen!2sua!4v1427410249317"
+            width="100%" height="100%" frameBorder="0" style={{border:0}}></iframe>
         </div>
         <BottomMenu/>
       </div>

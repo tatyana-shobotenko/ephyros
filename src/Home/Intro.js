@@ -1,5 +1,5 @@
 var React = require('react');
-
+var Link = require('react-router').Link;
 
 module.exports = React.createClass({
   getInitialState() {
@@ -40,8 +40,8 @@ module.exports = React.createClass({
               </p>
 
               <div className="button-group">
-                <a href="#cases" className="button button-group__item">Services</a>
                 <a href="#presentation" className="button button-group__item">Presentation</a>
+                <Link to="services" className="button button-group__item">Services</Link>
               </div>
             </div>
           </div>

@@ -8,15 +8,7 @@ var casesData = [
     keyObj: ['Creating photo-stories', 'Printing photos in photolabs', 'Sharing to friends and relatives', 'Single-page application', 'Advanced photo processing'],
     url: 'http://pm.dev.ephyros.com'
   },
-  {
-    imageBig: require('./cases/marioBig.png'),
-    name: 'Mario',
-    slug: 'mario',
-    tags: ['Startup', 'Marketplace', 'MVP'],
-    text: 'Mario is a two-sided network that helps homeowners choose right builders and  gives  an opportunity for great builders to  find customers.',
-    keyObj: ['All builders have proven expertise', 'Online portfolio for builders', 'Verification system for client\'s reviews', 'Smart SMS-notifications for tradesmen'],
-    url: 'http://mario.kz'
-  },
+
   {
     imageBig: require('./cases/dbeats-1.png'),
     name: 'Diamond Style',
@@ -43,6 +35,15 @@ var casesData = [
     text: 'Culprostir is a large online Ukrainian community created by public personalities, musicians, artists, film directors, producers, art-managers and journalists. The main goal  is to cultivate educational projects, art communities and book publishing.',
     keyObj: ['Unique content and author\'s reviews', 'Personal blogs for opinion leaders', 'All cultural events in one place', 'Single-page application', 'Responsive design'],
     url: 'http://cultprostir.ua'
+  },
+  {
+    imageBig: require('./cases/marioBig.png'),
+    name: 'Mario',
+    slug: 'mario',
+    tags: ['Startup', 'Marketplace', 'MVP'],
+    text: 'Mario is a two-sided network that helps homeowners choose right builders and  gives  an opportunity for great builders to  find customers.',
+    keyObj: ['All builders have proven expertise', 'Online portfolio for builders', 'Verification system for client\'s reviews', 'Smart SMS-notifications for tradesmen'],
+    url: 'http://mario.kz'
   },
 ];
 

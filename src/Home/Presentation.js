@@ -43,9 +43,8 @@ module.exports = React.createClass({
         <div className="center-wrapper screen-table">
           <div className="gcontainer screen-table__cell">
             <div className="screen-presentation__info">
-              <div className="screen-presentation__label">presentation</div>
               <h1 className="screen-title screen-title_dark">
-                Please take a look at our short presentaion
+                Please take a look at our short presentation
               </h1>
             </div>
             <div className="screen-presentation__pic-wrap">
