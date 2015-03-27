@@ -4,15 +4,15 @@
   background: $headerBack
   color: #ffffff
   z-index: 11
-  +resp(sdevice)
+  +media(pho-phab)
     height: auto
 
 .footer-inner
   padding: 30px
   +clear
-  +resp(tab)
+  +media(tab)
     padding: 20px
-  +resp(sdevice)
+  +media(pho-phab)
     padding: 20px 10px
 
 .footer_right
@@ -22,7 +22,7 @@
   background: lighten($headerBack, 6%)
   height: $footerHeight
   z-index: 2
-  +resp(sdevice)
+  +media(pho-phab)
     display: none
 @import "footer/footer-copyright"
 @import "footer/footer__contacts"

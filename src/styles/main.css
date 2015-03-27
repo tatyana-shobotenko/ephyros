@@ -574,7 +574,7 @@ input.button, button.button {
   background: #2d5572;
   color: #ffffff;
   z-index: 11; }
-  @media only screen and (max-width: 749px) {
+  @media only screen and (max-width: 767px) {
     .footer {
       height: auto; } }
 
@@ -584,10 +584,10 @@ input.button, button.button {
     display: table;
     content: '';
     clear: both; }
-  @media only screen and (min-width: 750px) and (max-width: 1023px) {
+  @media only screen and (min-width: 768px) and (max-width: 1241px) {
     .footer-inner {
       padding: 20px; } }
-  @media only screen and (max-width: 749px) {
+  @media only screen and (max-width: 767px) {
     .footer-inner {
       padding: 20px 10px; } }
 
@@ -598,7 +598,7 @@ input.button, button.button {
   background: #366588;
   height: 245px;
   z-index: 2; }
-  @media only screen and (max-width: 749px) {
+  @media only screen and (max-width: 767px) {
     .footer_right {
       display: none; } }
 
@@ -666,7 +666,7 @@ input.button, button.button {
   letter-spacing: normal;
   width: 50%;
   padding-top: 15px; }
-  @media only screen and (max-width: 749px) {
+  @media only screen and (max-width: 767px) {
     .footer__contacts-col {
       width: 100%;
       font-size: 14px;
@@ -681,17 +681,17 @@ input.button, button.button {
 
 .footer__contacts-inner {
   padding: 30px 0px 30px 60px; }
-  @media only screen and (min-width: 750px) and (max-width: 1023px) {
+  @media only screen and (min-width: 768px) and (max-width: 1241px) {
     .footer__contacts-inner {
       padding-left: 40px; } }
-  @media only screen and (max-width: 749px) {
+  @media only screen and (max-width: 767px) {
     .footer__contacts-inner {
       padding: 0 0 0 10px; } }
 
 .footer__contacts-row {
   display: block; }
 
-@media only screen and (min-width: 750px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1241px) {
   .tel-span {
     display: block; } }
 
@@ -858,11 +858,11 @@ input.button, button.button {
 
 .screen-intro__title {
   font-size: 70px;
-  margin: 100px 0; }
+  margin: 70px 0; }
   @media only screen and (min-width: 750px) and (max-width: 1023px) {
     .screen-intro__title {
       font-size: 40px;
-      margin: 80px 0; } }
+      margin: 70px 0; } }
   @media only screen and (min-width: 480px) and (max-width: 749px) {
     .screen-intro__title {
       font-size: 36px;
