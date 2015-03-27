@@ -10,8 +10,8 @@ var CasesPage = React.createClass({
     metaData: React.PropTypes.object.isRequired
   },
   componentWillMount() {
-    this.context.metaData.setTitle('Projects we have done');
-    this.context.metaData.setDescription('');
+    this.context.metaData.setTitle('Work | Ephyros');
+    this.context.metaData.setDescription('Ephyros\'s best case studies and success stories');
   },
   render() {
     var cases = casesData

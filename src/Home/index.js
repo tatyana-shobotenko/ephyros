@@ -11,9 +11,9 @@ module.exports = React.createClass({
     metaData: React.PropTypes.object.isRequired
   },
   componentWillMount() {
-    this.context.metaData.setTitle('Ephyros');
+    this.context.metaData.setTitle('Ephyros | We create rocking web applications for startups &amp; enterprises');
     this.context.metaData.setDescription(
-      'At Ephyros we help ambitious clients to bring powerful ideas to life');
+      'Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with ambitious clients who want to bring powerful ideas to life.');
   },
   render() {
     return (

@@ -16,9 +16,9 @@ var Team = React.createClass({
     metaData: React.PropTypes.object.isRequired
   },
   componentWillMount() {
-    this.context.metaData.setTitle('Team');
+    this.context.metaData.setTitle('Team | Ephyros');
     this.context.metaData.setDescription(
-      'Ephyros is a team of developers who invent, think over, build, and impove. ' +
+      'Ephyros is a team of developers who invent, think over, build, and improve. ' +
       'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
       'Love to create awesome web-services and applications.');
   },

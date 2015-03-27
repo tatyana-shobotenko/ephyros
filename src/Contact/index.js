@@ -11,8 +11,8 @@ var Contact = React.createClass({
     metaData: React.PropTypes.object.isRequired
   },
   componentWillMount() {
-    this.context.metaData.setTitle('Hello! Let`s talk!');
-    this.context.metaData.setDescription('');
+    this.context.metaData.setTitle('Contact us | Ephyros');
+    this.context.metaData.setDescription('Don\'t hesitate to email us today');
   },
   getInitialState() {
     return {

@@ -9,7 +9,7 @@ var Services = React.createClass({
     metaData: React.PropTypes.object.isRequired
   },
   componentWillMount() {
-    this.context.metaData.setTitle('Services');
+    this.context.metaData.setTitle('Services | Ephyros');
     this.context.metaData.setDescription(
       'Create a unique web services and web applications for the benefit of mankind.');
   },
