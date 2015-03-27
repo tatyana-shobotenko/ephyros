@@ -88,8 +88,6 @@ module.exports = function (options) {
   });
 
   function mail(form) {
-    return false;
-
     var nodemailer = require('nodemailer');
     var smtpTransport = require('nodemailer-smtp-transport');
     var transport = nodemailer.createTransport(smtpTransport({
@@ -103,7 +101,7 @@ module.exports = function (options) {
 
     var message = {
       from: 'robot@ephyros.com',
-      to: 'pm@ephyros.com',
+      to: 'hello@ephyros.com',
       subject: 'Email from Ephyros.com',
       text: ''
       + 'Name: ' + form.name + '\n'
