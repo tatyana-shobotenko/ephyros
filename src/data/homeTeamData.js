@@ -5,7 +5,7 @@ var casesData = [
     position: "Managing Director"
   },
   {
-    photo: "https://rm-content.s3.amazonaws.com/5448fb8a33271d6476cca27f/43355/upload-39800d00-6c0f-11e4-a9e9-21b68b4ae9dc.png",
+    photo: require("./team/ava/bogdan.jpg"),
     name: "Bogdan",
     position: "Technical Lead"
   },
