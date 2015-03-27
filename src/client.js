@@ -45,7 +45,7 @@ Router.run(routes, Router.HistoryLocation, (Handler) => {
           }, 0);
         }
       }
-      window.ga('send', 'pageview', window.location.toString());
+      window.ga('send', 'pageview', window.location.pathname);
     });
   });
 });
