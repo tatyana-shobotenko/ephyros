@@ -70,6 +70,7 @@ var Contact = React.createClass({
               placeholder="Name"
               name="contact[name]"
               value={this.state.name}
+              required="required"
               onChange={this.handleChange.bind(this, 'name')}
               />
           </div>
@@ -90,6 +91,7 @@ var Contact = React.createClass({
               placeholder="E-mail"
               name="contact[email]"
               value={this.state.email}
+              required="required"
               onChange={this.handleChange.bind(this, 'email')}
               />
           </div>
@@ -99,6 +101,7 @@ var Contact = React.createClass({
               placeholder="Message"
               name="contact[message]"
               value={this.state.message}
+              required="required"
               onChange={this.handleChange.bind(this, 'message')}
               />
           </div>

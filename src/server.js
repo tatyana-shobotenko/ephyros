@@ -109,7 +109,9 @@ module.exports = function (options) {
       + 'Email: ' + form.email + '\n'
       + 'Message:' + form.message + '\n'
     };
-    transport.sendMail(message);
+    if (form.name && form.email && form.message) {
+      transport.sendMail(message);
+    }
   }
 
   app.post('/-/contact', function (req, res, next) {
