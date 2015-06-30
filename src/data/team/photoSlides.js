@@ -5,6 +5,16 @@ var slides = [
     shadowModifier: ''
   },
   {
+    image: require('./slides/hike1.jpg'),
+    title: 'Conquering the summits',
+    shadowModifier: ''
+  },
+  {
+    image: require('./slides/uzh1.jpg'),
+    title: 'Life is a journey',
+    shadowModifier: ''
+  },
+  {
     image: require('./slides/bigPhoto2.jpg'),
     title: 'Team is working',
     shadowModifier: ''

@@ -53,7 +53,22 @@ var teamData = [
     photo: require('./team/ava/Sasha_M_portrait.jpg'),
     name: "Oleksandr",
     position: "Backend developer"
-  }
+  },
+  {
+    photo: require('./team/ava/Den.jpg'),
+    name: "Denis",
+    position: "Frontend developer"
+  },
+  {
+    photo: require('./team/ava/Nika.jpg'),
+    name: "Nika",
+    position: "Account manager"
+  },
+  {
+    photo: require('./team/ava/Luda.jpg'),
+    name: "Mila",
+    position: "Account manager"
+  },
 ];
 
 module.exports = teamData;
