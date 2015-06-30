@@ -51,7 +51,7 @@ var Team = React.createClass({
             <div className="about-us-text">
               <h2 className="simple-title">Who we are?</h2>
 
-              <p>Ephyros is a team of developers who invent, think over, build, and impove. We collaborate with ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and applications.</p>
+              <p>Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and applications.</p>
             </div>
             <div className="about-us-slider">
               <img src={require('../data/team/slides/teamNY.jpg')}/>
