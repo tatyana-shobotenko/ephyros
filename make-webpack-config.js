@@ -1,48 +1,10 @@
+'use strict';
+
 var path = require("path");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-function loadersByExtension(obj) {
-
-  function extsToRegExp(exts) {
-    return new RegExp("\\.(" + exts.map(function (ext) {
-      return ext.replace(/\./g, "\\.") + "(\\?.*)?";
-    }).join("|") + ")$");
-  }
-
-  var loaders = [];
-  var extensions = Object.keys(obj).map(function (key) {
-    return key.split("|");
-  }).reduce(function (arr, a) {
-    arr.push.apply(arr, a);
-    return arr;
-  }, []);
-  Object.keys(obj).forEach(function (key) {
-    var exts = key.split("|");
-    var value = obj[key];
-    var entry = {
-      extensions: exts,
-      test: extsToRegExp(exts),
-      loaders: value
-    };
-    if (Array.isArray(value)) {
-      entry.loaders = value;
-    } else if (typeof value === "string") {
-      entry.loader = value;
-    } else {
-      Object.keys(value).forEach(function (key) {
-        entry[key] = value[key];
-      });
-    }
-    loaders.push(entry);
-  });
-  return loaders;
-}
-
-
 module.exports = function (options) {
-
-
   var entry;
 
   if (options.prerender) {
@@ -56,28 +18,47 @@ module.exports = function (options) {
     };
   }
 
-  var loaders = {
-    "coffee": "coffee-redux-loader",
-    "json": "json-loader",
-    // "js": {
-    // loader: "6to5-loader",
-    // include: path.join(__dirname, "app")
-    // },
-    "json5": "json5-loader",
-    "txt": "raw-loader",
-    "png|jpg|jpeg|gif|svg": "url-loader?limit=10000",
-    "woff|woff2": "url-loader?limit=100000",
-    "ttf|eot": "file-loader",
-    "wav|mp3": "file-loader",
-    "html": "html-loader",
-    "md|markdown": ["html-loader", "markdown-loader"]
-  };
-  var stylesheetLoaders = {
-    "css": "css-loader",
-    "less": "css-loader!less-loader",
-    "styl": "css-loader!stylus-loader",
-    "scss|sass": "css-loader!sass-loader"
-  };
+  var defaultLoaders = [
+    {test: /\.coffee$/, loaders: ['coffee-redux-loader']},
+    {test: /\.json5$/, loaders: ['json5-loader']},
+    {test: /\.txt$/, loaders: ['raw-loader']},
+    {test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000']},
+    {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
+    {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
+    {test: /\.(wav|mp3)$/, loaders: ['file-loader']},
+    {test: /\.html$/, loaders: ['html-loader']},
+    {test: /\.(md|markdown)$/, loaders: ["html-loader", "markdown-loader"]},
+
+    //font awesome
+    {
+      test: /\.woff(\?v=\d+\.\d+\.\d+|\?.*)?$/,
+      loader: "url?limit=10000&mimetype=application/font-woff"
+    },
+    {
+      test: /\.woff2(\?v=\d+\.\d+\.\d+|\?.*)?$/,
+      loader: "url?limit=10000&mimetype=application/font-woff"
+    },
+    {
+      test: /\.ttf(\?v=\d+\.\d+\.\d+|\?.*)?$/,
+      loader: "url?limit=10000&mimetype=application/octet-stream"
+    },
+    {
+      test: /\.eot(\?v=\d+\.\d+\.\d+|\?.*)?$/,
+      loader: "file"
+    },
+    {
+      test: /\.svg(\?v=\d+\.\d+\.\d+|\?.*)?$/,
+      loader: "url?limit=10000&mimetype=image/svg+xml"
+    }
+  ];
+
+  var stylesheetLoaders = [
+    {test: /\.css$/, loaders: ['css-loader']},
+    {test: /\.less$/, loaders: ['css-loader!less-loader']},
+    {test: /\.styl$/, loaders: ['css-loader!stylus-loader']},
+    {test: /\.(scss|sass)$/, loaders: ['css-loader!sass-loader']}
+  ];
+
   var alias = {};
   var aliasLoader = {};
   var externals = [];
@@ -110,6 +91,15 @@ module.exports = function (options) {
           jsonStats.publicPath = publicPath;
           require("fs").writeFileSync(path.join(__dirname, "build", "stats.json"), JSON.stringify(jsonStats));
         });
+      } else {
+        this.plugin("done", function (stats) {
+          var jsonStats = stats.toJson({
+            chunkModules: true,
+            exclude: excludeFromStats
+          });
+          jsonStats.publicPath = publicPath;
+          require("fs").writeFileSync(path.join(__dirname,  "build", "prerender", "stats.json"), JSON.stringify(jsonStats));
+        });
       }
     },
     new webpack.PrefetchPlugin("react"),
@@ -118,35 +108,51 @@ module.exports = function (options) {
   if (options.prerender) {
     aliasLoader["react-proxy$"] = "react-proxy/unavailable";
     externals.push(
+      {
+        '../build/stats.json': "commonjs ../stats.json"
+      },
       /^react(\/.*)?$/,
       /^reflux(\/.*)?$/,
       "superagent",
       "async"
     );
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1}));
+    if (options.sourceMapSupport) {
+      plugins.push(
+        new webpack.BannerPlugin('require("source-map-support").install();',
+          {raw: true, entryOnly: false})
+      )
+    }
   }
   if (options.commonsChunk) {
     plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "")));
   }
 
 
-  Object.keys(stylesheetLoaders).forEach(function (ext) {
-    var loaders = stylesheetLoaders[ext];
-    if (Array.isArray(loaders)) loaders = loaders.join("!");
-    if (options.prerender) {
-      stylesheetLoaders[ext] = "null-loader";
-    } else if (options.separateStylesheet) {
-      stylesheetLoaders[ext] = ExtractTextPlugin.extract("style-loader", loaders);
-    } else {
-      stylesheetLoaders[ext] = "style-loader!" + loaders;
+  stylesheetLoaders = stylesheetLoaders.map(function (loader) {
+    if (Array.isArray(loader.loaders)) {
+      loader.loaders = loader.loaders.join("!");
     }
+    if (options.prerender) {
+      loader.loaders = "null-loader";
+    } else if (options.separateStylesheet) {
+      loader.loaders = ExtractTextPlugin.extract("style-loader", loader.loaders);
+    } else {
+      loader.loaders = "style-loader!" + loader.loaders;
+    }
+    loader.loaders = loader.loaders.split('!');
+    return loader;
   });
   if (options.separateStylesheet && !options.prerender) {
-    plugins.push(new ExtractTextPlugin("[name].css" + (options.longTermCaching ? "?[contenthash]" : "")));
+    plugins.push(new ExtractTextPlugin('[name].css' + (options.longTermCaching ? '?[contenthash]' : '')));
   }
   if (options.minimize) {
     plugins.push(
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({
         "process.env": {
@@ -160,19 +166,18 @@ module.exports = function (options) {
   return {
     entry: entry,
     output: output,
-    target: options.prerender ? "node" : "web",
+    target: options.prerender ? 'node' : 'web',
     module: {
-      loaders: [
-        {
-          test: /\.jsx?$/,
-          loaders: options.hotComponents ? ['react-hot', 'babel'] : ['babel'],
-          exclude: /node_modules/
-        },
-        {
-          test: /\.jsx$/,
-          loaders: ['babel']
-        }
-      ].concat(loadersByExtension(loaders)).concat(loadersByExtension(stylesheetLoaders))
+      loaders: []
+        .concat([
+          {
+            test: /\.jsx?$/,
+            loaders: options.hotComponents ? ['react-hot', 'babel?optional[]=runtime'] : ['babel?optional[]=runtime'],
+            exclude: /node_modules/
+          }
+        ])
+        .concat(defaultLoaders)
+        .concat(stylesheetLoaders)
     },
     devtool: options.devtool,
     debug: options.debug,
@@ -190,6 +195,7 @@ module.exports = function (options) {
     plugins: plugins,
     devServer: {
       stats: {
+        cached: false,
         exclude: excludeFromStats
       }
     }
