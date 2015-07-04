@@ -10,7 +10,7 @@ module.exports = function (options) {
   if (options.prerender) {
     prerender = require('../build/prerender/main');
   } else {
-    prerender = (requestPath, cb) => {
+    prerender = function (requestPath, cb) {
       cb();
     };
   }
