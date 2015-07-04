@@ -28,7 +28,7 @@ class Intro extends Component {
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
       visibility: 1 - hiddenHeight / elementHeight
-    })
+    });
 
   }
 
@@ -36,7 +36,7 @@ class Intro extends Component {
     return (
       <div ref="root">
         <div className="screen-intro-back2"/>
-        <div className="screen-intro-back" style={{opacity:this.state.visibility}}/>
+        <div className="screen-intro-back" style={{opacity: this.state.visibility}}/>
         <div className="screen-intro">
           <div className="center-wrapper">
             <div className="screen-intro__content">

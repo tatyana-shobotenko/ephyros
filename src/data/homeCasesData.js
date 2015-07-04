@@ -34,5 +34,5 @@ export default [
     slug: 'mario',
     tags: ['Startup', 'Marketplace', 'MVP'],
     url: 'http://mario.kz'
-  },
+  }
 ];

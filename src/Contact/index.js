@@ -32,7 +32,7 @@ const Contact = React.createClass({
         phone: this.state.phone,
         email: this.state.email,
         message: this.state.message
-      }).end((err, res)=> {
+      }).end((err)=> {
         this.setState({sent: !err, inProgress: false});
       });
     }
@@ -154,7 +154,7 @@ const Contact = React.createClass({
         <div className="c-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2544.026958261552!2d30.462808!3d50.384696000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c8e23b7e70c7%3A0xd32a1f3107ace198!2sMykhaila+Lomonosova+St%2C+54%2C+Kyiv!5e0!3m2!1sen!2sua!4v1427410249317"
-            width="100%" height="100%" frameBorder="0" style={{border:0}}></iframe>
+            width="100%" height="100%" frameBorder="0" style={{border: 0}}></iframe>
         </div>
         <BottomMenu/>
       </div>

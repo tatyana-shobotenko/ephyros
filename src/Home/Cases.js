@@ -3,8 +3,8 @@ import {Link} from 'react-router';
 
 import casesData from '../data/homeCasesData';
 
-class Cases extends Component{
-  constructor(){
+class Cases extends Component {
+  constructor() {
     super();
     this.state = {
       isTouch: false
@@ -12,8 +12,8 @@ class Cases extends Component{
   }
 
   componentDidMount() {
-    if ("ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch) {
-      this.setState({isTouch:true})
+    if ('ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch) {
+      this.setState({isTouch: true});
     }
   }
 
@@ -22,9 +22,9 @@ class Cases extends Component{
       .map((data, index)=> {
         const tags = data.tags.join(' / ');
         return (
-          <Link to={'/case#'+data.slug}
-                params={{slug:data.slug}}
-                className={'hcase'+ (data.big?' hcase_big':'')}
+          <Link to={'/case#' + data.slug}
+                params={{slug: data.slug}}
+                className={'hcase' + (data.big ? ' hcase_big' : '')}
                 key={index}>
             <div className="hcase__img">
               <img src={data.image} alt={data.name}/>

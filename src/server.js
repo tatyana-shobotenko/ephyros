@@ -1,5 +1,5 @@
-var express = require("express");
-var path = require("path");
+var express = require('express');
+var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
@@ -10,17 +10,17 @@ module.exports = function (options) {
   if (options.prerender) {
     prerender = require('../build/prerender/main');
   } else {
-    prerender = function (requestPath, cb) {
+    prerender = (requestPath, cb) => {
       cb();
-    }
+    };
   }
 
   // load bundle information from stats
-  var stats = require("../build/stats.json");
+  var stats = require('../build/stats.json');
 
   var publicPath = stats.publicPath;
 
-  var STYLE_URL = options.separateStylesheet && (publicPath + "main.css?" + stats.hash);
+  var STYLE_URL = options.separateStylesheet && (publicPath + 'main.css?' + stats.hash);
   var SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.main)[0];
   var IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
   //var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
@@ -30,12 +30,13 @@ module.exports = function (options) {
   app.use(bodyParser.urlencoded({extended: true}));
 
   // serve the static assets
-  app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public"), {
-    maxAge: "200d" // We can cache them as they include hashes
+  app.use('/_assets', express.static(path.join(__dirname, '..', 'build', 'public'), {
+    maxAge: '200d' // We can cache them as they include hashes
   }));
-  app.use("/", express.static(path.join(__dirname, "..", "public"), {}));
 
-  app.set('views', __dirname + '/templates');
+  app.use('/', express.static(path.join(__dirname, '..', 'public'), {}));
+
+  app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
 
 
@@ -48,7 +49,7 @@ module.exports = function (options) {
   //));
 
 
-  app.get("/*", function (req, res) {
+  app.get('/*', function (req, res) {
     function sendHtml(error, html) {
       if (error) {
         if (error.redirect) {
@@ -114,7 +115,7 @@ module.exports = function (options) {
     }
   }
 
-  app.post('/-/contact', function (req, res, next) {
+  app.post('/-/contact', function (req, res) {
 
     var form = req.body;
     mail(form);
@@ -123,7 +124,7 @@ module.exports = function (options) {
     res.end();
   });
 
-  app.post('/contact', function (req, res, next) {
+  app.post('/contact', function (req, res) {
 
     var form = req.body;
     mail(form);
@@ -135,6 +136,6 @@ module.exports = function (options) {
 
   var port = +(process.env.PORT || options.defaultPort || 8080);
   app.listen(port, function () {
-    console.log("Server listening on port " + port);
+    console.log('Server listening on port ' + port);
   });
 };

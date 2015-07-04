@@ -9,13 +9,16 @@
     "hot-dev-server": "webpack-dev-server --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
     "build": "webpack --config webpack-production.config.js --progress --profile --colors",
     "start-dev": "node src/server-development",
-    "start": "node src/server-production"
+    "start": "node src/server-production",
+    "lint": "eslint ./src/"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.6.15",
     "babel-loader": "^5.3.0",
     "css-loader": "^0.15.1",
+    "eslint": "^0.24.0",
+    "eslint-plugin-react": "^2.6.4",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",

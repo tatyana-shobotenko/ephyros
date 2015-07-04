@@ -15,7 +15,7 @@ export default function prerender(requestPath, cb, metaData) {
     }
   });
 
-  router.run(function (Handler, state) {
+  router.run(function (Handler) {
 
     React.withContext({
       metaData: metaData

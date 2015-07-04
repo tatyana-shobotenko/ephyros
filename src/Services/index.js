@@ -25,7 +25,7 @@ class Services extends Component {
                   <div className="service-item__desc">
                     <h2 className="service-item__title">{data.title}</h2>
 
-                    <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
+                    <div className="service-item__text" dangerouslySetInnerHTML={{__html: data.text}}/>
 
                     {data.link ? (<a className="button button_blue" href={data.link}>See An Example</a>) : null}
                   </div>
@@ -42,7 +42,7 @@ class Services extends Component {
                   <div className="service-item__desc">
                     <h2 className="service-item__title">{data.title}</h2>
 
-                    <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
+                    <div className="service-item__text" dangerouslySetInnerHTML={{__html: data.text}}/>
                     {data.link ? (<a className="button button_blue" href={data.link}>See An Example</a>) : null}
                   </div>
                   <div className="service-item__pic">

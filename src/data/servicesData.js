@@ -14,13 +14,11 @@ export default [
   {
     title: 'Consulting',
     text: require('./services/consulting.html'),
-    icon: require('./services/icon_consulting.png'),
-
+    icon: require('./services/icon_consulting.png')
   },
   {
     title: 'Support',
     text: require('./services/support.html'),
-    icon: require('./services/icon_support.png'),
-
+    icon: require('./services/icon_support.png')
   }
 ];

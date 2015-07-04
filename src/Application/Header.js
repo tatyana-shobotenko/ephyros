@@ -14,13 +14,13 @@ class Header extends Component {
   toggleMenu() {
     this.setState({
       isMenuOpen: !this.state.isMenuOpen
-    })
+    });
   }
 
   hideMenu() {
     this.setState({
       isMenuOpen: false
-    })
+    });
   }
 
   render() {
@@ -38,7 +38,7 @@ class Header extends Component {
            <div class="lang-select__current lang-select_eng"></div>
            </div>
            */}
-          <ul className={'header__nav'+ (this.state.isMenuOpen?' header__nav_opened':'')}>
+          <ul className={'header__nav' + (this.state.isMenuOpen ? ' header__nav_opened' : '')}>
             <li><Link onClick={this.hideMenu.bind(this)} to="cases">Work</Link></li>
             <li><Link onClick={this.hideMenu.bind(this)} to="services">Services</Link></li>
             <li><Link onClick={this.hideMenu.bind(this)} to="team">Team</Link></li>

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Router, {State} from 'react-router';
+import {State} from 'react-router';
 
 import casesData from '../data/casesData';
 
@@ -37,7 +37,7 @@ const Case = React.createClass({
       );
     } else {
       caseContent = (
-        <div data-not-found style={{padding:30, backgroundColor:'white', fontSize:'24px'}}>Case not found</div>
+        <div data-not-found style={{padding: 30, backgroundColor: 'white', fontSize: '24px'}}>Case not found</div>
       );
     }
     return (

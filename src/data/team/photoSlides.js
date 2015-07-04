@@ -1,4 +1,4 @@
-var slides = [
+export default [
   {
     image: require('./slides/board.jpg'),
     title: 'Ephyros inspiration board',
@@ -43,6 +43,5 @@ var slides = [
     image: require('./slides/bigPhoto1.jpg'),
     title: 'Tech lead helps developer to fix a bug',
     shadowModifier: ''
-  },
+  }
 ];
-module.exports = slides;
