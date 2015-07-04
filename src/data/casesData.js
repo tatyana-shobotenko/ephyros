@@ -1,4 +1,4 @@
-var casesData = [
+export default [
   {
     imageBig: require('./cases/photomaticBig.png'),
     name: 'Probniki',
@@ -46,5 +46,3 @@ var casesData = [
     url: 'http://mario.kz'
   },
 ];
-
-module.exports = casesData;

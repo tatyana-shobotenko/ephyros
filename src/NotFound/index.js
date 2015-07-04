@@ -1,14 +1,13 @@
-var React = require('react');
-var Link = require('react-router').Link;
-var NotFound = React.createClass({
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
+import React, {Component} from 'react';
+import {Link} from 'react-router';
+
+class NotFound extends Component {
   componentWillMount() {
     this.context.metaData.setTitle('Whoops! Page not found');
     this.context.metaData.setDescription(
       'Sorry, but the page you were trying to view does not exist.');
-  },
+  }
+
   render() {
     return (
       <div data-not-found className="error-screen">
@@ -40,5 +39,10 @@ var NotFound = React.createClass({
       </div>
     );
   }
-});
-module.exports = NotFound;
+}
+
+NotFound.contextTypes = {
+  metaData: React.PropTypes.object.isRequired
+};
+
+export default NotFound;

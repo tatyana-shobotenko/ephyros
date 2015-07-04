@@ -1,27 +1,31 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-var casesData = require('../data/homeCasesData');
+import casesData from '../data/homeCasesData';
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {
+class Cases extends Component{
+  constructor(){
+    super();
+    this.state = {
       isTouch: false
-    }
-  },
+    };
+  }
+
   componentDidMount() {
     if ("ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch) {
-      var state = this.state;
-      state.isTouch = true;
-      this.setState(state)
+      this.setState({isTouch:true})
     }
-  },
+  }
+
   render() {
-    var cases = casesData
+    const cases = casesData
       .map((data, index)=> {
-        var tags = data.tags.join(' / ');
+        const tags = data.tags.join(' / ');
         return (
-          <Link to={'/case#'+data.slug} params={{slug:data.slug}} className={'hcase'+ (data.big?' hcase_big':'')} key={index}>
+          <Link to={'/case#'+data.slug}
+                params={{slug:data.slug}}
+                className={'hcase'+ (data.big?' hcase_big':'')}
+                key={index}>
             <div className="hcase__img">
               <img src={data.image} alt={data.name}/>
             </div>
@@ -54,4 +58,6 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+}
+
+export default Cases;

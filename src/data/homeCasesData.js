@@ -1,4 +1,4 @@
-var homeCasesData = [
+export default [
   {
     big: true,
     image: require('./cases/pm_home.jpg'),
@@ -36,5 +36,3 @@ var homeCasesData = [
     url: 'http://mario.kz'
   },
 ];
-
-module.exports = homeCasesData;

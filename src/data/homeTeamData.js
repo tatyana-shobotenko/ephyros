@@ -1,4 +1,4 @@
-var hTeamData = [
+export default [
   {
     photo: require("./team/ava/pasha.png"),
     name: "Pavel",
@@ -45,5 +45,3 @@ var hTeamData = [
     position: "QA Engineer"
   }
 ];
-
-module.exports = hTeamData;

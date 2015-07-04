@@ -1,10 +1,10 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-var teamData = require('../data/homeTeamData');
+import teamData from '../data/homeTeamData';
 
 
-module.exports = React.createClass({
+class Team extends Component {
   render() {
     var members = teamData.map((member, index) => (
       <a className="hteam-member" key={index}>
@@ -41,4 +41,6 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+}
+
+export default Team;

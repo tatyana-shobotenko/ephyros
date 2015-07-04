@@ -68,6 +68,7 @@ module.exports = function (options) {
   var publicPath = options.devServer ?
     "http://localhost:2992/_assets/" :
     "/_assets/";
+
   var output = {
     path: path.join(__dirname, "build", options.prerender ? "prerender" : "public"),
     publicPath: publicPath,

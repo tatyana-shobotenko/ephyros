@@ -1,6 +1,6 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-module.exports = React.createClass({
+class Contact extends Component {
   render() {
     return (
       <div className="screen-epilogue">
@@ -14,4 +14,6 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+}
+
+export default Contact;

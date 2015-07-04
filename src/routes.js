@@ -1,19 +1,25 @@
-var React = require('react');
-var Router = require("react-router");
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
-var NotFoundRoute = Router.NotFoundRoute;
-var Redirect = Router.Redirect;
+import React from 'react';
+import Router from 'react-router';
+const {Route, DefaultRoute, NotFoundRoute, Redirect} = Router;
 
-module.exports = [
-  <Route name="app" path="/" handler={require("./Application")}>
-    <Route name="contact" path="/contact" handler={require("./Contact")}/>
-    <Route name="services" path="/services" handler={require("./Services")}/>
-    <Route name="team" path="/team" handler={require("./Team")}/>
-    <Route name="case" path="/case/:slug" handler={require("./Case")}/>
+import NotFound from './NotFound';
+import Home from './Home';
+import Cases from './Cases';
+import Case from './Case';
+import Team from './Team';
+import Services from './Services';
+import Contact from './Contact';
+import Application from './Application';
+
+export default [
+  <Route name="app" path="/" handler={Application}>
+    <Route name="contact" path="/contact" handler={Contact}/>
+    <Route name="services" path="/services" handler={Services}/>
+    <Route name="team" path="/team" handler={Team}/>
+    <Route name="case" path="/case/:slug" handler={Case}/>
     <Redirect from="/case/" to="/case"/>
-    <Route name="cases" path="/case" handler={require("./Cases")}/>
-    <DefaultRoute handler={require("./Home")}/>
+    <Route name="cases" path="/case" handler={Cases}/>
+    <DefaultRoute handler={Home}/>
   </Route>,
-  <NotFoundRoute handler={require("./NotFound")}/>
+  <NotFoundRoute handler={NotFound}/>
 ];

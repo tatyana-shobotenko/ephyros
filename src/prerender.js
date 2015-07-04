@@ -1,11 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var routes = require('./routes');
+import React from 'react';
+import Router from 'react-router';
+import routes from './routes';
 
+export default function prerender(requestPath, cb, metaData) {
 
-function prerender(requestPath, cb, metaData) {
-
-  var router = Router.create({
+  const router = Router.create({
     routes: routes,
     location: requestPath,
     onAbort: function (redirect) {
@@ -18,16 +17,13 @@ function prerender(requestPath, cb, metaData) {
 
   router.run(function (Handler, state) {
 
-
     React.withContext({
       metaData: metaData
     }, ()=> {
-      var virtualDom = React.createFactory(Handler)({});
-      var html = React.renderToString(virtualDom);
+      const virtualDom = React.createFactory(Handler)({});
+      const html = React.renderToString(virtualDom);
       cb(null, html);
     });
 
   });
 }
-
-module.exports = prerender;

@@ -1,6 +1,8 @@
-var React = require('react');
+'use strict';
 
-var Footer = React.createClass({
+import React, {Component} from 'react';
+
+class Footer extends Component {
   render() {
     return (
       <div className="footer">
@@ -45,5 +47,6 @@ var Footer = React.createClass({
       </div>
     );
   }
-});
-module.exports = Footer;
+}
+
+export default Footer;

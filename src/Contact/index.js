@@ -1,11 +1,11 @@
-"use strict";
-var React = require('react');
-var Link = require('react-router').Link;
-var BottomMenu = require('../components/BottomMenu');
-var {State} = require('react-router');
-var request = require('superagent');
+'use strict';
+import React from 'react';
+import {Link} from 'react-router';
+import BottomMenu from '../components/BottomMenu';
+import {State} from 'react-router';
+import request from 'superagent';
 
-var Contact = React.createClass({
+const Contact = React.createClass({
   mixins: [State],
   contextTypes: {
     metaData: React.PropTypes.object.isRequired
@@ -33,7 +33,6 @@ var Contact = React.createClass({
         email: this.state.email,
         message: this.state.message
       }).end((err, res)=> {
-
         this.setState({sent: !err, inProgress: false});
       });
     }
@@ -162,4 +161,5 @@ var Contact = React.createClass({
     );
   }
 });
-module.exports = Contact;
+
+export default Contact;

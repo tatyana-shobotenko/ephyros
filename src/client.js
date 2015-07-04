@@ -1,18 +1,18 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import Router from 'react-router';
 
-var routes = require('./routes');
-var $ = require('jquery');
+import routes from './routes';
+import $ from 'jquery';
 
-require('./styles/main.css');
-require('./styles/icons.css');
+import './styles/main.css';
+import './styles/icons.css';
 
 (function (i, s, o, g, r, a, m) {
   i.GoogleAnalyticsObject = r;
   i[r] = i[r] || function () {
-    (i[r].q = i[r].q || []).push(arguments);
-  };
-  i[r].l = +new Date();
+      (i[r].q = i[r].q || []).push(arguments);
+    };
+  i[r].l = Date.now();
   a = s.createElement(o);
   m = s.getElementsByTagName(o)[0];
   a.async = 1;
@@ -35,9 +35,9 @@ Router.run(routes, Router.HistoryLocation, (Handler) => {
     }
   }, ()=> {
     React.render(<Handler/>, document.getElementById('app'), ()=> {
-      var hash = window.location.hash;
+      const hash = window.location.hash;
       if (hash) {
-        var target = $(hash);
+        let target = $(hash);
         target = target.length ? target : $('[name=' + hash.slice(1) + ']');
         if (target.length) {
           $('html,body').animate({
@@ -56,7 +56,7 @@ Router.run(routes, Router.HistoryLocation, (Handler) => {
 $(function () {
   $(document.body).on('click', 'a[href*=#]:not([href=#])', function () {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
+      let target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       if (target.length) {
         $('html,body').animate({

@@ -1,20 +1,18 @@
-var React = require('react');
-var Link = require('react-router').Link;
-var BottomMenu = require('../components/BottomMenu');
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-var servicesData = require('../data/servicesData');
+import BottomMenu from '../components/BottomMenu';
+import servicesData from '../data/servicesData';
 
-var Services = React.createClass({
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
+class Services extends Component {
   componentWillMount() {
     this.context.metaData.setTitle('Services | Ephyros');
     this.context.metaData.setDescription(
       'Create a unique web services and web applications for the benefit of mankind.');
-  },
+  }
+
   render() {
-    var services = servicesData
+    const services = servicesData
       .map((data, index)=> {
         if (index % 2) {
           return (
@@ -29,7 +27,7 @@ var Services = React.createClass({
 
                     <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
 
-                    {data.link?(<a className="button button_blue" href={data.link}>See An Example</a>):null}
+                    {data.link ? (<a className="button button_blue" href={data.link}>See An Example</a>) : null}
                   </div>
                 </div>
               </div>
@@ -38,14 +36,14 @@ var Services = React.createClass({
         }
         else {
           return (
-            <div className="service-item"  key={index}>
+            <div className="service-item" key={index}>
               <div className="center-wrapper">
                 <div className="gcontainer">
                   <div className="service-item__desc">
                     <h2 className="service-item__title">{data.title}</h2>
 
                     <div className="service-item__text" dangerouslySetInnerHTML={{__html:data.text}}/>
-                    {data.link?(<a className="button button_blue" href={data.link}>See An Example</a>):null}
+                    {data.link ? (<a className="button button_blue" href={data.link}>See An Example</a>) : null}
                   </div>
                   <div className="service-item__pic">
                     <img src={data.icon} alt={data.title}/>
@@ -56,7 +54,8 @@ var Services = React.createClass({
           );
         }
       });
-    var servicesBrief = servicesData
+
+    const servicesBrief = servicesData
       .map((data, index)=> {
         return (
           <div className="service-brief" key={index}>
@@ -67,6 +66,7 @@ var Services = React.createClass({
           </div>
         );
       });
+
     return (
       <div>
         <div className="page-header">
@@ -102,5 +102,10 @@ var Services = React.createClass({
       </div>
     );
   }
-});
-module.exports = Services;
+}
+
+Services.contextTypes = {
+  metaData: React.PropTypes.object.isRequired
+};
+
+export default Services;

@@ -1,29 +1,26 @@
-"use strict";
-var React = require('react');
+'use strict';
 
-var Link = require('react-router').Link;
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-var BottomMenu = require('../components/BottomMenu');
+import BottomMenu from '../components/BottomMenu';
+import Slides from './Slides';
 
-var teamData = require('../data/teamData');
 
-var photoSlides = require('../data/team/photoSlides');
+import teamData from '../data/teamData';
+import photoSlides from '../data/team/photoSlides';
 
-var Slides = require('./Slides');
-
-var Team = React.createClass({
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
+class Team extends Component {
   componentWillMount() {
     this.context.metaData.setTitle('Team | Ephyros');
     this.context.metaData.setDescription(
       'Ephyros is a team of developers who invent, think over, build, and improve. ' +
       'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
       'Love to create awesome web-services and applications.');
-  },
+  }
+
   render() {
-    var members = teamData.map((member, index) => (
+    const members = teamData.map((member, index) => (
       <div className="hteam-member team-member" key={index}>
         <div className="hteam-member__photo team-member__photo">
           <img src={member.photo} alt={member.name}/>
@@ -51,7 +48,9 @@ var Team = React.createClass({
             <div className="about-us-text">
               <h2 className="simple-title">Who we are?</h2>
 
-              <p>Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and applications.</p>
+              <p>Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with
+                ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and
+                applications.</p>
             </div>
             <div className="about-us-slider">
               <img src={require('../data/team/slides/teamNY.jpg')}/>
@@ -97,5 +96,10 @@ var Team = React.createClass({
       </div>
     );
   }
-});
-module.exports = Team;
+}
+
+Team.contextTypes = {
+  metaData: React.PropTypes.object.isRequired
+};
+
+export default Team;

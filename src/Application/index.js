@@ -1,10 +1,12 @@
-var React = require("react");
-var RouteHandler = require("react-router").RouteHandler;
+'use strict';
 
-var Footer = require('./Footer');
-var Header = require('./Header');
+import React, {Component} from 'react';
+import {RouteHandler} from 'react-router';
 
-var Application = React.createClass({
+import Footer from './Footer';
+import Header from './Header';
+
+class Application extends Component {
   render() {
     return (
       <div>
@@ -18,5 +20,6 @@ var Application = React.createClass({
       </div>
     );
   }
-});
-module.exports = Application;
+}
+
+export default Application;

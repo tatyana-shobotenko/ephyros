@@ -1,18 +1,16 @@
 'use strict';
 
-var React = require('react');
-var casesData = require('../data/casesData');
-var Link = require('react-router').Link;
-var BottomMenu = require('../components/BottomMenu');
+import React, {Component} from 'react';
+import casesData from '../data/casesData';
+import {Link} from 'react-router';
+import BottomMenu from '../components/BottomMenu';
 
-var CasesPage = React.createClass({
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
+class CasesPage extends Component {
   componentWillMount() {
     this.context.metaData.setTitle('Work | Ephyros');
     this.context.metaData.setDescription('Ephyros\'s best case studies and success stories');
-  },
+  }
+
   render() {
     var cases = casesData
       .map((data, index)=> {
@@ -108,5 +106,10 @@ var CasesPage = React.createClass({
       </div>
     );
   }
-});
-module.exports = CasesPage;
+}
+
+CasesPage.contextTypes = {
+  metaData: React.PropTypes.object.isRequired
+};
+
+export default CasesPage;

@@ -1,4 +1,4 @@
-var servicesData = [
+export default [
   {
     title: 'Team for startup',
     text: require('./services/team.html'),
@@ -24,5 +24,3 @@ var servicesData = [
 
   }
 ];
-
-module.exports = servicesData;

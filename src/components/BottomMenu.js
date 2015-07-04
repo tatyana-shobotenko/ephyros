@@ -1,7 +1,7 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-var BottomMenu = React.createClass({
+class BottomMenu extends Component {
   render() {
     return (
       <div className="center-wrapper">
@@ -14,5 +14,6 @@ var BottomMenu = React.createClass({
       </div>
     );
   }
-});
-module.exports = BottomMenu;
+}
+
+export default BottomMenu;

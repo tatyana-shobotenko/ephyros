@@ -1,30 +1,40 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {visibility: 1}
-  },
+class Intro extends Component {
+  constructor() {
+    super();
+    this.state = {visibility: 1};
+    this.listener = false;
+  }
+
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll);
+    const listener = this.listener = this.onScroll.bind(this);
+
+    window.addEventListener('scroll', listener);
     this.onScroll();
-  },
+  }
+
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-  },
+    if (this.listener) {
+      window.removeEventListener('scroll', this.listener);
+    }
+  }
 
   onScroll() {
-    var domNode = this.getDOMNode();
-    var elementHeight = domNode.offsetHeight;
-    var hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
+    const domNode = React.findDOMNode(this.refs.root);
+
+    const elementHeight = domNode.offsetHeight;
+    const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
       visibility: 1 - hiddenHeight / elementHeight
     })
-  },
+
+  }
 
   render() {
     return (
-      <div>
+      <div ref="root">
         <div className="screen-intro-back2"/>
         <div className="screen-intro-back" style={{opacity:this.state.visibility}}/>
         <div className="screen-intro">
@@ -52,4 +62,6 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+}
+
+export default Intro;

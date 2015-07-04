@@ -1,10 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
-var State = Router.State;
+'use strict';
 
-var casesData = require('../data/casesData');
+import React from 'react';
+import Router, {State} from 'react-router';
 
-var Case = React.createClass({
+import casesData from '../data/casesData';
+
+const Case = React.createClass({
   contextTypes: {
     metaData: React.PropTypes.object.isRequired
   },
@@ -14,9 +15,9 @@ var Case = React.createClass({
     this.context.metaData.setDescription('');
   },
   mixins: [State],
-  getSelectedCase: function () {
-    var slug = this.getParams().slug;
-    var selectedCase = false;
+  getSelectedCase() {
+    const slug = this.getParams().slug;
+    let selectedCase = false;
     casesData.forEach((i) => {
       if (i.slug === slug) {
         selectedCase = i;
@@ -25,8 +26,8 @@ var Case = React.createClass({
     return selectedCase;
   },
   render() {
-    var selectedCase = this.getSelectedCase();
-    var caseContent;
+    const selectedCase = this.getSelectedCase();
+    let caseContent;
     if (selectedCase) {
       caseContent = (
         <div className="screen-case__content">
@@ -50,4 +51,5 @@ var Case = React.createClass({
     );
   }
 });
-module.exports = Case;
+
+export default Case;
