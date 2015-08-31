@@ -152,8 +152,13 @@ const Contact = React.createClass({
           </div>
         </div>
         <div className="c-map">
+          {/*
+           <iframe
+           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2544.026958261552!2d30.462808!3d50.384696000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c8e23b7e70c7%3A0xd32a1f3107ace198!2sMykhaila+Lomonosova+St%2C+54%2C+Kyiv!5e0!3m2!1sen!2sua!4v1427410249317"
+           width="100%" height="100%" frameBorder="0" style={{border: 0}}></iframe>
+          */}
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2544.026958261552!2d30.462808!3d50.384696000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c8e23b7e70c7%3A0xd32a1f3107ace198!2sMykhaila+Lomonosova+St%2C+54%2C+Kyiv!5e0!3m2!1sen!2sua!4v1427410249317"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.3794374087856!2d30.48423889999998!3d50.43403270000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceeb07b5019d%3A0x2c326dd6607b1fc!2sVasylia+Lypkivskoho+St%2C+18%2C+Kyiv%2C+03035!5e0!3m2!1sen!2sua!4v1441030335180"
             width="100%" height="100%" frameBorder="0" style={{border: 0}}></iframe>
         </div>
         <BottomMenu/>
