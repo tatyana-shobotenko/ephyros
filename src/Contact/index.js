@@ -140,8 +140,8 @@ const Contact = React.createClass({
                   </div>
                   <div className="contacts-box__title">address</div>
                   <div>
-                    54, Lomonosova str. ,<br />
-                    Kyiv, Ukraine, 03189
+                    18 Vasylia Lypkivskoho str., <br />
+                    Kyiv, Ukraine, 03035
                   </div>
                 </div>
               </div>
