@@ -35,8 +35,8 @@ class Footer extends Component {
                   <div className="footer__contacts-inner">
                     <div className="footer__contacts__title">address</div>
                     <div>
-                      54, Lomonosova str. , <br />
-                      Kyiv, Ukraine, 03189
+                      18 Vasylia Lypkivskoho str., <br />
+                      Kyiv, Ukraine, 03035
                     </div>
                   </div>
                 </div>
