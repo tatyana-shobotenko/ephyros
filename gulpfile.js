@@ -16,7 +16,7 @@ gulp.task('styles', function () {
     .pipe(gulpIf(/\.scss$/, sass()))
     .pipe(postcss([
       // more here https://github.com/postcss/postcss
-      require('autoprefixer-core')({browsers: ['last 1 version']})
+      require('autoprefixer')({browsers: ['last 1 version']})
     ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(srcPath + '/styles'));
