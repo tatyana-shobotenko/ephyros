@@ -45,7 +45,7 @@ export default [
     position: 'QA Engineer'
   },
   {
-    photo: require('./team/ava/Sasha_P_portrait.jpg'),
+    photo: require('./team/ava/SashaP2.jpg'),
     name: 'Oleksandr',
     position: 'Backend developer'
   },
@@ -68,5 +68,15 @@ export default [
     photo: require('./team/ava/Luda.jpg'),
     name: 'Mila',
     position: 'Account manager'
+  },
+  {
+    photo: require('./team/ava/Nadia.jpg'),
+    name: 'Nadia',
+    position: 'Project manager'
+  },
+  {
+    photo: require('./team/ava/Vadim.jpg'),
+    name: 'Vadim',
+    position: 'Frontend developer'
   }
 ];

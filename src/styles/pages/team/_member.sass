@@ -9,7 +9,8 @@
   z-index: 4
   transition: opacity linear 300ms
   border-radius: 50%
-
+  +resp(device)
+    opacity: 0
 .team-member
   overflow: visible
   &:hover
@@ -18,9 +19,12 @@
     .team-member__photo
       border-color: #ffffff
 
+
 .team-member__photo
   border: 3px solid transparent
   box-sizing: border-box
+  +resp(device)
+    border-color: #ffffff
 
 .team-member__info
   position: absolute

@@ -112,7 +112,7 @@
 
 body {
   background: #ffffff;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
   color: #222;
   font-size: 13px;
   line-height: 1.3;
@@ -132,7 +132,7 @@ p, input, button {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: normal;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif; }
+  font-family: "Roboto", Tahoma, Arial, sans-serif; }
 
 a img {
   border: none; }
@@ -293,7 +293,7 @@ ul {
   cursor: pointer;
   height: 19.6px;
   text-decoration: none;
-  transition: all linear .3s; }
+  transition: all linear 0.3s; }
   .button:hover, .button:active, .button.active {
     background: #ffffff;
     color: #333; }
@@ -304,7 +304,7 @@ ul {
 
 input.button, button.button {
   background: none;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
   height: 48px; }
 
 .button_rainbow {
@@ -378,7 +378,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
   font-weight: 100; }
   .input-text:-moz-placeholder {
     color: #a3a3a3; }
@@ -401,7 +401,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
   font-weight: 100;
   height: 100px; }
   .textarea:-moz-placeholder {
@@ -436,7 +436,7 @@ input.button, button.button {
   box-sizing: border-box;
   height: 40px;
   outline: none;
-  font-family: 'Roboto', Tahoma, Arial, sans-serif;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
   font-weight: 100; }
   .custom-select__value:-moz-placeholder {
     color: #a3a3a3; }
@@ -913,11 +913,9 @@ input.button, button.button {
   0% {
     -webkit-transform: translate(0);
             transform: translate(0); }
-
   50% {
     -webkit-transform: translate(0, 12px);
             transform: translate(0, 12px); }
-
   100% {
     -webkit-transform: translate(0);
             transform: translate(0); } }
@@ -926,11 +924,9 @@ input.button, button.button {
   0% {
     -webkit-transform: translate(0);
             transform: translate(0); }
-
   50% {
     -webkit-transform: translate(0, 12px);
             transform: translate(0, 12px); }
-
   100% {
     -webkit-transform: translate(0);
             transform: translate(0); } }
@@ -1143,6 +1139,7 @@ input.button, button.button {
 @media only screen and (max-width: 1279px) {
   .screen-presentation__info {
     margin-left: 0; } }
+
 @media only screen and (max-width: 479px) {
   .screen-presentation__info {
     text-align: center; } }
@@ -1150,6 +1147,7 @@ input.button, button.button {
 @media only screen and (min-width: 480px) and (max-width: 749px) {
   .screen-presentation__pic-wrap {
     overflow: hidden; } }
+
 @media only screen and (max-width: 479px) {
   .screen-presentation__pic-wrap {
     margin-top: 30px;
@@ -1594,6 +1592,9 @@ input.button, button.button {
   z-index: 4;
   transition: opacity linear 300ms;
   border-radius: 50%; }
+  @media only screen and (max-width: 1279px) {
+    .photo-overlay {
+      opacity: 0; } }
 
 .team-member {
   overflow: visible; }
@@ -1605,6 +1606,9 @@ input.button, button.button {
 .team-member__photo {
   border: 3px solid transparent;
   box-sizing: border-box; }
+  @media only screen and (max-width: 1279px) {
+    .team-member__photo {
+      border-color: #ffffff; } }
 
 .team-member__info {
   position: absolute;
@@ -1694,10 +1698,13 @@ input.button, button.button {
 
 .photo-screen__slide .photo-screen__photo {
   opacity: 0; }
+
 .photo-screen__slide .photo-screen__shadow {
   opacity: 0; }
+
 .photo-screen__slide.active .photo-screen__photo {
   opacity: 1; }
+
 .photo-screen__slide.active .photo-screen__shadow {
   opacity: 1; }
 
@@ -1779,6 +1786,5 @@ input.button, button.button {
 
 .mr-20 {
   margin-right: 20px; }
-
 
 /*# sourceMappingURL=main.css.map */

@@ -35,13 +35,13 @@ export default [
     position: 'Backend Developer'
   },
   {
-    photo: require('./team/ava/vica.jpg'),
-    name: 'Victoria',
-    position: 'Frontend Developer'
-  },
-  {
     photo: require('./team/ava/vania.jpg'),
     name: 'Ivan',
     position: 'QA Engineer'
+  },
+  {
+    photo: require('./team/ava/SashaP2.jpg'),
+    name: 'Oleksandr',
+    position: 'Backend developer'
   }
 ];
