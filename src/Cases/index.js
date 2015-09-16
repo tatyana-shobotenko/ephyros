@@ -19,7 +19,7 @@ class CasesPage extends Component {
         if (data.keyObj) {
           keyObj = (
             <ul>
-              {data.keyObj.map((text, index)=>(<li key={index}>{text}</li>))}
+              {data.keyObj.map((text, objIndex)=>(<li key={objIndex}>{text}</li>))}
             </ul>
           );
         }
