@@ -71,7 +71,7 @@ export default [
   },
   {
     photo: require('./team/ava/Nadia.jpg'),
-    name: 'Nadia',
+    name: 'Nadiia',
     position: 'Project manager'
   },
   {
