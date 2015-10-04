@@ -70,7 +70,7 @@ export default [
     position: 'Account manager'
   },
   {
-    photo: require('./team/ava/Andrii.png'),
+    photo: require('./team/ava/andrii.png'),
     name: 'Anrii',
     position: 'Backend developer'
   },
