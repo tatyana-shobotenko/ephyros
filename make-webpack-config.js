@@ -53,10 +53,11 @@ module.exports = function (options) {
   ];
 
   var stylesheetLoaders = [
-    {test: /\.css$/, loaders: ['css-loader']},
-    {test: /\.less$/, loaders: ['css-loader!less-loader']},
-    {test: /\.styl$/, loaders: ['css-loader!stylus-loader']},
-    {test: /\.(scss|sass)$/, loaders: ['css-loader!sass-loader']}
+    {test: /\.css$/, loaders: ['css-loader!postcss-loader']},
+    {test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader']},
+    {test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader']},
+    {test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap']},
+    {test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax']}
   ];
 
   var alias = {};
@@ -179,6 +180,9 @@ module.exports = function (options) {
         ])
         .concat(defaultLoaders)
         .concat(stylesheetLoaders)
+    },
+    postcss: function () {
+      return [require('autoprefixer')({browsers: ['last 1 version']})];
     },
     devtool: options.devtool,
     debug: options.debug,

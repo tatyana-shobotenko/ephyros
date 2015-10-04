@@ -4,8 +4,8 @@ import Router from 'react-router';
 import routes from './routes';
 import $ from 'jquery';
 
-import './styles/main.css';
-import './styles/icons.css';
+import './styles/main.sass';
+import './styles/icons.scss';
 
 (function (i, s, o, g, r, a, m) {
   i.GoogleAnalyticsObject = r;

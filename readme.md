@@ -4,13 +4,12 @@ ephyros.com next version
 requirements:
 
 1. nodejs
-2. compass
 
 install dependencies: `npm i`
 
 notes:
 
-for better jsx support use WebStorm 10 (EAP version: https://confluence.jetbrains.com/display/WI/WebStorm+EAP)
+for better jsx support use latest IDE version
 
 ## Development server
 
