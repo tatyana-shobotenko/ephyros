@@ -37,7 +37,7 @@ class ReadyMag extends Component {
 }
 
 ReadyMag.propTypes = {
-  id: React.propTypes.any.isRequired
+  id: React.PropTypes.any.isRequired
 };
 
 export default ReadyMag;

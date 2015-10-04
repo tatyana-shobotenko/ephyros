@@ -45,7 +45,7 @@ class Slides extends Component {
 }
 
 Slides.propTypes = {
-  slides: React.PropsTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired
 };
 
 export default Slides;
