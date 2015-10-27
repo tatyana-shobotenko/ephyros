@@ -1,9 +1,7 @@
-'use strict';
-
 import React, {Component} from 'react';
-import casesData from '../data/casesData';
+import casesData from './data/casesData';
 import {Link} from 'react-router';
-import BottomMenu from '../components/BottomMenu';
+import BottomMenu from './BottomMenu';
 
 class CasesPage extends Component {
   componentWillMount() {

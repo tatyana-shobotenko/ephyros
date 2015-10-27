@@ -1,9 +1,8 @@
 import React from 'react';
-import Router from 'react-router';
-const {Route, DefaultRoute, NotFoundRoute, Redirect} = Router;
+import Router, {Route, DefaultRoute, NotFoundRoute, Redirect} from 'react-router';
 
 import NotFound from './NotFound';
-import Home from './Home';
+import Home from './Home/index';
 import Cases from './Cases';
 import Case from './Case';
 import Team from './Team';

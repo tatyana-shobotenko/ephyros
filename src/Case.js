@@ -1,9 +1,7 @@
-'use strict';
-
 import React from 'react';
 import {State} from 'react-router';
 
-import casesData from '../data/casesData';
+import casesData from './data/casesData';
 
 const Case = React.createClass({
   contextTypes: {

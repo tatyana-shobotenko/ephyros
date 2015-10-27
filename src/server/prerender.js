@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from 'react-router';
-import routes from './routes';
+import routes from '../routes';
 
 export default function prerender(requestPath, cb, metaData) {
 

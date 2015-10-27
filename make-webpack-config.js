@@ -9,12 +9,13 @@ module.exports = function (options) {
 
   if (options.prerender) {
     entry = {
-      main: "./src/prerender"
+      dev: './src/server/server-development',
+      prod: './src/server/server-production'
     };
   } else {
     entry = {
-      main: "./src/client",
-      ie: "./src/ie"
+      main: './src/client/index',
+      ie: './src/client/ie'
     };
   }
 
@@ -71,7 +72,7 @@ module.exports = function (options) {
     "/_assets/";
 
   var output = {
-    path: path.join(__dirname, "build", options.prerender ? "prerender" : "public"),
+    path: path.join(__dirname, "build", options.prerender ? "server" : "public"),
     publicPath: publicPath,
     filename: "[name].js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
     chunkFilename: (options.devServer ? "[id].js" : "[name].js") + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
@@ -100,7 +101,7 @@ module.exports = function (options) {
             exclude: excludeFromStats
           });
           jsonStats.publicPath = publicPath;
-          require("fs").writeFileSync(path.join(__dirname,  "build", "prerender", "stats.json"), JSON.stringify(jsonStats));
+          require("fs").writeFileSync(path.join(__dirname,  "build", "server", "stats.json"), JSON.stringify(jsonStats));
         });
       }
     },
@@ -115,6 +116,10 @@ module.exports = function (options) {
       },
       /^react(\/.*)?$/,
       /^reflux(\/.*)?$/,
+      "body-parser",
+      "express",
+      "nodemailer",
+      "nodemailer-smtp-transport",
       "superagent",
       "async"
     );

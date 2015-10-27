@@ -1,14 +1,12 @@
-'use strict';
-
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-import BottomMenu from '../components/BottomMenu';
-import Slides from './Slides';
+import BottomMenu from './BottomMenu';
+import TeamSlides from './TeamSlides';
 
 
-import teamData from '../data/teamData';
-import photoSlides from '../data/team/photoSlides';
+import teamData from './data/teamData';
+import photoSlides from './data/team/photoSlides';
 
 class Team extends Component {
   componentWillMount() {
@@ -53,7 +51,7 @@ class Team extends Component {
                 applications.</p>
             </div>
             <div className="about-us-slider">
-              <img src={require('../data/team/slides/teamNY.jpg')}/>
+              <img src={require('./data/team/slides/teamNY.jpg')}/>
               {
                 //<div className="about-us-slider__page active"/>
                 //<div className="about-us-slider__page"/>

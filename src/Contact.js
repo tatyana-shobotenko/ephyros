@@ -1,7 +1,6 @@
-'use strict';
 import React from 'react';
 import {Link} from 'react-router';
-import BottomMenu from '../components/BottomMenu';
+import BottomMenu from './BottomMenu';
 import {State} from 'react-router';
 import request from 'superagent';
 

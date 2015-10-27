@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-import BottomMenu from '../components/BottomMenu';
-import servicesData from '../data/servicesData';
+import BottomMenu from './BottomMenu';
+import servicesData from './data/servicesData';
 
 class Services extends Component {
   componentWillMount() {

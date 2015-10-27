@@ -8,7 +8,7 @@ module.exports = function (options) {
 
   var prerender;
   if (options.prerender) {
-    prerender = require('../build/prerender/main');
+    prerender = require('./prerender');
   } else {
     prerender = function (requestPath, cb) {
       cb();
@@ -29,14 +29,14 @@ module.exports = function (options) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
 
-  // serve the static assets
-  app.use('/_assets', express.static(path.join(__dirname, '..', 'build', 'public'), {
+  app.use('/_assets', express.static(path.join('build', 'public'), {
     maxAge: '200d' // We can cache them as they include hashes
   }));
 
-  app.use('/', express.static(path.join(__dirname, '..', 'public'), {}));
+  app.use('/', express.static(path.join('public'), {}));
 
-  app.set('views', path.join(__dirname, 'templates'));
+  app.set('views', path.join('src', 'server', 'templates'));
+  //app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
 
 
