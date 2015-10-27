@@ -6,22 +6,16 @@ var bodyParser = require('body-parser');
 
 module.exports = function (options) {
 
-  var prerender;
-  if (options.prerender) {
-    prerender = require('./prerender');
-  } else {
-    prerender = function (requestPath, cb) {
-      cb();
-    };
-  }
+  var prerender = options.prerender;
 
   // load bundle information from stats
   var stats = require('../build/stats.json');
 
   var publicPath = stats.publicPath;
 
-  var STYLE_URL = options.separateStylesheet && (publicPath + 'main.css?' + stats.hash);
-  var SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.main)[0];
+  var mainArr = [].concat(stats.assetsByChunkName.main);
+  const STYLE_URL = mainArr.length > 1 ? publicPath + mainArr[1] : false;
+  var SCRIPT_URL = publicPath + mainArr[0];
   var IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
   //var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
