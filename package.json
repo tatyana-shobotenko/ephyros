@@ -5,12 +5,13 @@
   },
   "main": "app/app.js",
   "scripts": {
-    "dev-server": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --port 2992 --inline",
-    "hot-dev-server": "webpack-dev-server --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "webpack --config webpack-production.config.js --progress --profile --colors",
-    "start-dev": "node build/server/dev",
-    "start": "node build/server/prod",
-    "lint": "eslint ./src/"
+    "dev-server": "babel-node -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --colors --port 2992 --inline",
+    "hot-dev-server": "babel-node -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
+    "build": "babel-node -- ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js --progress --profile --colors",
+    "lint": "eslint ./src/",
+    "watch-server": "babel-node -- ./node_modules/webpack/bin/webpack.js --watch --config webpack-watch-server.config --progress --profile --colors",
+    "start-dev": "pm2-dev ./build/server/dev.js",
+    "start": "pm2-dev ./build/server/prod.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.1",
@@ -28,6 +29,7 @@
     "react-hot-loader": "^1.2.7",
     "react-proxy-loader": "^0.3.4",
     "sass-loader": "^3.1.1",
+    "source-map-support": "^0.3.3",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.10.1",

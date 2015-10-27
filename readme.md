@@ -18,11 +18,14 @@ start the webpack-dev-server:
 
 `npm run dev-server`
 
-wait for the first compilation is successful
-in another terminal/console
-start the node.js server in development mode
+and watcher for server script
 
-`npm run start-dev`
+`npm run watch-server`
+
+start server
+
+- `npm run start-dev` (clientside only rendering)
+- `npm run start` (with server side rendering)
 
 open this url in your browser
 
@@ -35,7 +38,7 @@ It automatically recompiles and refreshes the page when files are changed.
 Also check the [webpack-dev-server documentation](http://webpack.github.io/docs/webpack-dev-server.html).
 
 
-## Hot Module Replacement development server
+## Hot Module Replacement development server (not tested and likely not working)
 
 start the webpack-dev-server in HMR mode
 `npm run hot-dev-server`
@@ -66,7 +69,8 @@ build the client bundle and the prerendering bundle
 
 start the node.js server in production mode
 
-`npm run start`
+`node ./build/server/prod` (isomorphic rendering)
+`node ./build/server/dev` (SPA)
 
 open this url in your browser
 
@@ -74,7 +78,7 @@ http://localhost:8080/
 
 The configuration is `webpack-production.config.js`.
 
-The production setting builds two configurations: one for the client (`build/public`) and one for the serverside prerendering (`build/prerender`).
+The production setting builds two configurations: one for the client (`build/public`) and one for the serverside prerendering (`build/server`).
 
 
 ## Legacy static assets

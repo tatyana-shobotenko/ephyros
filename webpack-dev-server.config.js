@@ -1,5 +1,6 @@
-module.exports = require("./make-webpack-config")({
+import makeWebpackConfig from './make-webpack-config';
+export default makeWebpackConfig({
   devServer: true,
-  devtool: "eval",
+  devtool: 'inline-source-map', // eval
   debug: true
 });
