@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 import BottomMenu from './BottomMenu';
-import TeamSlides from './TeamSlides';
+import Slides from './TeamSlides';
 
 
 import teamData from './data/teamData';
