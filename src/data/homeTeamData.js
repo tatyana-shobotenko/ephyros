@@ -1,6 +1,6 @@
 export default [
   {
-    photo: require('./team/ava_s/pasha.png'),
+    photo: require('./team/ava_s/pasha.jpg'),
     name: 'Pavel',
     position: 'Managing Director'
   },
