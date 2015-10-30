@@ -50,8 +50,16 @@ class Intro extends Component {
               </p>
 
               <div className="button-group">
-                <a href="#presentation" className="button button-group__item">Presentation</a>
-                <Link to="services" className="button button-group__item">Services</Link>
+                <a href="#presentation"
+                   className="button button-group__item"
+                   onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
+                  Presentation
+                </a>
+                <Link to="services"
+                      className="button button-group__item"
+                      onClick={()=>{window.gae('mainpage', 'click', 'services', 25)}}>
+                  Services
+                </Link>
               </div>
             </div>
           </div>

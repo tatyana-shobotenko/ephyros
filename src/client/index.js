@@ -21,6 +21,10 @@ import '../styles/icons.scss';
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 window.ga('create', 'UA-40296016-1', 'auto');
 
+window.gae = function (eventCategory, eventAction, eventLabel, eventValue, fieldsObject) {
+  window.ga('send', 'event', eventCategory, eventAction, eventLabel, eventValue, fieldsObject);
+};
+
 Router.run(routes, Router.HistoryLocation, (Handler) => {
   React.withContext({
     metaData: {
@@ -60,7 +64,7 @@ $(function () {
         $('html,body').animate({
           scrollTop: target.offset().top
         }, 400);
-        return false;
+        //return false;
       }
     }
   });

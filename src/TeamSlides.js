@@ -9,6 +9,8 @@ class Slides extends Component {
   }
 
   nextSlide() {
+
+    window.gae('team', 'swipe', `arrows`, 5);
     this.setState({
       activeSlide: (this.state.activeSlide + 1) % this.props.slides.length
     });

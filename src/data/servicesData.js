@@ -3,13 +3,15 @@ export default [
     title: 'Team for startup',
     text: require('./services/team.html'),
     icon: require('./services/icon_team.png'),
-    link: '/case#probniki'
+    link: '/case#probniki',
+    slug: 'startup_team'
   },
   {
     title: 'Web development',
     text: require('./services/web-dev.html'),
     icon: require('./services/icon_web-dev.png'),
-    link: '/case#diamond-style'
+    link: '/case#diamond-style',
+    slug: 'web_dev'
   },
   {
     title: 'Consulting',
