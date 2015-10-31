@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import nodemailer from'nodemailer';
 
 const app = express();
 
@@ -16,7 +17,6 @@ export default function(options) {
   const SCRIPT_URL = publicPath + mainArr[0];
   const IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
   // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
-
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
@@ -68,7 +68,6 @@ export default function(options) {
   });
 
   function mail(form) {
-    const nodemailer = require('nodemailer');
     const transport = nodemailer.createTransport({
       host: 'localhost',
       port: 25,
