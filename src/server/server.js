@@ -44,7 +44,7 @@ module.exports = function (options) {
 
 
   app.get('/*', function (req, res) {
-    function sendHtml(error, html) {
+    function sendHtml(error, {html, meta}) {
       if (error) {
         if (error.redirect) {
           res.writeHead(303, {'Location': error.redirect});
@@ -58,8 +58,8 @@ module.exports = function (options) {
         res.status(notFound ? 404 : 200);
         res.render('html', {
           appHtml: html,
-          title: metaData.title,
-          description: metaData.description,
+          title: meta.title,
+          description: meta.description,
           scriptsUrl: SCRIPT_URL,
           ieScriptsUrl: IE_SCRIPT_URL,
           stylesUrl: STYLE_URL
@@ -67,18 +67,7 @@ module.exports = function (options) {
       }
     }
 
-    var metaData = {
-      title: 'Ephyros',
-      description: '',
-      setTitle: function (title) {
-        this.title = title;
-      },
-      setDescription: function (description) {
-        this.description = description;
-      }
-    };
-
-    prerender(req.path, sendHtml, metaData);
+    prerender(req.path, sendHtml);
 
   });
 
