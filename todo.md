@@ -1,8 +1,5 @@
 ## TODO
 
-1. handle navigate actions
-  (?) router or history
-  
 2. Change handler format, split components into:
   - meta 
   - controller (rx)

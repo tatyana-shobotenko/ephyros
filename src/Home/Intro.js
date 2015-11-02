@@ -50,11 +50,13 @@ class Intro extends Component {
               </p>
 
               <div className="button-group">
-                <a href="#presentation"
+                <Link
+                  route="home"
+                  hash="presentation"
                    className="button button-group__item"
                    onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
                   Presentation
-                </a>
+                </Link>
                 <Link route="services"
                       className="button button-group__item"
                       onClick={()=>{window.gae('mainpage', 'click', 'services', 25)}}>
