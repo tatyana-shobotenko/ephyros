@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Link from './router/Link';
+import Link from './../router/Link';
 
-import BottomMenu from './BottomMenu';
+import BottomMenu from './../views/BottomMenu';
 import Slides from './TeamSlides';
 
-import Layout from './Layout';
+import Layout from './../views/Layout';
 
-import teamData from './data/teamData';
-import photoSlides from './data/team/photoSlides';
+import teamData from './../data/teamData';
+import photoSlides from './../data/team/photoSlides';
 
 class Team extends Component {
   componentWillMount() {
@@ -52,7 +52,7 @@ class Team extends Component {
                 applications.</p>
             </div>
             <div className="about-us-slider">
-              <img src={require('./data/team/slides/teamNY.jpg')}/>
+              <img src={require('./../data/team/slides/teamNY.jpg')}/>
               {
                 //<div className="about-us-slider__page active"/>
                 //<div className="about-us-slider__page"/>

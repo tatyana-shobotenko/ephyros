@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import casesData from './data/casesData';
-import Link from './router/Link';
-import BottomMenu from './BottomMenu';
-import Layout from './Layout';
+import casesData from './../data/casesData';
+import Link from './../router/Link';
+import BottomMenu from './../views/BottomMenu';
+import Layout from './../views/Layout';
 
 class CasesPage extends Component {
   componentWillMount() {

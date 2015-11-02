@@ -1,9 +1,9 @@
 import React from 'react';
-import Link from './router/Link';
-import BottomMenu from './BottomMenu';
+import Link from './../router/Link';
+import BottomMenu from './../views/BottomMenu';
 import request from 'superagent';
 
-import Layout from './Layout';
+import Layout from './../views/Layout';
 
 const Contact = React.createClass({
   contextTypes: {

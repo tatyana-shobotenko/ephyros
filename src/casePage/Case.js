@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Layout from './Layout';
+import Layout from './../views/Layout';
 
-import casesData from './data/casesData';
+import casesData from './../data/casesData';
 
 const Case = React.createClass({
   contextTypes: {

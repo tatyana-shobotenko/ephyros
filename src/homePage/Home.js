@@ -4,7 +4,7 @@ import Presentation from './Presentation';
 import Team from './Team';
 import Contact from './Contact';
 import Intro from './Intro';
-import Layout from '../Layout';
+import Layout from '../views/Layout';
 
 
 class Home extends Component {

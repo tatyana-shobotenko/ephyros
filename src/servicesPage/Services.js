@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Link from './router/Link';
+import Link from './../router/Link';
 
-import BottomMenu from './BottomMenu';
-import servicesData from './data/servicesData';
+import BottomMenu from './../views/BottomMenu';
+import servicesData from './../data/servicesData';
 
-import Layout from './Layout';
+import Layout from './../views/Layout';
 
 class Services extends Component {
   componentWillMount() {
