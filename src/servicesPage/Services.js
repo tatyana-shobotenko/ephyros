@@ -7,12 +7,6 @@ import servicesData from './../data/servicesData';
 import Layout from './../views/Layout';
 
 class Services extends Component {
-  componentWillMount() {
-    this.context.metaData.setTitle('Services | Ephyros');
-    this.context.metaData.setDescription(
-      'Create a unique web services and web applications for the benefit of mankind.');
-  }
-
   render() {
     const services = servicesData
       .map((data, index)=> {
@@ -112,9 +106,5 @@ class Services extends Component {
     );
   }
 }
-
-Services.contextTypes = {
-  metaData: React.PropTypes.object.isRequired
-};
 
 export default Services;

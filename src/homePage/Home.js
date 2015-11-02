@@ -8,31 +8,21 @@ import Layout from '../views/Layout';
 
 
 class Home extends Component {
-  componentWillMount() {
-    this.context.metaData.setTitle('Ephyros | We create rocking web applications for startups &amp; enterprises');
-    this.context.metaData.setDescription(
-      'Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with ambitious clients who want to bring powerful ideas to life.');
-  }
-
   render() {
     return (
       <Layout>
         <Intro/>
-        <a name="cases"></a>
+        <a name="cases"/>
         <Cases/>
-        <a name="presentation"></a>
+        <a name="presentation"/>
         <Presentation/>
-        <a name="team"></a>
+        <a name="team"/>
         <Team/>
-        <a name="contact"></a>
+        <a name="contact"/>
         <Contact/>
       </Layout>
     );
   }
 }
-
-Home.contextTypes = {
-  metaData: React.PropTypes.object.isRequired
-};
 
 export default Home;

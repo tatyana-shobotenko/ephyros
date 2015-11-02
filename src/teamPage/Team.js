@@ -10,14 +10,6 @@ import teamData from './../data/teamData';
 import photoSlides from './../data/team/photoSlides';
 
 class Team extends Component {
-  componentWillMount() {
-    this.context.metaData.setTitle('Team | Ephyros');
-    this.context.metaData.setDescription(
-      'Ephyros is a team of developers who invent, think over, build, and improve. ' +
-      'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
-      'Love to create awesome web-services and applications.');
-  }
-
   render() {
     const members = teamData.map((member, index) => (
       <div className="hteam-member team-member" key={index}>
@@ -96,9 +88,5 @@ class Team extends Component {
     );
   }
 }
-
-Team.contextTypes = {
-  metaData: React.PropTypes.object.isRequired
-};
 
 export default Team;

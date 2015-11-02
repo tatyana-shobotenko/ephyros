@@ -1,15 +1,6 @@
 ## TODO
 
-2. Change handler format, split components into:
-  - meta 
-  - controller (rx)
-  - view
-  
-  (params)->{meta$, controller$}
-
 3. Server side rendering
-
-4. File structure reorganisation
 5. React 0.14
 6. Better hash handling
 7. Imitate browser scroll behaviour

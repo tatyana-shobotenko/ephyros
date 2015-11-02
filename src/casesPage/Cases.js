@@ -5,10 +5,6 @@ import BottomMenu from './../views/BottomMenu';
 import Layout from './../views/Layout';
 
 class CasesPage extends Component {
-  componentWillMount() {
-    this.context.metaData.setTitle('Work | Ephyros');
-    this.context.metaData.setDescription('Ephyros\'s best case studies and success stories');
-  }
 
   render() {
     var cases = casesData
@@ -43,7 +39,7 @@ class CasesPage extends Component {
                       href={data.url}
                       target="_blank"
                       rel="nofollow"
-                      >
+                    >
                       {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
                     </a>
 
@@ -79,7 +75,7 @@ class CasesPage extends Component {
                       target="_blank"
                       rel="nofollow"
                       onClick={()=>{window.gae('works', 'click', `work_${data.slug}`, 30)}}
-                      >
+                    >
                       {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
                     </a>
                   </div>
@@ -107,9 +103,5 @@ class CasesPage extends Component {
     );
   }
 }
-
-CasesPage.contextTypes = {
-  metaData: React.PropTypes.object.isRequired
-};
 
 export default CasesPage;

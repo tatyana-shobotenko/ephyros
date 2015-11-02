@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 import Link from './../router/Link';
 
 class NotFound extends Component {
-  componentWillMount() {
-    this.context.metaData.setTitle('Whoops! Page not found');
-    this.context.metaData.setDescription(
-      'Sorry, but the page you were trying to view does not exist.');
-  }
-
   render() {
     return (
       <div data-not-found className="error-screen">
@@ -40,9 +34,5 @@ class NotFound extends Component {
     );
   }
 }
-
-NotFound.contextTypes = {
-  metaData: React.PropTypes.object.isRequired
-};
 
 export default NotFound;

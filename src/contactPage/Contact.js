@@ -6,13 +6,6 @@ import request from 'superagent';
 import Layout from './../views/Layout';
 
 const Contact = React.createClass({
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
-  componentWillMount() {
-    this.context.metaData.setTitle('Contact us | Ephyros');
-    this.context.metaData.setDescription('Don\'t hesitate to email us today');
-  },
   getInitialState() {
     return {
       sent: false, //todo: 'sent' in this.getQuery(),
