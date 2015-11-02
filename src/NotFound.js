@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from './router/Link';
 
 class NotFound extends Component {
   componentWillMount() {
@@ -23,11 +23,11 @@ class NotFound extends Component {
               <li>an out-of-date link</li>
             </ul>
             <div className="button-group mt-50">
-              <Link to="/" className="button button-group__item">Home</Link>
-              <Link to="/case" className="button button-group__item">Work</Link>
-              <Link to="/services" className="button button-group__item">Services</Link>
-              <Link to="/team" className="button button-group__item">Team</Link>
-              <Link to="/contact" className="button button-group__item">Contact</Link>
+              <Link route="home" className="button button-group__item">Home</Link>
+              <Link route="cases" className="button button-group__item">Work</Link>
+              <Link route="services" className="button button-group__item">Services</Link>
+              <Link route="team" className="button button-group__item">Team</Link>
+              <Link route="contact" className="button button-group__item">Contact</Link>
             </div>
             <div className="mt-50">
               <a href="mailto:hello@ephyros.com" className="mr-20">hello@ephyros.com</a>

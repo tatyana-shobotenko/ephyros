@@ -48,6 +48,7 @@
   "dependencies": {
     "babel-runtime": "^5.8.29",
     "body-parser": "^1.13.1",
+    "classnames": "^2.2.0",
     "ejs": "^2.3.2",
     "es5-shim": "^4.1.15",
     "express": "^4.13.0",
@@ -56,6 +57,7 @@
     "nodemailer-smtp-transport": "^1.0.3",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
+    "rx": "^4.0.6",
     "superagent": "^1.2.0"
   }
 }

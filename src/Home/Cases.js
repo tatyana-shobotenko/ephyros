@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from '../router/Link';
 
 import casesData from '../data/homeCasesData';
 
@@ -22,8 +22,8 @@ class Cases extends Component {
       .map((data, index)=> {
         const tags = data.tags.join(' / ');
         return (
-          <Link to={'/case#' + data.slug}
-                params={{slug: data.slug}}
+          <Link route="cases"
+                hash={data.slug}
                 className={'hcase' + (data.big ? ' hcase_big' : '')}
                 onClick={()=>{window.gae('mainpage', 'click', `work_${data.slug}`, 25)}}
                 key={index}>
@@ -51,7 +51,7 @@ class Cases extends Component {
               {cases}
             </div>
             <Link
-              to="cases"
+              route="cases"
               className="button"
               onClick={()=>{window.gae('mainpage', 'click', `all_works`, 25)}}
             >

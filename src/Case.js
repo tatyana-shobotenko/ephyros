@@ -1,5 +1,6 @@
 import React from 'react';
-import {State} from 'react-router';
+
+import Layout from './Layout';
 
 import casesData from './data/casesData';
 
@@ -12,9 +13,8 @@ const Case = React.createClass({
     this.context.metaData.setTitle(selectedCase.name);
     this.context.metaData.setDescription('');
   },
-  mixins: [State],
   getSelectedCase() {
-    const slug = this.getParams().slug;
+    const slug = false;// todo: this.getParams().slug;
     let selectedCase = false;
     casesData.forEach((i) => {
       if (i.slug === slug) {
@@ -39,13 +39,13 @@ const Case = React.createClass({
       );
     }
     return (
-      <div>
+      <Layout>
         <div className="screen-case-back"></div>
         <div className="screen-case-back2"></div>
         <div className="screen-case">
           {caseContent}
         </div>
-      </div>
+      </Layout>
     );
   }
 });

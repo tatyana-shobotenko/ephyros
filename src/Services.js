@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from './router/Link';
 
 import BottomMenu from './BottomMenu';
 import servicesData from './data/servicesData';
+
+import Layout from './Layout';
 
 class Services extends Component {
   componentWillMount() {
@@ -75,11 +77,11 @@ class Services extends Component {
       });
 
     return (
-      <div>
+      <Layout>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/case" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <Link to="/team" className="page-header__nav page-header__nav_next icon-right-arrow"/>
+            <Link route="cases" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
+            <Link route="team" className="page-header__nav page-header__nav_next icon-right-arrow"/>
 
             <div className="page-header__title">Services</div>
           </div>
@@ -106,7 +108,7 @@ class Services extends Component {
           </div>
         </div>
         <BottomMenu/>
-      </div>
+      </Layout>
     );
   }
 }

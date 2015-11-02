@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {RouteHandler} from 'react-router';
 
 import Footer from './Footer';
 import Header from './Header';
 
-class Application extends Component {
+class Layout extends Component {
   render() {
     return (
       <div>
         <div className="global-wrapper">
           <Header/>
-          <RouteHandler />
+          {this.props.children}
 
           <div className="push"/>
         </div>
@@ -20,4 +19,4 @@ class Application extends Component {
   }
 }
 
-export default Application;
+export default Layout;

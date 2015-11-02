@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from '../router/Link';
 
 import teamData from '../data/homeTeamData';
 
@@ -32,7 +32,7 @@ class Team extends Component {
                 <div className="hteam-member__speciality hteam-member__speciality_future">Awesome developer...</div>
               </a>
             </div>
-            <Link to="team" className="button">All team</Link>
+            <Link route="team" className="button">All team</Link>
           </div>
         </div>
         <a className="scroll-btn scroll-btn_before-epilogue" href="#contact">

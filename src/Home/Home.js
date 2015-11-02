@@ -4,6 +4,7 @@ import Presentation from './Presentation';
 import Team from './Team';
 import Contact from './Contact';
 import Intro from './Intro';
+import Layout from '../Layout';
 
 
 class Home extends Component {
@@ -15,7 +16,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <Intro/>
         <a name="cases"></a>
         <Cases/>
@@ -25,7 +26,7 @@ class Home extends Component {
         <Team/>
         <a name="contact"></a>
         <Contact/>
-      </div>
+      </Layout>
     );
   }
 }

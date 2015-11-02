@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from './router/Link';
 
 import BottomMenu from './BottomMenu';
 import Slides from './TeamSlides';
 
+import Layout from './Layout';
 
 import teamData from './data/teamData';
 import photoSlides from './data/team/photoSlides';
@@ -32,11 +33,11 @@ class Team extends Component {
 
 
     return (
-      <div>
+      <Layout>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/services" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <Link to="/contact" className="page-header__nav page-header__nav_next icon-right-arrow"/>
+            <Link route="services" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
+            <Link route="contact" className="page-header__nav page-header__nav_next icon-right-arrow"/>
 
             <div className="page-header__title">Team</div>
           </div>
@@ -91,7 +92,7 @@ class Team extends Component {
           </div>
         </div>
         <BottomMenu/>
-      </div>
+      </Layout>
     );
   }
 }

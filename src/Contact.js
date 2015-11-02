@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router';
+import Link from './router/Link';
 import BottomMenu from './BottomMenu';
-import {State} from 'react-router';
 import request from 'superagent';
 
+import Layout from './Layout';
+
 const Contact = React.createClass({
-  mixins: [State],
   contextTypes: {
     metaData: React.PropTypes.object.isRequired
   },
@@ -15,7 +15,7 @@ const Contact = React.createClass({
   },
   getInitialState() {
     return {
-      sent: 'sent' in this.getQuery(),
+      sent: false, //todo: 'sent' in this.getQuery(),
       inProgress: false,
       name: '',
       phone: '',
@@ -117,10 +117,10 @@ const Contact = React.createClass({
     }
 
     return (
-      <div>
+      <Layout>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/team" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
+            <Link route="team" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
             <span className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
 
             <div className="page-header__title">Contact</div>
@@ -163,7 +163,7 @@ const Contact = React.createClass({
             width="100%" height="100%" frameBorder="0" style={{border: 0}}></iframe>
         </div>
         <BottomMenu/>
-      </div>
+      </Layout>
     );
   }
 });

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from '../router/Link';
 
 class Intro extends Component {
   constructor() {
@@ -55,7 +55,7 @@ class Intro extends Component {
                    onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
                   Presentation
                 </a>
-                <Link to="services"
+                <Link route="services"
                       className="button button-group__item"
                       onClick={()=>{window.gae('mainpage', 'click', 'services', 25)}}>
                   Services

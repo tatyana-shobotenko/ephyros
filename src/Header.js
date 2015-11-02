@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import Link from './router/Link';
 
 class Header extends Component {
   constructor() {
@@ -26,7 +26,7 @@ class Header extends Component {
       <div className="header header_home">
         <div className="center-wrapper">
           <div className="header__logo">
-            <Link to="/">
+            <Link route="home">
               <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros"/>
             </Link>
           </div>
@@ -37,10 +37,10 @@ class Header extends Component {
            </div>
            */}
           <ul className={'header__nav' + (this.state.isMenuOpen ? ' header__nav_opened' : '')}>
-            <li><Link onClick={this.hideMenu.bind(this)} to="cases">Work</Link></li>
-            <li><Link onClick={this.hideMenu.bind(this)} to="services">Services</Link></li>
-            <li><Link onClick={this.hideMenu.bind(this)} to="team">Team</Link></li>
-            <li><Link onClick={this.hideMenu.bind(this)} to="contact">Contact</Link></li>
+            <li><Link route="cases">Work</Link></li>
+            <li><Link route="services">Services</Link></li>
+            <li><Link route="team">Team</Link></li>
+            <li><Link route="contact">Contact</Link></li>
           </ul>
         </div>
       </div>
