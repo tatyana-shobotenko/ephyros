@@ -55,8 +55,8 @@
     "jquery": "^2.1.4",
     "nodemailer": "^1.4.0",
     "nodemailer-smtp-transport": "^1.0.3",
-    "react": "^0.14.1",
-    "react-dom": "^0.14.1",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "rx": "^4.0.6",
     "superagent": "^1.2.0"
   }

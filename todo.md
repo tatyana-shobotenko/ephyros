@@ -1,6 +1,5 @@
 ## TODO
 
-5. Why refs in react 0.14.1 not working?
 6. Better hash handling
 7. Imitate browser scroll behaviour
 

@@ -8,7 +8,6 @@ module.exports = function (options) {
 
   var prerender = options.prerender;
 
-  // load bundle information from stats
   var stats = require('../build/stats.json');
 
   var publicPath = stats.publicPath;
