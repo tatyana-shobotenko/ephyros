@@ -1,22 +1,18 @@
 ## TODO
 
+0. RxControllers
+1. data resolution
+  - pass data to controller
+4. redirects
+5. history abstraction testing 
 6. Better hash handling
 7. Imitate browser scroll behaviour
-
+8. Allow baseurl, add createHref to history
 
 ==============
 
 ## Router roadmap
 
-0. history
-    pushState()
-    replaceState()
-	createHref()
-	listen()
-	
-
-
-url -> route, params -> state update
 
 
 1. route collection
@@ -43,9 +39,3 @@ url -> route, params -> state update
 	- generate url
 	- is route active
 	- subscribe for 'route active' changes
-	
-	
-components
-	- Link
-	
-	
