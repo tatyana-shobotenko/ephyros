@@ -22,7 +22,8 @@ class Intro extends Component {
   }
 
   onScroll() {
-    const domNode = React.findDOMNode(this.refs.root);
+    //todo: refs wtf?
+    const domNode = document.getElementById('introBlock');
 
     const elementHeight = domNode.offsetHeight;
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
@@ -34,7 +35,7 @@ class Intro extends Component {
 
   render() {
     return (
-      <div ref="root">
+      <div id="introBlock">
         <div className="screen-intro-back2"/>
         <div className="screen-intro-back" style={{opacity: this.state.visibility}}/>
         <div className="screen-intro">
@@ -65,9 +66,9 @@ class Intro extends Component {
               </div>
             </div>
           </div>
-          <a className="scroll-btn scroll-btn_before-cases" href="#cases">
+          <Link className="scroll-btn scroll-btn_before-cases" hash="cases" route="home">
             <i className="icon-down"/>
-          </a>
+          </Link>
         </div>
       </div>
     );
