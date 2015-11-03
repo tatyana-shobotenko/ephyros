@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-class Contact extends Component {
-  render() {
+function Contact() {
     return (
       <div className="screen-epilogue">
         <div className="center-wrapper text-center">
@@ -18,6 +17,5 @@ class Contact extends Component {
       </div>
     );
   }
-}
 
 export default Contact;

@@ -6,8 +6,7 @@ import servicesData from './../data/servicesData';
 
 import Layout from './../views/Layout';
 
-class Services extends Component {
-  render() {
+function Services() {
     const services = servicesData
       .map((data, index)=> {
         if (index % 2) {
@@ -105,6 +104,5 @@ class Services extends Component {
       </Layout>
     );
   }
-}
 
 export default Services;

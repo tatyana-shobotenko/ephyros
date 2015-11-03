@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import ReadyMag from './ReadyMag';
 
-class Presentation extends Component{
-  render() {
+function Presentation() {
     return (
       <div id="presentation" className="screen-presentation">
         <div className="center-wrapper screen-table">
@@ -26,6 +25,5 @@ class Presentation extends Component{
       </div>
     );
   }
-}
 
 export default Presentation;

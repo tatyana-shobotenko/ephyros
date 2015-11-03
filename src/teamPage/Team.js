@@ -9,8 +9,7 @@ import Layout from './../views/Layout';
 import teamData from './../data/teamData';
 import photoSlides from './../data/team/photoSlides';
 
-class Team extends Component {
-  render() {
+function Team() {
     const members = teamData.map((member, index) => (
       <div className="hteam-member team-member" key={index}>
         <div className="hteam-member__photo team-member__photo">
@@ -87,6 +86,5 @@ class Team extends Component {
       </Layout>
     );
   }
-}
 
 export default Team;

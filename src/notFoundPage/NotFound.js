@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Link from './../router/Link';
 
-class NotFound extends Component {
-  render() {
+function NotFound() {
     return (
       <div data-not-found className="error-screen">
         <div className="center-wrapper screen-table">
@@ -33,6 +32,5 @@ class NotFound extends Component {
       </div>
     );
   }
-}
 
 export default NotFound;
