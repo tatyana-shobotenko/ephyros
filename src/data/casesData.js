@@ -29,7 +29,7 @@ export default [
   {
     imageBig: require('./cases/sl_big.png'),
     name: 'Soccerlytics',
-    slug: 'probniki',
+    slug: 'soccerlytics',
     tags: ['MVP', 'Startup', 'Social data aggregation'],
     text: 'Soccerlytics is a place that has got it all. There is no need now to check every single website searching for news and other related info. Users have unique opportunity to access infomation about their favourite teams or players from different sources: websites, socia media, etc. Moreover one can find onsite structured analytical data as well as statistics, video and much more.',
     keyObj: ['Soccer news aggregation from RSS and social media resources', 'Advanced search through news and posts onsite', 'Demonstrative statistics and accurate analytics about soccer teams and players', 'Universal(isomorphic) application', 'React.js & Rx.js used to make app real fast'],
