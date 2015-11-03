@@ -1,4 +1,5 @@
 import Team from './Team';
+import RxComponent from '../utils/RxComponent';
 
 export default function () {
   return {
@@ -8,6 +9,6 @@ export default function () {
       'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
       'Love to create awesome web-services and applications.'
     },
-    view: Team
+    view: new RxComponent(Team)
   }
 };

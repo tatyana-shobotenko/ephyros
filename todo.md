@@ -1,6 +1,5 @@
 ## TODO
 
-0. RxControllers
 1. data resolution
   - pass data to controller
 4. redirects

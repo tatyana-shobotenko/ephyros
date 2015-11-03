@@ -1,4 +1,5 @@
 import Cases from './Cases';
+import RxComponent from '../utils/RxComponent';
 
 export default function () {
   return {
@@ -6,6 +7,6 @@ export default function () {
       title: 'Work | Ephyros',
       description: 'Ephyros\'s best case studies and success stories'
     },
-    view: Cases
+    view: new RxComponent(Cases)
   }
 };

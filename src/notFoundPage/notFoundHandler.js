@@ -1,4 +1,5 @@
 import NotFound from './NotFound';
+import RxComponent from '../utils/RxComponent';
 
 export default function () {
   return {
@@ -6,6 +7,6 @@ export default function () {
       title: 'Whoops! Page not found',
       description: 'Sorry, but the page you were trying to view does not exist.'
     },
-    view: NotFound
+    view: new RxComponent(NotFound)
   }
 };

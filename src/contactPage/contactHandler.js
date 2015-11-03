@@ -1,4 +1,5 @@
 import Contact from './Contact';
+import RxComponent from '../utils/RxComponent';
 
 export default function () {
   return {
@@ -6,6 +7,6 @@ export default function () {
       title: 'Contact us | Ephyros',
       description: 'Don\'t hesitate to email us today'
     },
-    view: Contact
+    view: new RxComponent(Contact)
   }
 };
