@@ -2,11 +2,23 @@
 
 1. data resolution
   - pass data to controller
-4. redirects
-5. history abstraction testing 
+4. redirects, data 404
+5. enter/leave, beforeunload
+5. state updates (reuse state parts arouse routes, allow updates without whole state rebuild)
+6. history abstraction testing 
 6. Better hash handling
 7. Imitate browser scroll behaviour
 8. Allow baseurl, add createHref to history
+9. Search
+10. Post requests handling (?)
+11. Render steps
+  - minimum renderable
+  - prerender
+  - live
+12. rewrite tool scripts 
+  http://stackoverflow.com/questions/31903692/how-to-use-es6-in-webpack-config
+13. replace jasmine in tests with tape
+  https://www.npmjs.com/package/tap-spec
 
 ==============
 
