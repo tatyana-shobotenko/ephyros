@@ -1,13 +1,15 @@
 ## TODO
 
-1. data resolution
-  - pass data to controller
 4. redirects, data 404
+5. Imitate browser scroll behaviour
+  - scroll top after following link
+  - do not scroll when going forward or backward
+  - scroll to hash after rendering when following a link
+  
 5. enter/leave, beforeunload
 5. state updates (reuse state parts arouse routes, allow updates without whole state rebuild)
 6. history abstraction testing 
 6. Better hash handling
-7. Imitate browser scroll behaviour
 8. Allow baseurl, add createHref to history
 9. Search
 10. Post requests handling (?)
@@ -19,6 +21,8 @@
   http://stackoverflow.com/questions/31903692/how-to-use-es6-in-webpack-config
 13. replace jasmine in tests with tape
   https://www.npmjs.com/package/tap-spec
+14. trailing slash handling
+15. allow to return just React.Component instead of RxComponent 
 
 ==============
 
