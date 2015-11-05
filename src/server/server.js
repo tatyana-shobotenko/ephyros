@@ -43,26 +43,25 @@ module.exports = function (options) {
 
 
   app.get('/*', function (req, res) {
-    function sendHtml(error, {html, meta}) {
+    function sendHtml(error, {view, meta, status, redirect}) {
       if (error) {
-        if (error.redirect) {
-          res.writeHead(303, {'Location': error.redirect});
+        res.status(500);
+        res.render('500', {url: req.url});
+      } else {
+        if (redirect) {
+          res.writeHead(status || 303, {'Location': redirect});
           res.end();
         } else {
-          res.status(500);
-          res.render('500', {url: req.url});
+          res.status(status || 200);
+          res.render('html', {
+            appHtml: view,
+            title: meta.title,
+            description: meta.description,
+            scriptsUrl: SCRIPT_URL,
+            ieScriptsUrl: IE_SCRIPT_URL,
+            stylesUrl: STYLE_URL
+          });
         }
-      } else {
-        var notFound = /\bdata-not-found\b/.test(html);
-        res.status(notFound ? 404 : 200);
-        res.render('html', {
-          appHtml: html,
-          title: meta.title,
-          description: meta.description,
-          scriptsUrl: SCRIPT_URL,
-          ieScriptsUrl: IE_SCRIPT_URL,
-          stylesUrl: STYLE_URL
-        });
       }
     }
 

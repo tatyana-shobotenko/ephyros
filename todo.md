@@ -1,6 +1,5 @@
 ## TODO
 
-4. redirects, data 404
 5. Imitate browser scroll behaviour
   - scroll top after following link
   - do not scroll when going forward or backward
@@ -23,6 +22,7 @@
   https://www.npmjs.com/package/tap-spec
 14. trailing slash handling
 15. allow to return just React.Component instead of RxComponent 
+16. let browser to make request if url is not matched
 
 ==============
 
