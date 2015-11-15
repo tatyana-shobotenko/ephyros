@@ -1,7 +1,7 @@
 import NotFound from './NotFound';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     status: 404,
     meta: {

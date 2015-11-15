@@ -1,7 +1,7 @@
 import Contact from './Contact';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     meta: {
       title: 'Contact us | Ephyros',

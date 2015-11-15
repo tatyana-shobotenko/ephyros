@@ -1,7 +1,7 @@
 import Services from './Services';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     meta: {
       title: 'Services | Ephyros',

@@ -1,7 +1,7 @@
 import Team from './Team';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     meta: {
       title: 'Team | Ephyros',

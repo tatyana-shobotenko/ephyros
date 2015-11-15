@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 
-module.exports = function (options) {
+module.exports = function(options) {
 
   var prerender = options.prerender;
 
@@ -42,7 +42,7 @@ module.exports = function (options) {
   //));
 
 
-  app.get('/*', function (req, res) {
+  app.get('/*', function(req, res) {
     function sendHtml(error, {view, meta, status, redirect}) {
       if (error) {
         res.status(500);
@@ -96,7 +96,7 @@ module.exports = function (options) {
     }
   }
 
-  app.post('/-/contact', function (req, res) {
+  app.post('/-/contact', function(req, res) {
 
     var form = req.body;
     mail(form);
@@ -105,7 +105,7 @@ module.exports = function (options) {
     res.end();
   });
 
-  app.post('/contact', function (req, res) {
+  app.post('/contact', function(req, res) {
 
     var form = req.body;
     mail(form);
@@ -116,7 +116,7 @@ module.exports = function (options) {
 
 
   var port = +(process.env.PORT || options.defaultPort || 8080);
-  app.listen(port, function () {
+  app.listen(port, function() {
     console.log('Server listening on port ' + port);
   });
 };

@@ -52,8 +52,8 @@ class Intro extends Component {
                 <Link
                   route="home"
                   hash="presentation"
-                   className="button button-group__item"
-                   onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
+                  className="button button-group__item"
+                  onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
                   Presentation
                 </Link>
                 <Link route="services"

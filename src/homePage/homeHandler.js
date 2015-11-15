@@ -1,7 +1,7 @@
 import Home from './Home';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     meta: {
       title: 'Ephyros | We create rocking web applications for startups &amp; enterprises',

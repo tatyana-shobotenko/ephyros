@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-export default function (options) {
+export default function(options) {
   let entry;
 
   if (options.prerender) {
@@ -81,9 +81,9 @@ export default function (options) {
     /node_modules[\\\/]react(-router)?[\\\/]/
   ];
   const plugins = [
-    function () {
+    function() {
       if (!options.prerender) {
-        this.plugin('done', function (stats) {
+        this.plugin('done', function(stats) {
           const jsonStats = stats.toJson({
             chunkModules: true,
             exclude: excludeFromStats
@@ -92,7 +92,7 @@ export default function (options) {
           require('fs').writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
         });
       } else {
-        this.plugin('done', function (stats) {
+        this.plugin('done', function(stats) {
           const jsonStats = stats.toJson({
             chunkModules: true,
             exclude: excludeFromStats
@@ -126,7 +126,7 @@ export default function (options) {
       'body-parser',
       'lodash',
       /^babel-runtime(\/.*)?$/
-  );
+    );
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1}));
     if (options.sourceMapSupport) {
       plugins.push(
@@ -140,7 +140,7 @@ export default function (options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map(function (loader) {
+  stylesheetLoaders = stylesheetLoaders.map(function(loader) {
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -190,7 +190,7 @@ export default function (options) {
         .concat(defaultLoaders)
         .concat(stylesheetLoaders)
     },
-    postcss: function () {
+    postcss: function() {
       return [require('autoprefixer')({browsers: ['last 1 version']})];
     },
     devtool: options.devtool,

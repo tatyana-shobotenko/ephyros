@@ -1,7 +1,7 @@
 import Cases from './Cases';
 import RxComponent from '../utils/RxComponent';
 
-export default function () {
+export default function() {
   return {
     meta: {
       title: 'Work | Ephyros',

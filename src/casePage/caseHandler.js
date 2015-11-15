@@ -3,7 +3,7 @@ import RxComponent from '../utils/RxComponent';
 
 import casesData from './../data/casesData';
 
-export default function (params) {
+export default function(params) {
 
   const slug = params.slug;
   let selectedCase = false;
@@ -21,4 +21,4 @@ export default function (params) {
     },
     view: new RxComponent(Case, {}, {}, {selectedCase})
   }
-};
+}

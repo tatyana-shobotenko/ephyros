@@ -35,7 +35,7 @@ class RxComponent extends AnonymousObservable {
         initialState: initialState
       };
 
-      const renderFn = function () {
+      const renderFn = function() {
         return (
           <RxController {...renderProps}/>
         );
