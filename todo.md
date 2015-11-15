@@ -1,16 +1,22 @@
 ## TODO
 
 5. Imitate browser scroll behaviour
+  - add action/source to location change event
   - scroll top after following link
   - do not scroll when going forward or backward
   - scroll to hash after rendering when following a link
+6. Better hash handling 
+  - separate stream for hash changes
+  - do not update router state when only hash changes
   
-5. enter/leave, beforeunload
-5. state updates (reuse state parts arouse routes, allow updates without whole state rebuild)
 6. history abstraction testing 
-6. Better hash handling
+6. state hooks
+  enter - done
+  leave
+  beforeunload - stream of strings or falsy values
+6. query string
+6. state updates (reuse state parts acrouse routes, allow updates without whole state rebuild)
 8. Allow baseurl, add createHref to history
-9. Search
 10. Post requests handling (?)
 11. Render steps
   - minimum renderable
@@ -19,7 +25,9 @@
 12. rewrite tool scripts 
   http://stackoverflow.com/questions/31903692/how-to-use-es6-in-webpack-config
 13. replace jasmine in tests with tape
+  https://github.com/substack/tape
   https://www.npmjs.com/package/tap-spec
+  supertest
 14. trailing slash handling
 15. allow to return just React.Component instead of RxComponent 
 16. let browser to make request if url is not matched
