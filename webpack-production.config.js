@@ -5,10 +5,10 @@ export default [
     // commonsChunk: true,
     longTermCaching: true,
     separateStylesheet: true,
-    minimize: true
+    minimize: true,
     // devtool: "source-map",
   }),
   makeWebpackConfig({
-    prerender: true
-  })
+    prerender: true,
+  }),
 ];

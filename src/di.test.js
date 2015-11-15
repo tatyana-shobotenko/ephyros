@@ -4,7 +4,7 @@ di.provide(10, ()=>10);
 di.provide(11, (ten)=>ten + 1, 10);
 di.provide(21, (ten, eleven)=>ten + eleven, 10, 11);
 
-describe('DI Container', function() {
+describe('DI Container', ()=> {
   let injector;
 
   beforeEach(()=> {

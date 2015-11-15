@@ -15,20 +15,20 @@ export default function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*.test.js'
+      'src/**/*.test.js',
     ],
 
 
     // list of files to exclude
     exclude: [
-      'test/*_node.js'
+      'test/*_node.js',
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.test.js': ['webpack', 'sourcemap']
+      'src/**/*.test.js': ['webpack', 'sourcemap'],
     },
 
 
@@ -70,24 +70,24 @@ export default function(config) {
           {
             test: /\.jsx?$/,
             loaders: ['babel?optional=runtime'],
-            exclude: /node_modules/
-          }
-        ]
+            exclude: /node_modules/,
+          },
+        ],
       },
-      devtool: 'inline-source-map'
+      devtool: 'inline-source-map',
     },
 
     webpackMiddleware: {
       // webpack-dev-middleware configuration
       // i. e.
-      noInfo: true
+      noInfo: true,
     },
 
     plugins: [
       require('karma-chrome-launcher'),
       require('karma-jasmine'),
       require('karma-sourcemap-loader'),
-      require('karma-webpack')
-    ]
+      require('karma-webpack'),
+    ],
   });
-};
+}

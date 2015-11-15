@@ -13,7 +13,7 @@ class ReadyMag extends Component {
         const i = window[t] = {};
         i.processing = true;
 
-        window.setTimeout(function() {
+        window.setTimeout(() => {
           const e = document.getElementsByTagName('script')[0];
           const n = document.createElement('script');
           n.type = 'text/javascript';

@@ -3,5 +3,5 @@ export default makeWebpackConfig({
   devServer: true,
   hotComponents: true,
   devtool: 'eval',
-  debug: true
+  debug: true,
 });
