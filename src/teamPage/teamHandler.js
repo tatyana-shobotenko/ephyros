@@ -7,8 +7,8 @@ export default function() {
       title: 'Team | Ephyros',
       description: 'Ephyros is a team of developers who invent, think over, build, and improve. ' +
       'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
-      'Love to create awesome web-services and applications.'
+      'Love to create awesome web-services and applications.',
     },
-    view: new RxComponent(Team)
-  }
-};
+    view: new RxComponent(Team),
+  };
+}

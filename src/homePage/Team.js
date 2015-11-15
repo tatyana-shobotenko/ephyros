@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Link from '../router/Link';
 
 import teamData from '../data/homeTeamData';
 
 
 function Team() {
-  var members = teamData.map((member, index) => (
+  const members = teamData.map((member, index) => (
     <a className="hteam-member" key={index}>
       <div className="hteam-member__photo">
         <img src={member.photo} alt={member.name}/>

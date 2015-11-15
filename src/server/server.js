@@ -1,48 +1,47 @@
-var express = require('express');
-var path = require('path');
-var app = express();
-var bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
 
+const app = express();
 
-module.exports = function(options) {
+export default function(options) {
+  const prerender = options.prerender;
 
-  var prerender = options.prerender;
+  const stats = require('../build/stats.json');
 
-  var stats = require('../build/stats.json');
+  const publicPath = stats.publicPath;
 
-  var publicPath = stats.publicPath;
-
-  var mainArr = [].concat(stats.assetsByChunkName.main);
+  const mainArr = [].concat(stats.assetsByChunkName.main);
   const STYLE_URL = mainArr.length > 1 ? publicPath + mainArr[1] : false;
-  var SCRIPT_URL = publicPath + mainArr[0];
-  var IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
-  //var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
+  const SCRIPT_URL = publicPath + mainArr[0];
+  const IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
+  // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
 
   app.use('/_assets', express.static(path.join('build', 'public'), {
-    maxAge: '200d' // We can cache them as they include hashes
+    maxAge: '200d', // We can cache them as they include hashes
   }));
 
   app.use('/', express.static(path.join('public'), {}));
 
   app.set('views', path.join('src', 'server', 'templates'));
-  //app.set('views', path.join(__dirname, 'templates'));
+  // app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
 
 
-  //app.set('etag fn', (
-  //  function (etag) {
-  //    return function (html, encoding) {
-  //      etag(html.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), encoding);
-  //    }
-  //  }(app.get('etag fn'))
-  //));
+  // app.set('etag fn', (
+  //   function (etag) {
+  //     return function (html, encoding) {
+  //       etag(html.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), encoding);
+  //     }
+  //   }(app.get('etag fn'))
+  // ));
 
 
-  app.get('/*', function(req, res) {
+  app.get('/*', (req, res)=> {
     function sendHtml(error, {view, meta, status, redirect}) {
       if (error) {
         res.status(500);
@@ -59,29 +58,28 @@ module.exports = function(options) {
             description: meta.description,
             scriptsUrl: SCRIPT_URL,
             ieScriptsUrl: IE_SCRIPT_URL,
-            stylesUrl: STYLE_URL
+            stylesUrl: STYLE_URL,
           });
         }
       }
     }
 
     prerender(req.path, sendHtml);
-
   });
 
   function mail(form) {
-    var nodemailer = require('nodemailer');
-    var smtpTransport = require('nodemailer-smtp-transport');
-    var transport = nodemailer.createTransport(smtpTransport({
+    const nodemailer = require('nodemailer');
+    const smtpTransport = require('nodemailer-smtp-transport');
+    const transport = nodemailer.createTransport(smtpTransport({
       host: 'localhost',
-      port: 25
-      //auth: {
-      //  user: 'username',
-      //  pass: 'password'
-      //}
+      port: 25,
+      // auth: {
+      //   user: 'username',
+      //   pass: 'password'
+      // },
     }));
 
-    var message = {
+    const message = {
       from: 'robot@ephyros.com',
       to: 'hello@ephyros.com',
       subject: 'Email from Ephyros.com',
@@ -89,25 +87,23 @@ module.exports = function(options) {
       + 'Name: ' + form.name + '\n'
       + 'Phone: ' + form.phone + '\n'
       + 'Email: ' + form.email + '\n'
-      + 'Message:' + form.message + '\n'
+      + 'Message:' + form.message + '\n',
     };
     if (form.name && form.email && form.message) {
       transport.sendMail(message);
     }
   }
 
-  app.post('/-/contact', function(req, res) {
-
-    var form = req.body;
+  app.post('/-/contact', (req, res) => {
+    const form = req.body;
     mail(form);
 
     res.send('OK');
     res.end();
   });
 
-  app.post('/contact', function(req, res) {
-
-    var form = req.body;
+  app.post('/contact', (req, res) => {
+    const form = req.body;
     mail(form);
 
     res.writeHead(302, {'Location': req.path + '?sent'});
@@ -115,8 +111,8 @@ module.exports = function(options) {
   });
 
 
-  var port = +(process.env.PORT || options.defaultPort || 8080);
-  app.listen(port, function() {
+  const port = +(process.env.PORT || options.defaultPort || 8080);
+  app.listen(port, () => {
     console.log('Server listening on port ' + port);
   });
-};
+}

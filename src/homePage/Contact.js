@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 function Contact() {
   return (
@@ -11,7 +11,7 @@ function Contact() {
         <a
           href="mailto:hello@ephyros.com"
           className="button button_rainbow"
-          onClick={()=>{window.gae('mainpage', 'click', `request_quote`, 100)}}
+          onClick={()=>{window.gae('mainpage', 'click', `request_quote`, 100);}}
         >Request a free quote</a>
       </div>
     </div>

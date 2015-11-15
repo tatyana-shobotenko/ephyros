@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReadyMag from './ReadyMag';
 
 function Presentation() {
@@ -12,9 +12,11 @@ function Presentation() {
             </h1>
           </div>
           <div className="screen-presentation__pic-wrap">
-            {/*<a href>
+            {/*
+             <a href>
              <div className="screen-presentation__pic"/>
-             </a>*/}
+             </a>
+             */}
             <ReadyMag id="43355"/>
           </div>
         </div>

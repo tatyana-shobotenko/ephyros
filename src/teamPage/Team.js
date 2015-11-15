@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Link from './../router/Link';
 
 import BottomMenu from './../views/BottomMenu';
@@ -44,12 +44,12 @@ function Team() {
           </div>
           <div className="about-us-slider">
             <img src={require('./../data/team/slides/teamNY.jpg')}/>
-            {
-              //<div className="about-us-slider__page active"/>
-              //<div className="about-us-slider__page"/>
-              //<div className="about-us-slider__page"/>
-              //<div className="about-us-slider__page"/>
-            }
+            { /*
+             <div className="about-us-slider__page active"/>
+             <div className="about-us-slider__page"/>
+             <div className="about-us-slider__page"/>
+             <div className="about-us-slider__page"/>
+             */ }
           </div>
         </div>
       </div>

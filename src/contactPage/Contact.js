@@ -1,21 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Link from './../router/Link';
 import BottomMenu from './../views/BottomMenu';
 import request from 'superagent';
 
 import Layout from './../views/Layout';
 
-const Contact = React.createClass({
-  getInitialState() {
-    return {
-      sent: false, //todo: 'sent' in this.getQuery(),
+class Contact extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sent: false, // todo: 'sent' in this.getQuery(),
       inProgress: false,
       name: '',
       phone: '',
       email: '',
-      message: ''
+      message: '',
     };
-  },
+  }
   onSubmit(e) {
     e.preventDefault();
     if (!this.state.inProgress) {
@@ -23,20 +24,20 @@ const Contact = React.createClass({
         name: this.state.name,
         phone: this.state.phone,
         email: this.state.email,
-        message: this.state.message
+        message: this.state.message,
       }).end((err)=> {
         this.setState({sent: !err, inProgress: false});
       });
     }
     this.setState({inProgress: true});
-  },
+  }
   handleChange(field, e) {
-    var partialState = {};
+    const partialState = {};
     partialState[field] = e.target.value;
     this.setState(partialState);
-  },
+  }
   render() {
-    var formContent;
+    let formContent;
     if (this.state.sent) {
       formContent = (
         <div className="c-form">
@@ -50,7 +51,7 @@ const Contact = React.createClass({
         <form
           className="c-form"
           method="post"
-          onSubmit={this.onSubmit}
+          onSubmit={this.onSubmit.bind(this)}
         >
           <h3 className="colorful-header text-fill">Hello! Let`s talk!</h3>
 
@@ -100,7 +101,7 @@ const Contact = React.createClass({
             <button
               type="submit"
               className="button button_rainbow"
-              onClick={()=>{window.gae('contact', 'click', `get_quote`, 100)}}
+              onClick={()=>{window.gae('contact', 'click', `get_quote`, 100);}}
             >
               {this.state.inProgress ? 'Processing…' : 'Get a quote'}
             </button>
@@ -159,6 +160,6 @@ const Contact = React.createClass({
       </Layout>
     );
   }
-});
+}
 
 export default Contact;

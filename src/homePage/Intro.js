@@ -26,9 +26,8 @@ class Intro extends Component {
     const elementHeight = domNode.offsetHeight;
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
-      visibility: 1 - hiddenHeight / elementHeight
+      visibility: 1 - hiddenHeight / elementHeight,
     });
-
   }
 
   render() {
@@ -53,12 +52,12 @@ class Intro extends Component {
                   route="home"
                   hash="presentation"
                   className="button button-group__item"
-                  onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
+                  onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30);}}>
                   Presentation
                 </Link>
                 <Link route="services"
                       className="button button-group__item"
-                      onClick={()=>{window.gae('mainpage', 'click', 'services', 25)}}>
+                      onClick={()=>{window.gae('mainpage', 'click', 'services', 25);}}>
                   Services
                 </Link>
               </div>

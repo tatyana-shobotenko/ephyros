@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import casesData from './../data/casesData';
 import Link from './../router/Link';
 import BottomMenu from './../views/BottomMenu';
 import Layout from './../views/Layout';
 
 function CasesPage() {
-  var cases = casesData
+  const cases = casesData
     .map((data, index)=> {
-      var tags = data.tags.join(' / ');
-      var keyObj;
+      const tags = data.tags.join(' / ');
+      let keyObj;
       if (data.keyObj) {
         keyObj = (
           <ul>
@@ -50,38 +50,36 @@ function CasesPage() {
           </div>
         );
       }
-      else {
-        return (
-          <div className="work-item" key={index} id={data.slug}>
-            <div className="center-wrapper">
-              <div className="gcontainer">
-                <div className="work-item__pic">
-                  <img src={data.imageBig} alt={data.name}/>
-                </div>
-                <div className="work-item__desc">
-                  <div className="work-item__tags">{tags}</div>
-                  <h2 className="work-item__title mv-20">{data.name}</h2>
+      return (
+        <div className="work-item" key={index} id={data.slug}>
+          <div className="center-wrapper">
+            <div className="gcontainer">
+              <div className="work-item__pic">
+                <img src={data.imageBig} alt={data.name}/>
+              </div>
+              <div className="work-item__desc">
+                <div className="work-item__tags">{tags}</div>
+                <h2 className="work-item__title mv-20">{data.name}</h2>
 
-                  <p>{data.text}</p>
+                <p>{data.text}</p>
 
-                  <h3 className="mv-20">Key Objectives</h3>
+                <h3 className="mv-20">Key Objectives</h3>
 
-                  {keyObj}
+                {keyObj}
 
-                  <a
-                    className="work-item__link" href={data.url}
-                    target="_blank"
-                    rel="nofollow"
-                    onClick={()=>{window.gae('works', 'click', `work_${data.slug}`, 30)}}
-                  >
-                    {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
-                  </a>
-                </div>
+                <a
+                  className="work-item__link" href={data.url}
+                  target="_blank"
+                  rel="nofollow"
+                  onClick={()=>{window.gae('works', 'click', `work_${data.slug}`, 30);}}
+                >
+                  {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
+                </a>
               </div>
             </div>
           </div>
-        );
-      }
+        </div>
+      );
     });
   return (
     <Layout>

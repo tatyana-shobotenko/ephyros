@@ -4,5 +4,9 @@
     "browser": true,
     "jasmine": true,
     "node": true
+  },
+  "ecmaFeatures": {
+    // enable the rest parameters
+    "restParams": true
   }
 }

@@ -4,7 +4,6 @@ import RxComponent from '../utils/RxComponent';
 import casesData from './../data/casesData';
 
 export default function(params) {
-
   const slug = params.slug;
   let selectedCase = false;
   casesData.forEach((i) => {
@@ -13,12 +12,11 @@ export default function(params) {
     }
   });
 
-
   return {
     meta: {
       title: selectedCase.name,
-      description: ''
+      description: '',
     },
-    view: new RxComponent(Case, {}, {}, {selectedCase})
-  }
+    view: new RxComponent(Case, {}, {}, {selectedCase}),
+  };
 }

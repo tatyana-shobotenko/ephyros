@@ -3,19 +3,19 @@ import React, {Component} from 'react';
 class ReadyMag extends Component {
   componentDidMount() {
     try {
-      var t = 'RM_EMBED_' + window.parseInt((new Date()).getTime() / 864e5);
+      const t = 'RM_EMBED_' + window.parseInt((new Date()).getTime() / 864e5);
       if (!window[t] || !window[t].processing) {
-        var embedMainScriptUri = 'https://readymag.com/specials/assets/embed_main.js';
+        const embedMainScriptUri = 'https://readymag.com/specials/assets/embed_main.js';
 
         if (window[t] && typeof window[t].parse === 'function') {
           return void window[t].parse.call(window);
         }
-        var i = window[t] = {};
+        const i = window[t] = {};
         i.processing = true;
 
         window.setTimeout(function() {
-          var e = document.getElementsByTagName('script')[0];
-          var n = document.createElement('script');
+          const e = document.getElementsByTagName('script')[0];
+          const n = document.createElement('script');
           n.type = 'text/javascript';
           n.async = true;
           n.defer = true;
@@ -37,7 +37,7 @@ class ReadyMag extends Component {
 }
 
 ReadyMag.propTypes = {
-  id: React.PropTypes.any.isRequired
+  id: React.PropTypes.any.isRequired,
 };
 
 export default ReadyMag;

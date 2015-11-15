@@ -5,8 +5,8 @@ export default function() {
   return {
     meta: {
       title: 'Contact us | Ephyros',
-      description: 'Don\'t hesitate to email us today'
+      description: 'Don\'t hesitate to email us today',
     },
-    view: new RxComponent(Contact)
-  }
-};
+    view: new RxComponent(Contact),
+  };
+}

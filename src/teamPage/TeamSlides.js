@@ -4,21 +4,20 @@ class Slides extends Component {
   constructor() {
     super();
     this.state = {
-      activeSlide: 0
+      activeSlide: 0,
     };
   }
 
   nextSlide() {
-
     window.gae('team', 'swipe', `arrows`, 5);
     this.setState({
-      activeSlide: (this.state.activeSlide + 1) % this.props.slides.length
+      activeSlide: (this.state.activeSlide + 1) % this.props.slides.length,
     });
   }
 
   prevSlide() {
     this.setState({
-      activeSlide: (this.state.activeSlide - 1 + this.props.slides.length) % this.props.slides.length
+      activeSlide: (this.state.activeSlide - 1 + this.props.slides.length) % this.props.slides.length,
     });
   }
 
@@ -47,7 +46,7 @@ class Slides extends Component {
 }
 
 Slides.propTypes = {
-  slides: React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
 };
 
 export default Slides;

@@ -5,19 +5,19 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      isMenuOpen: false
+      isMenuOpen: false,
     };
   }
 
   toggleMenu() {
     this.setState({
-      isMenuOpen: !this.state.isMenuOpen
+      isMenuOpen: !this.state.isMenuOpen,
     });
   }
 
   hideMenu() {
     this.setState({
-      isMenuOpen: false
+      isMenuOpen: false,
     });
   }
 
