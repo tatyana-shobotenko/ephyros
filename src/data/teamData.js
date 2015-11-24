@@ -27,17 +27,12 @@ export default [
   {
     photo: require('./team/ava_s/kate.jpg'),
     name: 'Katia',
-    position: 'Project Manager'
+    position: 'QA Engineer'
   },
   {
     photo: require('./team/ava_s/oles.jpg'),
     name: 'Oles',
     position: 'Backend Developer'
-  },
-  {
-    photo: require('./team/ava_s/vica.jpg'),
-    name: 'Victoria',
-    position: 'Frontend Developer'
   },
   {
     photo: require('./team/ava_s/vania.jpg'),
@@ -71,7 +66,7 @@ export default [
   },
   {
     photo: require('./team/ava_s/andrii.jpg'),
-    name: 'Anrii',
+    name: 'Andrii',
     position: 'Backend developer'
   },
   {
@@ -83,5 +78,20 @@ export default [
     photo: require('./team/ava_s/Vadim.jpg'),
     name: 'Vadim',
     position: 'Frontend developer'
+  },
+  {
+    photo: require('./team/ava_s/taniash.jpg'),
+    name: 'Tania',
+    position: 'Project manager'
+  },
+  {
+    photo: require('./team/ava_s/andriik.jpg'),
+    name: 'Andrii',
+    position: 'Backend developer'
+  },
+  {
+    photo: require('./team/ava_s/katiao.jpg'),
+    name: 'Katia',
+    position: 'Project manager'
   }
 ];
