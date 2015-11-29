@@ -6,10 +6,10 @@ import request from 'superagent';
 import Layout from './../views/Layout';
 
 class Contact extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
     this.state = {
-      sent: false, // todo: 'sent' in this.getQuery(),
+      sent: props.sent,
       inProgress: false,
       name: '',
       phone: '',
@@ -17,6 +17,7 @@ class Contact extends Component {
       message: '',
     };
   }
+
   onSubmit(e) {
     e.preventDefault();
     if (!this.state.inProgress) {
@@ -31,11 +32,13 @@ class Contact extends Component {
     }
     this.setState({inProgress: true});
   }
+
   handleChange(field, e) {
     const partialState = {};
     partialState[field] = e.target.value;
     this.setState(partialState);
   }
+
   render() {
     let formContent;
     if (this.state.sent) {
@@ -161,5 +164,9 @@ class Contact extends Component {
     );
   }
 }
+
+Contact.propTypes = {
+  sent: React.PropTypes.bool,
+};
 
 export default Contact;
