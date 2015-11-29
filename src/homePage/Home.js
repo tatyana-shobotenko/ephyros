@@ -11,13 +11,13 @@ function Home() {
   return (
     <Layout>
       <Intro/>
-      <a name="cases"/>
+      <a id="cases"/>
       <Cases/>
-      <a name="presentation"/>
+      <a id="presentation"/>
       <Presentation/>
-      <a name="team"/>
+      <a id="team"/>
       <Team/>
-      <a name="contact"/>
+      <a id="contact"/>
       <Contact/>
     </Layout>
   );
