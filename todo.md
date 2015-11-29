@@ -1,23 +1,5 @@
 ## TODO
 
-5. Imitate browser scroll behaviour
-  - add action/source to location change event
-  - scroll top after following link
-  - do not scroll when going forward or backward
-  - scroll to hash after rendering when following a link
-6. Better hash handling 
-  - separate stream for hash changes
-  - do not update router state when only hash changes
-  
-6. history abstraction testing 
-6. state hooks
-  enter - done
-  leave
-  beforeunload - stream of strings or falsy values
-6. query string
-6. state updates (reuse state parts acrouse routes, allow updates without whole state rebuild)
-8. Allow baseurl, add createHref to history
-10. Post requests handling (?)
 11. Render steps
   - minimum renderable
   - prerender
@@ -28,37 +10,3 @@
   https://github.com/substack/tape
   https://www.npmjs.com/package/tap-spec
   supertest
-14. trailing slash handling
-15. allow to return just React.Component instead of RxComponent 
-16. let browser to make request if url is not matched
-
-==============
-
-## Router roadmap
-
-
-
-1. route collection
-	match() : url -> name, handlers, parameters || 404
-	generate(): route, parameters -> url || error
-    add()
-	
-
-2. route handler
-
-	handle() : route, params, * state -> state
-	- before unload
-	- onLeave() [cancel transition, do side effects]
-	- resolve data
-	- onEnter() [cancel transition, do side effects, redirect]
-	- replace state | update state
-
-3. renderer:
-	- wait for minimum renderable | or wait for server renderable
-	- render
-	- do scrolls
-	
-4. router context
-	- generate url
-	- is route active
-	- subscribe for 'route active' changes
