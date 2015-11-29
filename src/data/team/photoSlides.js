@@ -44,4 +44,14 @@ export default [
     title: 'Tech lead helps developer to fix a bug',
     shadowModifier: '',
   },
+  {
+    image: require('./slides/lviv2015.jpg'),
+    title: 'Who works well rests well',
+    shadowModifier: '',
+  },
+  {
+    image: require('./slides/rigacomm2015.jpg'),
+    title: 'Pushing the boundaries. Our stand at Riga Comm 2015',
+    shadowModifier: '',
+  },
 ];
