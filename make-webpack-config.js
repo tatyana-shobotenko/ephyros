@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import StatsPlugin from 'stats-webpack-plugin';
 
 export default function(options) {
   let entry;
@@ -22,8 +23,8 @@ export default function(options) {
     {test: /\.json5$/, loaders: ['json5-loader']},
     {test: /\.txt$/, loaders: ['raw-loader']},
     {test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000']},
-    {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
-    {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
+    // {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
+    // {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
     {test: /\.(wav|mp3)$/, loaders: ['file-loader']},
     {test: /\.html$/, loaders: ['html-loader']},
     {test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader']},
@@ -81,27 +82,14 @@ export default function(options) {
     /node_modules[\\\/]react(-router)?[\\\/]/,
   ];
   const plugins = [
-    function() {
-      if (!options.prerender) {
-        this.plugin('done', function(stats) {
-          const jsonStats = stats.toJson({
-            chunkModules: true,
-            exclude: excludeFromStats,
-          });
-          jsonStats.publicPath = publicPath;
-          require('fs').writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
-        });
-      } else {
-        this.plugin('done', function(stats) {
-          const jsonStats = stats.toJson({
-            chunkModules: true,
-            exclude: excludeFromStats,
-          });
-          jsonStats.publicPath = publicPath;
-          require('fs').writeFileSync(path.join(__dirname, 'build', 'server', 'stats.json'), JSON.stringify(jsonStats));
-        });
-      }
-    },
+    new StatsPlugin(
+      options.prerender
+        ? 'stats.json'
+        : '../stats.json',
+      {
+        chunkModules: true,
+        exclude: excludeFromStats,
+      }),
     new webpack.PrefetchPlugin('react'),
     new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
   ];
@@ -140,7 +128,7 @@ export default function(options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map(function(loader) {
+  stylesheetLoaders = stylesheetLoaders.map((loader) => {
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -190,7 +178,7 @@ export default function(options) {
         .concat(defaultLoaders)
         .concat(stylesheetLoaders),
     },
-    postcss: function() {
+    postcss() {
       return [require('autoprefixer')({browsers: ['last 1 version']})];
     },
     devtool: options.devtool,
