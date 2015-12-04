@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Link from './../router/Link';
+import Link from 'router1/lib/Link';
 
 class Header extends Component {
   constructor() {

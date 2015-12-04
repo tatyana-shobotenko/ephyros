@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from './../router/Link';
+import Link from 'router1/lib/Link';
 
 function BottomMenu() {
   return (

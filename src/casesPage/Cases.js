@@ -1,6 +1,6 @@
 import React from 'react';
 import casesData from './../data/casesData';
-import Link from './../router/Link';
+import Link from 'router1/lib/Link';
 import BottomMenu from './../views/BottomMenu';
 import Layout from './../views/Layout';
 
