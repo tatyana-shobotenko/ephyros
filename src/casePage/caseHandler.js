@@ -1,5 +1,5 @@
 import Case from './Case';
-import RxContainer from 'rx-react-container';
+import createContainer from 'rx-react-container';
 
 import casesData from './../data/casesData';
 
@@ -17,6 +17,6 @@ export default function(params) {
       title: selectedCase.name,
       description: '',
     },
-    view: new RxContainer(Case, {}, {}, {selectedCase}),
+    view: createContainer(Case, {}, {}, {selectedCase}),
   };
 }

@@ -42,7 +42,6 @@
     "react-proxy-loader": "^0.3.4",
     "sass-loader": "^3.1.1",
     "source-map-support": "^0.3.3",
-    "stats-webpack-plugin": "^0.2.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.10.1",
@@ -59,9 +58,10 @@
     "nodemailer-smtp-transport": "^1.0.3",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
-    "router1": "^0.0.2",
+    "router1": "^0.1.0",
+    "router1-react": "^0.1.0",
     "rx": "^4.0.6",
-    "rx-react-container": "^0.0.1",
+    "rx-react-container": "^0.1.0",
     "superagent": "^1.2.0"
   }
 }

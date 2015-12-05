@@ -17,7 +17,7 @@ import notFoundHandler from '../notFoundPage/notFoundHandler';
 
 import routes from '../routes';
 import Router from 'router1/lib/Router';
-import RouterContext from 'router1/lib/RouterContext';
+import RouterContext from 'router1-react/lib/RouterContext';
 
 import toObservable from '../utils/toObservable';
 
@@ -55,12 +55,11 @@ const router = new Router({
 
         // $('meta[name=description]').text(meta.description || '');
 
-        return view.map(({component, props})=> {
+        return view.map(renderApp=> {
           return renderObservable(
             <RouterContext
               router={router}
-              component={component}
-              props={props}/>,
+              render={renderApp}/>,
             appElement
           );
         });

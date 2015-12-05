@@ -7,7 +7,7 @@ import notFoundHandler from '../notFoundPage/notFoundHandler';
 
 import routes from '../routes';
 import Router from 'router1/lib/Router';
-import RouterContext from 'router1/lib/RouterContext';
+import RouterContext from 'router1-react/lib/RouterContext';
 
 import toObservable from '../utils/toObservable';
 import {Observable} from 'rx';
@@ -26,9 +26,9 @@ export default function prerender(requestPath, cb) {
           if (redirect) {
             return Observable.return({redirect, status});
           }
-          return view.map(({component, props})=> {
+          return view.map(renderApp => {
             const html = ReactDOM.renderToString(
-              <RouterContext router={router} component={component} props={props}/>
+              <RouterContext router={router} render={renderApp}/>
             );
             return {
               view: html,

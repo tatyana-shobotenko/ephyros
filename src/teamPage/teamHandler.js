@@ -1,5 +1,5 @@
 import Team from './Team';
-import RxContainer from 'rx-react-container';
+import createContainer from 'rx-react-container';
 
 export default function() {
   return {
@@ -9,6 +9,6 @@ export default function() {
       'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
       'Love to create awesome web-services and applications.',
     },
-    view: new RxContainer(Team),
+    view: createContainer(Team),
   };
 }

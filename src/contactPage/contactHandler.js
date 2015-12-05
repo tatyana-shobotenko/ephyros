@@ -1,5 +1,5 @@
 import Contact from './Contact';
-import RxContainer from 'rx-react-container';
+import createContainer from 'rx-react-container';
 
 export default function(params) {
   return {
@@ -7,6 +7,6 @@ export default function(params) {
       title: 'Contact us | Ephyros',
       description: 'Don\'t hesitate to email us today',
     },
-    view: new RxContainer(Contact, {}, {}, {sent: params.sent}),
+    view: createContainer(Contact, {}, {}, {sent: params.sent}),
   };
 }

@@ -1,5 +1,5 @@
 import Cases from './Cases';
-import RxContainer from 'rx-react-container';
+import createContainer from 'rx-react-container';
 
 export default function() {
   return {
@@ -7,6 +7,6 @@ export default function() {
       title: 'Work | Ephyros',
       description: 'Ephyros\'s best case studies and success stories',
     },
-    view: new RxContainer(Cases),
+    view: createContainer(Cases),
   };
 }
