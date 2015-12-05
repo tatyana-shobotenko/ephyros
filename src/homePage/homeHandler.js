@@ -1,5 +1,5 @@
 import Home from './Home';
-import RxComponent from '../utils/RxComponent';
+import RxContainer from 'rx-react-container';
 
 export default function() {
   return {
@@ -8,6 +8,6 @@ export default function() {
       description: 'Ephyros is a team of developers who invent, think over, build, and improve.' +
       ' We collaborate with ambitious clients who want to bring powerful ideas to life.',
     },
-    view: new RxComponent(Home),
+    view: new RxContainer(Home),
   };
 }

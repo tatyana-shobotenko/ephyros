@@ -1,5 +1,5 @@
 import Services from './Services';
-import RxComponent from '../utils/RxComponent';
+import RxContainer from 'rx-react-container';
 
 export default function() {
   return {
@@ -7,6 +7,6 @@ export default function() {
       title: 'Services | Ephyros',
       description: 'Create a unique web services and web applications for the benefit of mankind.',
     },
-    view: new RxComponent(Services),
+    view: new RxContainer(Services),
   };
 }
