@@ -1,7 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import StatsPlugin from 'stats-webpack-plugin';
 
 export default function(options) {
   let entry;
@@ -82,14 +81,20 @@ export default function(options) {
     /node_modules[\\\/]react(-router)?[\\\/]/,
   ];
   const plugins = [
-    new StatsPlugin(
-      options.prerender
-        ? 'stats.json'
-        : '../stats.json',
-      {
-        chunkModules: true,
-        exclude: excludeFromStats,
-      }),
+    function statsPlugin() {
+      this.plugin('done', (stats) => {
+        const jsonStats = stats.toJson({
+          chunkModules: true,
+          exclude: excludeFromStats,
+        });
+        jsonStats.publicPath = publicPath;
+        if (!options.prerender) {
+          require('fs').writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
+        } else {
+          require('fs').writeFileSync(path.join(__dirname, 'build', 'server', 'stats.json'), JSON.stringify(jsonStats));
+        }
+      });
+    },
     new webpack.PrefetchPlugin('react'),
     new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
   ];
