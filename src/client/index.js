@@ -88,6 +88,17 @@ const router = new Router({
   },
 });
 
+/*eslint-disable */
+const easing = (t, b, c, d) => {
+  // t: current time, b: begInnIng value, c: change In value, d: duration
+  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t + b;
+  t--;
+  return -c / 2 * (t * (t - 2) - 1) + b;
+};
+/*eslint-enable */
+
 function animateScroll(top) {
   const duration = 400;
   const startTime = Date.now();
@@ -103,8 +114,10 @@ function animateScroll(top) {
         window.scrollTo(0, top);
         observer.onCompleted();
       } else {
-        const ratio = elapsed / duration;
-        window.scrollTo(0, startTop * (1 - ratio) + top * ratio);
+        window.scrollTo(0, easing(elapsed, startTop, top - startTop, duration));
+        // linear scroll speed
+        // const ratio = elapsed / duration;
+        // window.scrollTo(0, startTop * (1 - ratio) + top * ratio);
         id = raf(animate);
       }
     };
