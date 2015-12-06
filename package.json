@@ -56,6 +56,7 @@
     "express": "^4.13.0",
     "nodemailer": "^1.4.0",
     "nodemailer-smtp-transport": "^1.0.3",
+    "raf": "^3.1.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "router1": "^0.1.0",

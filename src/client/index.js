@@ -9,6 +9,8 @@ import '../styles/icons.scss';
 
 import './ga';
 
+import raf from 'raf';
+
 import createBrowserHistory from 'router1/lib/createBrowserHistory';
 
 const history = createBrowserHistory();
@@ -103,14 +105,14 @@ function animateScroll(top) {
       } else {
         const ratio = elapsed / duration;
         window.scrollTo(0, startTop * (1 - ratio) + top * ratio);
-        id = window.requestAnimationFrame(animate);
+        id = raf(animate);
       }
     };
 
     animate();
     return ()=> {
       cancel = true;
-      window.cancelAnimationFrame(id);
+      raf.cancel(id);
     };
   });
 }
