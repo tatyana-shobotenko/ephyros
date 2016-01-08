@@ -69,15 +69,14 @@ export default function(options) {
 
   function mail(form) {
     const nodemailer = require('nodemailer');
-    const smtpTransport = require('nodemailer-smtp-transport');
-    const transport = nodemailer.createTransport(smtpTransport({
+    const transport = nodemailer.createTransport({
       host: 'localhost',
       port: 25,
       // auth: {
       //   user: 'username',
       //   pass: 'password'
       // },
-    }));
+    });
 
     const message = {
       from: 'robot@ephyros.com',
