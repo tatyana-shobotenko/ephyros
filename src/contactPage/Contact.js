@@ -44,7 +44,7 @@ class Contact extends Component {
     if (this.state.sent) {
       formContent = (
         <div className="c-form">
-          <h3 className="colorful-header text-fill fail">Your message is sent</h3>
+          <h3 className="colorful-header text-fill">Your message is sent</h3>
 
           <p>We will contact you soon!</p>
         </div>

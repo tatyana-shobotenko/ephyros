@@ -7,27 +7,27 @@ requirements:
 
 install dependencies: `npm i`
 
-notes:
+## Env setup
 
-for better jsx support use latest IDE version
+copy `.env.sample` to `.env`, adjust your config
 
 ## Development server
 
 
-start the webpack-dev-server:
+start the webpack-dev-server (for client-side scripts):
 
 `npm run dev-server`
 
-and watcher for server script
+and watcher for server script (for server-side)
 
 `npm run watch-server`
 
 start server
 
 - `npm run start-dev` (clientside only rendering)
-- `npm run start` (with server side rendering)
+- `npm run start-prod` (with server side rendering)
 
-open this url in your browser
+Open this url in your browser
 
 http://localhost:8080/
 
@@ -81,7 +81,7 @@ The configuration is `webpack-production.config.js`.
 The production setting builds two configurations: one for the client (`build/public`) and one for the serverside prerendering (`build/server`).
 
 
-## Legacy static assets
+## Static assets
 
 Asserts in `public` are also served.
 

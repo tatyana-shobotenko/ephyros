@@ -10,7 +10,8 @@
     "lint": "eslint ./src/",
     "watch-server": "babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --watch --config webpack-watch-server.config --progress --profile --colors",
     "start-dev": "pm2-dev ./build/server/dev.js",
-    "start": "pm2-dev ./build/server/prod.js",
+    "start-prod": "pm2-dev ./build/server/prod.js",
+    "start": "node ./build/server/prod.js",
     "test": "karma start"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "babel-runtime": "^6.1.18",
     "body-parser": "^1.13.1",
     "classnames": "^2.2.0",
+    "dotenv": "^2.0.0",
     "ejs": "^2.3.2",
     "es5-shim": "^4.1.15",
     "express": "^4.13.0",

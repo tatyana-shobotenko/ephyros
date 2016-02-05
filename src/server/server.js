@@ -68,18 +68,11 @@ export default function(options) {
   });
 
   function mail(form) {
-    const transport = nodemailer.createTransport({
-      host: 'localhost',
-      port: 25,
-      // auth: {
-      //   user: 'username',
-      //   pass: 'password'
-      // },
-    });
+    const transport = nodemailer.createTransport(process.env.SMTP_CONNECTION_URL);
 
     const message = {
-      from: 'robot@ephyros.com',
-      to: 'hello@ephyros.com',
+      from: process.env.ROBOT_EMAIL || 'robot@ephyros.com',
+      to: process.env.CONTACT_EMAIL || 'hello@ephyros.com',
       subject: 'Email from Ephyros.com',
       text: ''
       + 'Name: ' + form.name + '\n'
@@ -109,7 +102,7 @@ export default function(options) {
   });
 
 
-  const port = +(process.env.PORT || options.defaultPort || 8080);
+  const port = +(process.env.PORT || 8080);
   app.listen(port, () => {
     console.log('Server listening on port ' + port);
   });
