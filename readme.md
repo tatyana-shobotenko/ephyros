@@ -98,18 +98,6 @@ Use the [analyse tool](http://webpack.github.io/analyse/) with the file at `buil
 Many file types are preconfigured, but not every loader is installed. If you get an error like `Cannot find module "xxx-loader"`, you'll need to install the loader with `npm install xxx-loader --save` and restart the compilation.
 
 
-## Common changes to the configuration
-
-### Add more entry points
-
-(for a multi page app)
-
-1. Add an entry point to `make-webpack-config.js` (`var entry`).
-2. Add a new top-level react component in `app` (`xxxRoutes.js`, `xxxStoreDescriptions.js`, `xxxStores.js`).
-3. (Optional) Enable `commonsChunk` in `webpack-production.config.js` and add `<script src="COMMONS_URL"></script>` to `app/prerender.html`.
-4. Modify the server code to require, serve and prerender the other entry point.
-5. Restart compilation.
-
 ### Switch devtool to SourceMaps
 
 Change `devtool` property in `webpack-dev-server.config.js` and `webpack-hot-dev-server.config.js` to `"source-map"` (better module names) or `"eval-source-map"` (faster compilation).

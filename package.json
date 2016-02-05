@@ -6,7 +6,7 @@
   "scripts": {
     "dev-server": "babel-node --presets es2015 -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --colors --port 2992 --inline",
     "hot-dev-server": "babel-node --presets es2015 -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js --progress --profile --colors",
+    "build": "rimraf build/* && babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js --progress --profile --colors",
     "lint": "eslint ./src/",
     "watch-server": "babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --watch --config webpack-watch-server.config --progress --profile --colors",
     "start-dev": "pm2-dev ./build/server/dev.js",
@@ -43,6 +43,7 @@
     "postcss-loader": "^0.8.0",
     "react-hot-loader": "^1.2.7",
     "react-proxy-loader": "^0.3.4",
+    "rimraf": "^2.5.1",
     "sass-loader": "^3.1.1",
     "source-map-support": "^0.4.0",
     "style-loader": "^0.13.0",
