@@ -31,15 +31,7 @@ export default function(options) {
   // app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
 
-
-  // app.set('etag fn', (
-  //   function (etag) {
-  //     return function (html, encoding) {
-  //       etag(html.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), encoding);
-  //     }
-  //   }(app.get('etag fn'))
-  // ));
-
+  const etag = app.get('etag fn');
 
   app.get('/*', (req, res)=> {
     function sendHtml(error, {view, meta, status, redirect}) {
@@ -51,6 +43,11 @@ export default function(options) {
           res.writeHead(status || 303, {'Location': redirect});
           res.end();
         } else {
+          if (etag) {
+            const v = etag(view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), 'utf-8');
+            if (v) res.set('ETag', v);
+          }
+
           res.status(status || 200);
           res.render('html', {
             appHtml: view,
