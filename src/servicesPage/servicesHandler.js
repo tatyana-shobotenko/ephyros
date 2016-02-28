@@ -1,7 +1,7 @@
 import Services from './Services';
 import createContainer from 'rx-react-container';
 
-export default function() {
+export default function servicesHandler() {
   return {
     meta: {
       title: 'Services | Ephyros',

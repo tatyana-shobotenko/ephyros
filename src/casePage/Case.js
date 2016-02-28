@@ -3,18 +3,21 @@ import React from 'react';
 import Layout from './../views/Layout';
 
 
-function Case({selectedCase}) {
+function Case({ selectedCase }) {
   let caseContent;
   if (selectedCase) {
     caseContent = (
       <div className="screen-case__content">
         <h1 className="screen-title">{selectedCase.name}</h1>
-        <img src={selectedCase.imageBig} alt={selectedCase.name}/>
+        <img src={selectedCase.imageBig} alt={selectedCase.name} />
       </div>
     );
   } else {
     caseContent = (
-      <div data-not-found style={{padding: 30, backgroundColor: 'white', fontSize: '24px'}}>Case not found</div>
+      <div
+        data-not-found
+        style={{ padding: 30, backgroundColor: 'white', fontSize: '24px' }}
+      >Case not found</div>
     );
   }
   return (
@@ -27,5 +30,9 @@ function Case({selectedCase}) {
     </Layout>
   );
 }
+
+Case.propTypes = {
+  selectedCase: React.PropTypes.object.required(),
+};
 
 export default Case;

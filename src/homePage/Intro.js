@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Link from 'router1-react/lib/Link';
 
 class Intro extends Component {
   constructor() {
     super();
-    this.state = {visibility: 1};
+    this.state = { visibility: 1 };
     this.listener = false;
   }
 
@@ -33,8 +33,11 @@ class Intro extends Component {
   render() {
     return (
       <div ref="introBlock">
-        <div className="screen-intro-back2"/>
-        <div className="screen-intro-back" style={{opacity: this.state.visibility}}/>
+        <div className="screen-intro-back2" />
+        <div
+          className="screen-intro-back"
+          style={{ opacity: this.state.visibility }}
+        />
         <div className="screen-intro">
           <div className="center-wrapper">
             <div className="screen-intro__content">
@@ -52,19 +55,22 @@ class Intro extends Component {
                   route="home"
                   hash="presentation"
                   className="button button-group__item"
-                  onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30);}}>
+                  onClick={() => {window.gae('mainpage', 'click', 'presentation', 30);}}
+                >
                   Presentation
                 </Link>
-                <Link route="services"
-                      className="button button-group__item"
-                      onClick={()=>{window.gae('mainpage', 'click', 'services', 25);}}>
+                <Link
+                  route="services"
+                  className="button button-group__item"
+                  onClick={() => {window.gae('mainpage', 'click', 'services', 25);}}
+                >
                   Services
                 </Link>
               </div>
             </div>
           </div>
           <Link className="scroll-btn scroll-btn_before-cases" hash="cases" route="home">
-            <i className="icon-down"/>
+            <i className="icon-down" />
           </Link>
         </div>
       </div>

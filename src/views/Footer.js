@@ -3,12 +3,12 @@ import React from 'react';
 function Footer() {
   return (
     <div className="footer">
-      <div className="footer_right"/>
+      <div className="footer_right" />
       <div className="center-wrapper">
         <div className="gcontainer">
           <div className="footer__copyrights">
             <div className="footer-inner">
-              <div className="footer__logo"/>
+              <div className="footer__logo" />
               <div className="footer__copyrights-text">
                 <div>Copyright © 2013-2015 Ephyros</div>
                 <div>All Rights Reserved</div>

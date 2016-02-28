@@ -17,12 +17,12 @@ function Presentation() {
              <div className="screen-presentation__pic"/>
              </a>
              */}
-            <ReadyMag id="43355"/>
+            <ReadyMag id="43355" />
           </div>
         </div>
       </div>
       <a className="scroll-btn scroll-btn_before-team" href="#team">
-        <i className="icon-down"/>
+        <i className="icon-down" />
       </a>
     </div>
   );

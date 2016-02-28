@@ -8,7 +8,7 @@ function Team() {
   const members = teamData.map((member, index) => (
     <a className="hteam-member" key={index}>
       <div className="hteam-member__photo">
-        <img src={member.photo} alt={member.name}/>
+        <img src={member.photo} alt={member.name} />
       </div>
       <div className="hteam-member__name">{member.name}</div>
       <div className="hteam-member__speciality">{member.position}</div>
@@ -25,7 +25,7 @@ function Team() {
             {members}
             <a className="hteam-member " href="mailto:job@ephyros.com" target="_blank">
               <div className="hteam-member__photo hteam-member__photo_empty">
-                <span className="icon-plus"/>
+                <span className="icon-plus" />
               </div>
               <div className="hteam-member__name">We are hiring</div>
               <div className="hteam-member__speciality hteam-member__speciality_future">Awesome developer...</div>
@@ -35,7 +35,7 @@ function Team() {
         </div>
       </div>
       <a className="scroll-btn scroll-btn_before-epilogue" href="#contact">
-        <i className="icon-down"/>
+        <i className="icon-down" />
       </a>
     </div>
   );

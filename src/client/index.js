@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import {Observable} from 'rx';
+import { Observable } from 'rx';
 
 import '../styles/main.sass';
 import '../styles/icons.scss';
@@ -28,7 +28,7 @@ const appElement = document.getElementById('app');
 
 let scrollAnimationDispose = null;
 
-const cancelScrollAnimation = ()=> {
+const cancelScrollAnimation = () => {
   if (scrollAnimationDispose) {
     scrollAnimationDispose.dispose();
   }
@@ -38,7 +38,7 @@ const cancelScrollAnimation = ()=> {
 const router = new Router({
   history,
   routes,
-  render: (routingResult)=> {
+  render: (routingResult) => {
     cancelScrollAnimation();
 
     const handler = routingResult.handler || notFoundHandler;
@@ -47,7 +47,7 @@ const router = new Router({
     const locationHash = routingResult.location.hash;
 
     return toObservable(handler(routingResult.params))
-      .flatMap(({view, meta, redirect})=> {
+      .flatMap(({ view, meta, redirect }) => {
         if (redirect) {
           history.replace(redirect);
           return Observable.empty();
@@ -57,29 +57,30 @@ const router = new Router({
 
         // $('meta[name=description]').text(meta.description || '');
 
-        return view.map(renderApp=> {
-          return renderObservable(
+        return view.map(renderApp =>
+          renderObservable(
             <RouterContext
               router={router}
-              render={renderApp}/>,
+              render={renderApp}
+            />,
             appElement
-          );
-        });
+          )
+        );
       })
-      .do(()=> {
+      .do(() => {
         if (locationHash !== '' && locationHash !== '#') {
           if (locationSource === 'push' || locationSource === 'replace') {
             // scrollto anchor position
             const target = document.getElementById(locationHash.substr(1));
             if (target) {
-              setTimeout(()=> {
+              setTimeout(() => {
                 window.scrollTo(0, window.pageYOffset + target.getBoundingClientRect().top);
               });
             }
           }
         } else {
           if (locationSource === 'push' || locationSource === 'replace') {
-            setTimeout(()=> {
+            setTimeout(() => {
               window.scrollTo(0, 0);
             });
           }
@@ -105,9 +106,9 @@ function animateScroll(top) {
   const startTop = window.pageYOffset;
   let cancel = false;
 
-  return Observable.create((observer)=> {
+  return Observable.create((observer) => {
     let id;
-    const animate = ()=> {
+    const animate = () => {
       if (cancel) return;
       const elapsed = Date.now() - startTime;
       if (duration <= elapsed) {
@@ -123,14 +124,14 @@ function animateScroll(top) {
     };
 
     animate();
-    return ()=> {
+    return () => {
       cancel = true;
       raf.cancel(id);
     };
   });
 }
 
-router.hashChange.forEach(({hash, source})=> {
+router.hashChange.forEach(({ hash, source }) => {
   cancelScrollAnimation();
   if (source !== 'push' && source !== 'replace') return;
   const target = document.getElementById(hash.substr(1));
@@ -143,6 +144,6 @@ router.hashChange.forEach(({hash, source})=> {
 
 router
   .renderResult()
-  .forEach(()=> {
+  .forEach(() => {
     window.ga('send', 'pageview', window.location.pathname);
   });

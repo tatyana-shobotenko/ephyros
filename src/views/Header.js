@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Link from 'router1-react/lib/Link';
 
 class Header extends Component {
@@ -27,10 +27,10 @@ class Header extends Component {
         <div className="center-wrapper">
           <div className="header__logo">
             <Link route="home">
-              <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros"/>
+              <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros" />
             </Link>
           </div>
-          <a className="header__menu-btn" onClick={this.toggleMenu.bind(this)}><i className="icon-down"/></a>
+          <a className="header__menu-btn" onClick={this.toggleMenu.bind(this)}><i className="icon-down" /></a>
           {/*
            <div class="lang-select">
            <div class="lang-select__current lang-select_eng"></div>

@@ -6,13 +6,13 @@ import Layout from './../views/Layout';
 
 function CasesPage() {
   const cases = casesData
-    .map((data, index)=> {
+    .map((data, index) => {
       const tags = data.tags.join(' / ');
       let keyObj;
       if (data.keyObj) {
         keyObj = (
           <ul>
-            {data.keyObj.map((text, objIndex)=>(<li key={objIndex}>{text}</li>))}
+            {data.keyObj.map((text, objIndex) => (<li key={objIndex}>{text}</li>))}
           </ul>
         );
       }
@@ -38,12 +38,13 @@ function CasesPage() {
                     target="_blank"
                     rel="nofollow"
                   >
-                    {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
+                    {data.url.replace(/https?:\/\//, '')}
+                    <span className="work-item__link-icon icon-right-arrow" />
                   </a>
 
                 </div>
                 <div className="work-item__pic work-item__pic_in-blue">
-                  <img src={data.imageBig} alt={data.name}/>
+                  <img src={data.imageBig} alt={data.name} />
                 </div>
               </div>
             </div>
@@ -55,7 +56,7 @@ function CasesPage() {
           <div className="center-wrapper">
             <div className="gcontainer">
               <div className="work-item__pic">
-                <img src={data.imageBig} alt={data.name}/>
+                <img src={data.imageBig} alt={data.name} />
               </div>
               <div className="work-item__desc">
                 <div className="work-item__tags">{tags}</div>
@@ -71,9 +72,10 @@ function CasesPage() {
                   className="work-item__link" href={data.url}
                   target="_blank"
                   rel="nofollow"
-                  onClick={()=>{window.gae('works', 'click', `work_${data.slug}`, 30);}}
+                  onClick={() => {window.gae('works', 'click', `work_${data.slug}`, 30);}}
                 >
-                  {data.url.replace(/https?:\/\//, '')} <span className="work-item__link-icon icon-right-arrow"/>
+                  {data.url.replace(/https?:\/\//, '')}
+                  <span className="work-item__link-icon icon-right-arrow" />
                 </a>
               </div>
             </div>
@@ -85,8 +87,11 @@ function CasesPage() {
     <Layout>
       <div className="page-header">
         <div className="center-wrapper relative">
-          <span className="page-header__nav page-header__nav_prev icon-left-arrow disabled"/>
-          <Link route="services" className="page-header__nav page-header__nav_next icon-right-arrow"/>
+          <span className="page-header__nav page-header__nav_prev icon-left-arrow disabled" />
+          <Link
+            route="services"
+            className="page-header__nav page-header__nav_next icon-right-arrow"
+          />
 
           <div className="page-header__title">Work</div>
         </div>
@@ -94,7 +99,7 @@ function CasesPage() {
       <div className="work-wrap">
         {cases}
       </div>
-      <BottomMenu/>
+      <BottomMenu />
     </Layout>
   );
 }

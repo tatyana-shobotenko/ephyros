@@ -1,7 +1,7 @@
 import Cases from './Cases';
 import createContainer from 'rx-react-container';
 
-export default function() {
+export default function () {
   return {
     meta: {
       title: 'Work | Ephyros',

@@ -3,7 +3,7 @@ import createContainer from 'rx-react-container';
 
 import casesData from './../data/casesData';
 
-export default function(params) {
+export default function caseHandler(params) {
   const slug = params.slug;
   let selectedCase = false;
   casesData.forEach((i) => {
@@ -17,6 +17,6 @@ export default function(params) {
       title: selectedCase.name,
       description: '',
     },
-    view: createContainer(Case, {}, {}, {selectedCase}),
+    view: createContainer(Case, {}, {}, { selectedCase }),
   };
 }

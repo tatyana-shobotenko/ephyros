@@ -1,3 +1,4 @@
+/*eslint-disable */
 export default [
   {
     imageBig: require('./cases/gm_big.png'),

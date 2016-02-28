@@ -1,7 +1,7 @@
 import Team from './Team';
 import createContainer from 'rx-react-container';
 
-export default function() {
+export default function teamHandler() {
   return {
     meta: {
       title: 'Team | Ephyros',

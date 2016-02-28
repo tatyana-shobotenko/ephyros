@@ -1,11 +1,12 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import nodemailer from'nodemailer';
+import nodemailer from 'nodemailer';
 
-const app = express();
 
-export default function(options) {
+export default function createApp(options) {
+  const app = express();
+
   const prerender = options.prerender;
 
   const stats = require('../build/stats.json');
@@ -19,7 +20,7 @@ export default function(options) {
   // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.urlencoded({ extended: true }));
 
   app.use('/_assets', express.static(path.join('build', 'public'), {
     maxAge: '200d', // We can cache them as they include hashes
@@ -33,14 +34,14 @@ export default function(options) {
 
   const etag = app.get('etag fn');
 
-  app.get('/*', (req, res)=> {
-    function sendHtml(error, {view, meta, status, redirect}) {
+  app.get('/*', (req, res) => {
+    function sendHtml(error, { view, meta, status, redirect }) {
       if (error) {
         res.status(500);
-        res.render('500', {url: req.url});
+        res.render('500', { url: req.url });
       } else {
         if (redirect) {
-          res.writeHead(status || 303, {'Location': redirect});
+          res.writeHead(status || 303, { Location: redirect });
           res.end();
         } else {
           if (etag) {
@@ -94,13 +95,13 @@ export default function(options) {
     const form = req.body;
     mail(form);
 
-    res.writeHead(302, {'Location': req.path + '?sent'});
+    res.writeHead(302, { Location: `${req.path}?sent` });
     res.end();
   });
 
 
   const port = +(process.env.PORT || 8080);
   app.listen(port, () => {
-    console.log('Server listening on port ' + port);
+    console.log(`Server listening on port ${port}`);
   });
 }

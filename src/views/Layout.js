@@ -7,12 +7,12 @@ function Layout(props) {
   return (
     <div>
       <div className="global-wrapper">
-        <Header/>
+        <Header />
         {props.children}
 
-        <div className="push"/>
+        <div className="push" />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

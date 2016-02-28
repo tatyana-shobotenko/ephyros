@@ -1,7 +1,7 @@
 import Home from './Home';
 import createContainer from 'rx-react-container';
 
-export default function() {
+export default function homeHandler() {
   return {
     meta: {
       title: 'Ephyros | We create rocking web applications for startups &amp; enterprises',
