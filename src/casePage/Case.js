@@ -32,7 +32,7 @@ function Case({ selectedCase }) {
 }
 
 Case.propTypes = {
-  selectedCase: React.PropTypes.object.required(),
+  selectedCase: React.PropTypes.object.isRequired,
 };
 
 export default Case;
