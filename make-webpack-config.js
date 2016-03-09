@@ -1,8 +1,9 @@
+require('dotenv').load();
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-export default function(options) {
+export default function (options) {
   let entry;
 
   if (options.prerender) {
@@ -18,15 +19,15 @@ export default function(options) {
   }
 
   const defaultLoaders = [
-    {test: /\.coffee$/, loaders: ['coffee-redux-loader']},
-    {test: /\.json5$/, loaders: ['json5-loader']},
-    {test: /\.txt$/, loaders: ['raw-loader']},
-    {test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000']},
+    { test: /\.coffee$/, loaders: ['coffee-redux-loader'] },
+    { test: /\.json5$/, loaders: ['json5-loader'] },
+    { test: /\.txt$/, loaders: ['raw-loader'] },
+    { test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000'] },
     // {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
     // {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
-    {test: /\.(wav|mp3)$/, loaders: ['file-loader']},
-    {test: /\.html$/, loaders: ['html-loader']},
-    {test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader']},
+    { test: /\.(wav|mp3)$/, loaders: ['file-loader'] },
+    { test: /\.html$/, loaders: ['html-loader'] },
+    { test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader'] },
 
     // font awesome
     {
@@ -51,11 +52,11 @@ export default function(options) {
     },
   ];
   let stylesheetLoaders = [
-    {test: /\.css$/, loaders: ['css-loader!postcss-loader']},
-    {test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader']},
-    {test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader']},
-    {test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap']},
-    {test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax']},
+    { test: /\.css$/, loaders: ['css-loader!postcss-loader'] },
+    { test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader'] },
+    { test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader'] },
+    { test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap'] },
+    { test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax'] },
   ];
 
   const alias = {};
@@ -120,11 +121,11 @@ export default function(options) {
       'lodash',
       /^babel-runtime(\/.*)?$/
     );
-    plugins.push(new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1}));
+    plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
     if (options.sourceMapSupport) {
       plugins.push(
         new webpack.BannerPlugin('require("source-map-support").install();',
-          {raw: true, entryOnly: false})
+          { raw: true, entryOnly: false })
       );
     }
   }
@@ -162,6 +163,7 @@ export default function(options) {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify('production'),
+          GA_CODE: JSON.stringify(process.env.GA_CODE || 'xx-xxxxxx'),
         },
       }),
       new webpack.NoErrorsPlugin()
@@ -186,7 +188,7 @@ export default function(options) {
         .concat(stylesheetLoaders),
     },
     postcss() {
-      return [require('autoprefixer')({browsers: ['last 1 version']})];
+      return [require('autoprefixer')({ browsers: ['last 1 version'] })];
     },
     devtool: options.devtool,
     debug: options.debug,

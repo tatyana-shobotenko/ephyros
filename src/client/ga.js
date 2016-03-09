@@ -11,7 +11,7 @@
   a.src = g;
   m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-window.ga('create', 'xx-xxxxxxxx-x', 'auto');
+window.ga('create', process.env.GA_CODE, 'auto');
 
 window.gae = function(eventCategory, eventAction, eventLabel, eventValue, fieldsObject) {
   window.ga('send', 'event', eventCategory, eventAction, eventLabel, eventValue, fieldsObject);
