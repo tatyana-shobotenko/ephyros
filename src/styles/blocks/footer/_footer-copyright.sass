@@ -10,7 +10,7 @@
   +media(pho-phab)
     margin-top: 0
     font-size: 13px
-
+    text-align: center
 .footer__logo
   width: 73px
   height: 60px
@@ -21,13 +21,19 @@
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
   +media(pho-phab)
-    width: 36px
-    height: 30px
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
+    float: none
+    display: inline-block
+    margin-right: 0
 
 .footer__opsway-text
   margin-top: -34px
+  +media(ptab)
+    padding-left: 93px
+  +media(pho-phab)
+    margin-top: 10px
+    margin-bottom: 0
 .footer__opsway
   background: url("/images/opsway-white.png")
   width: 170px
@@ -43,7 +49,12 @@
     background-size: 100%
   +media(ptab)
     margin-left: 93px
+  +media(pho-phab)
+    display: inline-block
+    margin-top: 0
 .footer__copyrights-text
   padding-left: 93px
   +media(ptab)
     padding-left: 0
+  +media(pho-phab)
+    padding-left: 0px
