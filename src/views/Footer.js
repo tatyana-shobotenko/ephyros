@@ -10,6 +10,8 @@ function Footer() {
             <div className="footer-inner">
               <div className="footer__logo" />
               <div className="footer__copyrights-text">
+                <div className="footer__opsway-text footer__contacts__title">Member of</div>
+                <a href="http://opsway.com/" ><div className="footer__opsway"></div></a>
                 <div>Copyright © 2013-2015 Ephyros</div>
                 <div>All Rights Reserved</div>
               </div>

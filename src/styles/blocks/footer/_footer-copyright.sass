@@ -26,5 +26,24 @@
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
 
+.footer__opsway-text
+  margin-top: -34px
+.footer__opsway
+  background: url("/images/opsway-white.png")
+  width: 170px
+  height: 57px
+  opacity: 0.8
+  background-size: 100%
+  margin-top: 16px
+  margin-bottom: 20px
+  &:hover
+    opacity: 1
+  +retina
+    background: url("/images/opsway-white@2x.png")
+    background-size: 100%
+  +media(ptab)
+    margin-left: 93px
 .footer__copyrights-text
-  overflow: hidden
+  padding-left: 93px
+  +media(ptab)
+    padding-left: 0
