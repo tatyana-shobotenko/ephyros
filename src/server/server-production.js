@@ -1,4 +1,7 @@
-require('./server')({
-  defaultPort: 8080,
-  prerender: require('./prerender')
+import {} from 'dotenv/config';
+import server from './server';
+import prerender from './prerender';
+
+server({
+  prerender,
 });

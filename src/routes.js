@@ -1,24 +1,51 @@
-import React from 'react';
-import Router, {Route, DefaultRoute, NotFoundRoute, Redirect} from 'react-router';
-
-import NotFound from './NotFound';
-import Home from './Home/index';
-import Cases from './Cases';
-import Case from './Case';
-import Team from './Team';
-import Services from './Services';
-import Contact from './Contact';
-import Application from './Application';
+import homeHandler from './homePage/homeHandler';
+import casesHandler from './casesPage/casesHandler';
+import caseHandler from './casePage/caseHandler';
+import teamHandler from './teamPage/teamHandler';
+import servicesHandler from './servicesPage/servicesHandler';
+import contactHandler from './contactPage/contactHandler';
 
 export default [
-  <Route name="app" path="/" handler={Application}>
-    <Route name="contact" path="/contact" handler={Contact}/>
-    <Route name="services" path="/services" handler={Services}/>
-    <Route name="team" path="/team" handler={Team}/>
-    <Route name="case" path="/case/:slug" handler={Case}/>
-    <Redirect from="/case/" to="/case"/>
-    <Route name="cases" path="/case" handler={Cases}/>
-    <DefaultRoute handler={Home}/>
-  </Route>,
-  <NotFoundRoute handler={NotFound}/>
+  {
+    name: 'home',
+    url: '/',
+    handler: homeHandler,
+  },
+
+  {
+    name: 'contact',
+    url: '/contact?sent',
+    handler: contactHandler,
+  },
+  {
+    name: 'services',
+    url: '/services',
+    handler: servicesHandler,
+  },
+  {
+    name: 'team',
+    url: '/team',
+    handler: teamHandler,
+  },
+  {
+    name: 'case',
+    url: '/case/<slug:\w+>',
+    handler: caseHandler,
+  },
+  // <Redirect from="/case/" to="/case"/>
+  {
+    name: 'cases-redirect',
+    url: '/case/',
+    handler() {
+      return {
+        redirect: '/case',
+        status: 301,
+      };
+    },
+  },
+  {
+    name: 'cases',
+    url: '/case',
+    handler: casesHandler,
+  },
 ];

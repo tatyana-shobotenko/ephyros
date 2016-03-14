@@ -7,27 +7,27 @@ requirements:
 
 install dependencies: `npm i`
 
-notes:
+## Env setup
 
-for better jsx support use latest IDE version
+copy `.env.sample` to `.env`, adjust your config
 
 ## Development server
 
 
-start the webpack-dev-server:
+start the webpack-dev-server (for client-side scripts):
 
 `npm run dev-server`
 
-and watcher for server script
+and watcher for server script (for server-side)
 
 `npm run watch-server`
 
 start server
 
 - `npm run start-dev` (clientside only rendering)
-- `npm run start` (with server side rendering)
+- `npm run start-prod` (with server side rendering)
 
-open this url in your browser
+Open this url in your browser
 
 http://localhost:8080/
 
@@ -81,7 +81,7 @@ The configuration is `webpack-production.config.js`.
 The production setting builds two configurations: one for the client (`build/public`) and one for the serverside prerendering (`build/server`).
 
 
-## Legacy static assets
+## Static assets
 
 Asserts in `public` are also served.
 
@@ -97,18 +97,6 @@ Use the [analyse tool](http://webpack.github.io/analyse/) with the file at `buil
 
 Many file types are preconfigured, but not every loader is installed. If you get an error like `Cannot find module "xxx-loader"`, you'll need to install the loader with `npm install xxx-loader --save` and restart the compilation.
 
-
-## Common changes to the configuration
-
-### Add more entry points
-
-(for a multi page app)
-
-1. Add an entry point to `make-webpack-config.js` (`var entry`).
-2. Add a new top-level react component in `app` (`xxxRoutes.js`, `xxxStoreDescriptions.js`, `xxxStores.js`).
-3. (Optional) Enable `commonsChunk` in `webpack-production.config.js` and add `<script src="COMMONS_URL"></script>` to `app/prerender.html`.
-4. Modify the server code to require, serve and prerender the other entry point.
-5. Restart compilation.
 
 ### Switch devtool to SourceMaps
 

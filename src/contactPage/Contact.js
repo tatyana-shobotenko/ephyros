@@ -1,28 +1,23 @@
-import React from 'react';
-import {Link} from 'react-router';
-import BottomMenu from './BottomMenu';
-import {State} from 'react-router';
+import React, { Component } from 'react';
+import Link from 'router1-react/lib/Link';
+import BottomMenu from './../views/BottomMenu';
 import request from 'superagent';
 
-const Contact = React.createClass({
-  mixins: [State],
-  contextTypes: {
-    metaData: React.PropTypes.object.isRequired
-  },
-  componentWillMount() {
-    this.context.metaData.setTitle('Contact us | Ephyros');
-    this.context.metaData.setDescription('Don\'t hesitate to email us today');
-  },
-  getInitialState() {
-    return {
-      sent: 'sent' in this.getQuery(),
+import Layout from './../views/Layout';
+
+class Contact extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      sent: props.sent,
       inProgress: false,
       name: '',
       phone: '',
       email: '',
-      message: ''
+      message: '',
     };
-  },
+  }
+
   onSubmit(e) {
     e.preventDefault();
     if (!this.state.inProgress) {
@@ -30,24 +25,26 @@ const Contact = React.createClass({
         name: this.state.name,
         phone: this.state.phone,
         email: this.state.email,
-        message: this.state.message
-      }).end((err)=> {
-        this.setState({sent: !err, inProgress: false});
+        message: this.state.message,
+      }).end((err) => {
+        this.setState({ sent: !err, inProgress: false });
       });
     }
-    this.setState({inProgress: true});
-  },
+    this.setState({ inProgress: true });
+  }
+
   handleChange(field, e) {
-    var partialState = {};
+    const partialState = {};
     partialState[field] = e.target.value;
     this.setState(partialState);
-  },
+  }
+
   render() {
-    var formContent;
+    let formContent;
     if (this.state.sent) {
       formContent = (
         <div className="c-form">
-          <h3 className="colorful-header text-fill fail">Your message is sent</h3>
+          <h3 className="colorful-header text-fill">Your message is sent</h3>
 
           <p>We will contact you soon!</p>
         </div>
@@ -57,7 +54,7 @@ const Contact = React.createClass({
         <form
           className="c-form"
           method="post"
-          onSubmit={this.onSubmit}
+          onSubmit={this.onSubmit.bind(this)}
         >
           <h3 className="colorful-header text-fill">Hello! Let`s talk!</h3>
 
@@ -107,7 +104,7 @@ const Contact = React.createClass({
             <button
               type="submit"
               className="button button_rainbow"
-              onClick={()=>{window.gae('contact', 'click', `get_quote`, 100)}}
+              onClick={() => {window.gae('contact', 'click', 'get_quote', 100);}}
             >
               {this.state.inProgress ? 'Processing…' : 'Get a quote'}
             </button>
@@ -117,17 +114,17 @@ const Contact = React.createClass({
     }
 
     return (
-      <div>
+      <Layout>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link to="/team" className="page-header__nav page-header__nav_prev icon-left-arrow"/>
-            <span className="page-header__nav page-header__nav_next icon-right-arrow disabled"/>
+            <Link route="team" className="page-header__nav page-header__nav_prev icon-left-arrow" />
+            <span className="page-header__nav page-header__nav_next icon-right-arrow disabled" />
 
             <div className="page-header__title">Contact</div>
           </div>
         </div>
         <div className="contacts-wrap">
-          <div className="contacts-wrap__right-back"/>
+          <div className="contacts-wrap__right-back" />
           <div className="center-wrapper">
             <div className="gcontainer">
               <div className="contacts-wrap__left">
@@ -160,12 +157,20 @@ const Contact = React.createClass({
            */}
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.3794374087856!2d30.48423889999998!3d50.43403270000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceeb07b5019d%3A0x2c326dd6607b1fc!2sVasylia+Lypkivskoho+St%2C+18%2C+Kyiv%2C+03035!5e0!3m2!1sen!2sua!4v1441030335180"
-            width="100%" height="100%" frameBorder="0" style={{border: 0}}></iframe>
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            style={{ border: 0 }}
+          />
         </div>
-        <BottomMenu/>
-      </div>
+        <BottomMenu />
+      </Layout>
     );
   }
-});
+}
+
+Contact.propTypes = {
+  sent: React.PropTypes.bool,
+};
 
 export default Contact;

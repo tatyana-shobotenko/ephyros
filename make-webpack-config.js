@@ -1,3 +1,4 @@
+require('dotenv').load();
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -8,54 +9,54 @@ export default function (options) {
   if (options.prerender) {
     entry = {
       dev: './src/server/server-development',
-      prod: './src/server/server-production'
+      prod: './src/server/server-production',
     };
   } else {
     entry = {
       main: './src/client/index',
-      ie: './src/client/ie'
+      ie: './src/client/ie',
     };
   }
 
   const defaultLoaders = [
-    {test: /\.coffee$/, loaders: ['coffee-redux-loader']},
-    {test: /\.json5$/, loaders: ['json5-loader']},
-    {test: /\.txt$/, loaders: ['raw-loader']},
-    {test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000']},
-    {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
-    {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
-    {test: /\.(wav|mp3)$/, loaders: ['file-loader']},
-    {test: /\.html$/, loaders: ['html-loader']},
-    {test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader']},
+    { test: /\.coffee$/, loaders: ['coffee-redux-loader'] },
+    { test: /\.json5$/, loaders: ['json5-loader'] },
+    { test: /\.txt$/, loaders: ['raw-loader'] },
+    { test: /\.(png|jpg|jpeg|gif|svg)$/, loaders: ['url-loader?limit=10000'] },
+    // {test: /\.(woff|woff2)$/, loaders: ['url-loader?limit=100000']},
+    // {test: /\.(ttf|eot)$/, loaders: ['file-loader']},
+    { test: /\.(wav|mp3)$/, loaders: ['file-loader'] },
+    { test: /\.html$/, loaders: ['html-loader'] },
+    { test: /\.(md|markdown)$/, loaders: ['html-loader', 'markdown-loader'] },
 
-    //font awesome
+    // font awesome
     {
       test: /\.woff(\?v=\d+\.\d+\.\d+|\?.*)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff'
+      loader: 'url?limit=10000&mimetype=application/font-woff',
     },
     {
       test: /\.woff2(\?v=\d+\.\d+\.\d+|\?.*)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff'
+      loader: 'url?limit=10000&mimetype=application/font-woff',
     },
     {
       test: /\.ttf(\?v=\d+\.\d+\.\d+|\?.*)?$/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream'
+      loader: 'url?limit=10000&mimetype=application/octet-stream',
     },
     {
       test: /\.eot(\?v=\d+\.\d+\.\d+|\?.*)?$/,
-      loader: 'file'
+      loader: 'file',
     },
     {
       test: /\.svg(\?v=\d+\.\d+\.\d+|\?.*)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml'
-    }
+      loader: 'url?limit=10000&mimetype=image/svg+xml',
+    },
   ];
   let stylesheetLoaders = [
-    {test: /\.css$/, loaders: ['css-loader!postcss-loader']},
-    {test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader']},
-    {test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader']},
-    {test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap']},
-    {test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax']}
+    { test: /\.css$/, loaders: ['css-loader!postcss-loader'] },
+    { test: /\.less$/, loaders: ['css-loader!postcss-loader!less-loader'] },
+    { test: /\.styl$/, loaders: ['css-loader!postcss-loader!stylus-loader'] },
+    { test: /\.scss$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap'] },
+    { test: /\.sass$/, loaders: ['css-loader!postcss-loader!sass-loader?sourceMap&indentedSyntax'] },
   ];
 
   const alias = {};
@@ -75,41 +76,34 @@ export default function (options) {
     chunkFilename: (options.devServer ? '[id].js' : '[name].js') + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
     sourceMapFilename: 'debugging/[file].map',
     libraryTarget: options.prerender ? 'commonjs2' : undefined,
-    pathinfo: options.debug
+    pathinfo: options.debug,
   };
   const excludeFromStats = [
-    /node_modules[\\\/]react(-router)?[\\\/]/
+    /node_modules[\\\/]react(-router)?[\\\/]/,
   ];
   const plugins = [
-    function () {
-      if (!options.prerender) {
-        this.plugin('done', function (stats) {
-          const jsonStats = stats.toJson({
-            chunkModules: true,
-            exclude: excludeFromStats
-          });
-          jsonStats.publicPath = publicPath;
+    function statsPlugin() {
+      this.plugin('done', (stats) => {
+        const jsonStats = stats.toJson({
+          chunkModules: true,
+          exclude: excludeFromStats,
+        });
+        jsonStats.publicPath = publicPath;
+        if (!options.prerender) {
           require('fs').writeFileSync(path.join(__dirname, 'build', 'stats.json'), JSON.stringify(jsonStats));
-        });
-      } else {
-        this.plugin('done', function (stats) {
-          const jsonStats = stats.toJson({
-            chunkModules: true,
-            exclude: excludeFromStats
-          });
-          jsonStats.publicPath = publicPath;
+        } else {
           require('fs').writeFileSync(path.join(__dirname, 'build', 'server', 'stats.json'), JSON.stringify(jsonStats));
-        });
-      }
+        }
+      });
     },
     new webpack.PrefetchPlugin('react'),
-    new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment')
+    new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
   ];
   if (options.prerender) {
     aliasLoader['react-proxy$'] = 'react-proxy/unavailable';
     externals.push(
       {
-        '../build/stats.json': 'commonjs ../stats.json'
+        '../build/stats.json': 'commonjs ../stats.json',
       },
       /^react(\/.*)?$/,
       /^reflux(\/.*)?$/,
@@ -126,12 +120,12 @@ export default function (options) {
       'body-parser',
       'lodash',
       /^babel-runtime(\/.*)?$/
-  );
-    plugins.push(new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1}));
+    );
+    plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
     if (options.sourceMapSupport) {
       plugins.push(
         new webpack.BannerPlugin('require("source-map-support").install();',
-          {raw: true, entryOnly: false})
+          { raw: true, entryOnly: false })
       );
     }
   }
@@ -140,7 +134,7 @@ export default function (options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map(function (loader) {
+  stylesheetLoaders = stylesheetLoaders.map((loader) => {
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -162,14 +156,15 @@ export default function (options) {
     plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings: false
-        }
+          warnings: false,
+        },
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify('production')
-        }
+          NODE_ENV: JSON.stringify('production'),
+          GA_CODE: JSON.stringify(process.env.GA_CODE || 'xx-xxxxxx'),
+        },
       }),
       new webpack.NoErrorsPlugin()
     );
@@ -183,35 +178,37 @@ export default function (options) {
       loaders: [
         {
           test: /\.jsx?$/,
-          loaders: options.hotComponents ? ['react-hot', 'babel?optional=runtime'] : ['babel?optional=runtime'],
-          exclude: /node_modules/
-        }
+          loaders: options.hotComponents
+            ? ['react-hot', 'babel?presets[]=react&presets[]=es2015&plugins[]=transform-runtime']
+            : ['babel?presets[]=react&presets[]=es2015&plugins[]=transform-runtime'],
+          exclude: /node_modules/,
+        },
       ]
         .concat(defaultLoaders)
-        .concat(stylesheetLoaders)
+        .concat(stylesheetLoaders),
     },
-    postcss: function () {
-      return [require('autoprefixer')({browsers: ['last 1 version']})];
+    postcss() {
+      return [require('autoprefixer')({ browsers: ['last 1 version'] })];
     },
     devtool: options.devtool,
     debug: options.debug,
     resolveLoader: {
       root: path.join(__dirname, 'node_modules'),
-      alias: aliasLoader
+      alias: aliasLoader,
     },
     externals: externals,
     resolve: {
       root: root,
       modulesDirectories: modulesDirectories,
       extensions: extensions,
-      alias: alias
+      alias: alias,
     },
     plugins: plugins,
     devServer: {
       stats: {
         cached: false,
-        exclude: excludeFromStats
-      }
-    }
+        exclude: excludeFromStats,
+      },
+    },
   };
 }

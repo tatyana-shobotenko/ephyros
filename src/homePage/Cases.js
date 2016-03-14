@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router';
+import React, { Component } from 'react';
+import Link from 'router1-react/lib/Link';
 
 import casesData from '../data/homeCasesData';
 
@@ -7,35 +7,42 @@ class Cases extends Component {
   constructor() {
     super();
     this.state = {
-      isTouch: false
+      isTouch: false,
     };
   }
 
   componentDidMount() {
-    if ('ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch) {
-      this.setState({isTouch: true});
+    this.detectTouch();
+  }
+
+  detectTouch() {
+    if ('ontouchstart' in window
+      || window.DocumentTouch && document instanceof window.DocumentTouch) {
+      this.setState({ isTouch: true });
     }
   }
 
   render() {
     const cases = casesData
-      .map((data, index)=> {
+      .map((data, index) => {
         const tags = data.tags.join(' / ');
         return (
-          <Link to={'/case#' + data.slug}
-                params={{slug: data.slug}}
-                className={'hcase' + (data.big ? ' hcase_big' : '')}
-                onClick={()=>{window.gae('mainpage', 'click', `work_${data.slug}`, 25)}}
-                key={index}>
+          <Link
+            route="cases"
+            hash={data.slug}
+            className={ `hcase${(data.big ? ' hcase_big' : '')}` }
+            onClick={() => {window.gae('mainpage', 'click', `work_${data.slug}`, 25);}}
+            key={index}
+          >
             <div className="hcase__img">
-              <img src={data.image} alt={data.name}/>
+              <img src={data.image} alt={data.name} />
             </div>
             <div className="hcase__info">
               <div className="hcase__info-inner">
                 <div className="hcase__section">{tags}</div>
                 <div className="hcase__title">{data.name}</div>
               </div>
-              <div className="hcase__go-icon icon-right-arrow"/>
+              <div className="hcase__go-icon icon-right-arrow" />
             </div>
           </Link>
         );
@@ -51,16 +58,16 @@ class Cases extends Component {
               {cases}
             </div>
             <Link
-              to="cases"
+              route="cases"
               className="button"
-              onClick={()=>{window.gae('mainpage', 'click', `all_works`, 25)}}
+              onClick={() => {window.gae('mainpage', 'click', 'all_works', 25);}}
             >
               All works
             </Link>
           </div>
         </div>
         <a className="scroll-btn scroll-btn_before-presentation" href="#presentation">
-          <i className="icon-down"/>
+          <i className="icon-down" />
         </a>
       </div>
     );

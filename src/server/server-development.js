@@ -1,6 +1,8 @@
-require('./server')({
-  defaultPort: 8080,
-  prerender: function (requestPath, cb) {
-    cb();
-  }
+import {} from 'dotenv/config';
+import server from './server';
+
+server({
+  prerender(requestPath, cb) {
+    cb(null, { view: '', meta: { title: '', description: '' } });
+  },
 });

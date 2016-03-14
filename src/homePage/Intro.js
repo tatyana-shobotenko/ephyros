@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router';
+import React, { Component } from 'react';
+import Link from 'router1-react/lib/Link';
 
 class Intro extends Component {
   constructor() {
     super();
-    this.state = {visibility: 1};
+    this.state = { visibility: 1 };
     this.listener = false;
   }
 
@@ -22,21 +22,22 @@ class Intro extends Component {
   }
 
   onScroll() {
-    const domNode = React.findDOMNode(this.refs.root);
-
+    const domNode = this.refs.introBlock;
     const elementHeight = domNode.offsetHeight;
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
-      visibility: 1 - hiddenHeight / elementHeight
+      visibility: 1 - hiddenHeight / elementHeight,
     });
-
   }
 
   render() {
     return (
-      <div ref="root">
-        <div className="screen-intro-back2"/>
-        <div className="screen-intro-back" style={{opacity: this.state.visibility}}/>
+      <div ref="introBlock">
+        <div className="screen-intro-back2" />
+        <div
+          className="screen-intro-back"
+          style={{ opacity: this.state.visibility }}
+        />
         <div className="screen-intro">
           <div className="center-wrapper">
             <div className="screen-intro__content">
@@ -50,22 +51,27 @@ class Intro extends Component {
               </p>
 
               <div className="button-group">
-                <a href="#presentation"
-                   className="button button-group__item"
-                   onClick={()=>{window.gae('mainpage', 'click', 'presentation', 30)}}>
+                <Link
+                  route="home"
+                  hash="presentation"
+                  className="button button-group__item"
+                  onClick={() => {window.gae('mainpage', 'click', 'presentation', 30);}}
+                >
                   Presentation
-                </a>
-                <Link to="services"
-                      className="button button-group__item"
-                      onClick={()=>{window.gae('mainpage', 'click', 'services', 25)}}>
+                </Link>
+                <Link
+                  route="services"
+                  className="button button-group__item"
+                  onClick={() => {window.gae('mainpage', 'click', 'services', 25);}}
+                >
                   Services
                 </Link>
               </div>
             </div>
           </div>
-          <a className="scroll-btn scroll-btn_before-cases" href="#cases">
-            <i className="icon-down"/>
-          </a>
+          <Link className="scroll-btn scroll-btn_before-cases" hash="cases" route="home">
+            <i className="icon-down" />
+          </Link>
         </div>
       </div>
     );

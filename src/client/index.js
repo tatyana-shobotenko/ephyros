@@ -1,71 +1,149 @@
 import React from 'react';
-import Router from 'react-router';
 
-import routes from '../routes';
-import $ from 'jquery';
+import ReactDOM from 'react-dom';
+
+import { Observable } from 'rx';
 
 import '../styles/main.sass';
 import '../styles/icons.scss';
 
-(function (i, s, o, g, r, a, m) {
-  i.GoogleAnalyticsObject = r;
-  i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments);
-    };
-  i[r].l = Date.now();
-  a = s.createElement(o);
-  m = s.getElementsByTagName(o)[0];
-  a.async = 1;
-  a.src = g;
-  m.parentNode.insertBefore(a, m);
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-window.ga('create', 'UA-40296016-1', 'auto');
+import './ga';
 
-window.gae = function (eventCategory, eventAction, eventLabel, eventValue, fieldsObject) {
-  window.ga('send', 'event', eventCategory, eventAction, eventLabel, eventValue, fieldsObject);
+import raf from 'raf';
+
+import createBrowserHistory from 'router1/lib/createBrowserHistory';
+
+const history = createBrowserHistory();
+
+import notFoundHandler from '../notFoundPage/notFoundHandler';
+
+import routes from '../routes';
+import Router from 'router1/lib/Router';
+import RouterContext from 'router1-react/lib/RouterContext';
+
+import toObservable from '../utils/toObservable';
+
+const renderObservable = Observable.fromCallback(ReactDOM.render);
+const appElement = document.getElementById('app');
+
+let scrollAnimationDispose = null;
+
+const cancelScrollAnimation = () => {
+  if (scrollAnimationDispose) {
+    scrollAnimationDispose.dispose();
+  }
 };
 
-Router.run(routes, Router.HistoryLocation, (Handler) => {
-  React.withContext({
-    metaData: {
-      setTitle(title) {
-        document.title = title;
-      },
-      setDescription(description) {
-        $('meta[name=description]').text(description);
-      }
-    }
-  }, ()=> {
-    React.render(<Handler/>, document.getElementById('app'), ()=> {
-      const hash = window.location.hash;
-      if (hash) {
-        let target = $(hash);
-        target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 0);
+
+const router = new Router({
+  history,
+  routes,
+  render: (routingResult) => {
+    cancelScrollAnimation();
+
+    const handler = routingResult.handler || notFoundHandler;
+
+    const locationSource = routingResult.location.source;
+    const locationHash = routingResult.location.hash;
+
+    return toObservable(handler(routingResult.params))
+      .flatMap(({ view, meta, redirect }) => {
+        if (redirect) {
+          history.replace(redirect);
+          return Observable.empty();
         }
-      }
-      window.ga('send', 'pageview', window.location.pathname);
-    });
-  });
+
+        document.title = meta.title || '';
+
+        // $('meta[name=description]').text(meta.description || '');
+
+        return view.map(renderApp =>
+          renderObservable(
+            <RouterContext
+              router={router}
+              render={renderApp}
+            />,
+            appElement
+          )
+        );
+      })
+      .do(() => {
+        if (locationHash !== '' && locationHash !== '#') {
+          if (locationSource === 'push' || locationSource === 'replace') {
+            // scrollto anchor position
+            const target = document.getElementById(locationHash.substr(1));
+            if (target) {
+              setTimeout(() => {
+                window.scrollTo(0, window.pageYOffset + target.getBoundingClientRect().top);
+              });
+            }
+          }
+        } else {
+          if (locationSource === 'push' || locationSource === 'replace') {
+            setTimeout(() => {
+              window.scrollTo(0, 0);
+            });
+          }
+        }
+      });
+  },
 });
 
+/*eslint-disable */
+const easing = (t, b, c, d) => {
+  // t: current time, b: begInnIng value, c: change In value, d: duration
+  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t + b;
+  t--;
+  return -c / 2 * (t * (t - 2) - 1) + b;
+};
+/*eslint-enable */
 
-//////////// Performs a smooth page scroll to an anchor on the same page. ////////////
+function animateScroll(top) {
+  const duration = 400;
+  const startTime = Date.now();
+  const startTop = window.pageYOffset;
+  let cancel = false;
 
-$(function () {
-  $(document.body).on('click', 'a[href*=#]:not([href=#])', function () {
-    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-      let target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 400);
-        //return false;
+  return Observable.create((observer) => {
+    let id;
+    const animate = () => {
+      if (cancel) return;
+      const elapsed = Date.now() - startTime;
+      if (duration <= elapsed) {
+        window.scrollTo(0, top);
+        observer.onCompleted();
+      } else {
+        window.scrollTo(0, easing(elapsed, startTop, top - startTop, duration));
+        // linear scroll speed
+        // const ratio = elapsed / duration;
+        // window.scrollTo(0, startTop * (1 - ratio) + top * ratio);
+        id = raf(animate);
       }
-    }
+    };
+
+    animate();
+    return () => {
+      cancel = true;
+      raf.cancel(id);
+    };
   });
+}
+
+router.hashChange.forEach(({ hash, source }) => {
+  cancelScrollAnimation();
+  if (source !== 'push' && source !== 'replace') return;
+  const target = document.getElementById(hash.substr(1));
+  if (target) {
+    scrollAnimationDispose = animateScroll(window.pageYOffset + target.getBoundingClientRect().top)
+      .takeUntil(Observable.fromEvent(window, 'wheel'))
+      .subscribe();
+  }
 });
+
+router
+  .renderResult()
+  .forEach(() => {
+    window.ga('send', 'pageview', window.location.pathname);
+  });

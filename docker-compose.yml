@@ -1,0 +1,9 @@
+web:
+  image: ephyros-web
+  ports:
+      - "8080:80"
+  links:
+      - app
+app:
+  image: ephyros-app
+
