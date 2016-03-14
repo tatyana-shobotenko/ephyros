@@ -1,5 +1,5 @@
 .footer__contacts
-  @extend .cell7
+  @extend .cell8
   @extend %stab-cell12
   @extend %pho-cell12
   background: lighten($headerBack, 6%)
@@ -25,24 +25,44 @@
 .footer__contacts-col
   +inline-block()
   +inlineBlockModelChild(18px, 1.8)
-  width: 50%
+  width: 31%
   padding-top: 15px
+  +media(ptab)
+    width: 50%
+    padding-top: 0
+    order: 1
   +media(pho-phab)
     width: 100%
     font-size: 14px
     border-top: 1px solid lighten($headerBack, 30%)
     padding-bottom: 15px
 
+.footer__contacts-col_lg
+  width: 38%
+  +media(ptab)
+    width: 100%
+    order: 3
+  +media(pho-phab)
+    width: 100%
+
+.footer__contacts-col_logo
+  +media(ptab)
+    order: 2
+
 .footer__contacts__title
   color: #9ddff1
   font-size: 11px
   margin-bottom: 10px
   text-transform: uppercase
+  +media(ptab)
+    margin-bottom: 0
 
 .footer__contacts-inner
-  padding: 30px 0px 30px 60px
+  padding: 30px 0 30px 30px
   +media(tab)
-    padding-left: 40px
+    padding-left: 10px
+    padding-top: 15px
+    padding-bottom: 10px
   +media(pho-phab)
     padding: 0 0 0 10px
 
@@ -52,3 +72,20 @@
 .tel-span
   +media(tab)
     display: block
+
+.footer__opsway
+  background: url("/images/opsway-white-olive.png")
+  width: 170px
+  height: 58px
+  //opacity: 0.8
+  background-size: 100%
+  margin-top: 16px
+  margin-bottom: 20px
+  &:hover
+    opacity: 1
+  +retina
+    background: url("/images/opsway-white-olive@2x.png")
+    background-size: 100%
+  +media(pho-phab)
+    display: inline-block
+    margin-top: 0

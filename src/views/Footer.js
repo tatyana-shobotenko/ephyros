@@ -10,33 +10,39 @@ function Footer() {
             <div className="footer-inner">
               <div className="footer__logo" />
               <div className="footer__copyrights-text">
-                <div className="footer__opsway-text footer__contacts__title">Member of</div>
-                <a href="http://opsway.com/" ><div className="footer__opsway"></div></a>
-                <div>Copyright © 2013-2015 Ephyros</div>
+                { /* <div className="footer__opsway-text footer__contacts__title">Member of</div>
+                <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */ }
+                <div>© 2013-2016 Ephyros</div>
                 <div>All Rights Reserved</div>
               </div>
             </div>
           </div>
           <div className="footer__contacts">
-            <div className="gcontainer">
+            <div className="gcontainer footer-flex">
               <div className="footer__contacts-col">
                 <div className="footer__contacts-inner">
                   <div className="footer__contacts__title">contact</div>
                   <div>
                     <div className="footer__contacts-row">hello@ephyros.com</div>
-                    <div className="footer__contacts-row">Phone: <span className="tel-span">+380 93 58-66-136</span>
+                    <div className="footer__contacts-row"><span className="tel-span">+380 93 58-66-136</span>
                     </div>
                     <div className="footer__contacts-row">Skype: ephyros</div>
                   </div>
                 </div>
               </div>
-              <div className="footer__contacts-col">
+              <div className="footer__contacts-col footer__contacts-col_lg">
                 <div className="footer__contacts-inner">
                   <div className="footer__contacts__title">address</div>
                   <div>
                     18 Vasylia Lypkivskoho str., <br />
                     Kyiv, Ukraine, 03035
                   </div>
+                </div>
+              </div>
+              <div className="footer__contacts-col footer__contacts-col_logo">
+                <div className="footer__contacts-inner">
+                  <div className="footer__contacts__title">Member of</div>
+                  <a href="http://opsway.com/" ><div className="footer__opsway"></div></a>
                 </div>
               </div>
             </div>

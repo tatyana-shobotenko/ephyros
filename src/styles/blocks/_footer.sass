@@ -8,10 +8,10 @@
     height: auto
 
 .footer-inner
-  padding: 30px 30px 0 30px
+  padding: 25px 30px 0 30px
   +clear
   +media(tab)
-    padding: 30px 20px 0 20px
+    padding: 25px 20px 0 20px
   +media(pho-phab)
     padding: 20px 10px
     width: 240px
@@ -25,5 +25,11 @@
   z-index: 2
   +media(pho-phab)
     display: none
+
+.footer-flex
+  +media(ptab)
+    display: flex
+    flex-wrap: wrap
+
 @import "footer/footer-copyright"
 @import "footer/footer__contacts"

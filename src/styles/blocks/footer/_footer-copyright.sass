@@ -1,7 +1,7 @@
 .footer__copyrights
-  @extend .cell5
+  @extend .cell4
   @extend %stab-cell12
-  @extend %pho-cell12
+  @extend %pho-cell
   margin-top: 50px
   font-size: 18px
   line-height: 1.8
@@ -11,6 +11,8 @@
     margin-top: 0
     font-size: 13px
     text-align: center
+    width: 100%
+
 .footer__logo
   width: 73px
   height: 60px
@@ -20,6 +22,9 @@
   +retina
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
+  +media(ptab)
+    float: none
+    margin: 0 auto 20px
   +media(pho-phab)
     background-image: url("/images/logo-icon@2x.png")
     background-size: 100%
@@ -27,31 +32,6 @@
     display: inline-block
     margin-right: 0
 
-.footer__opsway-text
-  margin-top: -34px
-  +media(ptab)
-    padding-left: 93px
-  +media(pho-phab)
-    margin-top: 10px
-    margin-bottom: 0
-.footer__opsway
-  background: url("/images/opsway-white.png")
-  width: 170px
-  height: 57px
-  opacity: 0.8
-  background-size: 100%
-  margin-top: 16px
-  margin-bottom: 20px
-  &:hover
-    opacity: 1
-  +retina
-    background: url("/images/opsway-white@2x.png")
-    background-size: 100%
-  +media(ptab)
-    margin-left: 93px
-  +media(pho-phab)
-    display: inline-block
-    margin-top: 0
 .footer__copyrights-text
   padding-left: 93px
   +media(ptab)
