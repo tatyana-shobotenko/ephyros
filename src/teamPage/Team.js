@@ -43,7 +43,7 @@ function Team() {
               applications.</p>
           </div>
           <div className="about-us-slider">
-            <img src={require('./../data/team/slides/teamNY.jpg')} />
+            <img src={require('./../data/team/slides/ny16.jpg')} />
             { /*
              <div className="about-us-slider__page active"/>
              <div className="about-us-slider__page"/>

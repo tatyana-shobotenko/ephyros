@@ -66,7 +66,7 @@ class Cases extends Component {
             </Link>
           </div>
         </div>
-        <a className="scroll-btn scroll-btn_before-presentation" href="#presentation">
+        <a className="scroll-btn scroll-btn_before-team" href="#team">
           <i className="icon-down" />
         </a>
       </div>

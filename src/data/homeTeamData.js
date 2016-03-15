@@ -27,7 +27,7 @@ export default [
   {
     photo: require('./team/ava_s/kate.jpg'),
     name: 'Katia',
-    position: 'Project Manager',
+    position: 'QA Engineer',
   },
   {
     photo: require('./team/ava_s/oles.jpg'),

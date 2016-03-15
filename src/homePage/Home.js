@@ -13,8 +13,8 @@ function Home() {
       <Intro />
       <a id="cases" />
       <Cases />
-      <a id="presentation" />
-      <Presentation />
+      { /* <a id="presentation" />
+      <Presentation /> */ }
       <a id="team" />
       <Team />
       <a id="contact" />
