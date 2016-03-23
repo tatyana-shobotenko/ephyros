@@ -30,7 +30,7 @@ class Header extends Component {
               <img src="/images/logo-space2@2x.png" title="Ephyros" alt="Ephyros" />
             </Link>
           </div>
-          <div className="opsway-text"><a href="http://opsway.com/" >Member of <span className="ops-title">OpsWay</span></a></div>
+          <div className="opsway-text"><a href="http://opsway.com/" target="_blank">Member of <span className="ops-title">OpsWay</span></a></div>
           <a className="header__menu-btn" onClick={this.toggleMenu.bind(this)}><i className="icon-down" /></a>
           {/*
            <div class="lang-select">
