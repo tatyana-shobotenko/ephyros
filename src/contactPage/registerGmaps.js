@@ -16,9 +16,6 @@ window[callbackName] = () => {
 };
 
 export default (callback) => {
-  console.log(process.env);
-  console.log(process.env.GMAPS_API_KEY);
-
   if (!isLoaded && !isLoading) {
     isLoading = true;
     callbacks.push(callback);
