@@ -1,4 +1,5 @@
-require('dotenv').load();
+import {} from 'dotenv/config';
+
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -152,6 +153,14 @@ export default function (options) {
   if (options.separateStylesheet && !options.prerender) {
     plugins.push(new ExtractTextPlugin('[name].css' + (options.longTermCaching ? '?[contenthash]' : '')));
   }
+
+  const env = Object
+    .keys(process.env)
+    .reduce((acc, key)=> {
+      acc[key] = JSON.stringify(process.env[key]);
+      return acc;
+    }, {});
+
   if (options.minimize) {
     plugins.push(
       new webpack.optimize.UglifyJsPlugin({
@@ -161,13 +170,24 @@ export default function (options) {
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify('production'),
-          GA_CODE: JSON.stringify(process.env.GA_CODE || 'xx-xxxxxx'),
-        },
+        'process.env': Object.assign({},
+          env,
+          {
+            NODE_ENV: JSON.stringify('production'),
+          }),
       }),
       new webpack.NoErrorsPlugin()
     );
+  } else {
+    if (!options.prerender) {
+      plugins.push(
+        new webpack.DefinePlugin({
+          'process.env': Object.assign({}, env, {
+            NODE_ENV: JSON.stringify('development'),
+          }),
+        })
+      );
+    }
   }
 
   return {
