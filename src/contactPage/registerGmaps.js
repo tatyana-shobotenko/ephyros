@@ -4,18 +4,27 @@ const key = process.env.GMAPS_API_KEY;
 
 let isLoading = false;
 let isLoaded = false;
+let isGlobalCallbackSet = false;
 
-window[callbackName] = () => {
-  callbacks.forEach((cb) => {
-    cb();
-  });
-  isLoading = false;
-  isLoaded = true;
+function attach(callback) {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    // console.warn('Google maps can be used only on the client side')
+    return;
+  }
 
-  delete window[callbackName];
-};
+  if (!isGlobalCallbackSet) {
+    window[callbackName] = () => {
+      callbacks.forEach((cb) => {
+        cb();
+      });
+      isLoading = false;
+      isLoaded = true;
 
-export default (callback) => {
+      delete window[callbackName];
+    };
+    isGlobalCallbackSet = true;
+  }
+
   if (!isLoaded && !isLoading) {
     isLoading = true;
     callbacks.push(callback);
@@ -33,4 +42,6 @@ export default (callback) => {
   } else {
     callback();
   }
-};
+}
+
+export default attach;
