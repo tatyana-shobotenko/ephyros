@@ -1,6 +1,6 @@
 import React from 'react';
 import Cases from './Cases';
-import Presentation from './Presentation';
+// import Presentation from './Presentation';
 import Team from './Team';
 import Contact from './Contact';
 import Intro from './Intro';

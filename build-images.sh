@@ -9,7 +9,7 @@ rm -rf node_modules
 NODE="docker run -it --rm
        -v $(pwd):/app
        -w /app
-       node:5.7"
+       node:5"
 
 ${NODE} npm install
 
@@ -27,5 +27,9 @@ ${NODE} npm run build
 
 ${NODE} npm prune --production
 
-docker build -t ephyros-app .
-docker build -t ephyros-web -f ./nginx/Dockerfile .
+docker build -t ephyros/app .
+docker build -t ephyros/web -f ./nginx/Dockerfile .
+
+docker tag ephyros/app registry.opsway.com/ephyros/app
+docker tag ephyros/web registry.opsway.com/ephyros/web
+

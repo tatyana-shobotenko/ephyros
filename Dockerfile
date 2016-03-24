@@ -1,4 +1,4 @@
-FROM node:5.7
+FROM node:5
 MAINTAINER Bogdan Savluk <savluk.bogdan@gmail.com>
 
 RUN mkdir /app
