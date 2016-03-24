@@ -3,7 +3,7 @@ export default [
     big: true,
     image: require('./cases/pm_home.jpg'),
     name: 'Probniki',
-    slug: 'probniki',
+    slug: 'lifeprints',
     tags: ['SaaS', 'MVP', 'Startup', 'Photo'],
     url: '/case#Probniki',
   },
