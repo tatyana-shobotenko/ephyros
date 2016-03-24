@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
 import registerGmaps from './registerGmaps';
 
 class Map extends Component {
@@ -7,16 +6,16 @@ class Map extends Component {
     if (elem === null) return;
 
     const callback = () => {
-      const map = new google.maps.Map(elem, {
+      const map = new window.google.maps.Map(elem, {
         scrollwheel: false,
         zoom: this.props.zoom,
         center: this.props.point,
       });
 
-      const marker = new google.maps.Marker({
+      const marker = new window.google.maps.Marker({
         position: this.props.point,
-        map: map,
         title: 'Ephyros\'s head office',
+        map,
       });
 
       const contentString = `
@@ -28,7 +27,7 @@ class Map extends Component {
         <p>phone: +380 93 58-66-136</p>
         <p>skype: ephyros</p>`;
 
-      const infowindow = new google.maps.InfoWindow({
+      const infowindow = new window.google.maps.InfoWindow({
         content: contentString,
       });
 
@@ -42,7 +41,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={{height: '100%'}} ref={elem => this.attachMapHandler(elem)}></div>
+      <div style={{ height: '100%' }} ref={elem => this.attachMapHandler(elem)}></div>
     );
   }
 }

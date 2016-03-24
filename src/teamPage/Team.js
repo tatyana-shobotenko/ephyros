@@ -1,11 +1,8 @@
 import React from 'react';
 import Link from 'router1-react/lib/Link';
-
 import BottomMenu from './../views/BottomMenu';
 import Slides from './TeamSlides';
-
 import Layout from './../views/Layout';
-
 import teamData from './../data/teamData';
 import photoSlides from './../data/team/photoSlides';
 

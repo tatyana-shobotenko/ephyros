@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-
 import createServerHistory from 'router1/lib/createServerHistory';
-
 import notFoundHandler from '../notFoundPage/notFoundHandler';
-
 import routes from '../routes';
 import Router from 'router1/lib/Router';
 import RouterContext from 'router1-react/lib/RouterContext';
-
 import toObservable from '../utils/toObservable';
 import { Observable } from 'rx';
 

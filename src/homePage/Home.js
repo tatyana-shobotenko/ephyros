@@ -14,7 +14,7 @@ function Home() {
       <a id="cases" />
       <Cases />
       { /* <a id="presentation" />
-      <Presentation /> */ }
+       <Presentation /> */ }
       <a id="team" />
       <Team />
       <a id="contact" />

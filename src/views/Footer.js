@@ -11,7 +11,7 @@ function Footer() {
               <div className="footer__logo" />
               <div className="footer__copyrights-text">
                 { /* <div className="footer__opsway-text footer__contacts__title">Member of</div>
-                <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */ }
+                 <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */ }
                 <div>© 2013-2016 Ephyros</div>
                 <div>All Rights Reserved</div>
               </div>
@@ -42,7 +42,9 @@ function Footer() {
               <div className="footer__contacts-col footer__contacts-col_logo">
                 <div className="footer__contacts-inner">
                   <div className="footer__contacts__title">Member of</div>
-                  <a href="http://opsway.com/" ><div className="footer__opsway"></div></a>
+                  <a href="http://opsway.com/">
+                    <div className="footer__opsway"></div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'router1-react/lib/Link';
 import request from 'superagent';
-
 import Layout from './../views/Layout';
 import BottomMenu from './../views/BottomMenu';
 import Map from './Map';
@@ -151,7 +150,7 @@ class Contact extends Component {
           </div>
         </div>
         <div className="c-map">
-          <Map point={{lat: 50.433889, lng: 30.484003}} zoom={16} />
+          <Map point={{ lat: 50.433889, lng: 30.484003 }} zoom={16} />
         </div>
         <BottomMenu />
       </Layout>

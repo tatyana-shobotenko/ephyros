@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 
 class Slides extends Component {
   constructor() {
@@ -23,9 +24,12 @@ class Slides extends Component {
 
   render() {
     const slides = this.props.slides.map((slide, index) => (
-      <div className={'photo-screen__slide' + (index === this.state.activeSlide ? ' active' : '')} key={index}>
-        <div className="photo-screen__photo" style={{ backgroundImage: `url(${slide.image})` }} />
-        <div className={'photo-screen__shadow ' + slide.shadowModifier }>
+      <div className={cx('photo-screen__slide', { active: index === this.state.activeSlide })} key={index}>
+        <div
+          className="photo-screen__photo"
+          style={{ backgroundImage: `url(${slide.image})` }}
+        />
+        <div className={cx('photo-screen__shadow', slide.shadowModifier)}>
           <div className="photo-screen__title">{slide.title}</div>
         </div>
       </div>

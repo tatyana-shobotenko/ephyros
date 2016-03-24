@@ -1,6 +1,5 @@
 import Case from './Case';
 import createContainer from 'rx-react-container';
-
 import casesData from './../data/casesData';
 
 export default function caseHandler(params) {

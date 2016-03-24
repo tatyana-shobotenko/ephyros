@@ -1,7 +1,5 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom';
-
 import { Observable } from 'rx';
 
 import '../styles/main.sass';
@@ -13,15 +11,14 @@ import raf from 'raf';
 
 import createBrowserHistory from 'router1/lib/createBrowserHistory';
 
-const history = createBrowserHistory();
-
 import notFoundHandler from '../notFoundPage/notFoundHandler';
 
 import routes from '../routes';
 import Router from 'router1/lib/Router';
 import RouterContext from 'router1-react/lib/RouterContext';
-
 import toObservable from '../utils/toObservable';
+
+const history = createBrowserHistory();
 
 const renderObservable = Observable.fromCallback(ReactDOM.render);
 const appElement = document.getElementById('app');
