@@ -1,5 +1,4 @@
-ephyros.com next version
-========================
+# ephyros.com
 
 [![Build Status](https://drone.opsway.com/api/badges/opsway/ephyros/status.svg)](https://drone.opsway.com/opsway/ephyros)
 
