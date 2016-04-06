@@ -1,5 +1,7 @@
 environment:
   DOCKER_REGISTRY: hub.opsway.com
   DOCKER_LOGIN: bosav@opsway.com
-  DOCKER_PASSWORD: ********
+  DOCKER_PASSWORD: ***
   DOCKER_EMAIL: bosav@opsway.com
+  RANCHER_KEY: 836BA3B7A831D7F96F67
+  RANCHER_SECRET: ***
