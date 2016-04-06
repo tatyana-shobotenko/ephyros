@@ -3,5 +3,6 @@ environment:
   DOCKER_LOGIN: bosav@opsway.com
   DOCKER_PASSWORD: ***
   DOCKER_EMAIL: bosav@opsway.com
+  RANCHER_URL: http://rancher.opsway.com:8080/v1/projects/1a104
   RANCHER_KEY: 836BA3B7A831D7F96F67
   RANCHER_SECRET: ***

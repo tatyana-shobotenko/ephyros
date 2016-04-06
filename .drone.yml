@@ -33,7 +33,7 @@ publish:
       branch: master
 deploy:
   rancher:
-    url: http://rancher.opsway.com:8080
+    url: $$RANCHER_URL
     access_key: $$RANCHER_KEY
     secret_key: $$RANCHER_SECRET
     service: ephyros/app
@@ -42,7 +42,7 @@ deploy:
     when:
       branch: master
   rancher:
-    url: http://rancher.opsway.com:8080
+    url: $$RANCHER_URL
     access_key: $$RANCHER_KEY
     secret_key: $$RANCHER_SECRET
     service: ephyros/web
