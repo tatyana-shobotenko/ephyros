@@ -1,6 +1,8 @@
 ephyros.com next version
 ========================
 
+[![Build Status](https://drone.opsway.com/api/badges/opsway/ephyros/status.svg)](https://drone.opsway.com/opsway/ephyros)
+
 requirements:
 
 1. nodejs

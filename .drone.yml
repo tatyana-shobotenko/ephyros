@@ -19,6 +19,8 @@ publish:
     repo: ephyros/app
     tag: latest
     file: Dockerfile
+    when:
+      branch: master
   docker:
     registry: $$DOCKER_REGISTRY
     username: $$DOCKER_LOGIN
@@ -27,5 +29,5 @@ publish:
     repo: ephyros/web
     tag: latest
     file: nginx/Dockerfile
-    # force_tag
-    # docker login -u bosav@opsway.com -e bosav@opsway.com -p 0qeel8fr test.docker
+    when:
+      branch: master
