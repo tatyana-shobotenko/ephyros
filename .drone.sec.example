@@ -1,0 +1,5 @@
+environment:
+  DOCKER_REGISTRY: hub.opsway.com
+  DOCKER_LOGIN: bosav@opsway.com
+  DOCKER_PASSWORD: ********
+  DOCKER_EMAIL: bosav@opsway.com

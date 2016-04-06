@@ -1,0 +1,31 @@
+cache:
+  mount:
+    - /drone/npm-cache
+    - node_modules
+build:
+  image: node:5
+  commands:
+    - npm config set cache /drone/npm-cache --global
+    - npm install
+    - npm run lint
+    - npm run build
+
+publish:
+  docker:
+    registry: $$DOCKER_REGISTRY
+    username: $$DOCKER_LOGIN
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    repo: ephyros/app
+    tag: latest
+    file: Dockerfile
+  docker:
+    registry: $$DOCKER_REGISTRY
+    username: $$DOCKER_LOGIN
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    repo: ephyros/web
+    tag: latest
+    file: nginx/Dockerfile
+    # force_tag
+    # docker login -u bosav@opsway.com -e bosav@opsway.com -p 0qeel8fr test.docker
