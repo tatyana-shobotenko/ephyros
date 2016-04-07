@@ -1,0 +1,10 @@
+web:
+  image: hub.opsway.com/ephyros/web
+  restart: always
+  ports:
+      - "4000:80"
+  links:
+      - app
+app:
+  restart: always
+  image: hub.opsway.com/ephyros/app

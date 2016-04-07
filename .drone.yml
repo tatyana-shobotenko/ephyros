@@ -54,3 +54,12 @@ publish:
 #    confirm: true
 #    when:
 #      branch: master
+deploy:
+  ssh:
+    host: ephyros.com
+    user: root
+    port: 22
+    commands:
+      - cd ephyros.com
+      - docker-compose pull
+      - docker-compose up -d
