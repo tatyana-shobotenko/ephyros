@@ -31,7 +31,14 @@
 <!--[if lt IE 9]>
 <script src="<%- ieScriptsUrl %>"></script>
 <![endif]-->
-
+<script>
+  window.process = <%- JSON.stringify({
+    env: {
+      GA_CODE: process.env.GA_CODE,
+      GMAPS_API_KEY: process.env.GMAPS_API_KEY,
+    }
+  }) %>;
+</script>
 <script defer src="<%- scriptsUrl %>"></script>
 <!-- Hello here ;) -->
 </body>

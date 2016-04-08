@@ -45,7 +45,14 @@ export default function createApp(options) {
           res.end();
         } else {
           if (etag) {
-            const v = etag(view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), 'utf-8');
+            const v = etag(''
+              + SCRIPT_URL
+              + IE_SCRIPT_URL
+              + STYLE_URL
+              + meta.title
+              + meta.description
+              + view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''),
+              'utf-8');
             if (v) res.set('ETag', v);
           }
 
