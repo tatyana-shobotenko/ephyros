@@ -31,35 +31,34 @@ publish:
     file: nginx/Dockerfile
     when:
       branch: master
-# to be enabled after upgrade to rancher 1.0
-#
-#deploy:
-#  rancher:
-#    image: zxbodya/drone-rancher
-#    url: $$RANCHER_URL
-#    access_key: $$RANCHER_KEY
-#    secret_key: $$RANCHER_SECRET
-#    service: ephyros/app
-#    docker_image: $$DOCKER_REGISTRY/ephyros/app:latest
-#    confirm: true
-#    when:
-#      branch: master
-#  rancher:
-#    image: zxbodya/drone-rancher
-#    url: $$RANCHER_URL
-#    access_key: $$RANCHER_KEY
-#    secret_key: $$RANCHER_SECRET
-#    service: ephyros/web
-#    docker_image: $$DOCKER_REGISTRY/ephyros/web:latest
-#    confirm: true
-#    when:
-#      branch: master
+
 deploy:
-  ssh:
-    host: ephyros.com
-    user: root
-    port: 22
-    commands:
-      - cd ephyros.com
-      - docker-compose pull
-      - docker-compose up -d
+  rancher:
+    image: zxbodya/drone-rancher
+    url: $$RANCHER_URL
+    access_key: $$RANCHER_KEY
+    secret_key: $$RANCHER_SECRET
+    service: ephyros/app
+    docker_image: $$DOCKER_REGISTRY/ephyros/app:latest
+    confirm: true
+    when:
+      branch: master
+  rancher:
+    image: zxbodya/drone-rancher
+    url: $$RANCHER_URL
+    access_key: $$RANCHER_KEY
+    secret_key: $$RANCHER_SECRET
+    service: ephyros/web
+    docker_image: $$DOCKER_REGISTRY/ephyros/web:latest
+    confirm: true
+    when:
+      branch: master
+# deploy:
+#   ssh:
+#     host: ephyros.com
+#     user: root
+#     port: 22
+#     commands:
+#       - cd ephyros.com
+#       - docker-compose pull
+#       - docker-compose up -d
