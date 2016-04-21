@@ -6,7 +6,7 @@
   "scripts": {
     "dev-server": "babel-node --presets es2015 -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-dev-server.config.js --progress --colors --port 2992 --inline",
     "hot-dev-server": "babel-node --presets es2015 -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "rimraf build/* && babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js --progress --profile --colors",
+    "build": "rimraf build/* && babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --config webpack-production.config.js --progress --profile --colors --bail",
     "lint": "eslint ./src/",
     "watch-server": "babel-node --presets es2015 -- ./node_modules/webpack/bin/webpack.js --watch --config webpack-watch-server.config --progress --profile --colors",
     "start-dev": "pm2-dev ./build/server/dev.js",
