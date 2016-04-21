@@ -70,7 +70,7 @@ export default function (options) {
 
   const output = {
     path: path.join(__dirname, 'build', options.prerender ? 'server' : 'public'),
-    publicPath: publicPath,
+    publicPath,
     filename: '[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
     chunkFilename: (options.devServer ? '[id].js' : '[name].js') + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
     sourceMapFilename: 'debugging/[file].map',
@@ -100,26 +100,15 @@ export default function (options) {
   ];
   if (options.prerender) {
     aliasLoader['react-proxy$'] = 'react-proxy/unavailable';
+    const nodeModules = require('fs').readdirSync('node_modules').filter(x => x !== '.bin');
+
     externals.push(
       {
         '../build/stats.json': 'commonjs ../stats.json',
       },
-      /^react(\/.*)?$/,
-      /^reflux(\/.*)?$/,
-      'nodemailer',
-      'nodemailer-smtp-transport',
-      'superagent',
-      'express',
-      'async',
-      'rx',
-      'path',
-      'core-js',
-      'debug',
-      'morgan',
-      'body-parser',
-      'lodash',
-      /^babel-runtime(\/.*)?$/
+      ...nodeModules
     );
+
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
     if (options.sourceMapSupport) {
       plugins.push(
@@ -133,7 +122,8 @@ export default function (options) {
   }
 
 
-  stylesheetLoaders = stylesheetLoaders.map((loader) => {
+  stylesheetLoaders = stylesheetLoaders.map((loaderIn) => {
+    const loader = Object.assign({}, loaderIn);
     if (Array.isArray(loader.loaders)) {
       loader.loaders = loader.loaders.join('!');
     }
@@ -142,7 +132,7 @@ export default function (options) {
     } else if (options.separateStylesheet) {
       loader.loaders = ExtractTextPlugin.extract('style-loader', loader.loaders);
     } else {
-      loader.loaders = 'style-loader!' + loader.loaders;
+      loader.loaders = `style-loader!${loader.loaders}`;
     }
     loader.loaders = loader.loaders.split('!');
     return loader;
@@ -154,11 +144,11 @@ export default function (options) {
 
   if (options.minimize) {
     plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      }),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   compress: {
+      //     warnings: false,
+      //   },
+      // }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
@@ -176,8 +166,8 @@ export default function (options) {
   }
 
   return {
-    entry: entry,
-    output: output,
+    entry,
+    output,
     target: options.prerender ? 'node' : 'web',
     module: {
       loaders: [
@@ -203,12 +193,12 @@ export default function (options) {
     },
     externals: externals,
     resolve: {
-      root: root,
-      modulesDirectories: modulesDirectories,
-      extensions: extensions,
-      alias: alias,
+      root,
+      modulesDirectories,
+      extensions,
+      alias,
     },
-    plugins: plugins,
+    plugins,
     devServer: {
       stats: {
         cached: false,

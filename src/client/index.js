@@ -1,3 +1,4 @@
+import {} from './env';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Observable } from 'rx';
