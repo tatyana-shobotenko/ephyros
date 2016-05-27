@@ -29,8 +29,8 @@ class Cases extends Component {
           <Link
             route="cases"
             hash={data.slug}
-            className={ `hcase${(data.big ? ' hcase_big' : '')}` }
-            onClick={() => {window.gae('mainpage', 'click', `work_${data.slug}`, 25);}}
+            className={`hcase${(data.big ? ' hcase_big' : '')}`}
+            onClick={() => { window.gae('mainpage', 'click', `work_${data.slug}`, 25); }}
             key={index}
           >
             <div className="hcase__img">
@@ -59,7 +59,7 @@ class Cases extends Component {
             <Link
               route="cases"
               className="button"
-              onClick={() => {window.gae('mainpage', 'click', 'all_works', 25);}}
+              onClick={() => { window.gae('mainpage', 'click', 'all_works', 25); }}
             >
               All works
             </Link>

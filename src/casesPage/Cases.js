@@ -72,7 +72,7 @@ function CasesPage() {
                   className="work-item__link" href={data.url}
                   target="_blank"
                   rel="nofollow"
-                  onClick={() => {window.gae('works', 'click', `work_${data.slug}`, 30);}}
+                  onClick={() => { window.gae('works', 'click', `work_${data.slug}`, 30); }}
                 >
                   {data.url.replace(/https?:\/\//, '')}
                   <span className="work-item__link-icon icon-right-arrow" />

@@ -29,7 +29,7 @@ export default [
   },
   {
     name: 'case',
-    url: '/case/<slug:\w+>',
+    url: '/case/<slug:\\w+>',
     handler: caseHandler,
   },
   // <Redirect from="/case/" to="/case"/>

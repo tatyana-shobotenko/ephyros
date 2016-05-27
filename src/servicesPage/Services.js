@@ -23,7 +23,7 @@ function Services() {
                   {data.link ? (<a
                     className="button button_blue"
                     href={data.link}
-                    onClick={() => {window.gae('services', 'click', `example_${data.slug}`, 25);}}
+                    onClick={() => { window.gae('services', 'click', `example_${data.slug}`, 25); }}
                   >See An Example</a>) : null}
                 </div>
               </div>
@@ -44,7 +44,7 @@ function Services() {
                   <a
                     className="button button_blue"
                     href={data.link}
-                    onClick={() => {window.gae('services', 'click', `example_${data.slug}`, 25);}}
+                    onClick={() => { window.gae('services', 'click', `example_${data.slug}`, 25); }}
                   >See An Example</a>
                 ) : null}
               </div>

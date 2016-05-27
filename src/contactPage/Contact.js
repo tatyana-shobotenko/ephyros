@@ -104,7 +104,7 @@ class Contact extends Component {
             <button
               type="submit"
               className="button button_rainbow"
-              onClick={() => {window.gae('contact', 'click', 'get_quote', 100);}}
+              onClick={() => { window.gae('contact', 'click', 'get_quote', 100); }}
             >
               {this.state.inProgress ? 'Processing…' : 'Get a quote'}
             </button>

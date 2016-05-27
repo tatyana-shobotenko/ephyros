@@ -60,7 +60,7 @@ class Intro extends Component {
                 <Link
                   route="services"
                   className="button button-group__item"
-                  onClick={() => {window.gae('mainpage', 'click', 'services', 25);}}
+                  onClick={() => { window.gae('mainpage', 'click', 'services', 25); }}
                 >
                   Services
                 </Link>
