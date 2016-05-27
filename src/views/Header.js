@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'router1-react/lib/Link';
+import { Link } from 'router1-react';
 import cx from 'classnames';
 
 class Header extends Component {

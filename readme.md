@@ -2,110 +2,83 @@
 
 [![Build Status](https://drone.opsway.com/api/badges/opsway/ephyros/status.svg)](https://drone.opsway.com/opsway/ephyros)
 
-requirements:
+Application starter template.
+Can be used for both: single page and isomorphic applications.
+ 
+Following libraries are used:
 
-1. nodejs
+1. ReactJS
+2. RxJS
+3. ExpressJS
+4. Router1  + Router1 React
 
-install dependencies: `npm i`
+And tools:
+
+1. Webpack - to bundle all resources
+2. BabelJS - to support es2015 syntax 
+3. Node SASS - to compile 
+4. PostCSS
+5. Nodemon
 
 ## Env setup
 
 copy `.env.sample` to `.env`, adjust your config
 
-## Development server
+## Development environment setup
 
+0. check your nodejs version - it should be version 6 or later
+1. install dependencies using npm
+2. start server app, with automatic recompile and reload when something changes
+    - `npm run watch-dev`
+    - `npm run watch-prod`, if you need server-side rendering
+3. open this url in your browser: `http://localhost:8080/`
 
-start the webpack-dev-server (for client-side scripts):
+(there is alternative options, to start everything separately - check `package.json` for more details)
 
-`npm run dev-server`
-
-and watcher for server script (for server-side)
-
-`npm run watch-server`
-
-start server
-
-- `npm run start-dev` (clientside only rendering)
-- `npm run start-prod` (with server side rendering)
-
-Open this url in your browser
-
-http://localhost:8080/
-
-The configuration is `webpack-dev-server.config.js`.
-
-It automatically recompiles and refreshes the page when files are changed.
-
-Also check the [webpack-dev-server documentation](http://webpack.github.io/docs/webpack-dev-server.html).
-
-
-## Hot Module Replacement development server (not tested and likely not working)
-
-start the webpack-dev-server in HMR mode
-`npm run hot-dev-server`
-
-wait for the first compilation is successful
-
-in another terminal/console
-start the node.js server in development mode
-
-`npm run start-dev`
-
-open this url in your browser
-
-http://localhost:8080/
-
-The configuration is `webpack-hot-dev-server.config.js`.
-
-It automatically recompiles when files are changed. When a hot-replacement-enabled file is changed (i. e. stylesheets or React components) the module is hot-replaced. If Hot Replacement is not possible the page is refreshed.
-
-Hot Module Replacement has a performance impact on compilation.
-
+To customize host and ports used by application - use environment variables:
+- `HOST` - host where application is running, `localhost` by default 
+- `DEV_SERVER_PORT` - port used by dev server, `2992` by default 
+- `PORT` - port user by application, `8080` by default 
 
 ## Production compilation and server
 
-build the client bundle and the prerendering bundle
+Build sources:
 
-`npm run build`
+- `npm run build`
 
-start the node.js server in production mode
+Start server:
 
-`node ./build/server/prod` (isomorphic rendering)
-`node ./build/server/dev` (SPA)
-
-open this url in your browser
-
-http://localhost:8080/
-
-The configuration is `webpack-production.config.js`.
-
-The production setting builds two configurations: one for the client (`build/public`) and one for the serverside prerendering (`build/server`).
+- `node ./build/server/prod` (isomorphic rendering)
+- `node ./build/server/dev` (SPA)
 
 
-## Static assets
+## Project structure
+
+### Legacy static assets
 
 Asserts in `public` are also served.
 
-
-## Build visualization
+### Build visualization
 
 After a production build you may want to visualize your modules and chunks tree.
 
 Use the [analyse tool](http://webpack.github.io/analyse/) with the file at `build/stats.json`.
 
 
-## Loaders and file types
+### Loaders and file types
 
 Many file types are preconfigured, but not every loader is installed. If you get an error like `Cannot find module "xxx-loader"`, you'll need to install the loader with `npm install xxx-loader --save` and restart the compilation.
 
 
-### Switch devtool to SourceMaps
+### Common changes to the configuration
+
+#### Switch devtool to SourceMaps
 
 Change `devtool` property in `webpack-dev-server.config.js` and `webpack-hot-dev-server.config.js` to `"source-map"` (better module names) or `"eval-source-map"` (faster compilation).
 
 SourceMaps have a performance impact on compilation.
 
-### Enable SourceMaps in production
+#### Enable SourceMaps in production
 
 1. Uncomment the `devtool` line in `webpack-production.config.js`.
 2. Make sure that the folder `build\public\debugging` is access controlled, i. e. by password.

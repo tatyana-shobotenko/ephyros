@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-export default function (options) {
+module.exports = function (options) {
   let entry;
 
   if (options.prerender) {
@@ -64,15 +64,22 @@ export default function (options) {
   const modulesDirectories = ['web_modules', 'node_modules'];
   const extensions = ['', '.web.js', '.js', '.jsx'];
   const root = path.join(__dirname, 'app');
+
+  const host = process.env.HOST || 'localhost';
+  const devPort = process.env.DEV_SERVER_PORT || 2992;
+
   const publicPath = options.devServer ?
-    'http://localhost:2992/_assets/' :
+    `http://${host}:${devPort}/_assets/` :
     '/_assets/';
 
   const output = {
     path: path.join(__dirname, 'build', options.prerender ? 'server' : 'public'),
     publicPath,
     filename: '[name].js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
-    chunkFilename: (options.devServer ? '[id].js' : '[name].js') + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : ''),
+    chunkFilename: (
+      (options.devServer ? '[id].js' : '[name].js')
+      + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : '')
+    ),
     sourceMapFilename: 'debugging/[file].map',
     libraryTarget: options.prerender ? 'commonjs2' : undefined,
     pathinfo: options.debug,
@@ -118,7 +125,12 @@ export default function (options) {
     }
   }
   if (options.commonsChunk) {
-    plugins.push(new webpack.optimize.CommonsChunkPlugin('commons', 'commons.js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : '')));
+    plugins.push(
+      new webpack.optimize.CommonsChunkPlugin(
+        'commons',
+        'commons.js' + (options.longTermCaching && !options.prerender ? '?[chunkhash]' : '')
+      )
+    );
   }
 
 
@@ -191,7 +203,7 @@ export default function (options) {
       root: path.join(__dirname, 'node_modules'),
       alias: aliasLoader,
     },
-    externals: externals,
+    externals,
     resolve: {
       root,
       modulesDirectories,
@@ -206,4 +218,4 @@ export default function (options) {
       },
     },
   };
-}
+};

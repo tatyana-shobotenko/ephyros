@@ -19,6 +19,7 @@ export default function createApp(options) {
   const IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
   // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -107,7 +108,7 @@ export default function createApp(options) {
   });
 
 
-  const port = +(process.env.PORT || 8080);
+  const port = +(process.env.PORT || options.defaultPort || 8080);
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });

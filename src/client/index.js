@@ -10,16 +10,16 @@ import './ga';
 
 import raf from 'raf';
 
-import createBrowserHistory from 'router1/lib/createBrowserHistory';
+import { createBrowserHistory, Router } from 'router1';
+import { RouterContext } from 'router1-react';
+
+const history = createBrowserHistory();
 
 import notFoundHandler from '../notFoundPage/notFoundHandler';
 
 import routes from '../routes';
-import Router from 'router1/lib/Router';
-import RouterContext from 'router1-react/lib/RouterContext';
-import toObservable from '../utils/toObservable';
 
-const history = createBrowserHistory();
+import toObservable from '../utils/toObservable';
 
 const renderObservable = Observable.fromCallback(ReactDOM.render);
 const appElement = document.getElementById('app');
@@ -39,7 +39,7 @@ const router = new Router({
   render: (routingResult) => {
     cancelScrollAnimation();
 
-    const handler = routingResult.handler || notFoundHandler;
+    const handler = routingResult.handlers[0] || notFoundHandler;
 
     const locationSource = routingResult.location.source;
     const locationHash = routingResult.location.hash;
@@ -66,6 +66,7 @@ const router = new Router({
         );
       })
       .do(() => {
+        if (routingResult.location.state.noscroll) return;
         // should scroll only on this location sources
         if (locationSource === 'push' || locationSource === 'replace') {
           let target;
