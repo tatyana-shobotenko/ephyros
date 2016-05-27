@@ -5,7 +5,7 @@ cache:
     - node_modules
 
 build:
-  image: node:5
+  image: node:6
   commands:
     - npm config set cache /drone/npm-cache --global
     - mv node_modules /drone/nm_prod || true
