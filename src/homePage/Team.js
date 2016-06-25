@@ -33,7 +33,7 @@ function Team() {
           <Link route="team" className="button">All team</Link>
         </div>
       </div>
-      <Link className="scroll-btn scroll-btn_before-epilogue"  hash="contact" route="home">
+      <Link className="scroll-btn scroll-btn_before-epilogue" hash="contact" route="home">
         <i className="icon-down" />
       </Link>
     </div>

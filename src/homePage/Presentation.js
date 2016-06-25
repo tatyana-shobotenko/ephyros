@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'router1-react';
 import ReadyMag from './ReadyMag';
 
 function Presentation() {
