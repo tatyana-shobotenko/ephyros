@@ -33,9 +33,9 @@ function Team() {
           <Link route="team" className="button">All team</Link>
         </div>
       </div>
-      <a className="scroll-btn scroll-btn_before-epilogue" href="#contact">
+      <Link className="scroll-btn scroll-btn_before-epilogue"  hash="contact" route="home">
         <i className="icon-down" />
-      </a>
+      </Link>
     </div>
   );
 }

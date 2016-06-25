@@ -21,9 +21,9 @@ function Presentation() {
           </div>
         </div>
       </div>
-      <a className="scroll-btn scroll-btn_before-team" href="#team">
+      <Link className="scroll-btn scroll-btn_before-team" hasg="team" route="home">
         <i className="icon-down" />
-      </a>
+      </Link>
     </div>
   );
 }
