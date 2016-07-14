@@ -3,6 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 
+import clientEnvVars from './../client/envVars';
 
 export default function createApp(options) {
   const app = express();
@@ -35,6 +36,15 @@ export default function createApp(options) {
 
   const etag = app.get('etag fn');
 
+  const envParams = {};
+
+  for (let i = 0, l = clientEnvVars.length; i < l; i++) {
+    const key = clientEnvVars[i];
+    if (process.env.hasOwnProperty(key)) {
+      envParams[key] = process.env[key];
+    }
+  }
+
   app.get('/*', (req, res) => {
     function sendHtml(error, { view, meta, status, redirect }) {
       if (error) {
@@ -65,6 +75,7 @@ export default function createApp(options) {
             scriptsUrl: SCRIPT_URL,
             ieScriptsUrl: IE_SCRIPT_URL,
             stylesUrl: STYLE_URL,
+            envParams,
           });
         }
       }
