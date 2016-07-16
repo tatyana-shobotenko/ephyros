@@ -39,6 +39,10 @@ class Map extends Component {
     registerGmaps(callback);
   }
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <div style={{ height: '100%' }} ref={elem => this.attachMapHandler(elem)}></div>
