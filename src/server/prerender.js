@@ -1,34 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-
-import { createServerHistory, Router } from 'router1';
+import { createServerHistory, Router, RouteCollection } from 'router1';
+import { RouterContext } from 'router1-react';
+import { config, Observable } from 'rx';
 
 import notFoundHandler from '../notFoundPage/notFoundHandler';
-
 import routes from '../routes';
-
-import { RouterContext } from 'router1-react';
-
 import toObservable from '../utils/toObservable';
-import { Observable } from 'rx';
 
-export default function prerender(requestPath, cb) {
-  const history = createServerHistory(requestPath);
+if (process.env.NODE_ENV !== 'production') {
+  config.longStackSupport = true;
+}
 
-  const router = new Router({
-    history,
-    routes,
-    render: (routingResult) => {
-      const handler = routingResult.handlers[0] || notFoundHandler;
+function combineHandlersChain(handlers) {
+  return handlers[0];
+}
 
-      return toObservable(handler(routingResult.params))
-        .flatMap(({ view, redirect, status, meta }) => {
-          if (redirect) {
-            return Observable.return({ redirect, status });
-          }
-          return view.map(renderApp => {
+function handlerFromDef(handler, transition) {
+  return toObservable(handler(transition.params))
+    .map(renderable => ({
+      hashChange() {
+      },
+      onBeforeUnload() {
+        return '';
+      },
+      render() {
+        if (!renderable) {
+          throw new Error('Route handler is not loaded');
+        }
+        const { view, redirect, status, meta } = renderable;
+
+        if (redirect) {
+          return Observable.return({ redirect, status });
+        }
+
+        return view.map(
+          renderApp => {
             const html = ReactDOM.renderToString(
-              <RouterContext router={router} render={renderApp} />
+              <RouterContext router={transition.router} render={renderApp} />
             );
             return {
               view: html,
@@ -36,7 +45,29 @@ export default function prerender(requestPath, cb) {
               status,
             };
           });
-        });
+      },
+    }));
+}
+
+const routeCollection = new RouteCollection(routes);
+
+export default function prerender(requestPath, cb) {
+  const history = createServerHistory(requestPath);
+
+
+  const router = new Router({
+    history,
+    routeCollection,
+    createHandler(transition) {
+      if (transition.route.handlers.length) {
+        return handlerFromDef(
+          combineHandlersChain(transition.route.handlers),
+          transition);
+      }
+
+      return handlerFromDef(
+        notFoundHandler,
+        transition);
     },
   });
 
@@ -45,5 +76,7 @@ export default function prerender(requestPath, cb) {
     .first()
     .forEach((data) => {
       cb(null, data);
-    }, error => cb(error));
+    }, error => cb(error), () => router.stop());
+
+  router.start();
 }

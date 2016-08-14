@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { Observable } from 'rx';
 
-import { createBrowserHistory, Router } from 'router1';
+import { createBrowserHistory, Router, RouteCollection } from 'router1';
 import { RouterContext } from 'router1-react';
 
 import toObservable from '../utils/toObservable';
@@ -17,42 +17,53 @@ import { ScrollManager } from './ScrollManager';
 const renderObservable = Observable.fromCallback(ReactDOM.render);
 const appElement = document.getElementById('app');
 
-const history = createBrowserHistory();
-
 const sm = new ScrollManager();
 
-const router = new Router({
-  history,
-  routes,
-  render: (routingResult) => {
-    sm.cancelScrollAnimation();
+const onRendered = (routingResult) => {
+  // side effects after state was rendered
+  const locationSource = routingResult.location.source;
+  const locationHash = routingResult.location.hash;
 
-    const handler = routingResult.handlers[0] || notFoundHandler;
+  if (routingResult.location.state.noscroll) return;
+  // should scroll only on this location sources
+  if (locationSource === 'push' || locationSource === 'replace') {
+    let target;
+    if (locationHash !== '') {
+      target = document.getElementById(locationHash);
+    }
 
-    const onRendered = () => {
-      const locationSource = routingResult.location.source;
-      const locationHash = routingResult.location.hash;
+    if (target) {
+      sm.scrollToElement(target, false);
+    } else {
+      sm.scrollTo(0, 0, false);
+    }
+  }
+};
 
-      if (routingResult.location.state.noscroll) return;
-      // should scroll only on this location sources
-      if (locationSource === 'push' || locationSource === 'replace') {
-        let target;
-        if (locationHash !== '' && locationHash !== '#') {
-          target = document.getElementById(locationHash.substr(1));
+function combineHandlersChain(handlers) {
+  return handlers[0];
+}
+
+const hashChange = ({ hash, source }) => {
+  sm.cancelScrollAnimation();
+  if (source !== 'push' && source !== 'replace') return;
+  sm.scrollToAnchor(hash, true);
+};
+
+function handlerFromDef(handler, transition) {
+  return toObservable(handler(transition.params))
+    .map(renderable => ({
+      hashChange,
+      onBeforeUnload() {
+        return '';
+      },
+      render() {
+        if (!renderable) {
+          throw new Error('Route handler is not loaded');
         }
-
-        if (target) {
-          sm.scrollToElement(target, false);
-        } else {
-          sm.scrollTo(0, 0, false);
-        }
-      }
-    };
-
-    return toObservable(handler(routingResult.params))
-      .flatMap(({ view, meta, redirect }) => {
+        const { redirect, view, meta } = renderable;
         if (redirect) {
-          history.replace(redirect);
+          transition.forward(redirect);
           return Observable.empty();
         }
 
@@ -60,25 +71,49 @@ const router = new Router({
 
         // $('meta[name=description]').text(meta.description || '');
 
-        return view.flatMap(renderApp =>
-          renderObservable(
-            <RouterContext
-              router={router}
-              render={renderApp}
-            />,
-            appElement
-          )
-        );
-      })
-      .do(onRendered);
+        return view.flatMap(
+          renderApp =>
+            renderObservable(
+              <RouterContext
+                router={transition.router}
+                render={renderApp}
+              />,
+              appElement
+            )
+        )
+          .do(() => {
+            if (renderable.onBeforeUnload) {
+              this.onBeforeUnload = renderable.onBeforeUnload;
+            }
+            onRendered(transition);
+          });
+      },
+    }));
+}
+
+const router = new Router({
+  history: createBrowserHistory(),
+  routeCollection: new RouteCollection(routes),
+  createHandler(transition) {
+    if (transition.route.handlers.length) {
+      return handlerFromDef(
+        combineHandlersChain(transition.route.handlers),
+        transition);
+    }
+
+    return handlerFromDef(
+      notFoundHandler,
+      transition);
   },
 });
 
 
-router.hashChange.forEach(({ hash, source }) => {
-  sm.cancelScrollAnimation();
-  if (source !== 'push' && source !== 'replace') return;
-  sm.scrollToAnchor(hash, true);
-});
+window.onbeforeunload = (e) => {
+  const returnValue = router.onBeforeUnload();
+  if (returnValue) {
+    e.returnValue = returnValue;
+    return returnValue;
+  }
+};
 
 export { router };

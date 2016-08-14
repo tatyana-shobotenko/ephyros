@@ -19,5 +19,17 @@
     "react/jsx-no-bind": 0,
     "react/prefer-stateless-function": 0,
     "react/sort-comp": 0
+    "react/prefer-stateless-function": 0,
+    "no-param-reassign": 1,
+    "consistent-return": 1,
+    "react/jsx-filename-extension": 0,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-mixed-operators": [
+      "error",
+      {
+        "allowSamePrecedence": true
+      }
+    ]
   }
 }

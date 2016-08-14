@@ -3,7 +3,12 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 
+import { config } from 'rx';
 import clientEnvVars from './../client/envVars';
+
+if (process.env.NODE_ENV !== 'production') {
+  config.longStackSupport = true;
+}
 
 export default function createApp(options) {
   const app = express();
@@ -40,7 +45,7 @@ export default function createApp(options) {
 
   for (let i = 0, l = clientEnvVars.length; i < l; i++) {
     const key = clientEnvVars[i];
-    if (process.env.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(process.env, key)) {
       envParams[key] = process.env[key];
     }
   }
@@ -49,35 +54,36 @@ export default function createApp(options) {
     function sendHtml(error, { view, meta, status, redirect }) {
       if (error) {
         res.status(500);
+        // todo: improve this
+        // send error to client, at least in dev mode
+        console.error(error);
         res.render('500', { url: req.url });
+      } else if (redirect) {
+        res.writeHead(status || 303, { Location: redirect });
+        res.end();
       } else {
-        if (redirect) {
-          res.writeHead(status || 303, { Location: redirect });
-          res.end();
-        } else {
-          if (etag) {
-            const v = etag(''
-              + SCRIPT_URL
-              + IE_SCRIPT_URL
-              + STYLE_URL
-              + meta.title
-              + meta.description
-              + view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''),
-              'utf-8');
-            if (v) res.set('ETag', v);
-          }
-
-          res.status(status || 200);
-          res.render('html', {
-            appHtml: view,
-            title: meta.title,
-            description: meta.description,
-            scriptsUrl: SCRIPT_URL,
-            ieScriptsUrl: IE_SCRIPT_URL,
-            stylesUrl: STYLE_URL,
-            envParams,
-          });
+        if (etag) {
+          const v = etag(''
+            + SCRIPT_URL
+            + IE_SCRIPT_URL
+            + STYLE_URL
+            + meta.title
+            + meta.description
+            + view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''),
+            'utf-8');
+          if (v) res.set('ETag', v);
         }
+
+        res.status(status || 200);
+        res.render('html', {
+          appHtml: view,
+          title: meta.title,
+          description: meta.description,
+          scriptsUrl: SCRIPT_URL,
+          ieScriptsUrl: IE_SCRIPT_URL,
+          stylesUrl: STYLE_URL,
+          envParams,
+        });
       }
     }
 
