@@ -1,5 +1,5 @@
-import Team from './Team';
 import createContainer from 'rx-react-container';
+import Team from './Team';
 
 export default function teamHandler() {
   return {

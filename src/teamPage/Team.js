@@ -59,7 +59,12 @@ function Team() {
 
             <div className="hteam-list">
               {members}
-              <a className="hteam-member" href="mailto:job@ephyros.com" target="_blank">
+              <a
+                className="hteam-member"
+                href="mailto:job@ephyros.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="hteam-member__photo hteam-member__photo_empty">
                   <span className="icon-plus" />
                 </div>

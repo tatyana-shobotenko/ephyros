@@ -1,5 +1,5 @@
-import Services from './Services';
 import createContainer from 'rx-react-container';
+import Services from './Services';
 
 export default function servicesHandler() {
   return {

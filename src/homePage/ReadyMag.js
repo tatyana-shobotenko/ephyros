@@ -8,7 +8,8 @@ class ReadyMag extends Component {
         const embedMainScriptUri = 'https://readymag.com/specials/assets/embed_main.js';
 
         if (window[t] && typeof window[t].parse === 'function') {
-          return void window[t].parse.call(window);
+          window[t].parse.call(window);
+          return;
         }
         const i = window[t] = {};
         i.processing = true;
@@ -26,7 +27,7 @@ class ReadyMag extends Component {
     } catch (e) {
       console.error(`Error loading Readymag embed script: \n${(e.stackTrace || e.stack)}`);
     }
-    return void 0;
+    return undefined;
   }
 
   render() {
@@ -36,6 +37,7 @@ class ReadyMag extends Component {
         href={`https://readymag.com/${this.props.id}`}
         data-uri={this.props.id}
         target="_blank"
+        rel="noopener noreferrer"
       >
         https://readymag.com/{this.props.id}
       </a>

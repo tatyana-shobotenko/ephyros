@@ -16,7 +16,7 @@ class Cases extends Component {
 
   detectTouch() {
     if ('ontouchstart' in window
-      || window.DocumentTouch && document instanceof window.DocumentTouch) {
+      || (window.DocumentTouch && document instanceof window.DocumentTouch)) {
       this.setState({ isTouch: true });
     }
   }
@@ -30,7 +30,9 @@ class Cases extends Component {
             route="cases"
             hash={data.slug}
             className={`hcase${(data.big ? ' hcase_big' : '')}`}
-            onClick={() => { window.gae('mainpage', 'click', `work_${data.slug}`, 25); }}
+            onClick={() => {
+              window.gae('mainpage', 'click', `work_${data.slug}`, 25);
+            }}
             key={index}
           >
             <div className="hcase__img">
@@ -59,7 +61,9 @@ class Cases extends Component {
             <Link
               route="cases"
               className="button"
-              onClick={() => { window.gae('mainpage', 'click', 'all_works', 25); }}
+              onClick={() => {
+                window.gae('mainpage', 'click', 'all_works', 25);
+              }}
             >
               All works
             </Link>

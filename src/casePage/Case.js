@@ -21,8 +21,8 @@ function Case({ selectedCase }) {
   }
   return (
     <Layout>
-      <div className="screen-case-back"></div>
-      <div className="screen-case-back2"></div>
+      <div className="screen-case-back" />
+      <div className="screen-case-back2" />
       <div className="screen-case">
         {caseContent}
       </div>

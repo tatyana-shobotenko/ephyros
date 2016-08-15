@@ -1,5 +1,5 @@
-import Cases from './Cases';
 import createContainer from 'rx-react-container';
+import Cases from './Cases';
 
 export default function () {
   return {

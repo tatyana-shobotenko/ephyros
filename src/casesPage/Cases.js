@@ -1,6 +1,6 @@
 import React from 'react';
-import casesData from './../data/casesData';
 import { Link } from 'router1-react';
+import casesData from './../data/casesData';
 import BottomMenu from './../views/BottomMenu';
 import Layout from './../views/Layout';
 
@@ -36,7 +36,7 @@ function CasesPage() {
                     className="work-item__link work-item__link_in-blue"
                     href={data.url}
                     target="_blank"
-                    rel="nofollow"
+                    rel="noopener noreferrer nofollow"
                   >
                     {data.url.replace(/https?:\/\//, '')}
                     <span className="work-item__link-icon icon-right-arrow" />
@@ -71,7 +71,7 @@ function CasesPage() {
                 <a
                   className="work-item__link" href={data.url}
                   target="_blank"
-                  rel="nofollow"
+                  rel="noopener noreferrer nofollow"
                   onClick={() => { window.gae('works', 'click', `work_${data.slug}`, 30); }}
                 >
                   {data.url.replace(/https?:\/\//, '')}

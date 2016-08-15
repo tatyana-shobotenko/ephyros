@@ -32,7 +32,11 @@ class Header extends Component {
             </Link>
           </div>
           <div className="opsway-text">
-            <a href="http://opsway.com/" target="_blank">
+            <a
+              href="http://opsway.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Member of <span className="ops-title">OpsWay</span>
             </a>
           </div>
