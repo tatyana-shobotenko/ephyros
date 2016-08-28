@@ -32,7 +32,7 @@ export default [
     name: 'Tifogo',
     slug: 'tifogo',
     tags: ['MVP', 'Startup', 'Social data aggregation'],
-    text: 'Tifogo is a place that has got it all. There is no need now to check every single website searching for news and other related info. Users have unique opportunity to access infomation about their favourite teams or players from different sources: websites, socia media, etc.',
+    text: 'Tifogo is a place that has got it all. There is no need now to check every single website searching for news and other related info. Users have unique opportunity to access information about their favourite teams or players from different sources: websites, social media, etc.',
     keyObj: ['Soccer news aggregation from RSS and social media resources', 'Advanced search through news and posts onsite', 'Demonstrative statistics and accurate analytics about soccer teams and players', 'Universal(isomorphic) application', 'React.js & Rx.js used to make app real fast'],
     url: 'http://tifogo.com',
   },
