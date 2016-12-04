@@ -22,7 +22,7 @@ class Intro extends Component {
   }
 
   onScroll() {
-    const domNode = this.refs.introBlock;
+    const domNode = this.introBlock;
     const elementHeight = domNode.offsetHeight;
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
@@ -32,7 +32,11 @@ class Intro extends Component {
 
   render() {
     return (
-      <div ref="introBlock">
+      <div
+        ref={introBlock => {
+          this.introBlock = introBlock;
+        }}
+      >
         <div className="screen-intro-back2" />
         <div
           className="screen-intro-back"

@@ -42,6 +42,7 @@
         "exports": "always-multiline",
         "functions": "ignore"
       }
-    ]
+    ],
+    "jsx-a11y/anchor-has-content": 1
   }
 }

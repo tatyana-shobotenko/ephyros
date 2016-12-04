@@ -41,11 +41,11 @@ class Slides extends Component {
       <div className="photo-screen">
         <div className="photo-screen__label">our workdays and holydays</div>
         {slides}
-        <span
+        <button
           className="photo-screen__nav photo-screen__nav_prev icon-left-arrow"
           onClick={this.nextSlide.bind(this)}
         />
-        <span
+        <button
           className="photo-screen__nav photo-screen__nav_next icon-right-arrow"
           onClick={this.prevSlide.bind(this)}
         />

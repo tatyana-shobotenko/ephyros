@@ -40,7 +40,7 @@ class Header extends Component {
               Member of <span className="ops-title">OpsWay</span>
             </a>
           </div>
-          <a className="header__menu-btn" onClick={this.toggleMenu.bind(this)}><i className="icon-down" /></a>
+          <button className="header__menu-btn" onClick={this.toggleMenu.bind(this)}><i className="icon-down" /></button>
           {/*
            <div class="lang-select">
            <div class="lang-select__current lang-select_eng"></div>
