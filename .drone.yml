@@ -1,22 +1,11 @@
-cache:
-  mount:
-    - /drone/npm-cache
-    - /drone/nm_dev
-    - node_modules
-
 build:
   image: node:6
   commands:
-    - npm config set cache /drone/npm-cache --global
-    - mv node_modules /drone/nm_prod || true
-    - mv /drone/nm_dev ./node_modules || true
-    - npm install
-    - npm run lint
-    - npm run build
-    - mv node_modules /drone/nm_dev
-    - mv /drone/nm_prod ./node_modules || true
-    - npm install --production
-    - npm prune --production
+    - npm i -g yarn
+    - yarn install
+    - yarn lint
+    - yarn build
+    - yarn install --production
 
 publish:
   docker:

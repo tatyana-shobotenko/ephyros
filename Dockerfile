@@ -13,6 +13,8 @@ COPY ./.env.sample ./.env
 #  && npm cache clean \
 #  && rm -rf /tmp/npm-*
 
+ENV PORT=8080
+ENV SSR=1
+
 EXPOSE 8080
-CMD PORT=8080 \
-  node ./build/server/prod.js
+CMD node ./server.js
