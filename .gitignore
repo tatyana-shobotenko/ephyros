@@ -2,4 +2,9 @@
 /.idea
 /node_modules
 /build
+<<<<<<< HEAD
 .env
+=======
+/public/_assets
+/.env
+>>>>>>> f075b3bdc93850f27f8307227715814c383976dc

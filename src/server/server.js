@@ -10,11 +10,10 @@ if (process.env.NODE_ENV !== 'production') {
   config.longStackSupport = true;
 }
 
-export default function createApp(options) {
+export function createServer(options) {
   const app = express();
 
-  const prerender = options.prerender;
-
+  const render = options.render;
   const stats = require('../build/stats.json');
 
   const publicPath = stats.publicPath;
@@ -22,14 +21,13 @@ export default function createApp(options) {
   const mainArr = [].concat(stats.assetsByChunkName.main);
   const STYLE_URL = mainArr.length > 1 ? publicPath + mainArr[1] : false;
   const SCRIPT_URL = publicPath + mainArr[0];
-  const IE_SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.ie)[0];
   // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.use('/_assets', express.static(path.join('build', 'public'), {
+  app.use('/_assets', express.static(path.join('public', '_assets'), {
     maxAge: '200d', // We can cache them as they include hashes
   }));
 
@@ -43,7 +41,7 @@ export default function createApp(options) {
 
   const envParams = {};
 
-  for (let i = 0, l = clientEnvVars.length; i < l; i++) {
+  for (let i = 0, l = clientEnvVars.length; i < l; i += 1) {
     const key = clientEnvVars[i];
     if (Object.prototype.hasOwnProperty.call(process.env, key)) {
       envParams[key] = process.env[key];
@@ -65,7 +63,6 @@ export default function createApp(options) {
         if (etag) {
           const v = etag(''
             + SCRIPT_URL
-            + IE_SCRIPT_URL
             + STYLE_URL
             + meta.title
             + meta.description
@@ -80,14 +77,13 @@ export default function createApp(options) {
           title: meta.title,
           description: meta.description,
           scriptsUrl: SCRIPT_URL,
-          ieScriptsUrl: IE_SCRIPT_URL,
           stylesUrl: STYLE_URL,
           envParams,
         });
       }
     }
 
-    prerender(req.path, sendHtml);
+    render(req.path, sendHtml);
   });
 
   function mail(form) {
@@ -124,8 +120,8 @@ export default function createApp(options) {
     res.end();
   });
 
+  const port = +(process.env.PORT || 8080);
 
-  const port = +(process.env.PORT || options.defaultPort || 8080);
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });

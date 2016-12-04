@@ -1,8 +1,8 @@
 const makeWebpackConfig = require('./make-webpack-config');
+
 const config = makeWebpackConfig({
-  prerender: true,
-  devtool: 'inline-source-map',
-  sourceMapSupport: true,
+  devServer: true,
+  devtool: 'inline-source-map', // eval
   debug: true,
 });
 module.exports = config;
