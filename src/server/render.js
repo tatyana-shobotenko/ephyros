@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/server';
 import { createServerHistory, Router, RouteCollection } from 'router1';
 import { RouterContext } from 'router1-react';
 import { config, Observable } from 'rx';
@@ -18,16 +17,13 @@ function combineHandlersChain(handlers) {
 
 function handlerFromDef(handler, transition) {
   return toObservable(handler(transition.params))
-    .map(renderable => ({
+    .map(renderable => renderable && ({
       hashChange() {
       },
       onBeforeUnload() {
         return '';
       },
       render() {
-        if (!renderable) {
-          throw new Error('Route handler is not loaded');
-        }
         const { view, redirect, status, meta } = renderable;
 
         if (redirect) {
@@ -35,16 +31,14 @@ function handlerFromDef(handler, transition) {
         }
 
         return view.map(
-          renderApp => {
-            const html = ReactDOM.renderToString(
+          renderApp => ({
+            view: (
               <RouterContext router={transition.router} render={renderApp} />
-            );
-            return {
-              view: html,
-              meta,
-              status,
-            };
-          });
+            ),
+            meta,
+            status,
+          })
+        );
       },
     }));
 }

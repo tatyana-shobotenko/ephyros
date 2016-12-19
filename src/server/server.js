@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom/server';
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -32,12 +33,15 @@ export function createServer(options) {
   }));
 
   app.use('/', express.static(path.join('public'), {}));
+  app.get('/favicon.ico', (req, res) => {
+    // used when no favicon file found
+    // was added to prevent matching /*
+    res.status(404).send();
+  });
 
   app.set('views', path.join('src', 'server', 'templates'));
   // app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
-
-  const etag = app.get('etag fn');
 
   const envParams = {};
 
@@ -60,26 +64,24 @@ export function createServer(options) {
         res.writeHead(status || 303, { Location: redirect });
         res.end();
       } else {
-        if (etag) {
-          const v = etag(''
-            + SCRIPT_URL
-            + STYLE_URL
-            + meta.title
-            + meta.description
-            + view.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''),
-            'utf-8');
-          if (v) res.set('ETag', v);
-        }
-
         res.status(status || 200);
-        res.render('html', {
-          appHtml: view,
+        res.render('html-head', {
           title: meta.title,
           description: meta.description,
-          scriptsUrl: SCRIPT_URL,
           stylesUrl: STYLE_URL,
-          envParams,
+        }, (err, content) => {
+          res.write(content);
         });
+        res.write('<div id="app">');
+        const html = view ? ReactDOM.renderToString(view) : '';
+        res.write(html);
+        res.write('</div>');
+
+        res.render('html-footer', {
+          scriptsUrl: SCRIPT_URL,
+          envParams,
+        }, (err, content) => res.write(content));
+        res.end();
       }
     }
 

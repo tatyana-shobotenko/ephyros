@@ -27,8 +27,8 @@ And tools:
 
 Actually it is not much different from all other boilerplates - same tools and similar config.
 
-But there is one thing that makes it a bit different - there is helper script(`dev-server.js`),
-made to keep sync server side and client side parts reloads. 
+But there is one thing that makes it different - there is helper script(`dev-server.js`),
+to keep server side and client side parts reloads in sync. 
 
 When something was updated client side and needs to be reloaded, before sending reload command,
 if server was also changed, it ensures that it is already up and running.
@@ -44,7 +44,7 @@ copy `.env.sample` to `.env`, adjust your config
 0. Check your Node.js version - it should be version 6 or later
 1. Install dependencies using npm (or yarn)
 2. start server app, with automatic recompile and reload when something changes
-    - `npm run dev-server`
+    - `npm run dev`
 3. open this url in your browser: `http://localhost:8080/`
 
 To customize host and ports used by application - use environment variables:
