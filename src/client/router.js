@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 
 import { Observable } from 'rxjs';
 
-import { createBrowserHistory, Router, RouteCollection } from 'router1';
+import { Router, RouteCollection } from 'router1';
 import { RouterContext } from 'router1-react';
 
+import { createBrowserHistory } from './optimizelyAwareBroswerHistory';
 import toObservable from '../utils/toObservable';
 
 import routes from '../routes';
