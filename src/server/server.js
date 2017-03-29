@@ -4,12 +4,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 
-import { config } from 'rx';
 import clientEnvVars from './../client/envVars';
-
-if (process.env.NODE_ENV !== 'production') {
-  config.longStackSupport = true;
-}
 
 export function createServer(options) {
   const app = express();

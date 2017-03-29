@@ -64,7 +64,7 @@ Also you can enable some other things for dev-server by environment variables
 - `HOT=1` to enable hot reload for client side  
 - `SSR=1` to enable server-side rendering in dev environment(disabled by default because typically you need test things on client side first)
 
-For setting those variavles - you can create `.env` file at project root.
+For setting those variables - you can create `.env` file at project root.
 
 ## Production compilation and server
 
@@ -93,7 +93,9 @@ As for dev-server - you can create `.env` file at project root.
 
 After a production build you may want to visualize your modules and chunks tree.
 
-Use the [analyse tool](http://webpack.github.io/analyse/) with the file at `build/stats.json`.
+Use the [webpack.github.io/analyse](http://webpack.github.io/analyse/) with the file at `build/stats.json`.
+
+Also I like using [webpack-bundle-analyzer](https://github.com/th0r/webpack-bundle-analyzer) - recommend trying it too.
 
 
 ### Loaders and file types
