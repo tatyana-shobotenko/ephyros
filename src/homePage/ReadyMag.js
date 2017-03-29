@@ -11,7 +11,8 @@ class ReadyMag extends Component {
           window[t].parse.call(window);
           return;
         }
-        const i = window[t] = {};
+        window[t] = {};
+        const i = window[t];
         i.processing = true;
 
         window.setTimeout(() => {

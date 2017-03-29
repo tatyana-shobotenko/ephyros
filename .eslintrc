@@ -43,6 +43,7 @@
         "functions": "ignore"
       }
     ],
-    "jsx-a11y/anchor-has-content": 1
+    "jsx-a11y/anchor-has-content": 1,
+    "react/no-array-index-key": 1
   }
 }

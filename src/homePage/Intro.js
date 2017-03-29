@@ -9,9 +9,9 @@ class Intro extends Component {
   }
 
   componentDidMount() {
-    const listener = this.listener = this.onScroll.bind(this);
+    this.listener = this.onScroll.bind(this);
 
-    window.addEventListener('scroll', listener);
+    window.addEventListener('scroll', this.listener);
     this.onScroll();
   }
 

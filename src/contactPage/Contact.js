@@ -162,4 +162,8 @@ Contact.propTypes = {
   sent: React.PropTypes.bool,
 };
 
+Contact.defaultProps = {
+  sent: false,
+};
+
 export default Contact;

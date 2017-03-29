@@ -90,11 +90,11 @@ export function createServer(options) {
       from: process.env.ROBOT_EMAIL || 'robot@ephyros.com',
       to: process.env.CONTACT_EMAIL || 'hello@ephyros.com',
       subject: 'Email from Ephyros.com',
-      text: ''
-      + 'Name: ' + form.name + '\n'
-      + 'Phone: ' + form.phone + '\n'
-      + 'Email: ' + form.email + '\n'
-      + 'Message:' + form.message + '\n',
+      text: `${''
+      + 'Name: '}${form.name}\n`
+      + `Phone: ${form.phone}\n`
+      + `Email: ${form.email}\n`
+      + `Message:${form.message}\n`,
     };
     if (form.name && form.email && form.message) {
       transport.sendMail(message);
