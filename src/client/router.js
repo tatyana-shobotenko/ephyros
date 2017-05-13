@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
+import 'rxjs/add/observable/bindCallback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -85,15 +86,17 @@ function handlerFromDef(handler, transition) {
         updateMetaData(meta);
 
         return view.flatMap(
-          renderApp =>
-            renderObservable(
+          renderApp => {
+            const app = renderApp();
+            return renderObservable(
               <RouterContext
                 router={transition.router}
               >
-                {renderApp()}
+                {app}
               </RouterContext>,
               appElement
-            )
+            );
+          }
         )
           .do(() => {
             // after state was rendered, set beforeUnload listener
@@ -130,7 +133,6 @@ window.onbeforeunload = (e) => {
     e.returnValue = returnValue;
     return returnValue;
   }
-  return '';
 };
 
 export { router };

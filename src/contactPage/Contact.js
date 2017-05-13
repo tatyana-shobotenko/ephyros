@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'router1-react';
 import request from 'superagent';
@@ -159,7 +160,7 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-  sent: React.PropTypes.bool,
+  sent: PropTypes.bool,
 };
 
 Contact.defaultProps = {

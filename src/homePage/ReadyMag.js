@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class ReadyMag extends Component {
@@ -47,7 +48,7 @@ class ReadyMag extends Component {
 }
 
 ReadyMag.propTypes = {
-  id: React.PropTypes.any.isRequired,
+  id: PropTypes.any.isRequired,
 };
 
 export default ReadyMag;

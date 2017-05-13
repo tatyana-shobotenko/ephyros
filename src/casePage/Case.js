@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Layout from './../views/Layout';
 
@@ -31,7 +32,7 @@ function Case({ selectedCase }) {
 }
 
 Case.propTypes = {
-  selectedCase: React.PropTypes.object.isRequired,
+  selectedCase: PropTypes.object.isRequired,
 };
 
 export default Case;

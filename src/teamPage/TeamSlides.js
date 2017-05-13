@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import cx from 'classnames';
 
@@ -55,7 +56,7 @@ class Slides extends Component {
 }
 
 Slides.propTypes = {
-  slides: React.PropTypes.array.isRequired,
+  slides: PropTypes.array.isRequired,
 };
 
 export default Slides;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import registerGmaps from './registerGmaps';
 
@@ -51,10 +52,10 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  zoom: React.PropTypes.number.isRequired,
-  point: React.PropTypes.shape({
-    lat: React.PropTypes.number,
-    lng: React.PropTypes.number,
+  zoom: PropTypes.number.isRequired,
+  point: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
   }).isRequired,
 };
 

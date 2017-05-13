@@ -50,6 +50,7 @@ deploy:
     confirm: true
     when:
       branch: master
+
 # deploy:
 #   ssh:
 #     host: ephyros.com
