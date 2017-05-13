@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Footer from './Footer';
 import Header from './Header';
 
@@ -17,7 +19,7 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: React.PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default Layout;

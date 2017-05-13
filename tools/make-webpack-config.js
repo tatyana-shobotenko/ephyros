@@ -70,6 +70,9 @@ module.exports = function makeWebpackConfig(options) {
   ];
   const postCssLoader = {
     loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+    },
   };
   const cssLoader = {
     loader: 'css-loader',
@@ -159,7 +162,12 @@ module.exports = function makeWebpackConfig(options) {
     },
   ];
 
-  const alias = {};
+  const alias = {
+    router1: 'router1/src',
+    'router1-react': 'router1/src',
+    'rx-react-container': 'rx-react-container/src',
+  };
+
   const aliasLoader = {};
   const externals = [];
 
@@ -170,8 +178,7 @@ module.exports = function makeWebpackConfig(options) {
       {
         '../build/stats.json': 'commonjs ../stats.json',
       },
-      'react-dom/server',
-      ...nodeModules
+      ...nodeModules.map(v => new RegExp(`^${v}`))
     );
 
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
@@ -283,6 +290,10 @@ module.exports = function makeWebpackConfig(options) {
     module: {
       rules: [
         babelLoader,
+        Object.assign({}, babelLoader, {
+          test: /node_modules\/(?:router1|router1-react|rx-react-container)\/src/,
+          exclude: undefined,
+        }),
       ]
         .concat(defaultLoaders)
         .concat(stylesheetLoaders),
