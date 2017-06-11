@@ -69,7 +69,8 @@ function CasesPage() {
                 {keyObj}
 
                 <a
-                  className="work-item__link" href={data.url}
+                  className="work-item__link"
+                  href={data.url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                   onClick={() => { window.gae('works', 'click', `work_${data.slug}`, 30); }}

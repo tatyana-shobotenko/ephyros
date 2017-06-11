@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/bindCallback';
 import 'rxjs/add/observable/empty';
-import 'rxjs/add/observable/bindCallback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 

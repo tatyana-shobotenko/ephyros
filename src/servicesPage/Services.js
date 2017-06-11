@@ -23,7 +23,9 @@ function Services() {
                   {data.link ? (<a
                     className="button button_blue"
                     href={data.link}
-                    onClick={() => { window.gae('services', 'click', `example_${data.slug}`, 25); }}
+                    onClick={() => {
+                      window.gae('services', 'click', `example_${data.slug}`, 25);
+                    }}
                   >See An Example</a>) : null}
                 </div>
               </div>
@@ -44,7 +46,9 @@ function Services() {
                   <a
                     className="button button_blue"
                     href={data.link}
-                    onClick={() => { window.gae('services', 'click', `example_${data.slug}`, 25); }}
+                    onClick={() => {
+                      window.gae('services', 'click', `example_${data.slug}`, 25);
+                    }}
                   >See An Example</a>
                 ) : null}
               </div>
@@ -58,14 +62,14 @@ function Services() {
     });
 
   const servicesBrief = servicesData
-    .map((data, index) =>
+    .map((data, index) => (
       <div className="service-brief" key={index}>
         <div className="service-brief__icon">
           <img src={data.icon} alt={data.title} />
         </div>
         <div className="service-brief__title">{data.title}</div>
       </div>
-    );
+    ));
 
   return (
     <Layout>
