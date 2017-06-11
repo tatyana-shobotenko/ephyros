@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/bindCallback';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/bindCallback';
 import 'rxjs/add/operator/map';
@@ -60,12 +61,13 @@ const hashChange = ({ hash, source }) => {
 // helper to update page meta information after transition
 function updateMetaData(meta) {
   document.title = meta.title || '';
-  document.getElementsByName('description')
-    .forEach(e => {
-      if (e.tagName === 'META') {
-        e.setAttribute('content', meta.description || '');
-      }
-    });
+  const descList = document.getElementsByName('description');
+  for (let i = 0; i < descList.length; i += 1) {
+    const e = descList[i];
+    if (e.tagName === 'META') {
+      e.setAttribute('content', meta.description || '');
+    }
+  }
 }
 
 function handlerFromDef(handler, transition) {
@@ -133,6 +135,7 @@ window.onbeforeunload = (e) => {
     e.returnValue = returnValue;
     return returnValue;
   }
+  return undefined;
 };
 
 export { router };
