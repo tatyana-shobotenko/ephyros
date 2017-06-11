@@ -1,4 +1,4 @@
-FROM nginx:1.9
+FROM nginx:1.13
 MAINTAINER Bogdan Savluk <savluk.bogdan@gmail.com>
 
 RUN mkdir /app
