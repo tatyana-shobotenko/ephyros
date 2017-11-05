@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'router1-react';
 import teamData from '../data/homeTeamData';
 
-
 function Team() {
   const members = teamData.map((member, index) => (
     <a className="hteam-member" key={index}>
@@ -32,13 +31,21 @@ function Team() {
                 <span className="icon-plus" />
               </div>
               <div className="hteam-member__name">We are hiring</div>
-              <div className="hteam-member__speciality hteam-member__speciality_future">Awesome developer...</div>
+              <div className="hteam-member__speciality hteam-member__speciality_future">
+                Awesome developer...
+              </div>
             </a>
           </div>
-          <Link route="team" className="button">All team</Link>
+          <Link route="team" className="button">
+            All team
+          </Link>
         </div>
       </div>
-      <Link className="scroll-btn scroll-btn_before-epilogue" hash="contact" route="home">
+      <Link
+        className="scroll-btn scroll-btn_before-epilogue"
+        hash="contact"
+        route="home"
+      >
         <i className="icon-down" />
       </Link>
     </div>

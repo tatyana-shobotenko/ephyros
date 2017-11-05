@@ -31,7 +31,7 @@ export default [
   },
   {
     image: require('./slides/katia_sasha.jpg'),
-    title: 'It\'s always sunny in our office',
+    title: "It's always sunny in our office",
     shadowModifier: '',
   },
   {

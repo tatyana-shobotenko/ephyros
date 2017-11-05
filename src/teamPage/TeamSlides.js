@@ -19,13 +19,20 @@ class Slides extends Component {
 
   prevSlide() {
     this.setState({
-      activeSlide: (this.state.activeSlide - 1 + this.props.slides.length) % this.props.slides.length,
+      activeSlide:
+        (this.state.activeSlide - 1 + this.props.slides.length) %
+        this.props.slides.length,
     });
   }
 
   render() {
     const slides = this.props.slides.map((slide, index) => (
-      <div className={cx('photo-screen__slide', { active: index === this.state.activeSlide })} key={index}>
+      <div
+        className={cx('photo-screen__slide', {
+          active: index === this.state.activeSlide,
+        })}
+        key={index}
+      >
         <div
           className="photo-screen__photo"
           style={{ backgroundImage: `url(${slide.image})` }}
@@ -36,9 +43,7 @@ class Slides extends Component {
       </div>
     ));
 
-
     return (
-
       <div className="photo-screen">
         <div className="photo-screen__label">our workdays and holydays</div>
         {slides}

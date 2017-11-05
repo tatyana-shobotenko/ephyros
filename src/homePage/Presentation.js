@@ -22,7 +22,11 @@ function Presentation() {
           </div>
         </div>
       </div>
-      <Link className="scroll-btn scroll-btn_before-team" hasg="team" route="home">
+      <Link
+        className="scroll-btn scroll-btn_before-team"
+        hasg="team"
+        route="home"
+      >
         <i className="icon-down" />
       </Link>
     </div>

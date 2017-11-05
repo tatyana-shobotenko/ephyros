@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Layout from './../views/Layout';
 
-
 function Case({ selectedCase }) {
   let caseContent;
   if (selectedCase) {
@@ -17,16 +16,16 @@ function Case({ selectedCase }) {
       <div
         data-not-found
         style={{ padding: 30, backgroundColor: 'white', fontSize: '24px' }}
-      >Case not found</div>
+      >
+        Case not found
+      </div>
     );
   }
   return (
     <Layout>
       <div className="screen-case-back" />
       <div className="screen-case-back2" />
-      <div className="screen-case">
-        {caseContent}
-      </div>
+      <div className="screen-case">{caseContent}</div>
     </Layout>
   );
 }

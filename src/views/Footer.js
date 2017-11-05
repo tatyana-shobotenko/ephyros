@@ -10,8 +10,8 @@ function Footer() {
             <div className="footer-inner">
               <div className="footer__logo" />
               <div className="footer__copyrights-text">
-                { /* <div className="footer__opsway-text footer__contacts__title">Member of</div>
-                 <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */ }
+                {/* <div className="footer__opsway-text footer__contacts__title">Member of</div>
+                 <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */}
                 <div>© 2013-2016 Ephyros</div>
                 <div>All Rights Reserved</div>
               </div>
@@ -23,8 +23,11 @@ function Footer() {
                 <div className="footer__contacts-inner">
                   <div className="footer__contacts__title">contact</div>
                   <div>
-                    <div className="footer__contacts-row">hello@ephyros.com</div>
-                    <div className="footer__contacts-row"><span className="tel-span">+380 93 58-66-136</span>
+                    <div className="footer__contacts-row">
+                      hello@ephyros.com
+                    </div>
+                    <div className="footer__contacts-row">
+                      <span className="tel-span">+380 93 58-66-136</span>
                     </div>
                     <div className="footer__contacts-row">Skype: ephyros</div>
                   </div>

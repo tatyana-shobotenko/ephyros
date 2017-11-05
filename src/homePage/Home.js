@@ -6,15 +6,14 @@ import Contact from './Contact';
 import Intro from './Intro';
 import Layout from '../views/Layout';
 
-
 function Home() {
   return (
     <Layout>
       <Intro />
       <a id="cases" />
       <Cases />
-      { /* <a id="presentation" />
-       <Presentation /> */ }
+      {/* <a id="presentation" />
+       <Presentation /> */}
       <a id="team" />
       <Team />
       <a id="contact" />

@@ -22,14 +22,16 @@ class Contact extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (!this.state.inProgress) {
-      request.post('/-/contact', {
-        name: this.state.name,
-        phone: this.state.phone,
-        email: this.state.email,
-        message: this.state.message,
-      }).end((err) => {
-        this.setState({ sent: !err, inProgress: false });
-      });
+      request
+        .post('/-/contact', {
+          name: this.state.name,
+          phone: this.state.phone,
+          email: this.state.email,
+          message: this.state.message,
+        })
+        .end(err => {
+          this.setState({ sent: !err, inProgress: false });
+        });
     }
     this.setState({ inProgress: true });
   }
@@ -105,7 +107,9 @@ class Contact extends Component {
             <button
               type="submit"
               className="button button_rainbow"
-              onClick={() => { window.gae('contact', 'click', 'get_quote', 100); }}
+              onClick={() => {
+                window.gae('contact', 'click', 'get_quote', 100);
+              }}
             >
               {this.state.inProgress ? 'Processing…' : 'Get a quote'}
             </button>
@@ -118,7 +122,10 @@ class Contact extends Component {
       <Layout>
         <div className="page-header">
           <div className="center-wrapper relative">
-            <Link route="team" className="page-header__nav page-header__nav_prev icon-left-arrow" />
+            <Link
+              route="team"
+              className="page-header__nav page-header__nav_prev icon-left-arrow"
+            />
             <span className="page-header__nav page-header__nav_next icon-right-arrow disabled" />
 
             <div className="page-header__title">Contact</div>
@@ -133,7 +140,8 @@ class Contact extends Component {
                   <div className="contacts-box__title">contact</div>
                   <div>
                     <div>hello@ephyros.com</div>
-                    <div>Phone: <span className="tel-span">+380 93 58-66-136</span>
+                    <div>
+                      Phone: <span className="tel-span">+380 93 58-66-136</span>
                     </div>
                     <div>Skype: ephyros</div>
                   </div>
@@ -144,9 +152,7 @@ class Contact extends Component {
                   </div>
                 </div>
               </div>
-              <div className="contacts-wrap__right">
-                {formContent}
-              </div>
+              <div className="contacts-wrap__right">{formContent}</div>
             </div>
           </div>
         </div>

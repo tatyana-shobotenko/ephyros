@@ -15,7 +15,7 @@ class Map extends Component {
 
       const marker = new window.google.maps.Marker({
         position: this.props.point,
-        title: 'Ephyros\'s head office',
+        title: "Ephyros's head office",
         map,
       });
 
@@ -46,7 +46,10 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} ref={elem => this.attachMapHandler(elem)} />
+      <div
+        style={{ height: '100%' }}
+        ref={elem => this.attachMapHandler(elem)}
+      />
     );
   }
 }

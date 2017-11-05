@@ -19,13 +19,18 @@ function Team() {
     </div>
   ));
 
-
   return (
     <Layout>
       <div className="page-header">
         <div className="center-wrapper relative">
-          <Link route="services" className="page-header__nav page-header__nav_prev icon-left-arrow" />
-          <Link route="contact" className="page-header__nav page-header__nav_next icon-right-arrow" />
+          <Link
+            route="services"
+            className="page-header__nav page-header__nav_prev icon-left-arrow"
+          />
+          <Link
+            route="contact"
+            className="page-header__nav page-header__nav_next icon-right-arrow"
+          />
 
           <div className="page-header__title">Team</div>
         </div>
@@ -36,19 +41,23 @@ function Team() {
             <h2 className="simple-title">Who we are?</h2>
 
             <p>
-              Ephyros is a team of developers who invent, think over, build, and improve. We collaborate with
-              ambitious clients who want to bring powerful ideas to life. Love to create awesome web-services and
+              Ephyros is a team of developers who invent, think over, build, and
+              improve. We collaborate with ambitious clients who want to bring
+              powerful ideas to life. Love to create awesome web-services and
               applications.
             </p>
           </div>
           <div className="about-us-slider">
-            <img src={require('./../data/team/slides/ny16.jpg')} alt="Ephyros, new year 2016" />
-            { /*
+            <img
+              src={require('./../data/team/slides/ny16.jpg')}
+              alt="Ephyros, new year 2016"
+            />
+            {/*
              <div className="about-us-slider__page active"/>
              <div className="about-us-slider__page"/>
              <div className="about-us-slider__page"/>
              <div className="about-us-slider__page"/>
-             */ }
+             */}
           </div>
         </div>
       </div>
@@ -69,7 +78,9 @@ function Team() {
                   <span className="icon-plus" />
                 </div>
                 <div className="hteam-member__name">We are hiring</div>
-                <div className="hteam-member__speciality hteam-member__speciality_future">Awesome developer...</div>
+                <div className="hteam-member__speciality hteam-member__speciality_future">
+                  Awesome developer...
+                </div>
               </a>
             </div>
           </div>
@@ -88,8 +99,12 @@ function Team() {
             height="36px"
           />
 
-          <h2 className="screen-title screen-title_dark screen-epilogue__title">Do you have any questions?</h2>
-          <a href="mailto:hello@ephyros.com" className="button button_rainbow">Request a free quote</a>
+          <h2 className="screen-title screen-title_dark screen-epilogue__title">
+            Do you have any questions?
+          </h2>
+          <a href="mailto:hello@ephyros.com" className="button button_rainbow">
+            Request a free quote
+          </a>
         </div>
       </div>
       <BottomMenu />

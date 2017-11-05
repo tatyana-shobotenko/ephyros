@@ -16,14 +16,26 @@ function NotFound() {
             <li>an out-of-date link</li>
           </ul>
           <div className="button-group mt-50">
-            <Link route="home" className="button button-group__item">Home</Link>
-            <Link route="cases" className="button button-group__item">Work</Link>
-            <Link route="services" className="button button-group__item">Services</Link>
-            <Link route="team" className="button button-group__item">Team</Link>
-            <Link route="contact" className="button button-group__item">Contact</Link>
+            <Link route="home" className="button button-group__item">
+              Home
+            </Link>
+            <Link route="cases" className="button button-group__item">
+              Work
+            </Link>
+            <Link route="services" className="button button-group__item">
+              Services
+            </Link>
+            <Link route="team" className="button button-group__item">
+              Team
+            </Link>
+            <Link route="contact" className="button button-group__item">
+              Contact
+            </Link>
           </div>
           <div className="mt-50">
-            <a href="mailto:hello@ephyros.com" className="mr-20">hello@ephyros.com</a>
+            <a href="mailto:hello@ephyros.com" className="mr-20">
+              hello@ephyros.com
+            </a>
             <span className="mr-20">+380 93 58-66-136</span>
             <span>Skype: darkfn</span>
           </div>

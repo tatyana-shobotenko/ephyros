@@ -1,6 +1,6 @@
 import raf from 'raf';
 
-/*eslint-disable */
+/* eslint-disable */
 const easeInOutQuad = (t, b, c, d) => {
   // t: current time, b: beginning value, c: change in value, d: duration
   // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
@@ -9,9 +9,9 @@ const easeInOutQuad = (t, b, c, d) => {
   t--;
   return -c / 2 * (t * (t - 2) - 1) + b;
 };
-/*eslint-enable */
+/* eslint-enable */
 
-const noop = () => 0;
+const noop = () => {};
 
 export class ScrollManager {
   constructor(options = {}) {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ReactDOM from 'react-dom/server';
 import express from 'express';
 import path from 'path';
@@ -10,7 +11,8 @@ export function createServer(options) {
   const app = express();
 
   const render = options.render;
-  const stats = require('../build/stats.json');
+  // eslint-disable-next-line import/no-unresolved
+  const stats = require('../build/assets.json');
 
   const publicPath = stats.publicPath;
 
@@ -19,13 +21,15 @@ export function createServer(options) {
   const SCRIPT_URL = publicPath + mainArr[0];
   // var COMMONS_URL = publicPath + [].concat(stats.assetsByChunkName.commons)[0];
 
-
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.use('/_assets', express.static(path.join('public', '_assets'), {
-    maxAge: '200d', // We can cache them as they include hashes
-  }));
+  app.use(
+    '/_assets',
+    express.static(path.join('public', '_assets'), {
+      maxAge: '200d', // We can cache them as they include hashes
+    })
+  );
 
   app.use('/', express.static(path.join('public'), {}));
   app.get('/favicon.ico', (req, res) => {
@@ -37,6 +41,14 @@ export function createServer(options) {
   app.set('views', path.join('src', 'server', 'templates'));
   // app.set('views', path.join(__dirname, 'templates'));
   app.set('view engine', 'ejs');
+
+  // app.set('etag fn', (
+  //   function (etag) {
+  //     return function (html, encoding) {
+  //       etag(html.replace(/\bdata-(?:reactid|react-checksum)="[^"]*"/g, ''), encoding);
+  //     }
+  //   }(app.get('etag fn'))
+  // ));
 
   const envParams = {};
 
@@ -60,23 +72,39 @@ export function createServer(options) {
         res.end();
       } else {
         res.status(status || 200);
-        res.render('html-head', {
-          title: meta.title,
-          description: meta.description,
-          stylesUrl: STYLE_URL,
-        }, (err, content) => {
-          res.write(content);
-        });
+        res.render(
+          'html-head',
+          {
+            title: meta.title,
+            description: meta.description,
+            stylesUrl: STYLE_URL,
+          },
+          (err, content) => {
+            res.write(content);
+          }
+        );
         res.write('<div id="app">');
-        const html = view ? ReactDOM.renderToString(view) : '';
-        res.write(html);
-        res.write('</div>');
-
-        res.render('html-footer', {
-          scriptsUrl: SCRIPT_URL,
-          envParams,
-        }, (err, content) => res.write(content));
-        res.end();
+        const renderFooter = () => {
+          res.write('</div>');
+          res.render(
+            'html-footer',
+            {
+              scriptsUrl: SCRIPT_URL,
+              envParams,
+            },
+            (err, content) => {
+              res.write(content);
+              res.end();
+            }
+          );
+        };
+        if (view) {
+          const stream = ReactDOM.renderToNodeStream(view);
+          stream.pipe(res, { end: false });
+          stream.on('end', renderFooter);
+        } else {
+          renderFooter();
+        }
       }
     }
 
@@ -84,17 +112,19 @@ export function createServer(options) {
   });
 
   function mail(form) {
-    const transport = nodemailer.createTransport(process.env.SMTP_CONNECTION_URL);
+    const transport = nodemailer.createTransport(
+      process.env.SMTP_CONNECTION_URL
+    );
 
     const message = {
       from: process.env.ROBOT_EMAIL || 'robot@ephyros.com',
       to: process.env.CONTACT_EMAIL || 'hello@ephyros.com',
       subject: 'Email from Ephyros.com',
-      text: `${''
-      + 'Name: '}${form.name}\n`
-      + `Phone: ${form.phone}\n`
-      + `Email: ${form.email}\n`
-      + `Message:${form.message}\n`,
+      text:
+        `Name: ${form.name}\n` +
+        `Phone: ${form.phone}\n` +
+        `Email: ${form.email}\n` +
+        `Message:${form.message}\n`,
     };
     if (form.name && form.email && form.message) {
       transport.sendMail(message);

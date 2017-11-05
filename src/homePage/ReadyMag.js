@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 class ReadyMag extends Component {
   componentDidMount() {
     try {
-      const t = `RM_EMBED_${window.parseInt((new Date()).getTime() / 864e5)}`;
+      const t = `RM_EMBED_${window.parseInt(new Date().getTime() / 864e5)}`;
       if (!window[t] || !window[t].processing) {
-        const embedMainScriptUri = 'https://readymag.com/specials/assets/embed_main.js';
+        const embedMainScriptUri =
+          'https://readymag.com/specials/assets/embed_main.js';
 
         if (window[t] && typeof window[t].parse === 'function') {
           window[t].parse.call(window);
@@ -27,7 +28,9 @@ class ReadyMag extends Component {
         }, 10);
       }
     } catch (e) {
-      console.error(`Error loading Readymag embed script: \n${(e.stackTrace || e.stack)}`);
+      console.error(
+        `Error loading Readymag embed script: \n${e.stackTrace || e.stack}`
+      );
     }
     return undefined;
   }

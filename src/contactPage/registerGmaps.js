@@ -14,7 +14,7 @@ function attach(callback) {
 
   if (!isGlobalCallbackSet) {
     window[callbackName] = () => {
-      callbacks.forEach((cb) => {
+      callbacks.forEach(cb => {
         cb();
       });
       isLoading = false;

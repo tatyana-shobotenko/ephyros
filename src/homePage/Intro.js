@@ -26,7 +26,7 @@ class Intro extends Component {
     const elementHeight = domNode.offsetHeight;
     const hiddenHeight = Math.min(Math.max(window.scrollY, 0), elementHeight);
     this.setState({
-      visibility: 1 - (hiddenHeight / elementHeight),
+      visibility: 1 - hiddenHeight / elementHeight,
     });
   }
 
@@ -45,20 +45,18 @@ class Intro extends Component {
         <div className="screen-intro">
           <div className="center-wrapper">
             <div className="screen-intro__content">
-              <h1 className="screen-intro__title">We create rocking
-                web applications for startups &amp; enterprises
+              <h1 className="screen-intro__title">
+                We create rocking web applications for startups &amp;
+                enterprises
               </h1>
 
               <p className="screen-intro__subtitle">
-                At Ephyros we help ambitious clients
-                to bring powerful ideas to life
+                At Ephyros we help ambitious clients to bring powerful ideas to
+                life
               </p>
 
               <div className="button-group">
-                <Link
-                  route="cases"
-                  className="button button-group__item"
-                >
+                <Link route="cases" className="button button-group__item">
                   Selected Cases
                 </Link>
                 <Link
@@ -73,7 +71,11 @@ class Intro extends Component {
               </div>
             </div>
           </div>
-          <Link className="scroll-btn scroll-btn_before-cases" hash="cases" route="home">
+          <Link
+            className="scroll-btn scroll-btn_before-cases"
+            hash="cases"
+            route="home"
+          >
             <i className="icon-down" />
           </Link>
         </div>

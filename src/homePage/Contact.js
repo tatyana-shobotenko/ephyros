@@ -13,12 +13,18 @@ function Contact() {
           height="36px"
         />
 
-        <h2 className="screen-title screen-title_dark screen-epilogue__title">HELLO@EPHYROS.COM</h2>
+        <h2 className="screen-title screen-title_dark screen-epilogue__title">
+          HELLO@EPHYROS.COM
+        </h2>
         <a
           href="mailto:hello@ephyros.com"
           className="button button_rainbow"
-          onClick={() => { window.gae('mainpage', 'click', 'request_quote', 100); }}
-        >Request a free quote</a>
+          onClick={() => {
+            window.gae('mainpage', 'click', 'request_quote', 100);
+          }}
+        >
+          Request a free quote
+        </a>
       </div>
     </div>
   );
