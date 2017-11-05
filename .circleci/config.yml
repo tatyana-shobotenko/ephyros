@@ -1,0 +1,47 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+
+      # run tests!
+      - run: yarn lint --quiet
+      - run: yarn test
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run: |
+         if [ "${CIRCLE_BRANCH}" == "master" ]; then
+
+         docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PASSWORD} ${DOCKER_REGISTRY}
+
+         docker build -t ${DOCKER_REGISTRY}/ephyros/app:latest -f Dockerfile .
+         docker build -t ${DOCKER_REGISTRY}/ephyros/web:latest -f nginx/Dockerfile .
+
+         docker push ${DOCKER_REGISTRY}/ephyros/app:latest
+         docker push ${DOCKER_REGISTRY}/ephyros/web:latest
+
+         fi
+
+
+
