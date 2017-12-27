@@ -1,4 +1,4 @@
-import React from 'react';
+import createContainer from 'rx-react-container';
 import Contact from './Contact';
 
 export default function contactHandler(params) {
