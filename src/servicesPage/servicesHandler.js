@@ -1,4 +1,4 @@
-import createContainer from 'rx-react-container';
+import React from 'react';
 import Services from './Services';
 
 export default function servicesHandler() {
@@ -8,6 +8,6 @@ export default function servicesHandler() {
       description:
         'Create a unique web services and web applications for the benefit of mankind.',
     },
-    view: createContainer(Services),
+    view: <Services />,
   };
 }

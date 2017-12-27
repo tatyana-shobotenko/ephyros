@@ -1,4 +1,4 @@
-import createContainer from 'rx-react-container';
+import React from 'react';
 import Team from './Team';
 
 export default function teamHandler() {
@@ -10,6 +10,6 @@ export default function teamHandler() {
         'We collaborate with ambitious clients who want to bring powerful ideas to life. ' +
         'Love to create awesome web-services and applications.',
     },
-    view: createContainer(Team),
+    view: <Team />,
   };
 }
