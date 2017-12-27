@@ -11,7 +11,6 @@ export default [
     url: '/',
     handler: homeHandler,
   },
-
   {
     name: 'contact',
     url: '/contact?sent',

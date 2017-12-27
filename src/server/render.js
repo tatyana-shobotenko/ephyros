@@ -1,50 +1,27 @@
 import React from 'react';
+
+import { of } from 'rxjs/observable/of';
+import { first } from 'rxjs/operators/first';
+
 import { createServerHistory, Router, RouteCollection } from 'router1';
 import { RouterContext } from 'router1-react';
 
-import { of } from 'rxjs/observable/of';
-import { map } from 'rxjs/operators/map';
-import { first } from 'rxjs/operators/first';
-
-import notFoundHandler from '../notFoundPage/notFoundHandler';
 import routes from '../routes';
-import toObservable from '../utils/toObservable';
+import { loadState } from '../loadState';
 
-function combineHandlersChain(handlers) {
-  return handlers[0];
-}
+function renderState(state, transition) {
+  const { view, redirect, status, meta } = state;
 
-function handlerFromDef(handler, transition) {
-  return toObservable(handler(transition.params)).pipe(
-    map(
-      renderable =>
-        renderable && {
-          hashChange() {},
-          onBeforeUnload() {
-            return '';
-          },
-          render() {
-            const { view, redirect, status, meta } = renderable;
+  if (redirect) {
+    // return redirect to be sent for user
+    return of({ redirect, status });
+  }
 
-            if (redirect) {
-              return of({ redirect, status });
-            }
-
-            return view.pipe(
-              map(renderApp => ({
-                view: (
-                  <RouterContext router={transition.router}>
-                    {renderApp()}
-                  </RouterContext>
-                ),
-                meta,
-                status,
-              }))
-            );
-          },
-        }
-    )
-  );
+  return of({
+    view: <RouterContext router={transition.router}>{view}</RouterContext>,
+    meta,
+    status,
+  });
 }
 
 const routeCollection = new RouteCollection(routes);
@@ -55,16 +32,8 @@ export function render(requestPath, cb) {
   const router = new Router({
     history,
     routeCollection,
-    createHandler(transition) {
-      if (transition.route.handlers.length) {
-        return handlerFromDef(
-          combineHandlersChain(transition.route.handlers),
-          transition
-        );
-      }
-
-      return handlerFromDef(notFoundHandler, transition);
-    },
+    loadState,
+    renderState,
   });
 
   router

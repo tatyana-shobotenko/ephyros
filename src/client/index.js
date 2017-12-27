@@ -1,11 +1,89 @@
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { bindCallback } from 'rxjs/observable/bindCallback';
+import { empty } from 'rxjs/observable/empty';
+
+import { createBrowserHistory, Router, RouteCollection } from 'router1';
+import { RouterContext } from 'router1-react';
 
 import './env';
 import './ga';
 import '../styles/main.sass';
 import '../styles/icons.scss';
-import { router } from './router';
+
+import routes from '../routes';
+
+import { onHashChange, scrollAfterRendered } from './scrollHelpers';
+import { loadState } from '../loadState';
+import { updatePageMeta } from '../utils/updatePageMeta';
+
+let renderObservable;
+if (process.env.SSR === '1') {
+  // hydrate on first render instead of render of next
+  renderObservable = (...agrs) => {
+    renderObservable = bindCallback(ReactDOM.render);
+    return bindCallback(ReactDOM.hydrate)(...agrs);
+  };
+} else {
+  renderObservable = bindCallback(ReactDOM.render);
+}
+
+const appElement = document.getElementById('app');
+
+function renderState(state, transition) {
+  const { view, redirect, meta } = state;
+
+  if (redirect) {
+    // forward to new location on same transition
+    transition.forward(redirect);
+    // since nothing needs to be rendered - return empty observable
+    return empty();
+  }
+
+  updatePageMeta(meta);
+
+  return renderObservable(
+    <RouterContext router={transition.router}>{view}</RouterContext>,
+    appElement
+  );
+}
+
+function afterRender(stateHandler, { state, transition }) {
+  // after state was rendered
+  if (state.onBeforeUnload) {
+    // if state provides before unload hook - replace default with it
+    stateHandler.onBeforeUnload = state.onBeforeUnload;
+  }
+  if (state.onHashChange) {
+    // if state provides hash change handler - replace default with it
+    stateHandler.onHashChange = state.onHashChange;
+  }
+  // do required scrolling after rendering
+  scrollAfterRendered(transition);
+}
+
+const routeCollection = new RouteCollection(routes);
+
+const history = createBrowserHistory();
+
+const router = new Router({
+  history,
+  routeCollection,
+  loadState,
+  onHashChange,
+  renderState,
+  afterRender,
+});
+
+window.onbeforeunload = e => {
+  const returnValue = router.onBeforeUnload();
+  if (returnValue) {
+    e.returnValue = returnValue;
+    return returnValue;
+  }
+  return undefined;
+};
 
 router.renderResult().forEach(() => {
   window.ga('send', 'pageview', window.location.pathname);

@@ -8,13 +8,21 @@ module.exports = function makeWebpackConfig(options) {
 
   if (options.isServer) {
     entry = {
-      ssr: './src/server/ssr.js',
-      nossr: './src/server/nossr.js',
+      ssr: ['./src/server/ssr.js'],
+      nossr: ['./src/server/nossr.js'],
     };
   } else {
     entry = {
-      main: './src/client/index.js',
+      main: [
+        'raf/polyfill',
+        'core-js/es6/map',
+        'core-js/es6/set',
+        './src/client/index.js',
+      ],
     };
+    if (options.hotComponents) {
+      entry.main.unshift('react-hot-loader/patch');
+    }
   }
 
   const defaultLoaders = [
@@ -129,9 +137,9 @@ module.exports = function makeWebpackConfig(options) {
       ? path.join(__dirname, '..', 'build', 'server')
       : path.join(__dirname, '..', 'public', '_assets'),
     publicPath,
-    filename: `[name].js${options.longTermCaching && !options.isServer
-      ? '?[chunkhash]'
-      : ''}`,
+    filename: `[name].js${
+      options.longTermCaching && !options.isServer ? '?[chunkhash]' : ''
+    }`,
     chunkFilename:
       `${options.devServer ? '[id].js' : '[name].js'}` +
       `${options.longTermCaching && !options.isServer ? '?[chunkhash]' : ''}`,
@@ -240,9 +248,9 @@ module.exports = function makeWebpackConfig(options) {
     plugins.push(
       new webpack.optimize.CommonsChunkPlugin({
         name: 'commons',
-        filename: `commons.js${options.longTermCaching && !options.isServer
-          ? '?[chunkhash]'
-          : ''}`,
+        filename: `commons.js${
+          options.longTermCaching && !options.isServer ? '?[chunkhash]' : ''
+        }`,
       })
     );
   }
@@ -267,9 +275,9 @@ module.exports = function makeWebpackConfig(options) {
   if (options.separateStylesheet && !options.isServer) {
     plugins.push(
       new ExtractTextPlugin({
-        filename: `[name].css${options.longTermCaching
-          ? '?[contenthash]'
-          : ''}`,
+        filename: `[name].css${
+          options.longTermCaching ? '?[contenthash]' : ''
+        }`,
       })
     );
   }
@@ -310,21 +318,35 @@ module.exports = function makeWebpackConfig(options) {
       loader: 'babel-loader',
       options: {
         presets: ['react'],
-        plugins: ['babel-plugin-transform-es2015-modules-commonjs'],
+        plugins: [
+          'babel-plugin-transform-es2015-modules-commonjs',
+          'transform-class-properties',
+          'transform-object-rest-spread',
+        ],
         babelrc: false,
       },
     };
   } else if (options.hotComponents) {
-    babelLoader.use = [
-      'react-hot-loader',
-      {
-        loader: 'babel-loader',
-        options: {
-          presets: ['react', 'es2015'],
-          plugins: ['transform-runtime'],
-        },
+    babelLoader.use = {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          'react',
+          [
+            'env',
+            {
+              modules: false,
+            },
+          ],
+        ],
+        plugins: [
+          'transform-runtime',
+          'transform-class-properties',
+          'transform-object-rest-spread',
+          'react-hot-loader/babel',
+        ],
       },
-    ];
+    };
   } else {
     babelLoader.use = ['babel-loader'];
   }
@@ -350,7 +372,7 @@ module.exports = function makeWebpackConfig(options) {
       extensions: ['.web.js', '.js', '.jsx'],
       mainFields: (options.isServer ? [] : ['browser']).concat(
         'module',
-        'jsnext:main',
+        // 'jsnext:main',
         'main'
       ),
       alias,

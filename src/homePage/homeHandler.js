@@ -1,4 +1,4 @@
-import createContainer from 'rx-react-container';
+import React from 'react';
 import Home from './Home';
 
 export default function homeHandler() {
@@ -10,6 +10,6 @@ export default function homeHandler() {
         'Ephyros is a team of developers who invent, think over, build, and improve.' +
         ' We collaborate with ambitious clients who want to bring powerful ideas to life.',
     },
-    view: createContainer(Home),
+    view: <Home />,
   };
 }

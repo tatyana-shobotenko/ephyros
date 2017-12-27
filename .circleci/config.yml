@@ -27,6 +27,8 @@ jobs:
       # run tests!
       - run: yarn lint --quiet
       - run: yarn test
+      # build
+      - run: yarn build
       - setup_remote_docker:
           docker_layer_caching: true
 
