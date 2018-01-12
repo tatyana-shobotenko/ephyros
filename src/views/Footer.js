@@ -42,14 +42,6 @@ function Footer() {
                   </div>
                 </div>
               </div>
-              <div className="footer__contacts-col footer__contacts-col_logo">
-                <div className="footer__contacts-inner">
-                  <div className="footer__contacts__title">Member of</div>
-                  <a href="http://opsway.com/">
-                    <div className="footer__opsway" />
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>

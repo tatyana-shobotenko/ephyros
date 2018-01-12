@@ -28,21 +28,8 @@ class Header extends Component {
         <div className="center-wrapper">
           <div className="header__logo">
             <Link route="home">
-              <img
-                src="/images/logo-space2@2x.png"
-                title="Ephyros"
-                alt="Ephyros"
-              />
+              <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros" />
             </Link>
-          </div>
-          <div className="opsway-text">
-            <a
-              href="http://opsway.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Member of <span className="ops-title">OpsWay</span>
-            </a>
           </div>
           <button
             className="header__menu-btn"

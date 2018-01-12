@@ -35,7 +35,7 @@ function attach(callback) {
     n.type = 'text/javascript';
     n.async = true;
     n.defer = true;
-    n.src = `http://maps.googleapis.com/maps/api/js?key=${key}&callback=${callbackName}`;
+    n.src = `//maps.googleapis.com/maps/api/js?key=${key}&callback=${callbackName}`;
     e.parentNode.insertBefore(n, e);
   } else if (isLoading) {
     callbacks.push(callback);
