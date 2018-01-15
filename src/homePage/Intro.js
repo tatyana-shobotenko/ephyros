@@ -69,7 +69,7 @@ class Intro extends Component {
                     alt="MVP"
                   />
                   <p className="intro-service__title">MVP development</p>
-                  <p>Idea validation, Tracing, getting first users</p>
+                  <p>Idea validation, Tracing, Getting first users</p>
                 </div>
                 <div className="intro-services__dots">
                   <div className="intro-services__dot" />
@@ -85,7 +85,7 @@ class Intro extends Component {
                     alt="MVP"
                   />
                   <p className="intro-service__title">SaaS infrustructure</p>
-                  <p>Operational exellence</p>
+                  <p>Operational excellence</p>
                 </div>
                 <div className="intro-services__dots">
                   <div className="intro-services__dot" />
