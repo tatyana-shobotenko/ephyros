@@ -5,6 +5,10 @@ import MVPIcon from '../data/services/MVP.png';
 import SAASIcon from '../data/services/SAAS.png';
 import ICOIcon from '../data/services/ICO.png';
 
+import MVPIconRetina from '../data/services/MVP@2x.png';
+import SAASIconRetina from '../data/services/SAAS@2x.png';
+import ICOIconRetina from '../data/services/ICO@2x.png';
+
 class Intro extends Component {
   constructor() {
     super();
@@ -59,7 +63,11 @@ class Intro extends Component {
 
               <div className="intro-services">
                 <div className="intro-service">
-                  <img src={MVPIcon} alt="MVP" />
+                  <img
+                    srcSet={`${MVPIcon}, ${MVPIconRetina} 2x`}
+                    src={MVPIcon}
+                    alt="MVP"
+                  />
                   <p className="intro-service__title">MVP development</p>
                   <p>Idea validation, Tracing, getting first users</p>
                 </div>
@@ -71,7 +79,11 @@ class Intro extends Component {
                   <div className="intro-services__dot" />
                 </div>
                 <div className="intro-service">
-                  <img src={SAASIcon} alt="MVP" />
+                  <img
+                    srcSet={`${SAASIcon}, ${SAASIconRetina} 2x`}
+                    src={SAASIcon}
+                    alt="MVP"
+                  />
                   <p className="intro-service__title">SaaS infrustructure</p>
                   <p>Operational exellence</p>
                 </div>
@@ -83,7 +95,11 @@ class Intro extends Component {
                   <div className="intro-services__dot" />
                 </div>
                 <div className="intro-service">
-                  <img src={ICOIcon} alt="MVP" />
+                  <img
+                    srcSet={`${ICOIcon}, ${ICOIconRetina} 2x`}
+                    src={ICOIcon}
+                    alt="MVP"
+                  />
                   <p className="intro-service__title">ICO</p>
                   <p>For mature businesses</p>
                 </div>
