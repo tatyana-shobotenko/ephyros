@@ -54,7 +54,7 @@ class Intro extends Component {
           <div className="center-wrapper">
             <div className="screen-intro__content">
               <h1 className="screen-intro__title">
-                One Stop Shop Solution for your ideas
+                Technical partner for rocking Startups and Enterprises
               </h1>
 
               <p className="screen-intro__subtitle">

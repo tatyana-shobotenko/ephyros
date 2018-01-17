@@ -42,10 +42,14 @@ class Cases extends Component {
           </div>
           <div className="hcase__info">
             <div className="hcase__info-inner">
-              <div className="hcase__section">{tags}</div>
               <div className="hcase__title">{data.name}</div>
+              <div className="hcase__section">{tags}</div>
             </div>
-            <div className="hcase__go-icon icon-right-arrow" />
+            <div className="hcase__go-icon">
+              <button className="button">
+                More <i className="icon-right-arrow" />
+              </button>
+            </div>
           </div>
         </Link>
       );
