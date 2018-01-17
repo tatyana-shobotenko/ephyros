@@ -46,6 +46,12 @@ $caseH--mob: 200px
   &:hover
     .hcase__info
       max-height: $caseH*2
+  .hcase__info-inner
+    padding: 40px
+  .hcase__title
+    font-size: 48px
+  .hcase__section
+    font-size: 18px
   +resp(sdevice)
     width: 100%
   +resp(mtab)
@@ -67,42 +73,40 @@ $caseH--mob: 200px
   position: absolute
   width: 100%
   height: 100%
-  background: #0eb2de
+  background: rgba(0,0,0,.7)
   max-height: 0
   overflow: hidden
   +transition(max-height ease-in 300ms)
   +touch
     max-height: none
     height: auto
-    background: none
-    +vgradient((rgba(14, 178, 222, 1) 30%), (rgba(14, 178, 222, 0) 100%), 0)
     padding-bottom: 20px
 
 .hcase__info_touch
   max-height: none
   height: auto
-  background: none
-  +vgradient((rgba(14, 178, 222, 1) 30%), (rgba(14, 178, 222, 0) 100%), 0)
   padding-bottom: 20px
 
 .hcase__info-inner
-  padding: 10px 20px
+  padding: 20px
   text-align: left
+  color: #ffffff
 
 .hcase__section
   text-transform: uppercase
-  color: $grayDarker
-  font-size: 11px
+  font-size: 14px
 
 .hcase__title
   color: #ffffff
-  font-size: 24px
-  font-weight: 100
+  font-size: 28px
+  font-weight: 500
 
 .hcase__go-icon
   position: absolute
   bottom: 20px
-  right: 20px
+  left: 20px
   font-size: 30px
-  line-height: 30px
   color: #ffffff
+  .hcase_big &
+    left: 40px
+    bottom: 40px

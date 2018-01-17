@@ -12,7 +12,7 @@ function Footer() {
               <div className="footer__copyrights-text">
                 {/* <div className="footer__opsway-text footer__contacts__title">Member of</div>
                  <a href="http://opsway.com/" ><div className="footer__opsway"></div></a> */}
-                <div>© 2013-2016 Ephyros</div>
+                <div>© 2013-2018 Ephyros</div>
                 <div>All Rights Reserved</div>
               </div>
             </div>

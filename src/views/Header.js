@@ -28,7 +28,7 @@ class Header extends Component {
         <div className="center-wrapper">
           <div className="header__logo">
             <Link route="home">
-              <img src="/images/logo@2x.png" title="Ephyros" alt="Ephyros" />
+              <img src="/images/logo120117.svg" title="Ephyros" alt="Ephyros" />
             </Link>
           </div>
           <button

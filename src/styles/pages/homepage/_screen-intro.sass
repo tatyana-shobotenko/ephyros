@@ -6,7 +6,7 @@
   width: 100%
   height: 100%
   background-color: #0B2638
-  background-image: url("/images/txt2.jpg")
+  background-image: url("/images/intro150117.jpg")
   background-position: center right
   background-repeat: no-repeat
   background-size: cover
@@ -38,8 +38,10 @@
 
 .screen-intro__title
   @extend .screen-title
-  font-size: 70px
-  margin: 70px 0
+  font-size: 55px
+  margin: 70px 0 15px
+  text-transform: uppercase
+  font-weight: 300
   +resp(tab)
     font-size: 40px
     margin: 70px 0
@@ -57,7 +59,47 @@
     -webkit-text-fill-color: transparent
 
 .screen-intro__subtitle
-  font-size: 22px
+  font-size: 24px
   color: #ffffff
-  margin: 30px 0 30px
+  margin: 15px 0
   font-weight: 100
+
+
+.intro-services
+  display: flex
+  justify-content: space-between
+  margin: 80px 80px 0
+  +media(pho)
+    margin: 40px 0
+
+.intro-service
+  flex: 1 0
+  font-size: 16px
+  color: #b8bad9
+  font-weight: 100
+  +media(pho-ptab)
+    img
+      width: 50px
+  +media(pho)
+    font-size: 14px
+
+.intro-service__title
+  font-size: 18px
+  color: #fff
+  margin: 15px 0 10px
+  font-weight: 300
+  +media(pho)
+    font-size: 15px
+
+.intro-services__dots
+  display: flex
+  justify-content: space-between
+  width: 160px
+
+.intro-services__dot
+  width: 4px
+  height: 4px
+  background: #7577a1
+  flex: 0 0 auto
+  border-radius: 2px
+  margin-top: 48px

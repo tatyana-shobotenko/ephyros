@@ -3,6 +3,7 @@
   background: $headerBack
   color: #ffffff
   +clear
+  +transition(padding ease-in 200ms)
   +resp(sdevice)
     padding: 15px 0
 
@@ -10,6 +11,9 @@
   background: transparent
   z-index: 3
   position: relative
+  padding: 45px 0 15px
+  +resp(sdevice)
+    padding: 25px 0 5px
 
 @import "header/header__logo"
 @import "header/header__nav"
