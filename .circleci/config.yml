@@ -44,6 +44,13 @@ jobs:
          docker push ${DOCKER_REGISTRY}/ephyros/web:latest
 
          fi
-
-
-
+      - add_ssh_keys:
+          fingerprints:
+            - "a5:a7:e5:77:66:da:89:16:93:a0:b9:43:57:bb:53:a9"
+      - run: ssh-keyscan -t rsa -H ephyros.com >> ~/.ssh/known_hosts
+      - deploy:
+          name: Deploy master to ephyros.com
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ssh ubuntu@ephyros.com "cd ephyros.com && ./update.sh"
+            fi
